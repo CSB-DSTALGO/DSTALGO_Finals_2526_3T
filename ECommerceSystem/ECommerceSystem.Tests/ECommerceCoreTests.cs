@@ -59,7 +59,7 @@ public class ECommerceCoreTests
     }
 
     // =========================================================================
-    // 2. ProductCatalog Tests (Integrates CustomSinglyLinkedList<T>)
+    // 2. ProductCatalog Tests (Integrates CustomArrayList<T>)
     // =========================================================================
 
     [Fact]
