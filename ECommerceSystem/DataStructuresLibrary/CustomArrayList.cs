@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Specialized;
+
 namespace DataStructuresLibrary;
 
 public class CustomArrayList<T> where T : IComparable<T>
@@ -8,16 +11,73 @@ public class CustomArrayList<T> where T : IComparable<T>
     public CustomArrayList(int initialCapacity = 4)
     {
         _items = new T[initialCapacity];
+        Count = 0;
     }
 
-    
-    public void Add(T item) => throw new NotImplementedException();
-    public bool Remove(T item) => throw new NotImplementedException();
-    public T Get(int index) => throw new NotImplementedException();
+    public void Add(T item)
+    { 
+        _items[Count] = item;
+        Count++;
+    }
+    public bool Remove(T item)
+    {   
+        int index = Count;
+        
+        for (int i = 0; i < Count; i++)
+        {
+            if (_items[i].Equals(item))
+            {
+                index = i; 
+                break;
+            }
+        }
 
-    
-    public int Search(T item) => throw new NotImplementedException();
+        //if the item is not within the array
+        if (Count == 0)
+        {
+            throw new ArgumentOutOfRangeException("Item not found");
+        }
 
-    
-    public void Sort() => throw new NotImplementedException();
+        for (int i = index; i < Count - 1 ; i++)
+        {
+            _items[i] = _items[i + 1];
+        }
+
+        Count--;
+
+        return true;
+
+    }
+    public T Get(int index)
+    { 
+        if (index < 0 || index >= _items.Length)
+        {
+            throw new IndexOutOfRangeException();
+        }
+        return _items[index]; 
+    }
+
+    public void Resize () //added a function for resizing of arraylist
+    {
+
+    }
+
+    public int Search(T item) => throw new NotImplementedException(); //going to add linear
+
+    public void Sort() //insertion algorithm
+    {
+        for (int i = 0; i < Count ; i++)
+        {
+            T key = _items[i];
+            int j = i - 1;
+
+            while(j >= 0 && _items[i].CompareTo(key) > 0)
+            {
+                _items[j+1] = _items[j];
+                j = j-1;
+            }
+
+            _items[j + 1] = key;
+        }
+    }
 }
