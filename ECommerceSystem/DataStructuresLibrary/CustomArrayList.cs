@@ -9,7 +9,7 @@ public class CustomArrayList<T> where T : IComparable<T>
     {
         _items = new T[initialCapacity];
     }
-
+    //
     
     public void Add(T item) => throw new NotImplementedException();
     public bool Remove(T item) => throw new NotImplementedException();
