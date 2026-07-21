@@ -9,3 +9,15 @@
 /Users/caan/Development/BENILDE/FINALS/DataStructureFinals/ECommerceSystem/DataStructuresLibrary/obj/Debug/net10.0/refint/DataStructuresLibrary.dll
 /Users/caan/Development/BENILDE/FINALS/DataStructureFinals/ECommerceSystem/DataStructuresLibrary/obj/Debug/net10.0/DataStructuresLibrary.pdb
 /Users/caan/Development/BENILDE/FINALS/DataStructureFinals/ECommerceSystem/DataStructuresLibrary/obj/Debug/net10.0/ref/DataStructuresLibrary.dll
+C:\Users\pocho\Documents\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\bin\Debug\net10.0\DataStructuresLibrary.deps.json
+C:\Users\pocho\Documents\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\bin\Debug\net10.0\DataStructuresLibrary.dll
+C:\Users\pocho\Documents\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\bin\Debug\net10.0\DataStructuresLibrary.pdb
+C:\Users\pocho\Documents\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pocho\Documents\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.AssemblyInfoInputs.cache
+C:\Users\pocho\Documents\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.AssemblyInfo.cs
+C:\Users\pocho\Documents\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.csproj.CoreCompileInputs.cache
+C:\Users\pocho\Documents\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.sourcelink.json
+C:\Users\pocho\Documents\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.dll
+C:\Users\pocho\Documents\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\refint\DataStructuresLibrary.dll
+C:\Users\pocho\Documents\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.pdb
+C:\Users\pocho\Documents\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\ref\DataStructuresLibrary.dll
