@@ -72,7 +72,7 @@ namespace EnrollmentSystem.ConsoleApp
                         
                         _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0));
                         Console.WriteLine("\nStudent registered successfully.");
-                        _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Registered student {id}" });
+                        //_logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Registered student {id}" });
                         break;
 
                     case "2":
@@ -105,7 +105,8 @@ namespace EnrollmentSystem.ConsoleApp
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"\nError: {ex.Message}");
+                Console.WriteLine(ex);
+                //Console.WriteLine($"\nError: {ex.Message}");
             }
             
             Console.WriteLine("\nPress any key to continue...");

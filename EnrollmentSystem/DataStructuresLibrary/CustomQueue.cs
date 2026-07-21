@@ -17,7 +17,7 @@ namespace DataStructuresLibrary
 
         public CustomQueue()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void Enqueue(T item)

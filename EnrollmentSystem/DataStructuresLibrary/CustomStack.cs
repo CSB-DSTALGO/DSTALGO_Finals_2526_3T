@@ -15,7 +15,7 @@ namespace DataStructuresLibrary
 
         public CustomStack()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException(); 
         }
 
         public void Push(T item)
