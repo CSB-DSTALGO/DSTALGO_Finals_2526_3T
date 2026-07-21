@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "bRlYkcQnBOI=",
+  "dgSpecHash": "QtgE8qO1A3k=",
   "success": true,
-  "projectFilePath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj",
+  "expectedPackageFiles": [
+    "/home/ermis/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.9/microsoft.aspnetcore.app.ref.10.0.9.nupkg.sha512"
+  ],
   "logs": []
 }

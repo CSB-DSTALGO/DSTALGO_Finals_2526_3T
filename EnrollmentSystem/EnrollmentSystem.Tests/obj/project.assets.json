@@ -1047,19 +1047,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/caan/.nuget/packages/": {}
+    "/home/ermis/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Tests/EnrollmentSystem.Tests.csproj",
+      "projectUniqueName": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Tests/EnrollmentSystem.Tests.csproj",
       "projectName": "EnrollmentSystem.Tests",
-      "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Tests/EnrollmentSystem.Tests.csproj",
-      "packagesPath": "/Users/caan/.nuget/packages/",
-      "outputPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Tests/obj/",
+      "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Tests/EnrollmentSystem.Tests.csproj",
+      "packagesPath": "/home/ermis/.nuget/packages/",
+      "outputPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/caan/.nuget/NuGet/NuGet.Config"
+        "/home/ermis/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -1071,11 +1071,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
-              "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
+            "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
+              "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
             },
-            "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj": {
-              "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj"
+            "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj": {
+              "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj"
             }
           }
         }
@@ -1127,11 +1127,11 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.22, 8.0.22]"
+            "version": "[8.0.28, 8.0.28]"
           },
           {
             "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.22, 8.0.22]"
+            "version": "[8.0.28, 8.0.28]"
           }
         ],
         "frameworkReferences": {
@@ -1139,7 +1139,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.109/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

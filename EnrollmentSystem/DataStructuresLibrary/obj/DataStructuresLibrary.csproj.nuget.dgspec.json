@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {}
+    "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {}
   },
   "projects": {
-    "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
+    "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
+        "projectUniqueName": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
         "projectName": "DataStructuresLibrary",
-        "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
-        "packagesPath": "/Users/caan/.nuget/packages/",
-        "outputPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/obj/",
+        "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
+        "packagesPath": "/home/ermis/.nuget/packages/",
+        "outputPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/caan/.nuget/NuGet/NuGet.Config"
+          "/home/ermis/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -57,11 +57,11 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
+              "version": "[8.0.28, 8.0.28]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
+              "version": "[8.0.28, 8.0.28]"
             }
           ],
           "frameworkReferences": {
@@ -69,7 +69,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.109/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
