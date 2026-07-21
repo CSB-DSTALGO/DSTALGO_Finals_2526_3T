@@ -4,15 +4,34 @@ namespace ECommerceSystem.Core
 {
     public class ProductCatalog
     {
-        private readonly CustomSinglyLinkedList<Product> _products = new();
+        private readonly CustomArrayList<Product> _products = new();
 
         public int Count => _products.Count;
 
-        public void AddProduct(Product product) => throw new NotImplementedException();
-        public bool RemoveProduct(Product product) => throw new NotImplementedException();
+        public void AddProduct(Product product)
+        {
+            _products.Add(product);
+        }
 
+        public bool RemoveProduct(Product product)
+        {
+            return _products.Remove(product);
+        }
 
-        public bool SearchProduct(Product product) => throw new NotImplementedException();
-        public void SortCatalog() => throw new NotImplementedException();
+        public bool SearchProduct(Product product)
+        {
+            return _products.Search(product) != -1;
+        }
+
+        public void SortCatalog()
+        {
+            _products.Sort(); // Uses Product.CompareTo (Price)
+        }
+
+        public void DisplayCatalog()
+        {
+            for (int i = 0; i < _products.Count; i++)
+                Console.WriteLine(_products.Get(i));
+        }
     }
 }

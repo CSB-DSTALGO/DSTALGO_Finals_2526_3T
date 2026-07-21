@@ -1,20 +1,21 @@
-namespace ECommerceSystem.Core;
-
 using DataStructuresLibrary;
 
-public class ShoppingCart
+namespace ECommerceSystem.Core
 {
-    private readonly CustomArrayList<Product> _items = new();
+    public class ShoppingCart
+    {
+        private readonly CustomArrayList<Product> _items = new();
 
-    public int Count => _items.Count;
+        public int Count => _items.Count;
 
-    public void AddItem(Product product) => throw new NotImplementedException();
-    public bool RemoveItem(Product product) => throw new NotImplementedException();
-    public Product GetItemAt(int index) => throw new NotImplementedException();
+        public void AddItem(Product product) => throw new NotImplementedException();
+        public bool RemoveItem(Product product) => throw new NotImplementedException();
+        public Product GetItemAt(int index) => throw new NotImplementedException();
 
-    public decimal CalculateTotal() => throw new NotImplementedException();
+        public decimal CalculateTotal() => throw new NotImplementedException();
 
-    
-    public int SearchItem(Product product) => throw new NotImplementedException();
-    public void SortCartByPrice() => throw new NotImplementedException();
+
+        public int SearchItem(Product product) => throw new NotImplementedException();
+        public void SortCartByPrice() => throw new NotImplementedException();
+    }
 }
