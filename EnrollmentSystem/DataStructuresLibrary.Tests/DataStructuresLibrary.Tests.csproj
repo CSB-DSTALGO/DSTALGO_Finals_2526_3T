@@ -15,6 +15,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DataStructuresLibrary\DataStructuresLibrary.csproj" />
+    <ProjectReference Include="..\EnrollmentSystem.ConsoleApp\EnrollmentSystem.ConsoleApp.csproj" />
+    <ProjectReference Include="..\EnrollmentSystem.Core\EnrollmentSystem.Core.csproj" />
+    <ProjectReference Include="..\EnrollmentSystem.Tests\EnrollmentSystem.Tests.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 
