@@ -97,3 +97,12 @@
 /Users/caan/Development/BENILDE/FINALS/DataStructureFinals/ECommerceSystem/DataStructuresLibrary.Tests/obj/Debug/net10.0/DataStructuresLibrary.Tests.pdb
 /Users/caan/Development/BENILDE/FINALS/DataStructureFinals/ECommerceSystem/DataStructuresLibrary.Tests/obj/Debug/net10.0/DataStructuresLibrary.Tests.genruntimeconfig.cache
 /Users/caan/Development/BENILDE/FINALS/DataStructureFinals/ECommerceSystem/DataStructuresLibrary.Tests/obj/Debug/net10.0/ref/DataStructuresLibrary.Tests.dll
+C:\Users\ronan\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary.Tests\obj\Debug\net10.0\DataStructuresLibrary.Tests.csproj.AssemblyReference.cache
+C:\Users\ronan\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary.Tests\obj\Debug\net10.0\DataStructuresLibrary.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ronan\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary.Tests\obj\Debug\net10.0\DataStructuresLibrary.Tests.AssemblyInfoInputs.cache
+C:\Users\ronan\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary.Tests\obj\Debug\net10.0\DataStructuresLibrary.Tests.AssemblyInfo.cs
+C:\Users\ronan\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary.Tests\obj\Debug\net10.0\DataStructuresLibrary.Tests.csproj.CoreCompileInputs.cache
+C:\Users\ronan\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary.Tests\obj\Debug\net10.0\DataStructuresLibrary.Tests.sourcelink.json
+C:\Users\ronan\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary.Tests\obj\Debug\net10.0\DataStructuresLibrary.Tests.dll
+C:\Users\ronan\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary.Tests\obj\Debug\net10.0\refint\DataStructuresLibrary.Tests.dll
+C:\Users\ronan\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary.Tests\obj\Debug\net10.0\DataStructuresLibrary.Tests.pdb
