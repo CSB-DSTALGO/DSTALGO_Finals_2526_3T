@@ -10,8 +10,7 @@ namespace EnrollmentSystem.Tests
         public void RegisterStudent_ShouldAddStudentAndIncreaseCount()
         {
             var registry = new StudentRegistry();
-            // Student constructor requires (int id, string name, double gpa)
-            var student = new Student(20260001, "Alice", 0.0);
+            var student = new Student(1, "Alice", 90.0) { CourseCode = "BSIT" };
 
             registry.RegisterStudent(student);
 
@@ -23,11 +22,10 @@ namespace EnrollmentSystem.Tests
         public void RemoveStudent_ShouldDecreaseCount_WhenStudentExists()
         {
             var registry = new StudentRegistry();
-            // Use matching constructor and id type for removal
-            var student = new Student(20260001, "Alice", 0.0);
+            var student = new Student(1, "Alice", 90.0) { CourseCode = "BSIT" };
             registry.RegisterStudent(student);
 
-            bool removed = registry.UnregisterStudent(20260001);
+            bool removed = registry.RemoveStudent("1");
 
             Assert.True(removed);
             Assert.Equal(0, registry.GetStudentCount());
@@ -46,7 +44,7 @@ namespace EnrollmentSystem.Tests
             curriculum.InsertCourse(c1);
             curriculum.InsertCourse(c2);
 
-            Assert.Equal(6, curriculum.CalculateTotalUnits());
+            Assert.Equal(6, curriculum.GetTotalUnits());
         }
 
         [Fact]
@@ -56,10 +54,10 @@ namespace EnrollmentSystem.Tests
             var course = new Course("CS102", "Data Structures", 3);
             curriculum.InsertCourse(course);
 
-            bool removed = curriculum.DeleteCourse(course.Code);
+            bool removed = curriculum.RemoveCourse("CS102");
 
             Assert.True(removed);
-            Assert.Equal(0, curriculum.CalculateTotalUnits());
+            Assert.Equal(0, curriculum.GetTotalUnits());
         }
     }
 
@@ -69,14 +67,14 @@ namespace EnrollmentSystem.Tests
         public void IssueAdmissionsTicket_ShouldQueueTicketsInFIFOOrder()
         {
             var desk = new AdmissionsDesk();
-            var t1 = new Ticket { LogId = 1, Action = "First Action", Timestamp = DateTime.Now };
-            var t2 = new Ticket { LogId = 2, Action = "Second Action", Timestamp = DateTime.Now };
+            var t1 = new Ticket { TicketId = "T-101", StudentId = "2026-0001" };
+            var t2 = new Ticket { TicketId = "T-102", StudentId = "2026-0002" };
 
             desk.IssueAdmissionsTicket(t1);
             desk.IssueAdmissionsTicket(t2);
 
             Assert.Equal(2, desk.GetQueueCount());
-            
+
             var served = desk.ServeNextTicket();
             Assert.Equal("T-101", served.TicketId);
         }
@@ -104,7 +102,7 @@ namespace EnrollmentSystem.Tests
 
             Assert.Equal(2, logs.GetLogCount());
 
-            var lastLog = logs.ViewLatestLog();
+            var lastLog = logs.PopSystemLog();
             Assert.Equal("L-002", lastLog.LogId);
         }
 
@@ -115,10 +113,182 @@ namespace EnrollmentSystem.Tests
             var log = new Log { LogId = "L-001", ActionSummary = "Action" };
             logs.PushSystemLog(log);
 
-            var peeked = logs.ViewLatestLog();
+            var peeked = logs.PeekLatestLog();
 
             Assert.Equal("L-001", peeked.LogId);
             Assert.Equal(1, logs.GetLogCount());
+        }
+
+        // (spec method)
+
+        [Fact]
+        public void PushSystemLog_NullLog_ThrowsArgumentNullException()
+        {
+            var logs = new AdministrativeLogs();
+
+            Assert.Throws<ArgumentNullException>(() => logs.PushSystemLog(null!));
+        }
+
+        [Fact]
+        public void PushSystemLog_MultipleLogs_IncreasesCountAccordingly()
+        {
+            var logs = new AdministrativeLogs();
+
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "A" });
+            logs.PushSystemLog(new Log { LogId = "L-002", ActionSummary = "B" });
+            logs.PushSystemLog(new Log { LogId = "L-003", ActionSummary = "C" });
+
+            Assert.Equal(3, logs.GetLogCount());
+        }
+
+        // (spec method)
+
+        [Fact]
+        public void RollbackLastLog_ReturnsMostRecentLogAndRemovesIt()
+        {
+            var logs = new AdministrativeLogs();
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "A" });
+            logs.PushSystemLog(new Log { LogId = "L-002", ActionSummary = "B" });
+
+            var rolledBack = logs.RollbackLastLog();
+
+            Assert.Equal("L-002", rolledBack.LogId);
+            Assert.Equal(1, logs.GetLogCount());
+        }
+
+        [Fact]
+        public void RollbackLastLog_OnEmptyStack_ThrowsInvalidOperationException()
+        {
+            var logs = new AdministrativeLogs();
+
+            Assert.Throws<InvalidOperationException>(() => logs.RollbackLastLog());
+        }
+
+        // (spec method) 
+
+        [Fact]
+        public void ViewLatestLog_DoesNotRemoveTheLog()
+        {
+            var logs = new AdministrativeLogs();
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "A" });
+
+            var viewed = logs.ViewLatestLog();
+
+            Assert.Equal("L-001", viewed.LogId);
+            Assert.Equal(1, logs.GetLogCount());
+        }
+
+        [Fact]
+        public void ViewLatestLog_OnEmptyStack_ThrowsInvalidOperationException()
+        {
+            var logs = new AdministrativeLogs();
+
+            Assert.Throws<InvalidOperationException>(() => logs.ViewLatestLog());
+        }
+
+        //  (spec method) 
+
+        [Fact]
+        public void CheckLogsEmpty_OnNewInstance_ReturnsTrue()
+        {
+            var logs = new AdministrativeLogs();
+
+            Assert.True(logs.CheckLogsEmpty());
+        }
+
+        [Fact]
+        public void CheckLogsEmpty_AfterPush_ReturnsFalse()
+        {
+            var logs = new AdministrativeLogs();
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "A" });
+
+            Assert.False(logs.CheckLogsEmpty());
+        }
+
+        [Fact]
+        public void CheckLogsEmpty_AfterPushThenRollback_ReturnsTrue()
+        {
+            var logs = new AdministrativeLogs();
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "A" });
+            logs.RollbackLastLog();
+
+            Assert.True(logs.CheckLogsEmpty());
+        }
+
+        // (insertion sort) 
+
+        [Fact]
+        public void GetLogsSortedById_ReturnsLogsInAscendingOrder()
+        {
+            var logs = new AdministrativeLogs();
+            logs.PushSystemLog(new Log { LogId = "L-003", ActionSummary = "C" });
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "A" });
+            logs.PushSystemLog(new Log { LogId = "L-002", ActionSummary = "B" });
+
+            var sorted = logs.GetLogsSortedById();
+
+            Assert.Equal(new[] { "L-001", "L-002", "L-003" },
+                new[] { sorted[0].LogId, sorted[1].LogId, sorted[2].LogId });
+        }
+
+        [Fact]
+        public void GetLogsSortedById_DoesNotMutateOriginalStackOrder()
+        {
+            var logs = new AdministrativeLogs();
+            logs.PushSystemLog(new Log { LogId = "L-003", ActionSummary = "C" });
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "A" });
+
+            logs.GetLogsSortedById();
+
+            //last pushed (L-001) is still on top.
+            Assert.Equal("L-001", logs.ViewLatestLog().LogId);
+        }
+
+        [Fact]
+        public void GetLogsSortedById_OnEmptyStack_ReturnsEmptyArray()
+        {
+            var logs = new AdministrativeLogs();
+
+            var sorted = logs.GetLogsSortedById();
+
+            Assert.Empty(sorted);
+        }
+
+        // (binary search)
+
+        [Fact]
+        public void SearchLogById_ExistingId_ReturnsMatchingLog()
+        {
+            var logs = new AdministrativeLogs();
+            logs.PushSystemLog(new Log { LogId = "L-002", ActionSummary = "B" });
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "A" });
+            logs.PushSystemLog(new Log { LogId = "L-003", ActionSummary = "C" });
+
+            var found = logs.SearchLogById("L-002");
+
+            Assert.NotNull(found);
+            Assert.Equal("B", found!.ActionSummary);
+        }
+
+        [Fact]
+        public void SearchLogById_NonExistentId_ReturnsNull()
+        {
+            var logs = new AdministrativeLogs();
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "A" });
+
+            var found = logs.SearchLogById("L-999");
+
+            Assert.Null(found);
+        }
+
+        [Fact]
+        public void SearchLogById_OnEmptyStack_ReturnsNull()
+        {
+            var logs = new AdministrativeLogs();
+
+            var found = logs.SearchLogById("L-001");
+
+            Assert.Null(found);
         }
     }
 }
