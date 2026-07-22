@@ -9,6 +9,7 @@ public class CustomArrayListTests
     public void Add_ShouldIncreaseCountAndStoreItems()
     {
         // TODO: Implement test for Add and Get indexing
+    
         throw new NotImplementedException();
     }
 

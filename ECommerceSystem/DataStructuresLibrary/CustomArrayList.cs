@@ -62,7 +62,32 @@ public class CustomArrayList<T> where T : IComparable<T>
 
     }
 
-    public int Search(T item) => throw new NotImplementedException(); //going to add linear
+    public int Search(T item)//going to add binary
+    {
+        int left = 0;
+        int right = _items.Length - 1;  
+
+        while (left <= right)
+        {
+            int mid = left + (right - left) / 2;
+            int compare = _items[mid].CompareTo(item);
+
+            if(compare == 0)
+            {
+                return mid;
+            }
+            else if (compare < 0)
+            {
+                left = mid + 1;
+            }
+            else
+            {
+                right = mid - 1;
+            }
+        }
+
+        return -1;
+    }
 
     public void Sort() //insertion algorithm
     {
@@ -74,7 +99,7 @@ public class CustomArrayList<T> where T : IComparable<T>
             while(j >= 0 && _items[i].CompareTo(key) > 0)
             {
                 _items[j+1] = _items[j];
-                j = j-1;
+                j = j - 1;
             }
 
             _items[j + 1] = key;

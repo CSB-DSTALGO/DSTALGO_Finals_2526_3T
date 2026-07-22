@@ -18,3 +18,24 @@
 /Users/caan/Development/BENILDE/FINALS/DataStructureFinals/ECommerceSystem/ECommerceSystem.ConsoleApp/obj/Debug/net10.0/ECommerceSystem.ConsoleApp.pdb
 /Users/caan/Development/BENILDE/FINALS/DataStructureFinals/ECommerceSystem/ECommerceSystem.ConsoleApp/obj/Debug/net10.0/ECommerceSystem.ConsoleApp.genruntimeconfig.cache
 /Users/caan/Development/BENILDE/FINALS/DataStructureFinals/ECommerceSystem/ECommerceSystem.ConsoleApp/obj/Debug/net10.0/ref/ECommerceSystem.ConsoleApp.dll
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\bin\Debug\net10.0\ECommerceSystem.ConsoleApp.exe
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\bin\Debug\net10.0\ECommerceSystem.ConsoleApp.deps.json
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\bin\Debug\net10.0\ECommerceSystem.ConsoleApp.runtimeconfig.json
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\bin\Debug\net10.0\ECommerceSystem.ConsoleApp.dll
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\bin\Debug\net10.0\ECommerceSystem.ConsoleApp.pdb
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\bin\Debug\net10.0\DataStructuresLibrary.dll
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\bin\Debug\net10.0\ECommerceSystem.Core.dll
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\bin\Debug\net10.0\ECommerceSystem.Core.pdb
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\bin\Debug\net10.0\DataStructuresLibrary.pdb
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\obj\Debug\net10.0\ECommerceSystem.ConsoleApp.csproj.AssemblyReference.cache
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\obj\Debug\net10.0\ECommerceSystem.ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\obj\Debug\net10.0\ECommerceSystem.ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\obj\Debug\net10.0\ECommerceSystem.ConsoleApp.AssemblyInfo.cs
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\obj\Debug\net10.0\ECommerceSystem.ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\obj\Debug\net10.0\ECommerceSystem.ConsoleApp.sourcelink.json
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\obj\Debug\net10.0\ECommerc.F8BEFE44.Up2Date
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\obj\Debug\net10.0\ECommerceSystem.ConsoleApp.dll
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\obj\Debug\net10.0\refint\ECommerceSystem.ConsoleApp.dll
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\obj\Debug\net10.0\ECommerceSystem.ConsoleApp.pdb
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\obj\Debug\net10.0\ECommerceSystem.ConsoleApp.genruntimeconfig.cache
+C:\Users\Precious Mana-ay\Source\Repos\DSTALGO_Finals_2526_3T\ECommerceSystem\ECommerceSystem.ConsoleApp\obj\Debug\net10.0\ref\ECommerceSystem.ConsoleApp.dll
