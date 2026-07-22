@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Tests\\EnrollmentSystem.Tests.csproj": {}
+    "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Tests\\EnrollmentSystem.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
+    "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
         "projectName": "DataStructuresLibrary",
-        "projectPath": "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
-        "packagesPath": "C:\\Users\\Shaira Cadatal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\obj\\",
+        "projectPath": "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
+        "packagesPath": "C:\\Users\\Charisse\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Shaira Cadatal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Charisse\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,10 +26,12 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
+            "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {}
           }
@@ -44,10 +46,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net8.0": {
+          "framework": "net8.0",
           "targetAlias": "net8.0",
           "imports": [
             "net461",
@@ -65,24 +68,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj": {
+    "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj",
         "projectName": "EnrollmentSystem.Core",
-        "projectPath": "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj",
-        "packagesPath": "C:\\Users\\Shaira Cadatal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\obj\\",
+        "projectPath": "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj",
+        "packagesPath": "C:\\Users\\Charisse\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Shaira Cadatal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Charisse\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -91,14 +94,16 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
+            "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
-                "projectPath": "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj"
+              "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
+                "projectPath": "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj"
               }
             }
           }
@@ -113,10 +118,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net8.0": {
+          "framework": "net8.0",
           "targetAlias": "net8.0",
           "imports": [
             "net461",
@@ -134,24 +140,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Tests\\EnrollmentSystem.Tests.csproj": {
+    "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Tests\\EnrollmentSystem.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Tests\\EnrollmentSystem.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Tests\\EnrollmentSystem.Tests.csproj",
         "projectName": "EnrollmentSystem.Tests",
-        "projectPath": "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Tests\\EnrollmentSystem.Tests.csproj",
-        "packagesPath": "C:\\Users\\Shaira Cadatal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Tests\\obj\\",
+        "projectPath": "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Tests\\EnrollmentSystem.Tests.csproj",
+        "packagesPath": "C:\\Users\\Charisse\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Shaira Cadatal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Charisse\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -160,17 +166,19 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
+            "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
-                "projectPath": "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj"
+              "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
+                "projectPath": "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj"
               },
-              "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj": {
-                "projectPath": "C:\\Users\\Shaira Cadatal\\source\\repos\\DSTALGO WEEK1\\DTALGOCODES\\FINALS\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj"
+              "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj": {
+                "projectPath": "C:\\Users\\Charisse\\Downloads\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj"
               }
             }
           }
@@ -185,10 +193,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net8.0": {
+          "framework": "net8.0",
           "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.NET.Test.Sdk": {
@@ -224,7 +233,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
