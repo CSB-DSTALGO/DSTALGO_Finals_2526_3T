@@ -8,8 +8,7 @@ public class StudentRegistry
 
     public int Count => _students.Count;
 
-    public void RegisterStudent(Student student) => _students.Add(student);//throw new NotImplementedException();
-    //public bool UnregisterStudent(int index) => throw new NotImplementedException();
+    public void RegisterStudent(Student student) => _students.Add(student);
     public bool UnregisterStudent(int index)
     {
         try
@@ -22,7 +21,7 @@ public class StudentRegistry
             return false;
         }
     }
-    //public bool RemoveStudent(string id) => throw new NotImplementedException();
+    
     public bool RemoveStudent(string id)
     {
         for (int i = 0; i < _students.Count; i++)
@@ -38,10 +37,9 @@ public class StudentRegistry
 
     }
     
-    public Student GetStudentAt(int index) => _students.Get(index);//throw new NotImplementedException();
+    public Student GetStudentAt(int index) => _students.Get(index);
 
     // Hint: Calculate average GPA of all registered students
-    //public double CalculateAverageGpa() => throw new NotImplementedException();
     public double CalculateAverageGpa()
     {
         if (_students.Count == 0)
@@ -60,7 +58,7 @@ public class StudentRegistry
     }
 
     // Hint: Delegate search and sort to CustomArrayList<T>
-    public int SearchStudent(Student student) => _students.Search(student);//throw new NotImplementedException();
-    public void SortStudentsByGpa() => _students.Sort();//throw new NotImplementedException();
-    public int GetStudentCount() => _students.Count;//throw new NotImplementedException();
+    public int SearchStudent(Student student) => _students.Search(student);
+    public void SortStudentsByGpa() => _students.Sort();
+    public int GetStudentCount() => _students.Count;
 }

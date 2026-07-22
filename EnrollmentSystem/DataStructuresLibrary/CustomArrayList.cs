@@ -11,14 +11,14 @@ namespace DataStructuresLibrary
         public int Count
         {
             get { return _count; }
-            //get { throw new NotImplementedException(); } 
+           
         }
 
         public CustomArrayList()
         {
             _items = new T[0];
             _count = 0;
-            //throw new NotImplementedException();
+            
         }
 
         public void Add(T item)
@@ -30,7 +30,7 @@ namespace DataStructuresLibrary
 
             _items[_count] = item;
             _count++;
-            //throw new NotImplementedException();
+           
         }
 
         public T Get(int index) 
@@ -40,7 +40,7 @@ namespace DataStructuresLibrary
                 throw new IndexOutOfRangeException();
             }
             return _items[index];
-            //throw new NotImplementedException();
+            
         }
         public void Set(int index, T item) // Added Set to enable replacement of an element in a specifix index (for Sorting)
         {
@@ -63,19 +63,19 @@ namespace DataStructuresLibrary
                 _items[i] = _items[i + 1];
             }
             _count--;
-            //throw new NotImplementedException();
+            
         }
 
         private void Resize()
         {
-            T[] newItems = new T[_items.Length + 1];
+            T[] newItems = new T[_items.Length + 1]; // Adding just 1 capacity
 
             for (int i = 0; i < _count; i++)
             {
                 newItems[i] = _items[i];
             }
             _items = newItems;
-            //throw new NotImplementedException();
+           
         }
 
         public void Sort() // Added sort to enable sort method in StudentRegistry.cs
