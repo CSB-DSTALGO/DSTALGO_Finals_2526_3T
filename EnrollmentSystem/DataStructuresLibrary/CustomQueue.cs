@@ -28,7 +28,7 @@ namespace DataStructuresLibrary
         {
             _items[_rear] = item; // Insert the item to the rear
             _rear = (_rear + 1) % _items.Length; // This moves the rear index forward and wraps around to use the empty space at the front if needed
-            _count++;
+            _count++; // Increases the count of items
         }
 
         // Removes and returns the item at the front of the queue
@@ -42,7 +42,7 @@ namespace DataStructuresLibrary
             _front = (_front + 1) % _items.Length; // Move front to the next item
             _count--; // Decrease the count of items
 
-            return item;
+            return item; // Return the dequeued item
         }
 
         public T Peek()
