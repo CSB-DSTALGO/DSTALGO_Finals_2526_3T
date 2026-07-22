@@ -27,12 +27,14 @@ namespace DataStructuresLibrary
                 T[] resize = new T[_items.Length * 2];
                 for (int i = 0; i < _count; i++)
                 {
-                    resize[i] = _items[i];
+                    resize[i] = _items[(_front + i) % _items.Length];
                 }
                 _items = resize;
+                _front = 0;
+                _rear = _count;
             }
             _items[_rear] = item;
-            _rear++;
+            _rear = (_rear + 1) % _items.Length;
             _count++;
         }
 
@@ -67,6 +69,8 @@ namespace DataStructuresLibrary
         {
             return _count == 0;
         }
+
+        
 
     }
 }
