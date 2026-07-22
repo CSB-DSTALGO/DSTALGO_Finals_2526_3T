@@ -8,14 +8,53 @@ public class CourseCurriculum
 
     public int Count => _courses.Count;
 
-    public void InsertCourse(Course course) => throw new NotImplementedException();
-    public bool DeleteCourse(string code) => throw new NotImplementedException();
+    public void InsertCourse(Course course)
+    {
+        _courses.AddLast(course);
+    }
 
-    // Hint: Sum total credit units across all courses
-    public int CalculateTotalUnits() => throw new NotImplementedException();
-    public void ShowCurriculum() => throw new NotImplementedException(); 
+    public bool DeleteCourse(string code)
+    {
+        Node<Course>? current = _courses.Head;
 
-    // Hint: Delegate search and sort to CustomSinglyLinkedList<T>
+        while (current != null)
+        {
+            if (current.Data.Code == code)
+            {
+                return _courses.Remove(current.Data);
+            }
+
+            current = current.Next;
+        }
+
+        return false;
+    }
+
+    public int CalculateTotalUnits()
+    {
+        int total = 0;
+        Node<Course>? current = _courses.Head;
+
+        while (current != null)
+        {
+            total += current.Data.Units;
+            current = current.Next;
+        }
+
+        return total;
+    }
+
+    public void ShowCurriculum()
+    {
+        Node<Course>? current = _courses.Head;
+
+        while (current != null)
+        {
+            Console.WriteLine($"{current.Data.Code} - {current.Data.Title} ({current.Data.Units} units)");
+            current = current.Next;
+        }
+    }
+
     public bool SearchCourse(Course course) => throw new NotImplementedException();
     public void SortCurriculumByUnits() => throw new NotImplementedException();
 }
