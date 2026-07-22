@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5NDYCNYVl84=",
+  "dgSpecHash": "F7cPy5L8CfI=",
   "success": true,
-  "projectFilePath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.ConsoleApp/ECommerceSystem.ConsoleApp.csproj",
+  "projectFilePath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.ConsoleApp/ECommerceSystem.ConsoleApp.csproj",
   "expectedPackageFiles": [
     "/home/ermis/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.9/microsoft.aspnetcore.app.ref.10.0.9.nupkg.sha512"
   ],

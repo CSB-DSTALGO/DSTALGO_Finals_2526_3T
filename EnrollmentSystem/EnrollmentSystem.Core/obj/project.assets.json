@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj",
+      "projectUniqueName": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj",
       "projectName": "EnrollmentSystem.Core",
-      "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj",
+      "projectPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj",
       "packagesPath": "/home/ermis/.nuget/packages/",
-      "outputPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/obj/",
+      "outputPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ermis/.nuget/NuGet/NuGet.Config"
@@ -51,8 +51,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
-              "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
+            "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
+              "projectPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
             }
           }
         }

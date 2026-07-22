@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7pnU0cU98dk=",
+  "dgSpecHash": "20G1G64r6Wk=",
   "success": true,
-  "projectFilePath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
+  "projectFilePath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
   "expectedPackageFiles": [
     "/home/ermis/.nuget/packages/microsoft.netcore.app.ref/8.0.28/microsoft.netcore.app.ref.8.0.28.nupkg.sha512",
     "/home/ermis/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.28/microsoft.aspnetcore.app.ref.8.0.28.nupkg.sha512"

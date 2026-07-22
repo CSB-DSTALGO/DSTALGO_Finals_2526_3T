@@ -37,7 +37,7 @@ namespace DataStructuresLibrary
                 _rear = _count;
 
             }   
-            item = _items[_rear];
+            _items[_rear] = item;
             _rear = (_rear + 1) % _items.Length;
             _count++;
         }

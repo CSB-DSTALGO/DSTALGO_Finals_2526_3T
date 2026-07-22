@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5i9G4XQQ3ZA=",
+  "dgSpecHash": "1czlljDvQ6U=",
   "success": true,
-  "projectFilePath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Tests/EnrollmentSystem.Tests.csproj",
+  "projectFilePath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Tests/EnrollmentSystem.Tests.csproj",
   "expectedPackageFiles": [
     "/home/ermis/.nuget/packages/coverlet.collector/6.0.4/coverlet.collector.6.0.4.nupkg.sha512",
     "/home/ermis/.nuget/packages/microsoft.codecoverage/17.14.1/microsoft.codecoverage.17.14.1.nupkg.sha512",

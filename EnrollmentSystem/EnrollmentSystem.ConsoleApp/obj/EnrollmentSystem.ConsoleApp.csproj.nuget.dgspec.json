@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.ConsoleApp/EnrollmentSystem.ConsoleApp.csproj": {}
+    "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.ConsoleApp/EnrollmentSystem.ConsoleApp.csproj": {}
   },
   "projects": {
-    "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
+    "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
+        "projectUniqueName": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
         "projectName": "DataStructuresLibrary",
-        "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
+        "projectPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
         "packagesPath": "/home/ermis/.nuget/packages/",
-        "outputPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/obj/",
+        "outputPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ermis/.nuget/NuGet/NuGet.Config"
@@ -73,14 +73,14 @@
         }
       }
     },
-    "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.ConsoleApp/EnrollmentSystem.ConsoleApp.csproj": {
+    "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.ConsoleApp/EnrollmentSystem.ConsoleApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.ConsoleApp/EnrollmentSystem.ConsoleApp.csproj",
+        "projectUniqueName": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.ConsoleApp/EnrollmentSystem.ConsoleApp.csproj",
         "projectName": "EnrollmentSystem.ConsoleApp",
-        "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.ConsoleApp/EnrollmentSystem.ConsoleApp.csproj",
+        "projectPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.ConsoleApp/EnrollmentSystem.ConsoleApp.csproj",
         "packagesPath": "/home/ermis/.nuget/packages/",
-        "outputPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.ConsoleApp/obj/",
+        "outputPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.ConsoleApp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ermis/.nuget/NuGet/NuGet.Config"
@@ -95,8 +95,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj": {
-                "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj"
+              "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj": {
+                "projectPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj"
               }
             }
           }
@@ -150,14 +150,14 @@
         }
       }
     },
-    "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj": {
+    "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj",
+        "projectUniqueName": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj",
         "projectName": "EnrollmentSystem.Core",
-        "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj",
+        "projectPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj",
         "packagesPath": "/home/ermis/.nuget/packages/",
-        "outputPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/obj/",
+        "outputPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ermis/.nuget/NuGet/NuGet.Config"
@@ -172,8 +172,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
-                "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
+              "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
+                "projectPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
               }
             }
           }

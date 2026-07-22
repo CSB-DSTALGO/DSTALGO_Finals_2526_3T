@@ -51,11 +51,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.ConsoleApp/ECommerceSystem.ConsoleApp.csproj",
+      "projectUniqueName": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.ConsoleApp/ECommerceSystem.ConsoleApp.csproj",
       "projectName": "ECommerceSystem.ConsoleApp",
-      "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.ConsoleApp/ECommerceSystem.ConsoleApp.csproj",
+      "projectPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.ConsoleApp/ECommerceSystem.ConsoleApp.csproj",
       "packagesPath": "/home/ermis/.nuget/packages/",
-      "outputPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.ConsoleApp/obj/",
+      "outputPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.ConsoleApp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ermis/.nuget/NuGet/NuGet.Config"
@@ -70,11 +70,11 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
-              "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
+            "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
+              "projectPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
             },
-            "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj": {
-              "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj"
+            "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj": {
+              "projectPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj"
             }
           }
         }

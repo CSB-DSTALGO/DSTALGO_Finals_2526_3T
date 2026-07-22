@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj": {}
+    "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj": {}
   },
   "projects": {
-    "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
+    "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
+        "projectUniqueName": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
         "projectName": "DataStructuresLibrary",
-        "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
+        "projectPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
         "packagesPath": "/home/ermis/.nuget/packages/",
-        "outputPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/obj/",
+        "outputPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ermis/.nuget/NuGet/NuGet.Config"
@@ -343,14 +343,14 @@
         }
       }
     },
-    "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj": {
+    "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj",
+        "projectUniqueName": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj",
         "projectName": "ECommerceSystem.Core",
-        "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj",
+        "projectPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj",
         "packagesPath": "/home/ermis/.nuget/packages/",
-        "outputPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/obj/",
+        "outputPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ermis/.nuget/NuGet/NuGet.Config"
@@ -365,8 +365,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
-                "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
+              "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
+                "projectPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
               }
             }
           }

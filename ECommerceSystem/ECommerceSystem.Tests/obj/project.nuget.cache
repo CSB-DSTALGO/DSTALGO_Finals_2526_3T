@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "I8pSNX98UAM=",
+  "dgSpecHash": "jvwCbiyR40U=",
   "success": true,
-  "projectFilePath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Tests/ECommerceSystem.Tests.csproj",
+  "projectFilePath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Tests/ECommerceSystem.Tests.csproj",
   "expectedPackageFiles": [
     "/home/ermis/.nuget/packages/coverlet.collector/6.0.4/coverlet.collector.6.0.4.nupkg.sha512",
     "/home/ermis/.nuget/packages/microsoft.codecoverage/17.14.1/microsoft.codecoverage.17.14.1.nupkg.sha512",

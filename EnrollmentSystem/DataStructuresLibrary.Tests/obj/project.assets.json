@@ -919,11 +919,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj",
+      "projectUniqueName": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj",
       "projectName": "DataStructuresLibrary.Tests",
-      "projectPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj",
+      "projectPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj",
       "packagesPath": "/home/ermis/.nuget/packages/",
-      "outputPath": "/home/ermis/Downloads/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary.Tests/obj/",
+      "outputPath": "/home/ermis/Desktop/Don't delete/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ermis/.nuget/NuGet/NuGet.Config"
