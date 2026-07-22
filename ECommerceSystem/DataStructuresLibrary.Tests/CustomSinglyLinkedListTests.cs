@@ -24,6 +24,31 @@ public class CustomSinglyLinkedListTests
     }
 
     [Fact]
+    public void Add_multipleItems_ShouldMaintainCorrectOrder()
+    {
+        //test for multiple values and order of insertion
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(1);
+        list.Add(2);
+        list.Add(3);
+        list.Add(4);
+        list.Add(5);
+        Assert.Equal(5, list.Count);
+        Assert.Equal(new List<int> { 1, 2, 3, 4, 5 }, list.ToList());
+    }
+
+    [Fact]
+    public void Add_emptyList_ShouldSetHeadAndTailToSameNode()
+    {
+        //test for a node of a single value added to an empty list
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(42);
+        Assert.Equal(1, list.Count);
+        Assert.Equal(new List<int> { 42 }, list.ToList());
+    }
+
+
+    [Fact]
     public void Remove_ShouldUpdateNodePointersCorrectly()
     {
         // TODO: Test removing head, middle, and tail nodes
@@ -58,6 +83,32 @@ public class CustomSinglyLinkedListTests
     }
 
     [Fact]
+    public void Remove_ItemThatExists_CountGoesDown()
+    {
+        //test for removing an item that exists in the list and checking if the count decreases
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(1);
+        list.Add(2);
+        list.Add(3);
+
+        list.Remove(2);
+
+        Assert.Equal(2, list.Count);
+    }
+
+    [Fact]
+    public void Remove_ItemThatDoesNotExist_ReturnsFalse()
+    {
+        //test for removing an item that does not exist in the list and checking if it returns false
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(1);
+
+        bool result = list.Remove(999);
+
+        Assert.False(result);
+    }
+
+    [Fact]
     public void Search_ShouldReturnTrue_WhenItemExistsInNodes()
     {
         // TODO: Test linear node traversal finding existing data
@@ -86,6 +137,19 @@ public class CustomSinglyLinkedListTests
     }
 
     [Fact]
+    public void Seach_duplicateValues_ShouldReturnTrueForExistingDuplicates()
+    {
+        //test for searching for a value that has duplicates in the list
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(5);
+        list.Add(10);
+        list.Add(5);
+        list.Add(20);
+        Assert.True(list.Search(5)); 
+    }
+    
+
+        [Fact]
     public void Sort_ShouldRearrangeNodePointersInAscendingOrder()
     {
         // TODO: Test node re-linking to verify ascending list order
@@ -103,5 +167,29 @@ public class CustomSinglyLinkedListTests
 
         list.Add(60);
         Assert.Equal(new List<int> { 10, 20, 30, 40, 50, 60 }, list.ToList());
+    }
+
+    [Fact]
+    public void Sort_ListWithDuplicates_ShouldGroupEqualValuesTogether()
+    {
+        //test for sorting a list with duplicate values and checking if they are grouped together
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(5);
+        list.Add(1);
+        list.Add(5);
+        list.Add(3);
+
+        list.Sort();
+
+        Assert.Equal(new List<int> { 1, 3, 5, 5 }, list.ToList());
+    }
+
+    [Fact]
+    public void Sort_EmptyList_ShouldRemainEmpty()
+    {
+        //test for sorting an empty list and checking if it remains empty
+        var list = new CustomSinglyLinkedList<int>();
+        list.Sort();
+        Assert.Empty(list.ToList());
     }
 }

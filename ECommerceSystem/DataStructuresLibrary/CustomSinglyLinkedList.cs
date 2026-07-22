@@ -16,6 +16,7 @@ public class CustomSinglyLinkedList<T> : IEnumerable<T> where T : IComparable<T>
     private Node? _tail;
     public int Count { get; private set; }
 
+    // Add function to add an item to the end of the list
     public void Add(T item)
     {
         var newNode = new Node(item);
@@ -34,6 +35,7 @@ public class CustomSinglyLinkedList<T> : IEnumerable<T> where T : IComparable<T>
         Count++;
     }
 
+    // Remove function to remove an item from the list
     public bool Remove(T item)
     {
         if (_head == null) return false;
@@ -62,6 +64,7 @@ public class CustomSinglyLinkedList<T> : IEnumerable<T> where T : IComparable<T>
         return false;
     }
 
+    // Search function to check if an item exists in the list
     public bool Search(T item)
     {
         Node? current = _head;
@@ -74,6 +77,7 @@ public class CustomSinglyLinkedList<T> : IEnumerable<T> where T : IComparable<T>
         return false;
     }
 
+    // Sort function to sort the list in ascending order
     public void Sort()
     {
         if (_head == null || _head.Next == null) return;
