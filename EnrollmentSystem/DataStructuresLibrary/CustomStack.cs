@@ -1,4 +1,3 @@
-// CustomStack.cs
 using System;
 
 namespace DataStructuresLibrary
@@ -8,34 +7,53 @@ namespace DataStructuresLibrary
         private T[] _items;
         private int _top;
 
-        public int Count 
-        { 
-            get { throw new NotImplementedException(); } 
+        public int Count
+        {
+            get { return _top + 1; }
         }
 
         public CustomStack()
         {
-            throw new NotImplementedException();
+            _items = new T[10];
+            _top = -1;
         }
 
         public void Push(T item)
         {
-            throw new NotImplementedException();
+            if (_top == _items.Length - 1)
+            {
+                T[] newArray = new T[_items.Length * 2];
+
+                for (int i = 0; i < _items.Length; i++)
+                {
+                    newArray[i] = _items[i];
+                }
+
+                _items = newArray;
+            }
+
+            _items[++_top] = item;
         }
 
         public T Pop()
         {
-            throw new NotImplementedException();
+            if (IsEmpty())
+                throw new InvalidOperationException("Stack is empty.");
+
+            return _items[_top--];
         }
 
         public T Peek()
         {
-            throw new NotImplementedException();
+            if (IsEmpty())
+                throw new InvalidOperationException("Stack is empty.");
+
+            return _items[_top];
         }
 
         public bool IsEmpty()
         {
-            throw new NotImplementedException();
+            return _top == -1;
         }
     }
 }
