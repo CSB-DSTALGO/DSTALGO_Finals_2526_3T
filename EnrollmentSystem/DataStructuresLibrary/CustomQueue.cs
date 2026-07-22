@@ -99,7 +99,20 @@ namespace DataStructuresLibrary
 
         public bool Search(T item)
         {
-            
+            int n = _count;
+
+            for(int i = 0; i < n ; i++)
+            {
+                int ai = (_front + i) % _items.Length;
+
+                if(_items[ai].CompareTo(item)==0)
+                    {
+                        return true;
+                    }
+
+            }
+
+            return false;
         }
     }
 }
