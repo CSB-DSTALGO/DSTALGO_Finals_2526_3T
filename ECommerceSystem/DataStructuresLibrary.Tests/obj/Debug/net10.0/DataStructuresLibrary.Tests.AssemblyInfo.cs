@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DataStructuresLibrary.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< Updated upstream
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4183b2494bb1ca8923c470782bf9252c4f07a5ff")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+323869e3cadcbc74c4c685c3be49994db832bd0e")]
+>>>>>>> Stashed changes
 [assembly: System.Reflection.AssemblyProductAttribute("DataStructuresLibrary.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DataStructuresLibrary.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
