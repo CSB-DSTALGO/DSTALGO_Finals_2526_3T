@@ -393,6 +393,16 @@
         "build": {
           "build/net8.0/xunit.runner.visualstudio.props": {}
         }
+      },
+      "DataStructuresLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/DataStructuresLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataStructuresLibrary.dll": {}
+        }
       }
     }
   },
@@ -903,10 +913,16 @@
         "xunit.runner.visualstudio.3.1.4.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "DataStructuresLibrary/1.0.0": {
+      "type": "project",
+      "path": "../DataStructuresLibrary/DataStructuresLibrary.csproj",
+      "msbuildProject": "../DataStructuresLibrary/DataStructuresLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "DataStructuresLibrary >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 17.14.1",
       "coverlet.collector >= 6.0.4",
       "xunit >= 2.9.3",
@@ -944,7 +960,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\ronan\\Source\\Repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
+              "projectPath": "C:\\Users\\ronan\\Source\\Repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
