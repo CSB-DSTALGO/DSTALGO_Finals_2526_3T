@@ -36,5 +36,8 @@ public class AdmissionsDesk
 
     // Hint: Delegate search and sort to CustomQueue<T>
     public bool SearchApplication(AdmissionApplication app) => throw new NotImplementedException();
-    public void SortApplicationsByPriority() => throw new NotImplementedException();
+    public void SortApplicationsByPriority()
+    {
+        _applications.Sort();
+    }
 }

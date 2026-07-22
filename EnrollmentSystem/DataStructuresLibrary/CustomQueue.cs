@@ -3,7 +3,7 @@ using System;
 
 namespace DataStructuresLibrary
 {
-    public class CustomQueue<T>
+    public class CustomQueue<T> where T : IComparable<T>
     {
         private T[] _items;
         private int _front;
@@ -68,6 +68,38 @@ namespace DataStructuresLibrary
         public bool IsEmpty()
         {
             return _count == 0;
+        }
+
+        public void Sort()
+        {
+            int n = _count;
+            bool swapped;
+
+            for(int i = 0; i < n - 1; i++)
+            {
+                swapped = false;
+
+                for(int j = 0; j < n - i - 1; j++)
+                {
+                    if(_items[j].CompareTo(_items[j + 1]) > 0)
+                    {
+                        T temp = _items[j];
+                        _items[j] = _items[j +1];
+                        _items[j + 1] = temp;
+
+                        swapped = true;
+                    }
+                }
+
+                if(!swapped)
+                {break;}
+            }
+            
+        }
+
+        public bool Search(T item)
+        {
+            
         }
     }
 }
