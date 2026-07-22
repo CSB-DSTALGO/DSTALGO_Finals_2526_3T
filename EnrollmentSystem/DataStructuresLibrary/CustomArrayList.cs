@@ -67,5 +67,34 @@ namespace DataStructuresLibrary
 
             _items = newItems; // make _item the reference of the larger array
         }
+
+        public int Search(T item, Func<T, T, bool> comparer)
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                if (comparer(_items[i], item))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        public void Sort(Func<T, T, bool> shouldSwap)
+        {
+            for (int i = 0; i < _count - 1; i++)
+            {
+                for (int j = 0; j < _count - i - 1; j++)
+                {
+                    if (shouldSwap(_items[j], _items[j + 1]))
+                    {
+                        T temp = _items[j];
+                        _items[j] = _items[j + 1];
+                        _items[j + 1] = temp;
+                    }
+                }
+            }
+        }
     }
 }
