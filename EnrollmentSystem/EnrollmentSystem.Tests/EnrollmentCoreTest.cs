@@ -25,7 +25,7 @@ namespace EnrollmentSystem.Tests
             var student = new Student(1, "Alice", 90.0) { CourseCode = "BSIT" };
             registry.RegisterStudent(student);
 
-            bool removed = registry.RemoveStudent("1");
+            bool removed = registry.RemoveStudent(1);
 
             Assert.True(removed);
             Assert.Equal(0, registry.GetStudentCount());

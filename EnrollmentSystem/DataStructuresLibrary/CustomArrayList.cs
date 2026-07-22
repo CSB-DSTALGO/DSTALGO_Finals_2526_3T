@@ -200,14 +200,4 @@ namespace DataStructuresLibrary
     }
 }
 
-        public void RemoveAt(int index)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void Resize()
-        {
-            throw new NotImplementedException();
-        }
-    }
-}
+      

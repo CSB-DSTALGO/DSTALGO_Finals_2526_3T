@@ -104,7 +104,6 @@ namespace EnrollmentSystem.Core
         /// <returns>Zero-based index of matched student, or -1 if not found.</returns>
         public int SearchStudentById(int studentId)
         {
-            // Ensure registry is sorted prior to performing Binary Search
             if (!_isSortedById)
             {
                 SortRegistryById();
@@ -115,6 +114,23 @@ namespace EnrollmentSystem.Core
                 student => student.Id,
                 (id1, id2) => id1.CompareTo(id2)
             );
+        }
+
+        public int GetStudentCount() => _registry.Count;
+
+        public Student GetStudentAt(int index) => _registry.Get(index);
+
+        public bool RemoveStudent(int id)
+        {
+            for (int i = 0; i < _registry.Count; i++)
+            {
+                if (_registry.Get(i).Id == id)
+                {
+                    _registry.RemoveAt(i);
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
