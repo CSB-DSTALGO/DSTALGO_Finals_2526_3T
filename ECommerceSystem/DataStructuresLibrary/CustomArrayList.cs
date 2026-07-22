@@ -62,7 +62,7 @@ public class CustomArrayList<T> where T : IComparable<T>
 
     }
 
-    public int Search(T item)//going to add binary
+    public int Search(T item)//binary search
     {
         int left = 0;
         int right = _items.Length - 1;  
@@ -86,7 +86,7 @@ public class CustomArrayList<T> where T : IComparable<T>
             }
         }
 
-        return -1;
+        return -1; //returns if the index is not found
     }
 
     public void Sort() //insertion algorithm
