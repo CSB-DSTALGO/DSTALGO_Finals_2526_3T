@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj" />
+  <Project Path="DataStructuresLibrary/DataStructuresLibrary.csproj" />
+  <Project Path="ECommerceSystem.ConsoleApp/ECommerceSystem.ConsoleApp.csproj" />
+  <Project Path="ECommerceSystem.Core/ECommerceSystem.Core.csproj" />
+  <Project Path="ECommerceSystem.Tests/ECommerceSystem.Tests.csproj" />
+</Solution>
