@@ -1,0 +1,11 @@
+C:\Users\Huawei\Downloads\EnrollmentSystem\EnrollmentSystem\DataStructuresLibrary\bin\Debug\net10.0\DataStructuresLibrary.deps.json
+C:\Users\Huawei\Downloads\EnrollmentSystem\EnrollmentSystem\DataStructuresLibrary\bin\Debug\net10.0\DataStructuresLibrary.dll
+C:\Users\Huawei\Downloads\EnrollmentSystem\EnrollmentSystem\DataStructuresLibrary\bin\Debug\net10.0\DataStructuresLibrary.pdb
+C:\Users\Huawei\Downloads\EnrollmentSystem\EnrollmentSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Huawei\Downloads\EnrollmentSystem\EnrollmentSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.AssemblyInfoInputs.cache
+C:\Users\Huawei\Downloads\EnrollmentSystem\EnrollmentSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.AssemblyInfo.cs
+C:\Users\Huawei\Downloads\EnrollmentSystem\EnrollmentSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Huawei\Downloads\EnrollmentSystem\EnrollmentSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.dll
+C:\Users\Huawei\Downloads\EnrollmentSystem\EnrollmentSystem\DataStructuresLibrary\obj\Debug\net10.0\refint\DataStructuresLibrary.dll
+C:\Users\Huawei\Downloads\EnrollmentSystem\EnrollmentSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.pdb
+C:\Users\Huawei\Downloads\EnrollmentSystem\EnrollmentSystem\DataStructuresLibrary\obj\Debug\net10.0\ref\DataStructuresLibrary.dll

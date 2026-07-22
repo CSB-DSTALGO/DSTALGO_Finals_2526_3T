@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "dgSpecHash": "TcXs4lqB6PY=",
+  "success": false,
+  "projectFilePath": "C:\\Users\\Huawei\\Downloads\\EnrollmentSystem\\EnrollmentSystem\\EnrollmentSystem.ConsoleApp\\EnrollmentSystem.ConsoleApp.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "Project EnrollmentSystem.Core is not compatible with net8.0 (.NETCoreApp,Version=v8.0). Project EnrollmentSystem.Core supports: net10.0 (.NETCoreApp,Version=v10.0)",
+      "projectPath": "C:\\Users\\Huawei\\Downloads\\EnrollmentSystem\\EnrollmentSystem\\EnrollmentSystem.ConsoleApp\\EnrollmentSystem.ConsoleApp.csproj",
+      "filePath": "C:\\Users\\Huawei\\Downloads\\EnrollmentSystem\\EnrollmentSystem\\EnrollmentSystem.ConsoleApp\\EnrollmentSystem.ConsoleApp.csproj",
+      "libraryId": "EnrollmentSystem.Core",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
+}
