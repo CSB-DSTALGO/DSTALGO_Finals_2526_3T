@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< Updated upstream
   "dgSpecHash": "b4st78y9Oo0=",
   "success": true,
   "projectFilePath": "C:\\Users\\garri\\Documents\\DSTALGO_Finals_2526_3T\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.ConsoleApp\\ECommerceSystem.ConsoleApp.csproj",
+=======
+  "dgSpecHash": "hZVRcI3xCaE=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\user\\Downloads\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.ConsoleApp\\ECommerceSystem.ConsoleApp.csproj",
+>>>>>>> Stashed changes
   "expectedPackageFiles": [],
   "logs": []
 }
