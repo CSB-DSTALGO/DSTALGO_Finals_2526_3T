@@ -31,14 +31,14 @@ namespace DataStructuresLibrary
             {
                 // Resize the array if it's full
                 T[] temp = new T[_items.Length * 2];
-                Array.Copy(_items, _front, temp, 0, _count);
+                Array.Copy(_items, _front, temp, 0, _count);//copies array contents
                 _items = temp;
                 _front = 0;
                 _rear = _count;
 
             }   
             _items[_rear] = item;
-            _rear = (_rear + 1) % _items.Length;
+            _rear = (_rear + 1) % _items.Length;//Loops the queue back to the start
             _count++;
         }
 
@@ -50,7 +50,7 @@ namespace DataStructuresLibrary
             }
 
             T item = _items[_front];
-            _front = (_front + 1) % _items.Length;  //wrap around
+            _front = (_front + 1) % _items.Length;  //Loop
             _count --;
             return item;
         }
@@ -59,10 +59,10 @@ namespace DataStructuresLibrary
         {
             if (IsEmpty())
             {
-                throw new InvalidOperationException("Queue is empty.");
+                throw new InvalidOperationException("Queue is empty.");//empty queue
             }
 
-            return _items[_front];
+            return _items[_front]; //returns the item at the front
         }
 
         public bool IsEmpty()
@@ -70,49 +70,64 @@ namespace DataStructuresLibrary
             return _count == 0;
         }
 
+
+        //Time Complexity: 0(n) best case (Queue is already sorted so the algorithm only makes one pass)
+        //0(n^2) average and worst case
+        //Space complexity: 0(1) extra space - sorting is done via swapping elements via space.
         public void Sort()
         {
-            int n = _count;
+            int n = _count; //count of all elements in the queue
             bool swapped;
 
-            for(int i = 0; i < n - 1; i++)
+            //bubble sort
+            //outer loop: Each loop sorts the 2nd largest unsorted item into place
+            for(int i = 0; i < n - 1; i++) 
             {
-                swapped = false;
+                swapped = false; //resets swap tracker after each loop
 
+                //Inner loop: Compares adjacent pairs with the unsorted portion
                 for(int j = 0; j < n - i - 1; j++)
                 {
-                    if(_items[j].CompareTo(_items[j + 1]) > 0)
+                    //Converts j and j + 1 into actual array index
+                    int index =(_front + j) % _items.Length;
+                    int IndexRight = (_front +j  +  1) % _items.Length; 
+                    //Compares the 2 elements. Swapping if needed
+                    if(_items[index].CompareTo(_items[IndexRight]) > 0)
                     {
-                        T temp = _items[j];
-                        _items[j] = _items[j +1];
-                        _items[j + 1] = temp;
+                        T temp = _items[index]; //
+                        _items[index] = _items[IndexRight];
+                        _items[IndexRight] = temp;
 
-                        swapped = true;
+                        swapped = true;//confirms swap has happened
                     }
                 }
-
+                //Exists early if no swap occurs
                 if(!swapped)
                 {break;}
             }
             
         }
 
-        public bool Search(T item)
+        //Time complexity: 0(1) best case(match is at the front of the queue) 0(n)average/worst case(match is found near or at the end of the queue or not present at all)
+        //space complexity:0(1) no extra data structure is used
+        public bool Search(T app) //Returns true if a matching item is found
         {
             int n = _count;
 
-            for(int i = 0; i < n ; i++)
+            for(int i = 0; i < n; i++)
             {
-                int ai = (_front + i) % _items.Length;
+                //converts i into the item index
+                int index = (_front + i) % _items.Length;
 
-                if(_items[ai].CompareTo(item)==0)
+                //Compare the element at the position to the target
+                if(_items[index].CompareTo(app)==0)
                     {
-                        return true;
+                        return true;//returns true if a match is found
                     }
 
             }
 
-            return false;
+            return false;//no match found. returns false
         }
     }
 }

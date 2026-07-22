@@ -5,7 +5,7 @@ using DataStructuresLibrary;
 public class AdmissionsDesk
 {
     private readonly CustomQueue<AdmissionApplication> _applications = new();
-    private readonly CustomQueue<Ticket> _tickets = new();
+    private readonly CustomQueue<Ticket> _tickets = new();//Front end queue for students
     public int Count => _applications.Count;
 
     public void IssueAdmissionsTicket(AdmissionApplication app)
@@ -35,7 +35,10 @@ public class AdmissionsDesk
     public int GetQueueCount() => Count;
 
     // Hint: Delegate search and sort to CustomQueue<T>
-    public bool SearchApplication(AdmissionApplication app) => throw new NotImplementedException();
+    public bool SearchApplication(AdmissionApplication app)
+    {
+        return _applications.Search(app);
+    }
     public void SortApplicationsByPriority()
     {
         _applications.Sort();
