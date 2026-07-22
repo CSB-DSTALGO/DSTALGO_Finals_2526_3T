@@ -8,35 +8,68 @@ public class CustomSinglyLinkedListTests
     [Fact]
     public void Add_ShouldAppendNodeAndIncrementCount()
     {
-        // TODO: Test appending items to the linked list
-        throw new NotImplementedException();
+        var list = new CustomSinglyLinkedList<int>();
+
+        list.Add(10);
+        list.Add(20);
+        list.Add(30);
+
+        Assert.Equal(3, list.Count);
+        Assert.Equal(new[] { 10, 20, 30 }, list.ToArray());
     }
 
     [Fact]
     public void Remove_ShouldUpdateNodePointersCorrectly()
     {
-        // TODO: Test removing head, middle, and tail nodes
-        throw new NotImplementedException();
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(10); // head
+        list.Add(20); // middle
+        list.Add(30); // middle
+        list.Add(40); // tail
+
+        bool removedHead = list.Remove(10);
+        bool removedMiddle = list.Remove(30);
+        bool removedTail = list.Remove(40);
+
+        Assert.True(removedHead);
+        Assert.True(removedMiddle);
+        Assert.True(removedTail);
+        Assert.Equal(1, list.Count);
+        Assert.Equal(new[] { 20 }, list.ToArray());
     }
 
     [Fact]
     public void Search_ShouldReturnTrue_WhenItemExistsInNodes()
     {
-        // TODO: Test linear node traversal finding existing data
-        throw new NotImplementedException();
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(5);
+        list.Add(15);
+        list.Add(25);
+
+        Assert.True(list.Search(15));
     }
 
     [Fact]
     public void Search_ShouldReturnFalse_WhenItemIsAbsent()
     {
-        // TODO: Test linear search returning false for missing data
-        throw new NotImplementedException();
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(5);
+        list.Add(15);
+
+        Assert.False(list.Search(99));
     }
 
     [Fact]
     public void Sort_ShouldRearrangeNodePointersInAscendingOrder()
     {
-        // TODO: Test node re-linking to verify ascending list order
-        throw new NotImplementedException();
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(30);
+        list.Add(10);
+        list.Add(20);
+
+        list.Sort();
+
+        Assert.Equal(new[] { 10, 20, 30 }, list.ToArray());
+        Assert.Equal(3, list.Count);
     }
 }
