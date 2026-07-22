@@ -8,7 +8,6 @@ public class AdmissionsDesk
 
     public int Count => _applications.Count;
 
-    public void IssueAdmissionsTicket(AdmissionApplication app) => throw new NotImplementedException();
     public void IssueAdmissionsTicket(Ticket ticket) => throw new NotImplementedException();
     public AdmissionApplication ServeNextStudent() => throw new NotImplementedException();
     public Ticket ServeNextTicket() => throw new NotImplementedException();
