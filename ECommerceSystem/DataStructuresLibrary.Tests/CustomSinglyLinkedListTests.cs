@@ -8,36 +8,72 @@ namespace DataStructuresLibrary.Tests
         [Fact]
         public void Add_ShouldAppendNodeAndIncrementCount()
         {
-            // TODO: Test appending items to the linked list
-            throw new NotImplementedException();
+            var list = new CustomSinglyLinkedList<int>();
+            list.Add(10);
+            list.Add(20);
+
+            Assert.Equal(2, list.Count);
+            Assert.True(list.Search(10));
+            Assert.True(list.Search(20));
         }
 
         [Fact]
         public void Remove_ShouldUpdateNodePointersCorrectly()
         {
-            // TODO: Test removing head, middle, and tail nodes
-            throw new NotImplementedException();
+            var list = new CustomSinglyLinkedList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+
+            // Remove head
+            Assert.True(list.Remove(1));
+            Assert.False(list.Search(1));
+            Assert.Equal(2, list.Count);
+
+            // Remove middle
+            Assert.True(list.Remove(2));
+            Assert.False(list.Search(2));
+            Assert.Equal(1, list.Count);
+
+            // Remove tail
+            Assert.True(list.Remove(3));
+            Assert.False(list.Search(3));
+            Assert.Equal(0, list.Count);
         }
 
         [Fact]
         public void Search_ShouldReturnTrue_WhenItemExistsInNodes()
         {
-            // TODO: Test linear node traversal finding existing data
-            throw new NotImplementedException();
+            var list = new CustomSinglyLinkedList<string>();
+            list.Add("apple");
+            list.Add("banana");
+
+            Assert.True(list.Search("apple"));
+            Assert.True(list.Search("banana"));
         }
 
         [Fact]
         public void Search_ShouldReturnFalse_WhenItemIsAbsent()
         {
-            // TODO: Test linear search returning false for missing data
-            throw new NotImplementedException();
+            var list = new CustomSinglyLinkedList<string>();
+            list.Add("apple");
+
+            Assert.False(list.Search("orange"));
         }
 
         [Fact]
         public void Sort_ShouldRearrangeNodePointersInAscendingOrder()
         {
-            // TODO: Test node re-linking to verify ascending list order
-            throw new NotImplementedException();
+            var list = new CustomSinglyLinkedList<int>();
+            list.Add(30);
+            list.Add(10);
+            list.Add(20);
+
+            list.Sort();
+
+            Assert.Equal(10, list.GetProductDetails(0));
+            Assert.Equal(20, list.GetProductDetails(1));
+            Assert.Equal(30, list.GetProductDetails(2));
         }
     }
 }

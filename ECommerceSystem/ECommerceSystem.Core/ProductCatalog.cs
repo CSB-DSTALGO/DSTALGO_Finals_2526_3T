@@ -4,13 +4,13 @@ namespace ECommerceSystem.Core
 {
     public class ProductCatalog
     {
-        private readonly CustomArrayList<Product> _products = new();
+        private readonly CustomSinglyLinkedList<Product> _products = new();
 
         public int Count => _products.Count;
 
         public void AddProduct(Product product)
         {
-            _products.Add(product);
+            _products.AddLast(product);
         }
 
         public bool RemoveProduct(Product product)
@@ -20,18 +20,25 @@ namespace ECommerceSystem.Core
 
         public bool SearchProduct(Product product)
         {
-            return _products.Search(product) != -1;
+            return _products.Find(product) != null;
         }
 
         public void SortCatalog()
         {
-            _products.Sort(); // Uses Product.CompareTo (Price)
+            _products.Sort();
+        }
+
+        public Product GetProductDetails(int index)
+        {
+            return _products.GetProductDetails(index);
         }
 
         public void DisplayCatalog()
         {
-            for (int i = 0; i < _products.Count; i++)
-                Console.WriteLine(_products.Get(i));
+            foreach (var product in _products)
+            {
+                Console.WriteLine(product);
+            }
         }
     }
 }
