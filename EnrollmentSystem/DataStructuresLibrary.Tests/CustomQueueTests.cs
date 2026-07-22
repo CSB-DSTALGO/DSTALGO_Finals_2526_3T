@@ -39,6 +39,19 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal("Student 2", queue.Peek());
 
         }
-       
+        [Fact]
+        public void Resize()
+        {
+            CustomQueue<string> queue = new CustomQueue<string>();
+            queue.Enqueue("Student 1");
+            queue.Enqueue("Student 2");
+            queue.Enqueue("Student 3");
+            queue.Enqueue("Student 4");
+            queue.Enqueue("Student 5");
+
+            Assert.Equal(5, queue.Count);
+
+        }
+
     }
 }
