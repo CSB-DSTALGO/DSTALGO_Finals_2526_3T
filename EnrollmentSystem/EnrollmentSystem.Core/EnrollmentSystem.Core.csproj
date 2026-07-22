@@ -6,6 +6,6 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RollForward>Major</RollForward>  <!-- Add this line -->
+    <RollForward>Major</RollForward>  
   </PropertyGroup>
 </Project>
