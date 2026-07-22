@@ -32,6 +32,18 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(5, list.Count);
         }
 
+        [Fact]
+        public void Add_CorrectIndex()
+        {
+            CustomArrayList<string> list = new CustomArrayList<string>();
+
+            list.Add("Bob");
+            list.Add("May");
+            list.Add("Eisen");
+
+            Assert.Equal("Eisen", list.Get(2));
+        }
+
 
         [Fact]
         public void Get_1st()
