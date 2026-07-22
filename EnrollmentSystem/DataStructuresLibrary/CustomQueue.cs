@@ -12,32 +12,56 @@ namespace DataStructuresLibrary
 
         public int Count 
         { 
-            get { throw new NotImplementedException(); } 
+            get { return _count; } 
         }
 
         public CustomQueue()
         {
-            throw new NotImplementedException();
+            _items = new T[10];
+            _front  = 0;
+            _rear = 0;
+            _count = 0;
+
         }
 
         public void Enqueue(T item)
         {
-            throw new NotImplementedException();
+            if(_count == _items.Length)
+            {
+                throw new InvalidOperationException("Queue is full");
+            }
+
+            _rear++;
+            _items[_rear] = item;
+            _count++;
         }
 
         public T Dequeue()
         {
-            throw new NotImplementedException();
+            if (IsEmpty())
+            {
+                throw new InvalidOperationException("Queue is empty");
+            }
+             
+            T item = _items[_front];
+            _front++;
+            _count--;
+            return item;
         }
 
         public T Peek()
         {
-            throw new NotImplementedException();
+            if (IsEmpty())
+            {
+                throw new InvalidOperationException("Queue is empty.");
+            }
+
+            return _items[_front];
         }
 
         public bool IsEmpty()
         {
-            throw new NotImplementedException();
+           return _count == 0;
         }
     }
 }
