@@ -6,10 +6,11 @@ namespace DataStructuresLibrary.Tests
 {
     public class CustomArrayListTests
     {
-        //ADD ALL YOUR TESTS HERE
         [Fact]
-        public void ThisIsYourTest()
+        public void Add_ShouldIncreaseCount()
         {
+            
+
 
         }
  
