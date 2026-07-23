@@ -38,19 +38,17 @@ namespace DataStructuresLibrary
             if (_head == null)
             {
                 _head = newNode;
+                Count++;
                 return;
             }
-            else
+            
+            Node<T> current = _head;
+            while (current.Next != null)
             {
-                Node<T> current = _head;
-                while (current.Next != null)
-                {
-                    current = current.Next;
-                }
-
-                current.Next = newNode;
+                current = current.Next;
             }
 
+            current.Next = newNode;
             Count++;
             //throw new NotImplementedException();
         }

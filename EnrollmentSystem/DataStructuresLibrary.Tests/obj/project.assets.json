@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net10.0": {
       "coverlet.collector/6.0.4": {
@@ -392,6 +392,16 @@
         },
         "build": {
           "build/net8.0/xunit.runner.visualstudio.props": {}
+        }
+      },
+      "DataStructuresLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/DataStructuresLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataStructuresLibrary.dll": {}
         }
       }
     }
@@ -903,10 +913,16 @@
         "xunit.runner.visualstudio.3.1.4.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "DataStructuresLibrary/1.0.0": {
+      "type": "project",
+      "path": "../DataStructuresLibrary/DataStructuresLibrary.csproj",
+      "msbuildProject": "../DataStructuresLibrary/DataStructuresLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "DataStructuresLibrary >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 17.14.1",
       "coverlet.collector >= 6.0.4",
       "xunit >= 2.9.3",
@@ -914,30 +930,42 @@
     ]
   },
   "packageFolders": {
-    "/Users/caan/.nuget/packages/": {}
+    "C:\\Users\\kensh\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\kensh\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary.Tests\\DataStructuresLibrary.Tests.csproj",
       "projectName": "DataStructuresLibrary.Tests",
-      "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj",
-      "packagesPath": "/Users/caan/.nuget/packages/",
-      "outputPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary.Tests/obj/",
+      "projectPath": "C:\\Users\\kensh\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary.Tests\\DataStructuresLibrary.Tests.csproj",
+      "packagesPath": "C:\\Users\\kensh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kensh\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary.Tests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/Users/caan/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\kensh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\kensh\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
+              "projectPath": "C:\\Users\\kensh\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -950,10 +978,11 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net10.0": {
+        "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
           "Microsoft.NET.Test.Sdk": {
@@ -989,7 +1018,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.101/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
