@@ -15,9 +15,9 @@ namespace DataStructuresLibrary
             get { return _count; }
         }
 
-        public CustomQueue()
+        public CustomQueue(int capacity = 50)
         {
-            _items = new T[1000];
+            _items = new T[capacity];
             _front = 0;
             _rear = 0;
             _count = 0;
@@ -59,6 +59,34 @@ namespace DataStructuresLibrary
         public bool IsEmpty()
         {
             return _count == 0;
+        }
+
+        public bool Search(T item)
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                int index = (_front + i) % _items.Length;
+                if (_items[index].Equals(item))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void Sort()
+        {
+            if (_count <= 1) return;
+            T[] temp = new T[_count];
+            for (int i = 0; i < _count; i++)
+            {
+                temp[i] = _items[(_front + i) % _items.Length];
+            }
+            Array.Sort(temp);
+            for (int i = 0; i < _count; i++)
+            {
+                _items[(_front + i) % _items.Length] = temp[i];
+            }
         }
     }
 }
