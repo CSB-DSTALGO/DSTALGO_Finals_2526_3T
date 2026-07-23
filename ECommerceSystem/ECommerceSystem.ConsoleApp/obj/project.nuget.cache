@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "s3V906jidkU=",
   "success": true,
   "projectFilePath": "C:\\Users\\Ylonah\\Downloads\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.ConsoleApp\\ECommerceSystem.ConsoleApp.csproj",
+=======
+  "dgSpecHash": "Sq46FWtj3fM=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Enzo\\Desktop\\DLS-CSB\\3rd Term\\DSTALGO\\DSTALGO Visual Studio Project\\DSTALGO_FFTIS2_GROUP7\\ECommerceSystem\\ECommerceSystem.ConsoleApp\\ECommerceSystem.ConsoleApp.csproj",
+>>>>>>> 675a17cbf7d62de54c6c5f1e3b2fb92b4aa79f21
   "expectedPackageFiles": [],
   "logs": []
 }
