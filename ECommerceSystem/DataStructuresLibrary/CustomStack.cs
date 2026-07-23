@@ -60,7 +60,15 @@ public class CustomStack<T> where T : IComparable<T>
     return _items[Count - 1];
 }
 
-    public int Search(T item) => throw new NotImplementedException();
+    public int Search(T item)
+{
+    for (int i = Count - 1, depth = 1; i >= 0; i--, depth++)
+    {
+        if (_items[i].CompareTo(item) == 0)
+            return depth;
+    }
 
+    return -1;
+}
     public void Sort() => throw new NotImplementedException();
 }
