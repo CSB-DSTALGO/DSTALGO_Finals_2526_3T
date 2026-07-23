@@ -62,5 +62,23 @@ namespace DataStructuresLibrary
         {
             return _top == 0;
         }
+
+        public int Search(T item)
+        {
+            for (int i = 0; i < _top; i++)
+            {
+                if (_items[i].Equals(item))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        public void SortById()
+        {
+
+        }
     }
 }
