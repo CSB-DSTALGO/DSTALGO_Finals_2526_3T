@@ -5,4 +5,7 @@
     <Nullable>enable</Nullable>
     <RollForward>Major</RollForward>  <!-- Add this line -->
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="C:\Users\James\Downloads\CustomStack.cs" Link="CustomStack.cs" />
+  </ItemGroup>
 </Project>
