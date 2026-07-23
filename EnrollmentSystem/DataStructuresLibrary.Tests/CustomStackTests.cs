@@ -35,6 +35,18 @@ public class CustomStackTests
     }
 
     [Fact]
+    public void Push_ThreeSequentialItems_MaintainsInsertionOrder()
+    {
+        var stack = new CustomStack<string>();
+        stack.Push("A");
+        stack.Push("B");
+        stack.Push("C");
+
+        Assert.Equal(3, stack.Count);
+        Assert.Equal("C", stack.Peek()); // most recently pushed item is on top
+    }
+
+    [Fact]
     public void Pop_ReturnsMostRecentlyPushedItem()
     {
         var stack = new CustomStack<string>();
@@ -53,13 +65,27 @@ public class CustomStackTests
     }
 
     [Fact]
+    public void Pop_MultipleTimes_ReturnsItemsInReverseInsertionOrder()
+    {
+        var stack = new CustomStack<int>();
+        stack.Push(1);
+        stack.Push(2);
+        stack.Push(3);
+
+        Assert.Equal(3, stack.Pop());
+        Assert.Equal(2, stack.Pop());
+        Assert.Equal(1, stack.Pop());
+        Assert.True(stack.IsEmpty());
+    }
+
+    [Fact]
     public void Peek_DoesNotRemoveItem()
     {
         var stack = new CustomStack<int>();
         stack.Push(5);
         var peeked = stack.Peek();
         Assert.Equal(5, peeked);
-        Assert.Equal(1, stack.Count); 
+        Assert.Equal(1, stack.Count);
     }
 
     [Fact]
@@ -67,6 +93,18 @@ public class CustomStackTests
     {
         var stack = new CustomStack<int>();
         Assert.Throws<InvalidOperationException>(() => stack.Peek());
+    }
+
+    [Fact]
+    public void Peek_AfterMultiplePushes_ReflectsMostRecentItem()
+    {
+        var stack = new CustomStack<int>();
+        stack.Push(7);
+        stack.Push(14);
+        stack.Push(21);
+
+        Assert.Equal(21, stack.Peek());
+        Assert.Equal(3, stack.Count); // Peek must not remove anything
     }
 
     [Fact]
@@ -80,6 +118,14 @@ public class CustomStackTests
     }
 
     [Fact]
+    public void IsEmpty_ReturnsFalse_ImmediatelyAfterSinglePush()
+    {
+        var stack = new CustomStack<int>();
+        stack.Push(99);
+        Assert.False(stack.IsEmpty());
+    }
+
+    [Fact]
     public void Sort_OrdersElementsAscending()
     {
         var stack = new CustomStack<int>();
@@ -87,7 +133,34 @@ public class CustomStackTests
         stack.Push(1);
         stack.Push(2);
         stack.Sort((a, b) => a.CompareTo(b));
-        Assert.Equal(3, stack.Peek()); 
+        Assert.Equal(3, stack.Peek());
+    }
+
+    [Fact]
+    public void Sort_OnAlreadySortedStack_LeavesOrderUnchanged()
+    {
+        var stack = new CustomStack<int>();
+        stack.Push(1);
+        stack.Push(2);
+        stack.Push(3);
+        stack.Sort((a, b) => a.CompareTo(b)); // best case: no shifting needed
+
+        Assert.Equal(3, stack.Peek());
+        Assert.Equal(3, stack.Count);
+    }
+
+    [Fact]
+    public void Sort_WithDuplicateValues_KeepsAllElementsAndOrdersThemCorrectly()
+    {
+        var stack = new CustomStack<int>();
+        stack.Push(5);
+        stack.Push(2);
+        stack.Push(5);
+        stack.Push(1);
+        stack.Sort((a, b) => a.CompareTo(b));
+
+        Assert.Equal(4, stack.Count); // no elements lost
+        Assert.Equal(5, stack.Peek()); // largest duplicate value ends on top
     }
 
     [Fact]
@@ -98,7 +171,7 @@ public class CustomStackTests
         stack.Push(20);
         stack.Push(30);
         int index = stack.Search(20, (a, b) => a.CompareTo(b));
-        Assert.Equal(1, index); 
+        Assert.Equal(1, index);
     }
 
     [Fact]
@@ -109,5 +182,18 @@ public class CustomStackTests
         stack.Push(20);
         int index = stack.Search(99, (a, b) => a.CompareTo(b));
         Assert.Equal(-1, index);
+    }
+
+    [Fact]
+    public void Search_ReturnsFirstMatchingIndex_WhenDuplicatesExist()
+    {
+        var stack = new CustomStack<int>();
+        stack.Push(5);
+        stack.Push(5);
+        stack.Push(5);
+
+        int index = stack.Search(5, (a, b) => a.CompareTo(b));
+
+        Assert.Equal(0, index); // linear search returns the first match encountered
     }
 }

@@ -6,7 +6,7 @@ public class AdministrativeLogs
 {
     private readonly CustomStack<Log> _logs = new();
 
-    public int Count => _logs.Count;
+    public int Count => _logs.Count; // Number of log entries currently stored.
 
     // Pushes a new log entry onto the top of the stack.
     public void PushSystemLog(Log log) => _logs.Push(log);

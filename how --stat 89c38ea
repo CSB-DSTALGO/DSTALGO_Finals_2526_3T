@@ -1,0 +1,365 @@
+[33mcommit dfe4a609f52e0b11e6243b951f6b4936a19f818f[m
+Author: Kobie Rivera <kobiebriel.rivera@benilde.edu.ph>
+Date:   Wed Jul 22 17:00:32 2026 +0800
+
+    Implement AdministrativeLogs and CustomStack with sort/search and full unit tests; untrack build artifacts
+
+ ...eSourceRootsMapping_DataStructuresLibrary.Tests |  Bin [31m982[m -> [32m0[m bytes
+ ...tSourceRootsMapping_DataStructuresLibrary.Tests |  Bin [31m982[m -> [32m0[m bytes
+ .../net10.0/DataStructuresLibrary.Tests.deps.json  |  433 [31m-------[m
+ .../Debug/net10.0/DataStructuresLibrary.Tests.dll  |  Bin [31m6656[m -> [32m0[m bytes
+ .../Debug/net10.0/DataStructuresLibrary.Tests.pdb  |  Bin [31m12700[m -> [32m0[m bytes
+ .../DataStructuresLibrary.Tests.runtimeconfig.json |   13 [31m-[m
+ .../bin/Debug/net10.0/DataStructuresLibrary.dll    |  Bin [31m6144[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/DataStructuresLibrary.pdb    |  Bin [31m11932[m -> [32m0[m bytes
+ ...crosoft.TestPlatform.CommunicationUtilities.dll |  Bin [31m137776[m -> [32m0[m bytes
+ .../Microsoft.TestPlatform.CoreUtilities.dll       |  Bin [31m98336[m -> [32m0[m bytes
+ .../Microsoft.TestPlatform.CrossPlatEngine.dll     |  Bin [31m316960[m -> [32m0[m bytes
+ ...Microsoft.TestPlatform.PlatformAbstractions.dll |  Bin [31m51232[m -> [32m0[m bytes
+ .../net10.0/Microsoft.TestPlatform.Utilities.dll   |  Bin [31m67104[m -> [32m0[m bytes
+ .../Microsoft.VisualStudio.CodeCoverage.Shim.dll   |  Bin [31m17464[m -> [32m0[m bytes
+ .../Microsoft.VisualStudio.TestPlatform.Common.dll |  Bin [31m248352[m -> [32m0[m bytes
+ ...osoft.VisualStudio.TestPlatform.ObjectModel.dll |  Bin [31m334392[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/Newtonsoft.Json.dll          |  Bin [31m712464[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16440[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16944[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21040[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m20520[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m23624[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16952[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21048[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m21064[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m24136[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16952[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21032[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m21040[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m24120[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16952[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16944[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21040[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m21048[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m24096[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21048[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m21040[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m24096[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m17440[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m22088[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m21552[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m24632[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16944[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16936[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21560[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m21048[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m24120[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16936[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21536[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m21048[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m24136[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16416[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21048[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m21048[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m24120[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m17440[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m17464[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m23072[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m23096[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m26168[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/testhost.dll                 |  Bin [31m49696[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16952[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21024[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m20536[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m23608[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/xunit.abstractions.dll       |  Bin [31m21928[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/xunit.assert.dll             |  Bin [31m187088[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/xunit.core.dll               |  Bin [31m70352[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/xunit.execution.dotnet.dll   |  Bin [31m279760[m -> [32m0[m bytes
+ .../xunit.runner.visualstudio.testadapter.dll      |  Bin [31m1251840[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16416[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m20008[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m20040[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m23072[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16416[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16952[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m20552[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m20024[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m23096[m -> [32m0[m bytes
+ ...tructuresLibrary.Tests.csproj.nuget.dgspec.json |  696 [31m-----------[m
+ ...ataStructuresLibrary.Tests.csproj.nuget.g.props |   25 [31m-[m
+ ...aStructuresLibrary.Tests.csproj.nuget.g.targets |   10 [31m-[m
+ ....NETCoreApp,Version=v10.0.AssemblyAttributes.cs |    4 [31m-[m
+ .../obj/Debug/net10.0/DataStru.F76FC8B6.Up2Date    |    0
+ .../DataStructuresLibrary.Tests.AssemblyInfo.cs    |   22 [31m-[m
+ ...tructuresLibrary.Tests.AssemblyInfoInputs.cache |    1 [31m-[m
+ ...Tests.GeneratedMSBuildEditorConfig.editorconfig |   17 [31m-[m
+ .../DataStructuresLibrary.Tests.GlobalUsings.g.cs  |    9 [31m-[m
+ .../DataStructuresLibrary.Tests.assets.cache       |  Bin [31m30989[m -> [32m0[m bytes
+ ...resLibrary.Tests.csproj.AssemblyReference.cache |  Bin [31m8309[m -> [32m0[m bytes
+ ...resLibrary.Tests.csproj.CoreCompileInputs.cache |    1 [31m-[m
+ ...cturesLibrary.Tests.csproj.FileListAbsolute.txt |   99 [31m--[m
+ .../Debug/net10.0/DataStructuresLibrary.Tests.dll  |  Bin [31m6656[m -> [32m0[m bytes
+ ...aStructuresLibrary.Tests.genruntimeconfig.cache |    1 [31m-[m
+ .../Debug/net10.0/DataStructuresLibrary.Tests.pdb  |  Bin [31m12700[m -> [32m0[m bytes
+ .../net10.0/ref/DataStructuresLibrary.Tests.dll    |  Bin [31m7168[m -> [32m0[m bytes
+ .../net10.0/refint/DataStructuresLibrary.Tests.dll |  Bin [31m7168[m -> [32m0[m bytes
+ .../obj/project.assets.json                        | 1290 [31m-------------------[m
+ .../obj/project.nuget.cache                        |   23 [31m-[m
+ .../Debug/net10.0/DataStructuresLibrary.deps.json  |   23 [31m-[m
+ .../bin/Debug/net10.0/DataStructuresLibrary.dll    |  Bin [31m6144[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/DataStructuresLibrary.pdb    |  Bin [31m11932[m -> [32m0[m bytes
+ .../DataStructuresLibrary.csproj.nuget.dgspec.json |  341 [31m-----[m
+ .../obj/DataStructuresLibrary.csproj.nuget.g.props |   15 [31m-[m
+ .../DataStructuresLibrary.csproj.nuget.g.targets   |    2 [31m-[m
+ ....NETCoreApp,Version=v10.0.AssemblyAttributes.cs |    4 [31m-[m
+ .../net10.0/DataStructuresLibrary.AssemblyInfo.cs  |   22 [31m-[m
+ .../DataStructuresLibrary.AssemblyInfoInputs.cache |    1 [31m-[m
+ ...brary.GeneratedMSBuildEditorConfig.editorconfig |   17 [31m-[m
+ .../DataStructuresLibrary.GlobalUsings.g.cs        |    8 [31m-[m
+ .../net10.0/DataStructuresLibrary.assets.cache     |  Bin [31m149[m -> [32m0[m bytes
+ ...tructuresLibrary.csproj.CoreCompileInputs.cache |    1 [31m-[m
+ ...taStructuresLibrary.csproj.FileListAbsolute.txt |   11 [31m-[m
+ .../obj/Debug/net10.0/DataStructuresLibrary.dll    |  Bin [31m6144[m -> [32m0[m bytes
+ .../obj/Debug/net10.0/DataStructuresLibrary.pdb    |  Bin [31m11932[m -> [32m0[m bytes
+ .../Debug/net10.0/ref/DataStructuresLibrary.dll    |  Bin [31m6144[m -> [32m0[m bytes
+ .../Debug/net10.0/refint/DataStructuresLibrary.dll |  Bin [31m6144[m -> [32m0[m bytes
+ .../DataStructuresLibrary/obj/project.assets.json  |  346 [31m------[m
+ .../DataStructuresLibrary/obj/project.nuget.cache  |    8 [31m-[m
+ .../bin/Debug/net10.0/DataStructuresLibrary.dll    |  Bin [31m6144[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/DataStructuresLibrary.pdb    |  Bin [31m11932[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/ECommerceSystem.ConsoleApp   |  Bin [31m124712[m -> [32m0[m bytes
+ .../net10.0/ECommerceSystem.ConsoleApp.deps.json   |   56 [31m-[m
+ .../Debug/net10.0/ECommerceSystem.ConsoleApp.dll   |  Bin [31m14336[m -> [32m0[m bytes
+ .../Debug/net10.0/ECommerceSystem.ConsoleApp.pdb   |  Bin [31m13220[m -> [32m0[m bytes
+ .../ECommerceSystem.ConsoleApp.runtimeconfig.json  |   12 [31m-[m
+ .../bin/Debug/net10.0/ECommerceSystem.Core.dll     |  Bin [31m8192[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/ECommerceSystem.Core.pdb     |  Bin [31m12884[m -> [32m0[m bytes
+ ....NETCoreApp,Version=v10.0.AssemblyAttributes.cs |    4 [31m-[m
+ .../obj/Debug/net10.0/ECommerc.F8BEFE44.Up2Date    |    0
+ .../ECommerceSystem.ConsoleApp.AssemblyInfo.cs     |   22 [31m-[m
+ ...merceSystem.ConsoleApp.AssemblyInfoInputs.cache |    1 [31m-[m
+ ...leApp.GeneratedMSBuildEditorConfig.editorconfig |   17 [31m-[m
+ .../ECommerceSystem.ConsoleApp.GlobalUsings.g.cs   |    8 [31m-[m
+ .../ECommerceSystem.ConsoleApp.assets.cache        |  Bin [31m149[m -> [32m0[m bytes
+ ...ystem.ConsoleApp.csproj.AssemblyReference.cache |  Bin [31m656[m -> [32m0[m bytes
+ ...ystem.ConsoleApp.csproj.CoreCompileInputs.cache |    1 [31m-[m
+ ...ceSystem.ConsoleApp.csproj.FileListAbsolute.txt |   20 [31m-[m
+ .../Debug/net10.0/ECommerceSystem.ConsoleApp.dll   |  Bin [31m14336[m -> [32m0[m bytes
+ ...ommerceSystem.ConsoleApp.genruntimeconfig.cache |    1 [31m-[m
+ .../Debug/net10.0/ECommerceSystem.ConsoleApp.pdb   |  Bin [31m13220[m -> [32m0[m bytes
+ .../obj/Debug/net10.0/apphost                      |  Bin [31m124712[m -> [32m0[m bytes
+ .../net10.0/ref/ECommerceSystem.ConsoleApp.dll     |  Bin [31m5632[m -> [32m0[m bytes
+ .../net10.0/refint/ECommerceSystem.ConsoleApp.dll  |  Bin [31m5632[m -> [32m0[m bytes
+ ...merceSystem.ConsoleApp.csproj.nuget.dgspec.json | 1018 [31m---------------[m
+ ...ECommerceSystem.ConsoleApp.csproj.nuget.g.props |   15 [31m-[m
+ ...ommerceSystem.ConsoleApp.csproj.nuget.g.targets |    2 [31m-[m
+ .../obj/project.assets.json                        |  391 [31m------[m
+ .../obj/project.nuget.cache                        |    8 [31m-[m
+ .../bin/Debug/net10.0/DataStructuresLibrary.dll    |  Bin [31m6144[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/DataStructuresLibrary.pdb    |  Bin [31m11932[m -> [32m0[m bytes
+ .../Debug/net10.0/ECommerceSystem.Core.deps.json   |   39 [31m-[m
+ .../bin/Debug/net10.0/ECommerceSystem.Core.dll     |  Bin [31m8192[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/ECommerceSystem.Core.pdb     |  Bin [31m12884[m -> [32m0[m bytes
+ ....NETCoreApp,Version=v10.0.AssemblyAttributes.cs |    4 [31m-[m
+ .../obj/Debug/net10.0/ECommerc.5244FE8E.Up2Date    |    0
+ .../net10.0/ECommerceSystem.Core.AssemblyInfo.cs   |   22 [31m-[m
+ .../ECommerceSystem.Core.AssemblyInfoInputs.cache  |    1 [31m-[m
+ ....Core.GeneratedMSBuildEditorConfig.editorconfig |   17 [31m-[m
+ .../net10.0/ECommerceSystem.Core.GlobalUsings.g.cs |    8 [31m-[m
+ .../net10.0/ECommerceSystem.Core.assets.cache      |  Bin [31m149[m -> [32m0[m bytes
+ ...merceSystem.Core.csproj.AssemblyReference.cache |  Bin [31m333[m -> [32m0[m bytes
+ ...merceSystem.Core.csproj.CoreCompileInputs.cache |    1 [31m-[m
+ ...CommerceSystem.Core.csproj.FileListAbsolute.txt |   15 [31m-[m
+ .../obj/Debug/net10.0/ECommerceSystem.Core.dll     |  Bin [31m8192[m -> [32m0[m bytes
+ .../obj/Debug/net10.0/ECommerceSystem.Core.pdb     |  Bin [31m12884[m -> [32m0[m bytes
+ .../obj/Debug/net10.0/ref/ECommerceSystem.Core.dll |  Bin [31m7168[m -> [32m0[m bytes
+ .../Debug/net10.0/refint/ECommerceSystem.Core.dll  |  Bin [31m7168[m -> [32m0[m bytes
+ .../ECommerceSystem.Core.csproj.nuget.dgspec.json  |  678 [31m----------[m
+ .../obj/ECommerceSystem.Core.csproj.nuget.g.props  |   15 [31m-[m
+ .../ECommerceSystem.Core.csproj.nuget.g.targets    |    2 [31m-[m
+ .../ECommerceSystem.Core/obj/project.assets.json   |  369 [31m------[m
+ .../ECommerceSystem.Core/obj/project.nuget.cache   |    8 [31m-[m
+ ...overageSourceRootsMapping_ECommerceSystem.Tests |  Bin [31m1954[m -> [32m0[m bytes
+ ...overletSourceRootsMapping_ECommerceSystem.Tests |  Bin [31m1954[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/DataStructuresLibrary.dll    |  Bin [31m6144[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/DataStructuresLibrary.pdb    |  Bin [31m11932[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/ECommerceSystem.Core.dll     |  Bin [31m8192[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/ECommerceSystem.Core.pdb     |  Bin [31m12884[m -> [32m0[m bytes
+ .../Debug/net10.0/ECommerceSystem.Tests.deps.json  |  450 [31m-------[m
+ .../bin/Debug/net10.0/ECommerceSystem.Tests.dll    |  Bin [31m9216[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/ECommerceSystem.Tests.pdb    |  Bin [31m13624[m -> [32m0[m bytes
+ .../ECommerceSystem.Tests.runtimeconfig.json       |   13 [31m-[m
+ ...crosoft.TestPlatform.CommunicationUtilities.dll |  Bin [31m137776[m -> [32m0[m bytes
+ .../Microsoft.TestPlatform.CoreUtilities.dll       |  Bin [31m98336[m -> [32m0[m bytes
+ .../Microsoft.TestPlatform.CrossPlatEngine.dll     |  Bin [31m316960[m -> [32m0[m bytes
+ ...Microsoft.TestPlatform.PlatformAbstractions.dll |  Bin [31m51232[m -> [32m0[m bytes
+ .../net10.0/Microsoft.TestPlatform.Utilities.dll   |  Bin [31m67104[m -> [32m0[m bytes
+ .../Microsoft.VisualStudio.CodeCoverage.Shim.dll   |  Bin [31m17464[m -> [32m0[m bytes
+ .../Microsoft.VisualStudio.TestPlatform.Common.dll |  Bin [31m248352[m -> [32m0[m bytes
+ ...osoft.VisualStudio.TestPlatform.ObjectModel.dll |  Bin [31m334392[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/Newtonsoft.Json.dll          |  Bin [31m712464[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16440[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16944[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21040[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m20520[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m23624[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16952[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21048[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m21064[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m24136[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16952[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21032[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m21040[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m24120[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16952[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16944[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21040[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m21048[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m24096[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21048[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m21040[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m24096[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m17440[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m22088[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m21552[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m24632[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16944[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16936[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21560[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m21048[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m24120[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16936[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21536[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m21048[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m24136[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16416[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21048[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m21048[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m24120[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m17440[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m17464[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m23072[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m23096[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m26168[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/testhost.dll                 |  Bin [31m49696[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16952[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m21024[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m20536[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m23608[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/xunit.abstractions.dll       |  Bin [31m21928[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/xunit.assert.dll             |  Bin [31m187088[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/xunit.core.dll               |  Bin [31m70352[m -> [32m0[m bytes
+ .../bin/Debug/net10.0/xunit.execution.dotnet.dll   |  Bin [31m279760[m -> [32m0[m bytes
+ .../xunit.runner.visualstudio.testadapter.dll      |  Bin [31m1251840[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16416[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16928[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m20008[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m20040[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m23072[m -> [32m0[m bytes
+ ...stPlatform.CommunicationUtilities.resources.dll |  Bin [31m16416[m -> [32m0[m bytes
+ ...rosoft.TestPlatform.CoreUtilities.resources.dll |  Bin [31m16952[m -> [32m0[m bytes
+ ...soft.TestPlatform.CrossPlatEngine.resources.dll |  Bin [31m20552[m -> [32m0[m bytes
+ ....VisualStudio.TestPlatform.Common.resources.dll |  Bin [31m20024[m -> [32m0[m bytes
+ ...alStudio.TestPlatform.ObjectModel.resources.dll |  Bin [31m23096[m -> [32m0[m bytes
+ ....NETCoreApp,Version=v10.0.AssemblyAttributes.cs |    4 [31m-[m
+ .../obj/Debug/net10.0/ECommerc.3BDD498A.Up2Date    |    0
+ .../net10.0/ECommerceSystem.Tests.AssemblyInfo.cs  |   22 [31m-[m
+ .../ECommerceSystem.Tests.AssemblyInfoInputs.cache |    1 [31m-[m
+ ...Tests.GeneratedMSBuildEditorConfig.editorconfig |   17 [31m-[m
+ .../ECommerceSystem.Tests.GlobalUsings.g.cs        |    9 [31m-[m
+ .../net10.0/ECommerceSystem.Tests.assets.cache     |  Bin [31m30989[m -> [32m0[m bytes
+ ...erceSystem.Tests.csproj.AssemblyReference.cache |  Bin [31m8632[m -> [32m0[m bytes
+ ...erceSystem.Tests.csproj.CoreCompileInputs.cache |    1 [31m-[m
+ ...ommerceSystem.Tests.csproj.FileListAbsolute.txt |  101 [31m--[m
+ .../obj/Debug/net10.0/ECommerceSystem.Tests.dll    |  Bin [31m9216[m -> [32m0[m bytes
+ .../ECommerceSystem.Tests.genruntimeconfig.cache   |    1 [31m-[m
+ .../obj/Debug/net10.0/ECommerceSystem.Tests.pdb    |  Bin [31m13624[m -> [32m0[m bytes
+ .../Debug/net10.0/ref/ECommerceSystem.Tests.dll    |  Bin [31m6656[m -> [32m0[m bytes
+ .../Debug/net10.0/refint/ECommerceSystem.Tests.dll |  Bin [31m6656[m -> [32m0[m bytes
+ .../ECommerceSystem.Tests.csproj.nuget.dgspec.json | 1036 [31m----------------[m
+ .../obj/ECommerceSystem.Tests.csproj.nuget.g.props |   25 [31m-[m
+ .../ECommerceSystem.Tests.csproj.nuget.g.targets   |   10 [31m-[m
+ .../ECommerceSystem.Tests/obj/project.assets.json  | 1312 [31m--------------------[m
+ .../ECommerceSystem.Tests/obj/project.nuget.cache  |   23 [31m-[m
+ .../CustomStackTests.cs                            |  115 [32m+[m[31m-[m
+ ...tructuresLibrary.Tests.csproj.nuget.dgspec.json |  359 [31m------[m
+ ...ataStructuresLibrary.Tests.csproj.nuget.g.props |   25 [31m-[m
+ ...aStructuresLibrary.Tests.csproj.nuget.g.targets |   10 [31m-[m
+ ....NETCoreApp,Version=v10.0.AssemblyAttributes.cs |    4 [31m-[m
+ .../DataStructuresLibrary.Tests.AssemblyInfo.cs    |   22 [31m-[m
+ ...tructuresLibrary.Tests.AssemblyInfoInputs.cache |    1 [31m-[m
+ ...Tests.GeneratedMSBuildEditorConfig.editorconfig |   17 [31m-[m
+ .../DataStructuresLibrary.Tests.GlobalUsings.g.cs  |    9 [31m-[m
+ .../DataStructuresLibrary.Tests.assets.cache       |  Bin [31m30989[m -> [32m0[m bytes
+ ...resLibrary.Tests.csproj.AssemblyReference.cache |  Bin [31m7982[m -> [32m0[m bytes
+ .../obj/project.assets.json                        | 1270 [31m-------------------[m
+ .../obj/project.nuget.cache                        |   23 [31m-[m
+ .../DataStructuresLibrary/CustomStack.cs           |   83 [32m+[m[31m-[m
+ .../DataStructuresLibrary.csproj                   |    2 [32m+[m[31m-[m
+ .../DataStructuresLibrary.csproj.nuget.dgspec.json |   77 [31m--[m
+ .../obj/DataStructuresLibrary.csproj.nuget.g.props |   15 [31m-[m
+ .../DataStructuresLibrary.csproj.nuget.g.targets   |    2 [31m-[m
+ .../.NETCoreApp,Version=v8.0.AssemblyAttributes.cs |    4 [31m-[m
+ .../net8.0/DataStructuresLibrary.AssemblyInfo.cs   |   22 [31m-[m
+ .../DataStructuresLibrary.AssemblyInfoInputs.cache |    1 [31m-[m
+ ...brary.GeneratedMSBuildEditorConfig.editorconfig |   17 [31m-[m
+ .../net8.0/DataStructuresLibrary.GlobalUsings.g.cs |    8 [31m-[m
+ .../net8.0/DataStructuresLibrary.assets.cache      |  Bin [31m149[m -> [32m0[m bytes
+ .../DataStructuresLibrary/obj/project.assets.json  |   82 [31m--[m
+ .../DataStructuresLibrary/obj/project.nuget.cache  |   11 [31m-[m
+ .../.NETCoreApp,Version=v8.0.AssemblyAttributes.cs |    4 [31m-[m
+ .../EnrollmentSystem.ConsoleApp.AssemblyInfo.cs    |   22 [31m-[m
+ ...lmentSystem.ConsoleApp.AssemblyInfoInputs.cache |    1 [31m-[m
+ ...leApp.GeneratedMSBuildEditorConfig.editorconfig |   17 [31m-[m
+ .../EnrollmentSystem.ConsoleApp.GlobalUsings.g.cs  |    8 [31m-[m
+ .../EnrollmentSystem.ConsoleApp.assets.cache       |  Bin [31m286[m -> [32m0[m bytes
+ ...lmentSystem.ConsoleApp.csproj.nuget.dgspec.json |  227 [31m----[m
+ ...nrollmentSystem.ConsoleApp.csproj.nuget.g.props |   15 [31m-[m
+ ...ollmentSystem.ConsoleApp.csproj.nuget.g.targets |    2 [31m-[m
+ .../obj/project.assets.json                        |  127 [31m--[m
+ .../obj/project.nuget.cache                        |   12 [31m-[m
+ .../EnrollmentSystem.Core/AdministrativeLogs.cs    |   35 [32m+[m[31m-[m
+ .../EnrollmentSystem.Core.csproj                   |    2 [32m+[m[31m-[m
+ .../.NETCoreApp,Version=v8.0.AssemblyAttributes.cs |    4 [31m-[m
+ .../net8.0/EnrollmentSystem.Core.AssemblyInfo.cs   |   22 [31m-[m
+ .../EnrollmentSystem.Core.AssemblyInfoInputs.cache |    1 [31m-[m
+ ....Core.GeneratedMSBuildEditorConfig.editorconfig |   17 [31m-[m
+ .../net8.0/EnrollmentSystem.Core.GlobalUsings.g.cs |    8 [31m-[m
+ .../net8.0/EnrollmentSystem.Core.assets.cache      |  Bin [31m149[m -> [32m0[m bytes
+ .../EnrollmentSystem.Core.csproj.nuget.dgspec.json |  150 [31m---[m
+ .../obj/EnrollmentSystem.Core.csproj.nuget.g.props |   15 [31m-[m
+ .../EnrollmentSystem.Core.csproj.nuget.g.targets   |    2 [31m-[m
+ .../EnrollmentSystem.Core/obj/project.assets.json  |  105 [31m--[m
+ .../EnrollmentSystem.Core/obj/project.nuget.cache  |   11 [31m-[m
+ .../EnrollmentSystem.Tests/EnrollmentCoreTest.cs   |  108 [32m++[m
+ .../EnrollmentSystem.Tests.csproj                  |    2 [32m+[m[31m-[m
+ ...verageSourceRootsMapping_EnrollmentSystem.Tests |  Bin [31m1570[m -> [32m0[m bytes
+ ...verletSourceRootsMapping_EnrollmentSystem.Tests |  Bin [31m1570[m -> [32m0[m bytes
+ .../.NETCoreApp,Version=v8.0.AssemblyAttributes.cs |    4 [31m-[m
+ .../net8.0/EnrollmentSystem.Tests.AssemblyInfo.cs  |   22 [31m-[m
+ ...EnrollmentSystem.Tests.AssemblyInfoInputs.cache |    1 [31m-[m
+ ...Tests.GeneratedMSBuildEditorConfig.editorconfig |   17 [31m-[m
+ .../EnrollmentSystem.Tests.GlobalUsings.g.cs       |    9 [31m-[m
+ .../net8.0/EnrollmentSystem.Tests.assets.cache     |  Bin [31m32095[m -> [32m0[m bytes
+ ...mentSystem.Tests.csproj.AssemblyReference.cache |  Bin [31m7982[m -> [32m0[m bytes
+ ...EnrollmentSystem.Tests.csproj.nuget.dgspec.json |  244 [31m----[m
+ .../EnrollmentSystem.Tests.csproj.nuget.g.props    |   25 [31m-[m
+ .../EnrollmentSystem.Tests.csproj.nuget.g.targets  |   10 [31m-[m
+ .../EnrollmentSystem.Tests/obj/project.assets.json | 1146 [31m-----------------[m
+ .../EnrollmentSystem.Tests/obj/project.nuget.cache |   27 [31m-[m
+ 358 files changed, 317 insertions(+), 13507 deletions(-)
