@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ECommerceSystem.ConsoleApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+323869e3cadcbc74c4c685c3be49994db832bd0e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7cec8b10f0288f620834d4ef0bd044c156ea365d")]
 [assembly: System.Reflection.AssemblyProductAttribute("ECommerceSystem.ConsoleApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ECommerceSystem.ConsoleApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

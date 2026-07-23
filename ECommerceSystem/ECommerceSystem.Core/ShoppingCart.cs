@@ -8,13 +8,46 @@ public class ShoppingCart
 
     public int Count => _items.Count;
 
-    public void AddItem(Product product) => throw new NotImplementedException();
-    public bool RemoveItem(Product product) => throw new NotImplementedException();
-    public Product GetItemAt(int index) => throw new NotImplementedException();
+    // Adds a product to the shopping cart.
+    public void AddItem(Product product)
+    {
+        _items.Add(product);
+    }
 
-    public decimal CalculateTotal() => throw new NotImplementedException();
+    // Removes a product from the shopping cart.
+    public bool RemoveItem(Product product)
+    {
+        return _items.Remove(product);
+    }
 
-    
-    public int SearchItem(Product product) => throw new NotImplementedException();
-    public void SortCartByPrice() => throw new NotImplementedException();
+    // Returns the product at the specified index.
+    public Product GetItemAt(int index)
+    {
+        return _items.Get(index);
+    }
+
+    // Calculates the total price of all products in the cart.
+    public decimal CalculateTotal()
+    {
+        decimal total = 0;
+
+        for (int i = 0; i < _items.Count; i++)
+        {
+            total += _items.Get(i).Price;
+        }
+
+        return total;
+    }
+
+    // Searches for a product and returns its index, or -1 if not found.
+    public int SearchItem(Product product)
+    {
+        return _items.Search(product);
+    }
+
+    // Sorts cart items using the product comparison logic.
+    public void SortCartByPrice()
+    {
+        _items.Sort();
+    }
 }

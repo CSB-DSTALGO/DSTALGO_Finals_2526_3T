@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net10.0": {
       "coverlet.collector/6.0.4": {
@@ -914,28 +914,30 @@
     ]
   },
   "packageFolders": {
-    "/Users/caan/.nuget/packages/": {}
+    "/Users/tarra/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj",
+      "projectUniqueName": "/Users/tarra/Desktop/Clone-ECommerceSystem/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj",
       "projectName": "DataStructuresLibrary.Tests",
-      "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj",
-      "packagesPath": "/Users/caan/.nuget/packages/",
-      "outputPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary.Tests/obj/",
+      "projectPath": "/Users/tarra/Desktop/Clone-ECommerceSystem/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj",
+      "packagesPath": "/Users/tarra/.nuget/packages/",
+      "outputPath": "/Users/tarra/Desktop/Clone-ECommerceSystem/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/caan/.nuget/NuGet/NuGet.Config"
+        "/Users/tarra/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
+        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {}
         }
@@ -950,10 +952,11 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net10.0": {
+        "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
           "Microsoft.NET.Test.Sdk": {
@@ -989,7 +992,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.101/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.300/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
