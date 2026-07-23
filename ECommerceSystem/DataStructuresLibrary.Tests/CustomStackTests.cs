@@ -5,7 +5,7 @@ using DataStructuresLibrary;
 
 public class CustomStackTests
 {
-
+   
     [Fact]
     public void Push_ShouldIncreaseCount()
     {
