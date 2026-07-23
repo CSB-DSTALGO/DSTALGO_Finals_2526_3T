@@ -1,3 +1,5 @@
+using System.Xml.Linq;
+
 namespace DataStructuresLibrary;
 
 public class CustomSinglyLinkedList<T> where T : IComparable<T>
@@ -12,11 +14,84 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
     private Node? _head;
     public int Count { get; private set; }
 
-    public void Add(T item) => throw new NotImplementedException();
-    public bool Remove(T item) => throw new NotImplementedException();
+    public void Add(T item)
+    {
+        Node newNode = new Node(item);
+    if (_head == null)
+    {
+        _head = newNode;
+    }
+    else
+    {
+        Node current = _head;
+        while (current.Next != null)
+            current = current.Next;
+        current.Next = newNode;
+    }
+    Count++;
+}
+    public bool Remove(T item)
+    {
+        if (_head == null) return false;
 
-    public bool Search(T item) => throw new NotImplementedException();
+        if (_head.Data.CompareTo(item) == 0)
+        {
+            _head = _head.Next;
+            Count--;
+            return true;
+        }
 
-    
-    public void Sort() => throw new NotImplementedException();
+        Node previous = _head;
+        Node current = _head.Next;
+
+        while (current != null)
+        {
+            if (current.Data.CompareTo(item) == 0)
+            {
+                previous.Next = current.Next;
+                Count--;
+                return true;
+            }
+            previous = current;
+            current = current.Next;
+        }
+
+        return false;
+    }
+    public bool Search(T item)
+    {
+        Node current = _head;
+        while (current != null)
+        {
+            if (current.Data.CompareTo(item) == 0)
+                return true;
+            current = current.Next;
+        }
+        return false;
+    }
+
+
+    public void Sort()
+    {
+        if (_head == null) return;
+
+        bool swapped;
+        do
+        {
+            swapped = false;
+            Node current = _head;
+            while (current != null && current.Next != null)
+            {
+                if (current.Data.CompareTo(current.Next.Data) > 0)
+                {
+                    T temp = current.Data;
+                    current.Data = current.Next.Data;
+                    current.Next.Data = temp;
+                    swapped = true;
+                }
+                current = current.Next;
+            }
+        } while (swapped);
+    }
+
 }
