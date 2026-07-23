@@ -22,12 +22,15 @@ namespace DataStructuresLibrary
 
         public void Enqueue(T item)
         {
-            if (_count == _items.Length)
+            if (_count == _items.Length) //if our count is equals to the length of our _items
             {
-                T[] resize = new T[_items.Length * 2];
-                for (int i = 0; i < _count; i++)
+                T[] resize = new T[_items.Length * 2]; //resize by doubling the items.Length
+                for (int i = 0; i < _count; i++) //for loop to move items into the newly made resized array
                 {
-                    resize[i] = _items[(_front + i) % _items.Length];
+                    resize[i] = _items[(_front + i) % _items.Length]; //copies the queue in order   
+                                                                      //starts from the front, then when you reach the end it wraps around
+                                                                      //previous implementation copied the empty indexes
+                                                                      
                 }
                 _items = resize;
                 _front = 0;
