@@ -70,5 +70,19 @@ public class CustomStack<T> where T : IComparable<T>
 
     return -1;
 }
-    public void Sort() => throw new NotImplementedException();
+    public void Sort()
+{
+    // Bubble Sort (descending in array so smallest ends up on top)
+    for (int i = 0; i < Count - 1; i++)
+    {
+        for (int j = 0; j < Count - i - 1; j++)
+        {
+            if (_items[j].CompareTo(_items[j + 1]) < 0)
+            {
+                T temp = _items[j];
+                _items[j] = _items[j + 1];
+                _items[j + 1] = temp;
+            }
+        }
+    }
 }
