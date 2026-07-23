@@ -209,4 +209,16 @@ public class CustomArrayListTests
 
         Assert.Equal(50, list.Get(2));
     }
+    
+    [Fact]
+    public void Remove_ShouldReturnFalse_WhenListIsEmpty()
+    {
+        var list = new CustomArrayList<int>();
+
+        bool result = list.Remove(10);
+
+        Assert.False(result);
+        Assert.Equal(0, list.Count);
+    }
 }
+
