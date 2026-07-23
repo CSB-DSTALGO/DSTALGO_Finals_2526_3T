@@ -13,9 +13,10 @@ public class ShoppingCart
         _items.Add(product);
     }
 
-    public bool RemoveItem(Product product)
+    public void RemoveItem(int index)
     {
-        return _items.Remove(product);
+        Product product = _items.Get(index);
+        _items.Remove(product);
     }
 
     public Product GetItemAt(int index)
@@ -23,13 +24,23 @@ public class ShoppingCart
         return _items.Get(index);
     }
 
+    public void ShowAllItems()
+    {
+        for (int i = 0; i < _items.Count; i++)
+        {
+            Console.WriteLine(_items.Get(i));
+        }
+    }
+
     public decimal CalculateTotal()
     {
         decimal total = 0;
+
         for (int i = 0; i < _items.Count; i++)
         {
             total += _items.Get(i).Price;
         }
+
         return total;
     }
 
