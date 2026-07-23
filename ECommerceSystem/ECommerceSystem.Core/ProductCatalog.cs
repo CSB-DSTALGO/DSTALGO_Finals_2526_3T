@@ -8,10 +8,27 @@ public class ProductCatalog
 
     public int Count => _products.Count;
 
-    public void AddProduct(Product product) => throw new NotImplementedException();
-    public bool RemoveProduct(Product product) => throw new NotImplementedException();
+    // Adds a new product to the catalog.
+    public void AddProduct(Product product)
+    {
+        _products.Add(product);
+    }
 
-    
-    public bool SearchProduct(Product product) => throw new NotImplementedException();
-    public void SortCatalog() => throw new NotImplementedException();
+    // Removes the specified product from the catalog.
+    public bool RemoveProduct(Product product)
+    {
+        return _products.Remove(product);
+    }
+
+    // Searches for the specified product in the catalog.
+    public bool SearchProduct(Product product)
+    {
+        return _products.Search(product);
+    }
+
+    // Sorts the catalog in ascending order by product price.
+    public void SortCatalog()
+    {
+        _products.Sort();
+    }
 }
