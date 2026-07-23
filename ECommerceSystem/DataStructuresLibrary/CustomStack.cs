@@ -36,9 +36,29 @@ public class CustomStack<T> where T : IComparable<T>
         Count++;
     }
 
-    public T Pop() => throw new NotImplementedException();
+    public T Pop()
+{
+    if (Count == 0)
+    {
+        throw new InvalidOperationException("Stack is empty.");
+    }
 
-    public T Peek() => throw new NotImplementedException();
+    Count--;
+    T item = _items[Count];
+    _items[Count] = default!;
+
+    return item;
+}
+
+    public T Peek()
+{
+    if (Count == 0)
+    {
+        throw new InvalidOperationException("Stack is empty.");
+    }
+
+    return _items[Count - 1];
+}
 
     public int Search(T item) => throw new NotImplementedException();
 
