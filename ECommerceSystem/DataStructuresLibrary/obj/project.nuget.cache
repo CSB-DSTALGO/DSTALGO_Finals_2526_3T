@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "PNMqqLo9Bd8=",
+  "dgSpecHash": "CSm/IZdruzg=",
   "success": true,
   "projectFilePath": "C:\\Users\\pocho\\Documents\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\pocho\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.15\\microsoft.netcore.app.ref.9.0.15.nupkg.sha512",
+    "C:\\Users\\pocho\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.15\\microsoft.windowsdesktop.app.ref.9.0.15.nupkg.sha512",
+    "C:\\Users\\pocho\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.15\\microsoft.aspnetcore.app.ref.9.0.15.nupkg.sha512"
+  ],
   "logs": []
 }

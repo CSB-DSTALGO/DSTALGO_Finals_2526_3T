@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "khFIMPendnc=",
+  "dgSpecHash": "8W0Sk7Z6McY=",
   "success": true,
   "projectFilePath": "C:\\Users\\pocho\\Documents\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.ConsoleApp\\ECommerceSystem.ConsoleApp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\pocho\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.15\\microsoft.netcore.app.ref.9.0.15.nupkg.sha512",
+    "C:\\Users\\pocho\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.15\\microsoft.windowsdesktop.app.ref.9.0.15.nupkg.sha512",
+    "C:\\Users\\pocho\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.15\\microsoft.aspnetcore.app.ref.9.0.15.nupkg.sha512",
+    "C:\\Users\\pocho\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.15\\microsoft.netcore.app.host.win-x64.9.0.15.nupkg.sha512"
+  ],
   "logs": []
 }
