@@ -60,7 +60,7 @@ public class CustomStack<T> where T : IComparable<T>
         {
             T temp = Pop();
 
-            while (aux.Count > 0 && aux.Peek().CompareTo(temp) < 0)
+            while (aux.Count > 0 && aux.Peek().CompareTo(temp) > 0)
             {
                 Push(aux.Pop());
             }
