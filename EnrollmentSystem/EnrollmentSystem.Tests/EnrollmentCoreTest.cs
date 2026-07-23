@@ -120,5 +120,66 @@ namespace EnrollmentSystem.Tests
             Assert.Equal("L-001", peeked.LogId);
             Assert.Equal(1, logs.GetLogCount());
         }
+        [Fact]
+        public void RollbackLastLog_RemovesAndReturnsMostRecentLog()
+        {
+            var logs = new AdministrativeLogs();
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "First" });
+            logs.PushSystemLog(new Log { LogId = "L-002", ActionSummary = "Second" });
+
+            var rolledBack = logs.RollbackLastLog();
+
+            Assert.Equal("L-002", rolledBack.LogId);
+            Assert.Equal(1, logs.GetLogCount());
+        }
+
+        [Fact]
+        public void CheckLogsEmpty_ReturnsTrueOnNewLogs_FalseAfterPush()
+        {
+            var logs = new AdministrativeLogs();
+            Assert.True(logs.CheckLogsEmpty());
+
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "First" });
+            Assert.False(logs.CheckLogsEmpty());
+        }
+
+        [Fact]
+        public void SearchLog_FindsCorrectIndex_ByLogId()
+        {
+            var logs = new AdministrativeLogs();
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "First" });
+            logs.PushSystemLog(new Log { LogId = "L-002", ActionSummary = "Second" });
+            logs.PushSystemLog(new Log { LogId = "L-003", ActionSummary = "Third" });
+
+            int index = logs.SearchLog(new Log { LogId = "L-002" });
+
+            Assert.Equal(1, index);
+        }
+
+        [Fact]
+        public void SearchLog_ReturnsNegativeOne_WhenNotFound()
+        {
+            var logs = new AdministrativeLogs();
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "First" });
+
+            int index = logs.SearchLog(new Log { LogId = "L-999" });
+
+            Assert.Equal(-1, index);
+        }
+
+        [Fact]
+        public void SortLogsById_SortsLogsInAscendingOrder()
+        {
+            var logs = new AdministrativeLogs();
+            logs.PushSystemLog(new Log { LogId = "L-003", ActionSummary = "Third" });
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "First" });
+            logs.PushSystemLog(new Log { LogId = "L-002", ActionSummary = "Second" });
+
+            logs.SortLogsById();
+
+            Assert.Equal(0, logs.SearchLog(new Log { LogId = "L-001" }));
+            Assert.Equal(1, logs.SearchLog(new Log { LogId = "L-002" }));
+            Assert.Equal(2, logs.SearchLog(new Log { LogId = "L-003" }));
+        }
     }
 }
