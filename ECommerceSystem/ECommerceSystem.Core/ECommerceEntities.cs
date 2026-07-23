@@ -45,4 +45,32 @@ namespace ECommerceSystem.Core
 
         public override string ToString() => $"{CustomerName} - ₱{TotalAmount}";
     }
+
+    public class ReturnRequest : IComparable<ReturnRequest>
+    {
+        public int ReturnId { get; set; }
+        public string CustomerName { get; set; } = string.Empty;
+        public string Reason { get; set; } = string.Empty;
+
+        public ReturnRequest(int returnId, string customerName, string reason)
+        {
+            ReturnId = returnId;
+            CustomerName = customerName;
+            Reason = reason;
+        }
+
+        public int CompareTo(ReturnRequest? other)
+        {
+            if (other == null)
+                return 1;
+
+            return ReturnId.CompareTo(other.ReturnId);
+        }
+
+        public override string ToString()
+        {
+            return $"Return #{ReturnId} - {CustomerName}: {Reason}";
+        }
+    }
 }
+

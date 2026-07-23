@@ -8,14 +8,44 @@ namespace ECommerceSystem.Core
 
         public int Count => _items.Count;
 
-        public void AddItem(Product product) => throw new NotImplementedException();
-        public bool RemoveItem(Product product) => throw new NotImplementedException();
-        public Product GetItemAt(int index) => throw new NotImplementedException();
+        public void AddItem(Product product)
+        {
+            _items.Add(product);
+        }
 
-        public decimal CalculateTotal() => throw new NotImplementedException();
+        public bool RemoveItem(Product product)
+        {
+            return _items.Remove(product);
+        }
 
+        public Product GetItemAt(int index)
+        {
+            return _items.Get(index);
+        }
 
-        public int SearchItem(Product product) => throw new NotImplementedException();
-        public void SortCartByPrice() => throw new NotImplementedException();
+        public decimal CalculateTotal()
+        {
+            decimal total = 0;
+            for (int i = 0; i < _items.Count; i++)
+            {
+                total += _items.Get(i).Price;
+            }
+            return total;
+        }
+
+        public int SearchItem(Product product)
+        {
+            return _items.Search(product);
+        }
+
+        public void SortCartByPrice()
+        {
+            _items.Sort();
+        }
+
+        public void ShowAllItems()
+        {
+            _items.ShowAllItems();
+        }
     }
 }
