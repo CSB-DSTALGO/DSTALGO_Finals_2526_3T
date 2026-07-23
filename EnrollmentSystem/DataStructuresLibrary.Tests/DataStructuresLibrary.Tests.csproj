@@ -17,5 +17,9 @@
   <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
+ 
+ <ItemGroup>
+    <ProjectReference Include="..\DataStructuresLibrary\DataStructuresLibrary.csproj" />
+  </ItemGroup>
 
 </Project>

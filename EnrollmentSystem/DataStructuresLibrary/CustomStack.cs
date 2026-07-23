@@ -39,7 +39,7 @@ namespace DataStructuresLibrary
 
             _top--;
             T item = _items[_top];
-            _items[_top] = default!; // release reference so it can be GC'd
+            _items[_top] = default!; 
             return item;  
         }
 
