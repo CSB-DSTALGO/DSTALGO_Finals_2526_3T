@@ -17,7 +17,7 @@ namespace DataStructuresLibrary
 
         public CustomQueue()
         {
-            _items = new T[_count]; // Initialize the array with a default size
+            _items = new T[4]; // Initial capacity of the queue
             _front = 0; // Front index starts at 0
             _rear = 0; // Rear index starts at 0
             _count = 0; // The queue is initially empty
