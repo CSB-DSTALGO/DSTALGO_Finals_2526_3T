@@ -1,18 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1Yyt//tSIe4=",
+  "dgSpecHash": "WdaD/8Y/uW8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\USER\\Downloads\\ECommerceSystem\\ECommerceSystem\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Core\\ECommerceSystem.Core.csproj",
+  "projectFilePath": "C:\\Users\\garri\\Documents\\DSTALGO_Finals_2526_3T\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Core\\ECommerceSystem.Core.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "message": "Problem reading the cache file C:\\Users\\USER\\Downloads\\ECommerceSystem\\ECommerceSystem\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Core\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
-      "projectPath": "C:\\Users\\USER\\Downloads\\ECommerceSystem\\ECommerceSystem\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Core\\ECommerceSystem.Core.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\USER\\Downloads\\ECommerceSystem\\ECommerceSystem\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Core\\ECommerceSystem.Core.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }
