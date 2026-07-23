@@ -5,6 +5,7 @@ using DataStructuresLibrary;
 
 public class CustomStackTests
 {
+    // Test to ensure that pushing and popping maintains strict LIFO order
     [Fact]
     public void PushAndPop_ShouldMaintainStrictLIFOOrder()
     {
@@ -24,6 +25,7 @@ public class CustomStackTests
         Assert.Equal(0, stack.Count);
     }
 
+    // Test to ensure that popping from an empty stack throws an InvalidOperationException
     [Fact]
     public void Peek_ShouldReturnTopElement_WithoutRemovingIt()
     {
@@ -40,6 +42,7 @@ public class CustomStackTests
         Assert.Equal(2, stack.Count);
     }
 
+    // Test to ensure that searching for an item returns the correct one-based depth from the top of the stack
     [Fact]
     public void Search_ShouldReturnOneBasedDepthFromTop_WhenItemExists()
     {
@@ -56,6 +59,7 @@ public class CustomStackTests
         Assert.Equal(-1, stack.Search('Z')); // Missing item
     }
 
+    // Test to ensure that sorting the stack reorders the elements correctly, with the smallest item at the top
     [Fact]
     public void Sort_ShouldReorderStack_WithSmallestItemAtTop()
     {
@@ -67,12 +71,12 @@ public class CustomStackTests
         stack.Push(8);
 
         // Act
-        stack.Sort(); // Ascending array order puts largest at index Count-1 (top)
+        stack.Sort();
 
         // Assert - If sorted ascending in array, top (Pop) is the max element
-        Assert.Equal(42, stack.Pop());
-        Assert.Equal(15, stack.Pop());
-        Assert.Equal(8, stack.Pop());
         Assert.Equal(3, stack.Pop());
+        Assert.Equal(8, stack.Pop());
+        Assert.Equal(15, stack.Pop());
+        Assert.Equal(42, stack.Pop());
     }
 }

@@ -9,28 +9,33 @@ public class ReturnHistoryStack
 
     public int Count => _returns.Count;
 
+    // Pushes a return request onto the stack
     public void PushReturn(ReturnRequest request)
     {
         ArgumentNullException.ThrowIfNull(request);
         _returns.Push(request);
     }
 
+    // Pops the latest return request from the stack
     public ReturnRequest PopReturn()
     {
         return _returns.Pop();
     }
 
+    // Peeks at the latest return request without removing it from the stack
     public ReturnRequest PeekLatestReturn()
     {
         return _returns.Peek();
     }
 
+    // Searches for a return request in the stack and returns its index, or -1 if not found
     public int SearchReturn(ReturnRequest request)
     {
         ArgumentNullException.ThrowIfNull(request);
         return _returns.Search(request);
     }
 
+    // Sorts the return requests in the stack based on their natural ordering
     public void SortReturns()
     {
         _returns.Sort();

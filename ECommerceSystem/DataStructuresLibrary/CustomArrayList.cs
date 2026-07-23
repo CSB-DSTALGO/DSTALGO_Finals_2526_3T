@@ -15,7 +15,7 @@ public class CustomArrayList<T> where T : IComparable<T>
     {
         if (Count == _items.Length)
         {
-            T[] newArray = new T[_items.Length * 2];
+            T[] newArray = new T[_items.Length * 2]; // when full this makes bigger array so if 4 * 2 = 8
 
             for (int i = 0; i < Count; i++) // this puts the old array to da new bcuz it  copies it
             {

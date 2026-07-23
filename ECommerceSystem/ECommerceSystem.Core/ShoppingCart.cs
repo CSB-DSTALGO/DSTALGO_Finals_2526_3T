@@ -4,7 +4,7 @@ using DataStructuresLibrary;
 
 public class ShoppingCart
 {
-    private readonly CustomArrayList<Product> _items = new(); // walang product class dba..?
+    private readonly CustomArrayList<Product> _items = new();
 
     public int Count => _items.Count;
 

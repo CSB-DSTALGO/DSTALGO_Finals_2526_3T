@@ -24,5 +24,15 @@
     "C:\\Users\\pocho\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.15\\microsoft.windowsdesktop.app.ref.9.0.15.nupkg.sha512",
     "C:\\Users\\pocho\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.15\\microsoft.aspnetcore.app.ref.9.0.15.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Problem reading the cache file C:\\Users\\pocho\\Documents\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Tests\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "C:\\Users\\pocho\\Documents\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Tests\\ECommerceSystem.Tests.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\pocho\\Documents\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Tests\\ECommerceSystem.Tests.csproj",
+      "targetGraphs": []
+    }
+  ]
 }
