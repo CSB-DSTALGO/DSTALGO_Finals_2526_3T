@@ -58,5 +58,32 @@ namespace DataStructuresLibrary
         {
             return _count == 0; // Returns true if the queue is empty
         }
+
+        public void Sort(Comparison<T> comparison)
+        {
+            if (_count <= 1) return; // No need to sort if the queue has less than or equal to 1
+            T[] temp = new T[_count]; // Create a temporary array to hold the items
+            for (int i = 0; i < _count; i++)
+            {
+                temp[i] = _items[(_front + i) % _items.Length]; // Copy items from the queue to the temporary array
+            }
+            Array.Sort(temp, comparison); // Sort the temporary array using the provided comparison
+            for (int i = 0; i < _count; i++)
+            {
+                _items[(_front + i) % _items.Length] = temp[i]; // Copy sorted items back to the queue
+            }
+        }
+
+        public bool Search(T item)
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                if (_items[(_front + i) % _items.Length].Equals(item)) // Check each item in the queue
+                {
+                    return true; // True if the item is found
+                }
+            }
+            return false; // False if the item is not found
+        }
     }
 }
