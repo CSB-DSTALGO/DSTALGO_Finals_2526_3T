@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "E5ROYd4BDoA=",
+  "dgSpecHash": "BXFGU24HiTA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Keon\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.ConsoleApp\\ECommerceSystem.ConsoleApp.csproj",
-=======
-  "dgSpecHash": "I6Jruq/oK/w=",
-  "success": true,
-  "projectFilePath": "C:\\Users\\User\\OneDrive\\Documents\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.ConsoleApp\\ECommerceSystem.ConsoleApp.csproj",
->>>>>>> 4d6ca75dd45b1274ad522195187680f9fe017d94
+  "projectFilePath": "C:\\Users\\ADMIN\\Documents\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.ConsoleApp\\ECommerceSystem.ConsoleApp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
