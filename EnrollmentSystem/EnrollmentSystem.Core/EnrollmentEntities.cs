@@ -1,3 +1,4 @@
+// 12521269 Joaquin Bryan G. Ross
 namespace EnrollmentSystem.Core;
 
 public class Student : IComparable<Student>
@@ -7,6 +8,7 @@ public class Student : IComparable<Student>
     public double Gpa { get; set; }
     public string CourseCode { get; set; } = string.Empty;
 
+    // Builds a student record. CourseCode is set separately by the caller.
     public Student(int id, string name, double gpa)
     {
         Id = id;
@@ -28,6 +30,7 @@ public class Course : IComparable<Course>
     public string Title { get; set; }
     public int Units { get; set; }
 
+    // Builds a curriculum course. Units is what CompareTo orders by.
     public Course(string code, string title, int units)
     {
         Code = code;
@@ -48,7 +51,9 @@ public class AdmissionApplication : IComparable<AdmissionApplication>
     public int ApplicationId { get; set; }
     public string StudentName { get; set; }
     public int PriorityScore { get; set; }
+    public string TicketId { get; set; } = string.Empty;
 
+    // Builds an admission application. PriorityScore is what CompareTo orders by.
     public AdmissionApplication(int applicationId, string studentName, int priorityScore)
     {
         ApplicationId = applicationId;
@@ -80,8 +85,16 @@ public class Ticket : IComparable<Ticket>
     }
 }
 
-public class Log
+public class Log : IComparable<Log>
 {
     public string LogId { get; set; } = string.Empty;
     public string ActionSummary { get; set; } = string.Empty;
+
+    // Compare by LogId so the log stack can be sorted. Log ids are strings
+    // like "L-001", so an ordinal comparison orders them the way they read.
+    public int CompareTo(Log? other)
+    {
+        if (other == null) return 1;
+        return string.CompareOrdinal(LogId, other.LogId);
+    }
 }
