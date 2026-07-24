@@ -8,21 +8,20 @@ namespace DataStructuresLibrary.Tests
     {
         // Push
 
+        // Pushing one item should increase Count to 1.
         [Fact]
         public void Push_SingleItem_IncreasesCountToOne()
         {
             var stack = new CustomStack<int>();
-
             stack.Push(10);
-
             Assert.Equal(1, stack.Count);
         }
 
+        // The most recently pushed item should be on top.
         [Fact]
         public void Push_MultipleItems_TopReflectsMostRecentlyPushed()
         {
             var stack = new CustomStack<string>();
-
             stack.Push("first");
             stack.Push("second");
             stack.Push("third");
@@ -31,6 +30,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(3, stack.Count);
         }
 
+        // Pushing past the initial capacity should trigger Resize() without losing data.
         [Fact]
         public void Push_BeyondInitialCapacity_ResizesWithoutLosingData()
         {
@@ -47,6 +47,7 @@ namespace DataStructuresLibrary.Tests
 
         // Pop
 
+        // Pop should return the most recently pushed item (LIFO).
         [Fact]
         public void Pop_ReturnsMostRecentlyPushedItem()
         {
@@ -59,6 +60,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(2, popped);
         }
 
+        // Pop should decrease Count by one.
         [Fact]
         public void Pop_DecreasesCountByOne()
         {
@@ -71,6 +73,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(1, stack.Count);
         }
 
+        // Popping an empty stack should throw, not crash silently.
         [Fact]
         public void Pop_OnEmptyStack_ThrowsInvalidOperationException()
         {
@@ -81,6 +84,7 @@ namespace DataStructuresLibrary.Tests
 
         // Peek
 
+        // Peek should not remove the item it looks at.
         [Fact]
         public void Peek_DoesNotRemoveItem()
         {
@@ -92,6 +96,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(1, stack.Count);
         }
 
+        // Peek should return the top item after multiple pushes.
         [Fact]
         public void Peek_ReturnsTopItem_AfterMultiplePushes()
         {
@@ -103,6 +108,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(3, stack.Peek());
         }
 
+        // Peeking an empty stack should throw, not crash silently.
         [Fact]
         public void Peek_OnEmptyStack_ThrowsInvalidOperationException()
         {
@@ -111,8 +117,9 @@ namespace DataStructuresLibrary.Tests
             Assert.Throws<InvalidOperationException>(() => stack.Peek());
         }
 
-        // IsEmpty 
+        // IsEmpty
 
+        // A brand-new stack should report as empty.
         [Fact]
         public void IsEmpty_OnNewStack_ReturnsTrue()
         {
@@ -121,6 +128,7 @@ namespace DataStructuresLibrary.Tests
             Assert.True(stack.IsEmpty());
         }
 
+        // A stack with at least one item should not report as empty.
         [Fact]
         public void IsEmpty_AfterPush_ReturnsFalse()
         {
@@ -130,6 +138,7 @@ namespace DataStructuresLibrary.Tests
             Assert.False(stack.IsEmpty());
         }
 
+        // A stack that's had everything popped back out should report as empty again.
         [Fact]
         public void IsEmpty_AfterPushThenPop_ReturnsTrue()
         {
@@ -140,8 +149,9 @@ namespace DataStructuresLibrary.Tests
             Assert.True(stack.IsEmpty());
         }
 
-        // (snapshot helper used for sort/search)
+        // ToArray (sort/search helper)
 
+        // ToArray should return items ordered from top to bottom.
         [Fact]
         public void ToArray_ReturnsElementsTopToBottom()
         {
@@ -155,6 +165,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(new[] { 3, 2, 1 }, snapshot);
         }
 
+        // ToArray should not change the original stack's state.
         [Fact]
         public void ToArray_DoesNotMutateOriginalStack()
         {
@@ -168,6 +179,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(2, stack.Peek());
         }
 
+        // ToArray on an empty stack should return an empty array, not throw.
         [Fact]
         public void ToArray_OnEmptyStack_ReturnsEmptyArray()
         {

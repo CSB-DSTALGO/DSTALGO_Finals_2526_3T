@@ -1,9 +1,9 @@
-
 using System;
 using DataStructuresLibrary;
 
 namespace EnrollmentSystem.Core
 {
+    // Application-level log manager, backed by CustomStack<Log>.
     public class AdministrativeLogs
     {
         private readonly CustomStack<Log> _stack;
@@ -13,7 +13,7 @@ namespace EnrollmentSystem.Core
             _stack = new CustomStack<Log>();
         }
 
-
+        // Pushes a new log entry onto the stack.
         public void PushSystemLog(Log log)
         {
             if (log == null)
@@ -24,25 +24,17 @@ namespace EnrollmentSystem.Core
             _stack.Push(log);
         }
 
-        // Pops the top item off the execution stack.
-        public Log RollbackLastLog()
-        {
-            return _stack.Pop();
-        }
+        // Removes and returns the most recent log entry.
+        public Log RollbackLastLog() => _stack.Pop();
 
-        // Peeks at the topmost active log record.
-        public Log ViewLatestLog()
-        {
-            return _stack.Peek();
-        }
+        // Returns the most recent log entry without removing it.
+        public Log ViewLatestLog() => _stack.Peek();
 
-        // Evaluates and returns boolean state.
-        public bool CheckLogsEmpty()
-        {
-            return _stack.IsEmpty();
-        }
+        // Returns true if there are no logs.
+        public bool CheckLogsEmpty() => _stack.IsEmpty();
 
-
+        // Sorting algorithm: Insertion Sort.
+        // Sorts a snapshot copy of the logs by LogId (does not affect the real stack).
         public Log[] GetLogsSortedById()
         {
             Log[] snapshot = _stack.ToArray();
@@ -64,7 +56,8 @@ namespace EnrollmentSystem.Core
             return snapshot;
         }
 
-
+        // Search algorithm: Binary Search.
+        // Requires the sorted snapshot from GetLogsSortedById().
         public Log? SearchLogById(string logId)
         {
             Log[] sorted = GetLogsSortedById();
@@ -91,11 +84,11 @@ namespace EnrollmentSystem.Core
                 }
             }
 
-            return null; 
+            return null;
         }
 
-
-
+        // Compatibility methods for the provided Program.cs / test scaffolding,
+        // which use these older names instead of the spec method names above.
         public Log PeekLatestLog() => ViewLatestLog();
 
         public Log PopSystemLog() => RollbackLastLog();
