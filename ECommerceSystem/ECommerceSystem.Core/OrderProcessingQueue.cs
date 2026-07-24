@@ -8,11 +8,28 @@ public class OrderProcessingQueue
 
     public int Count => _orders.Count;
 
-    public void EnqueueOrder(Order order) => throw new NotImplementedException();
-    public Order ProcessNextOrder() => throw new NotImplementedException();
-    public Order PeekNextOrder() => throw new NotImplementedException();
+    public void EnqueueOrder(Order order)
+    {
+        _orders.Enqueue(order);
+    }
 
-    
-    public bool SearchOrder(Order order) => throw new NotImplementedException();
-    public void SortOrders() => throw new NotImplementedException();
+    public Order ProcessNextOrder()
+    {
+        return _orders.Dequeue();
+    }
+
+    public Order PeekNextOrder()
+    {
+        return _orders.Peek();
+    }
+
+    public bool SearchOrder(Order order)
+    {
+        return _orders.Search(order);
+    }
+
+    public void SortOrders()
+    {
+        _orders.Sort();
+    }
 }
