@@ -69,10 +69,10 @@ namespace EnrollmentSystem.ConsoleApp
                         string name = Console.ReadLine() ?? "";
                         Console.Write("Enter Course Code: ");
                         string course = Console.ReadLine() ?? "";
-                        
+
                         _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0));
                         Console.WriteLine("\nStudent registered successfully.");
-                        _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Registered student {id}" });
+                        _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Registered student {id}" });
                         break;
 
                     case "2":
@@ -82,13 +82,12 @@ namespace EnrollmentSystem.ConsoleApp
                         Console.WriteLine(removed ? "\nStudent removed successfully." : "\nStudent not found.");
                         if (removed)
                         {
-                            _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Removed student {targetId}" });
+                            _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Removed student {targetId}" });
                         }
                         break;
 
                     case "3":
                         Console.WriteLine("\n--- Current Student List ---");
-                        // If students haven't implemented a printing function, this handles it via the tracking metrics
                         int count = _registry.GetStudentCount();
                         Console.WriteLine($"Total Students: {count}");
                         for (int i = 0; i < count; i++)
@@ -107,7 +106,7 @@ namespace EnrollmentSystem.ConsoleApp
             {
                 Console.WriteLine($"\nError: {ex.Message}");
             }
-            
+
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
         }
@@ -215,7 +214,9 @@ namespace EnrollmentSystem.ConsoleApp
             Console.WriteLine("1. View Current Top Log (Peek)");
             Console.WriteLine("2. Clear/Purge Latest Log (Pop)");
             Console.WriteLine("3. Check Total Log Capacity");
-            Console.WriteLine("4. Back to Main Menu");
+            Console.WriteLine("4. Search Log by ID");
+            Console.WriteLine("5. Sort Logs by ID");
+            Console.WriteLine("6. Back to Main Menu");
             Console.Write("Choice: ");
             string choice = Console.ReadLine() ?? "";
 
@@ -235,6 +236,26 @@ namespace EnrollmentSystem.ConsoleApp
 
                     case "3":
                         Console.WriteLine($"\nTotal active operations recorded in Stack: {_logs.GetLogCount()}");
+                        break;
+
+                    case "4":
+                        Console.Write("Enter Log ID to search: ");
+                        string searchId = Console.ReadLine() ?? "";
+                        int index = _logs.SearchLog(new Log { LogId = searchId });
+
+                        if (index != -1)
+                        {
+                            Console.WriteLine($"\nLog found in stack at position {index} (distance from top).");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nLog ID not found in stack.");
+                        }
+                        break;
+
+                    case "5":
+                        _logs.SortLogsById();
+                        Console.WriteLine("\nAdministrative logs sorted successfully by Log ID.");
                         break;
                 }
             }
