@@ -10,6 +10,7 @@ public class ECommerceCoreTests
     // 1. ShoppingCart Tests (Integrates CustomArrayList<T>)
     // =========================================================================
 
+    // Verifies that adding products increases the cart count and calculates the correct total price.
     [Fact]
     public void ShoppingCart_AddItem_IncreasesItemCountAndCalculatesTotal()
     {
@@ -24,6 +25,7 @@ public class ECommerceCoreTests
         Assert.Equal(115.49m, cart.CalculateTotal());
     }
 
+    // Verifies that searching for a product returns its correct index in the shopping cart.
     [Fact]
     public void ShoppingCart_SearchItem_ReturnsCorrectIndexInCart()
     {
@@ -39,6 +41,7 @@ public class ECommerceCoreTests
         Assert.Equal(1, index);
     }
 
+    // Verifies that sorting the shopping cart arranges products in ascending order by price.
     [Fact]
     public void ShoppingCart_SortCartByPrice_OrdersItemsAscending()
     {
