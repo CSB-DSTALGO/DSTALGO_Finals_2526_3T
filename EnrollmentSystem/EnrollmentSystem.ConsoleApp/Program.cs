@@ -8,6 +8,7 @@ namespace EnrollmentSystem.ConsoleApp
         private static StudentRegistry _registry = new StudentRegistry();
         private static CourseCurriculum _curriculum = new CourseCurriculum();
         private static AdmissionsDesk _desk = new AdmissionsDesk();
+        private static int _ticketsInQueue = 0;
         private static AdministrativeLogs _logs = new AdministrativeLogs();
 
         static void Main(string[] args)
@@ -69,20 +70,20 @@ namespace EnrollmentSystem.ConsoleApp
                         string name = Console.ReadLine() ?? "";
                         Console.Write("Enter Course Code: ");
                         string course = Console.ReadLine() ?? "";
-                        
-                        _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0));
+
+                        _registry.RegisterStudent(new Student { Id = id, Name = name, CourseCode = course });
                         Console.WriteLine("\nStudent registered successfully.");
-                        _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Registered student {id}" });
+                        _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Registered student {id}" });
                         break;
 
                     case "2":
                         Console.Write("Enter Student ID to remove: ");
                         string targetId = Console.ReadLine() ?? "";
-                        bool removed = _registry.UnregisterStudent(int.Parse(targetId));
+                        bool removed = _registry.RemoveStudent(targetId);
                         Console.WriteLine(removed ? "\nStudent removed successfully." : "\nStudent not found.");
                         if (removed)
                         {
-                            _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Removed student {targetId}" });
+                            _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Removed student {targetId}" });
                         }
                         break;
 
@@ -107,7 +108,7 @@ namespace EnrollmentSystem.ConsoleApp
             {
                 Console.WriteLine($"\nError: {ex.Message}");
             }
-            
+
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
         }
@@ -135,20 +136,20 @@ namespace EnrollmentSystem.ConsoleApp
                         Console.Write("Enter Credit Units: ");
                         int.TryParse(Console.ReadLine(), out int units);
 
-                        _curriculum.InsertCourse(new Course(code, title, units));
+                        _curriculum.InsertCourse(new Course { Code = code, Title = title, Units = units });
                         Console.WriteLine("\nCourse inserted into curriculum.");
                         break;
 
                     case "2":
                         Console.Write("Enter Course Code to remove: ");
                         string targetCode = Console.ReadLine() ?? "";
-                        bool removed = _curriculum.DeleteCourse(targetCode);
+                        bool removed = _curriculum.RemoveCourse(targetCode);
                         Console.WriteLine(removed ? "\nCourse removed successfully." : "\nCourse not found.");
                         break;
 
                     case "3":
                         Console.WriteLine("\n--- Curriculum Matrix ---");
-                        Console.WriteLine($"Total Curriculum Units: {_curriculum.CalculateTotalUnits()}");
+                        Console.WriteLine($"Total Curriculum Units: {_curriculum.GetTotalUnits()}");
                         break;
                 }
             }
@@ -179,19 +180,23 @@ namespace EnrollmentSystem.ConsoleApp
                     case "1":
                         Console.Write("Enter Student ID for Ticket: ");
                         string studentId = Console.ReadLine() ?? "";
-                        string ticketId = $"T-{100 + _desk.GetQueueCount() + 1}";
+                        string ticketId = $"T-{100 + _ticketsInQueue + 1}";
 
                         _desk.IssueAdmissionsTicket(new Ticket { TicketId = ticketId, StudentId = studentId });
+                        _ticketsInQueue++;
                         Console.WriteLine($"\nTicket {ticketId} successfully issued to Student {studentId}.");
                         break;
 
                     case "2":
-                        var served = _desk.ServeNextTicket();
+                        var served = _desk.ServeNextStudent();
+                        _ticketsInQueue = Math.Max(0, _ticketsInQueue - 1);
                         Console.WriteLine($"\n[SERVED] Processing Ticket: {served.TicketId} for Student: {served.StudentId}");
                         break;
 
                     case "3":
-                        Console.WriteLine($"\nTickets remaining in queue line: {_desk.GetQueueCount()}");
+                        Console.WriteLine(_desk.CheckQueueEmpty()
+                            ? "\nThe queue is currently empty."
+                            : $"\nTickets remaining in queue line: {_ticketsInQueue}");
                         break;
                 }
             }

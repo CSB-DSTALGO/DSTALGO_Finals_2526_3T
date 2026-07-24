@@ -1,21 +1,36 @@
-namespace EnrollmentSystem.Core;
-
+// AdmissionsDesk.cs
+using System;
 using DataStructuresLibrary;
 
-public class AdmissionsDesk
+namespace EnrollmentSystem.Core
 {
-    private readonly CustomQueue<AdmissionApplication> _applications = new();
+    public class AdmissionsDesk
+    {
+        private readonly CustomQueue<Ticket> _queue;
 
-    public int Count => _applications.Count;
+        public AdmissionsDesk()
+        {
+            _queue = new CustomQueue<Ticket>();
+        }
 
-    public void IssueAdmissionsTicket(Ticket ticket) => throw new NotImplementedException();
-    public AdmissionApplication ServeNextStudent() => throw new NotImplementedException();
-    public Ticket ServeNextTicket() => throw new NotImplementedException();
-    public AdmissionApplication ViewNextTicket() => throw new NotImplementedException();
-    public bool CheckQueueEmpty() => throw new NotImplementedException();
-    public int GetQueueCount() => Count;
+        public void IssueAdmissionsTicket(Ticket ticket)
+        {
+            _queue.Enqueue(ticket);
+        }
 
-    // Hint: Delegate search and sort to CustomQueue<T>
-    public bool SearchApplication(AdmissionApplication app) => throw new NotImplementedException();
-    public void SortApplicationsByPriority() => throw new NotImplementedException();
+        public Ticket ServeNextStudent()
+        {
+            return _queue.Dequeue();
+        }
+
+        public Ticket ViewNextTicket()
+        {
+            return _queue.Peek();
+        }
+
+        public bool CheckQueueEmpty()
+        {
+            return _queue.IsEmpty();
+        }
+    }
 }
