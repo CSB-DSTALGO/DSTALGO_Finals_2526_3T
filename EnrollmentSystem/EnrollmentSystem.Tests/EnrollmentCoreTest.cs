@@ -143,16 +143,36 @@ namespace EnrollmentSystem.Tests
         public void IssueAdmissionsTicket_ShouldQueueTicketsInFIFOOrder()
         {
             var desk = new AdmissionsDesk();
-            var t1 = new Ticket { LogId = 1, Action = "First Action", Timestamp = DateTime.Now };
-            var t2 = new Ticket { LogId = 2, Action = "Second Action", Timestamp = DateTime.Now };
+            var t1 = new Ticket 
+            { 
+                LogId = 1,
+                Action = "First Action",
+                Timestamp = DateTime.Now,
+                TicketId = "T-101"
+            
+            };
+
+            var t2 = new Ticket 
+            { 
+                LogId = 2, 
+                Action = "Second Action", 
+                Timestamp = DateTime.Now,
+                TicketId = "T-102"
+            };
 
             desk.IssueAdmissionsTicket(t1);
             desk.IssueAdmissionsTicket(t2);
 
             Assert.Equal(2, desk.GetQueueCount());
+
+            var firstServed = desk.ServeNextTicket();
+            var secondServed = desk.ServeNextTicket();
+
+            Assert.Equal("T-101", firstServed.TicketId);
+            Assert.Equal("T-102", secondServed.TicketId);
+            Assert.Equal(0, desk.GetQueueCount());
             
-            var served = desk.ServeNextTicket();
-            Assert.Equal("T-101", served.TicketId);
+            
         }
 
         [Fact]
@@ -185,6 +205,33 @@ namespace EnrollmentSystem.Tests
             var desk = new AdmissionsDesk();
 
             Assert.Throws<InvalidOperationException>(() => desk.ViewNextTicket());
+        }
+
+        [Fact]
+        public void CheckQueueEmpty_NewDesk_ReturnsTrue() 
+        {
+            var desk = new AdmissionsDesk();
+
+            bool result = desk.CheckQueueEmpty();
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void CheckQueueEmpty_AfterIssuingTicket_ReturnsFalse() 
+        {
+            var desk = new AdmissionsDesk();
+
+            var ticket = new Ticket 
+            {
+                TicketId = "T-101"
+            };
+
+            desk.IssueAdmissionsTicket(ticket);
+
+            bool result = desk.CheckQueueEmpty();
+
+            Assert.False(result);
         }
     }
 
