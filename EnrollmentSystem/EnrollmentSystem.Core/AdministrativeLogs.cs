@@ -1,22 +1,40 @@
-namespace EnrollmentSystem.Core;
-
+using System;
 using DataStructuresLibrary;
 
-public class AdministrativeLogs
+namespace EnrollmentSystem.Core
 {
-    private readonly CustomStack<Log> _logs = new();
+    public class AdministrativeLogs
+    {
+        private readonly CustomStack<Log> _stack = new CustomStack<Log>();
 
-    public int Count => _logs.Count;
+        public int Count => _stack.Count;
 
-    public void PushSystemLog(Log log) => throw new NotImplementedException();
-    public Log RollbackLastLog() => throw new NotImplementedException();
-    public Log ViewLatestLog() => throw new NotImplementedException();
-    public Log PeekLatestLog() => throw new NotImplementedException();
-    public Log PopSystemLog() => throw new NotImplementedException();
-    public bool CheckLogsEmpty() => throw new NotImplementedException();
-    public int GetLogCount() => Count;
+        public void PushSystemLog(Log log)
+        {
+            _stack.Push(log);
+        }
 
-    // Hint: Delegate search and sort to CustomStack<T>
-    public int SearchLog(Log log) => throw new NotImplementedException();
-    public void SortLogsById() => throw new NotImplementedException();
+        public Log PopSystemLog()
+        {
+            return _stack.Pop();
+        }
+
+        public Log PeekLatestLog()
+        {
+            return _stack.Peek();
+        }
+
+        public int GetLogCount() => Count;
+
+        // Hint: Delegate search and sort to CustomStack<T>
+        public void SortLogsById()
+        {
+            _stack.Sort((log1, log2) => string.Compare(log1.LogId, log2.LogId));
+        }
+
+        public Log? SearchLogById(string logId)
+        {
+            return _stack.Search(log => log.LogId == logId);
+        }
+    }
 }

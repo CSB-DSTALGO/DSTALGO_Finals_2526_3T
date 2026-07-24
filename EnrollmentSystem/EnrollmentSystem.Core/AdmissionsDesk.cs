@@ -20,7 +20,7 @@ public class AdmissionsDesk
     {
         _tickets.Enqueue(ticket);
 
-<<<<<<< HEAD
+
     }
     public AdmissionApplication ServeNextStudent()
     {
@@ -47,13 +47,7 @@ public class AdmissionsDesk
             return false;
         }
     }
-=======
-    public void IssueAdmissionsTicket(Ticket ticket) => throw new NotImplementedException();
-    public AdmissionApplication ServeNextStudent() => throw new NotImplementedException();
-    public Ticket ServeNextTicket() => throw new NotImplementedException();
-    public AdmissionApplication ViewNextTicket() => throw new NotImplementedException();
-    public bool CheckQueueEmpty() => throw new NotImplementedException();
->>>>>>> origin/main
+
     public int GetQueueCount() => Count;
 
     // Hint: Delegate search and sort to CustomQueue<T>
