@@ -29,7 +29,7 @@ public int Count => _applications.Count;
 
    }
 
-   public void IssueAdmissionTicket(Ticket ticket)
+   public void IssueAdmissionsTicket(Ticket ticket)
    {
     if (ticket is null)
     {
@@ -147,6 +147,8 @@ public void SortApplicationsByPriority()
     }
 
 }
+}
+
 
 
 
