@@ -1,23 +1,37 @@
-namespace EnrollmentSystem.Core;
-
+// StudentRegistry.cs
+using System;
 using DataStructuresLibrary;
 
-public class StudentRegistry
+namespace EnrollmentSystem.Core
 {
-    private readonly CustomArrayList<Student> _students = new();
+    public class StudentRegistry
+    {
+        private readonly CustomArrayList<Student> _registry;
 
-    public int Count => _students.Count;
+        public StudentRegistry()
+        {
+            _registry = new CustomArrayList<Student>();
+        }
 
-    public void RegisterStudent(Student student) => throw new NotImplementedException();
-    public bool UnregisterStudent(int index) => throw new NotImplementedException();
-    public bool RemoveStudent(string id) => throw new NotImplementedException();
-    public Student GetStudentAt(int index) => throw new NotImplementedException();
+        public void RegisterStudent(Student student)
+        {
+            _registry.Add(student);
+        }
 
-    // Hint: Calculate average GPA of all registered students
-    public double CalculateAverageGpa() => throw new NotImplementedException();
+        public void UnregisterStudent(int index)
+        {
+            _registry.RemoveAt(index);
+        }
 
-    // Hint: Delegate search and sort to CustomArrayList<T>
-    public int SearchStudent(Student student) => throw new NotImplementedException();
-    public void SortStudentsByGpa() => throw new NotImplementedException();
-    public int GetStudentCount() => throw new NotImplementedException();
+        public Student GetStudentDetails(int index) => _registry.Get(index);
+
+        public void ShowAllStudents()
+        {
+            Console.WriteLine("All Students:\n");
+            for (int i = 0; i < _registry.Count; i++)
+            {
+                Console.Write($"_registry.Get(i)\t");
+            }
+        }
+    }
 }

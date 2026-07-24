@@ -10,32 +10,58 @@ namespace DataStructuresLibrary
 
         public int Count 
         { 
-            get { throw new NotImplementedException(); } 
+            get { return _count; } 
         }
 
-        public CustomArrayList()
+        public CustomArrayList(int capacity = 4)
         {
-            throw new NotImplementedException();
+            _items = new T[capacity];
+            _count = 0;
         }
 
         public void Add(T item)
         {
-            throw new NotImplementedException();
+            if (_count == _items.Length)
+            {
+                Resize();
+            }
+
+            _items[_count] = item;
+            _count++;
         }
 
         public T Get(int index)
         {
-            throw new NotImplementedException();
+            return _items[index];
         }
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            if (index < 0 || index >= _count)
+            {
+                throw new ArgumentOutOfRangeException("index");
+            }
+
+            for (int i = index; i < _count - 1; i++)
+            {
+                _items[i] = default(T);
+                _count--;
+            }
         }
 
         private void Resize()
         {
-            throw new NotImplementedException();
+            if (_count == _items.Length)
+            {
+                T[] new_items = new T[_items.Length*2];
+
+                for (int i = 0; i < _count; i++)
+                {
+                    new_items[i] = _items[i];
+                }
+
+                _items = new_items;
+            }
         }
     }
 }
