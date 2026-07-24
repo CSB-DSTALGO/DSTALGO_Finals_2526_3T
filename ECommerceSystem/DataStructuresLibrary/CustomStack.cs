@@ -86,3 +86,4 @@ public class CustomStack<T> where T : IComparable<T>
         }
     }
 }
+}

@@ -1,7 +1,5 @@
 namespace DataStructuresLibrary.Tests;
 
-namespace DataStructuresLibrary.Tests;
-
 using Xunit;
 using DataStructuresLibrary;
 
