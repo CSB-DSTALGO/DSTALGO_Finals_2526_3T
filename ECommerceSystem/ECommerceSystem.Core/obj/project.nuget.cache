@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hbM4eryf/40=",
+  "dgSpecHash": "y8qRCFfSG0s=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Maynard\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Core\\ECommerceSystem.Core.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Maynard\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.29\\microsoft.windowsdesktop.app.ref.8.0.29.nupkg.sha512",
-    "C:\\Users\\Maynard\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.29\\microsoft.netcore.app.ref.8.0.29.nupkg.sha512",
-    "C:\\Users\\Maynard\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.29\\microsoft.aspnetcore.app.ref.8.0.29.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\Precious Mana-ay\\Source\\Repos\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Core\\ECommerceSystem.Core.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
