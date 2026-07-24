@@ -1,6 +1,8 @@
+
+using System.Collections;
 namespace DataStructuresLibrary;
 
-public class CustomSinglyLinkedList<T> where T : IComparable<T>
+public class CustomSinglyLinkedList<T> : IEnumerable<T> where T : IComparable<T>
 {
     private class Node
     {
@@ -115,4 +117,16 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
             }
         } while (swapped);
     }
+    public IEnumerator<T> GetEnumerator()
+    {
+        Node? current = _head;
+
+        while (current != null)
+        {
+            yield return current.Data;
+            current = current.Next;
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }
