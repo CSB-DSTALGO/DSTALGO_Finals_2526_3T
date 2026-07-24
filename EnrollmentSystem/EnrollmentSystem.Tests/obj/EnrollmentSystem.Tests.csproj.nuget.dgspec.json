@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Tests/EnrollmentSystem.Tests.csproj": {}
+    "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Tests\\EnrollmentSystem.Tests.csproj": {}
   },
   "projects": {
-    "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
+    "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
         "projectName": "DataStructuresLibrary",
-        "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
-        "packagesPath": "/Users/caan/.nuget/packages/",
-        "outputPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/obj/",
+        "projectPath": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
+        "packagesPath": "C:\\Users\\layug\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/caan/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\layug\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -57,11 +63,15 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
+              "version": "[8.0.23, 8.0.23]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.23, 8.0.23]"
             }
           ],
           "frameworkReferences": {
@@ -69,34 +79,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj": {
+    "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj",
+        "projectUniqueName": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj",
         "projectName": "EnrollmentSystem.Core",
-        "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj",
-        "packagesPath": "/Users/caan/.nuget/packages/",
-        "outputPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Core/obj/",
+        "projectPath": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj",
+        "packagesPath": "C:\\Users\\layug\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/caan/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\layug\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
-                "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
+              "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
+                "projectPath": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj"
               }
             }
           }
@@ -130,11 +146,15 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
+              "version": "[8.0.23, 8.0.23]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.23, 8.0.23]"
             }
           ],
           "frameworkReferences": {
@@ -142,37 +162,43 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Tests/EnrollmentSystem.Tests.csproj": {
+    "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Tests\\EnrollmentSystem.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Tests/EnrollmentSystem.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Tests\\EnrollmentSystem.Tests.csproj",
         "projectName": "EnrollmentSystem.Tests",
-        "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Tests/EnrollmentSystem.Tests.csproj",
-        "packagesPath": "/Users/caan/.nuget/packages/",
-        "outputPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Tests/obj/",
+        "projectPath": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Tests\\EnrollmentSystem.Tests.csproj",
+        "packagesPath": "C:\\Users\\layug\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Tests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/caan/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\layug\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
-                "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
+              "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
+                "projectPath": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj"
               },
-              "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj": {
-                "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj"
+              "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj": {
+                "projectPath": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj"
               }
             }
           }
@@ -224,11 +250,15 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
+              "version": "[8.0.23, 8.0.23]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
+              "version": "[8.0.23, 8.0.23]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.23, 8.0.23]"
             }
           ],
           "frameworkReferences": {
@@ -236,7 +266,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

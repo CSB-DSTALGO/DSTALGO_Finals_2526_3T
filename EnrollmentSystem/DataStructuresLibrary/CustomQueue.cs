@@ -1,5 +1,5 @@
-// CustomQueue.cs
 using System;
+using System.Collections.Generic;
 
 namespace DataStructuresLibrary
 {
@@ -11,9 +11,10 @@ namespace DataStructuresLibrary
         private int _count;
 
         private const int DefaultCapacity = 4;
-        public int Count 
-        { 
-            get { return _count; } 
+
+        public int Count
+        {
+            get { return _count; }
         }
 
         public CustomQueue()
@@ -22,17 +23,16 @@ namespace DataStructuresLibrary
             _front = 0;
             _rear = 0;
             _count = 0;
-
         }
 
         public void Enqueue(T item)
         {
-            if(_count == _items.Length)
+            if (_count == _items.Length)
             {
                 Resize();
             }
 
-            _items[_rear++] = item;
+            _items[_rear] = item;
             _rear = (_rear + 1) % _items.Length;
             _count++;
         }
@@ -45,9 +45,10 @@ namespace DataStructuresLibrary
             }
 
             T item = _items[_front];
-            _items[_front] = default;
+            _items[_front] = default!;
             _front = (_front + 1) % _items.Length;
             _count--;
+
             return item;
         }
 
@@ -71,6 +72,7 @@ namespace DataStructuresLibrary
             for (int i = 0; i < _count; i++)
             {
                 int actualIndex = (_front + i) % _items.Length;
+
                 if (EqualityComparer<T>.Default.Equals(_items[actualIndex], item))
                 {
                     return i;
@@ -82,9 +84,11 @@ namespace DataStructuresLibrary
 
         public void Sort()
         {
-            if (_count <= 1) return;
+            if (_count <= 1)
+                return;
 
             T[] temp = new T[_count];
+
             for (int i = 0; i < _count; i++)
             {
                 temp[i] = _items[(_front + i) % _items.Length];
@@ -94,11 +98,13 @@ namespace DataStructuresLibrary
             {
                 T key = temp[i];
                 int j = i - 1;
+
                 while (j >= 0 && Comparer<T>.Default.Compare(temp[j], key) > 0)
                 {
                     temp[j + 1] = temp[j];
                     j--;
                 }
+
                 temp[j + 1] = key;
             }
 
@@ -113,11 +119,13 @@ namespace DataStructuresLibrary
 
         public bool Contains(Predicate<T> match)
         {
-            if (match == null) throw new ArgumentNullException(nameof(match));
+            if (match == null)
+                throw new ArgumentNullException(nameof(match));
 
             for (int i = 0; i < _count; i++)
             {
                 int actualIndex = (_front + i) % _items.Length;
+
                 if (match(_items[actualIndex]))
                 {
                     return true;
