@@ -21,7 +21,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(0, stack.Count);
         }
 
-    [Fact]
+        [Fact]
         public void Peek_ShouldReturnTopElement_WithoutRemovingIt()
         {
             // TODO: Test Peek returning top item while keeping Count intact

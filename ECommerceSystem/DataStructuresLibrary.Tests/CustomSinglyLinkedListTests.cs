@@ -1,7 +1,7 @@
 namespace DataStructuresLibrary.Tests;
 
 using Xunit;
-using DataStructuresLibrary.
+using DataStructuresLibrary;
 
 public class CustomSinglyLinkedListTests
 {
@@ -106,4 +106,3 @@ public class CustomSinglyLinkedListTests
         Assert.Equal(40, list.Get(3));
     }
 }
-
