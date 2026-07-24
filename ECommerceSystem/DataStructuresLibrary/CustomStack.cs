@@ -68,7 +68,7 @@ public class CustomStack<T> where T : IComparable<T>
         return -1;
     }
 
-    //Sorting Method 
+    //Sorting Method (Insertion)
     public void Sort()
     {
         if (Count <= 1)
