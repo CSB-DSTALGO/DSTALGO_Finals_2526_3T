@@ -1,22 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CSm/IZdruzg=",
+  "dgSpecHash": "joTjeA0qsbg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\pocho\\Documents\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\pocho\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.15\\microsoft.netcore.app.ref.9.0.15.nupkg.sha512",
-    "C:\\Users\\pocho\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.15\\microsoft.windowsdesktop.app.ref.9.0.15.nupkg.sha512",
-    "C:\\Users\\pocho\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.15\\microsoft.aspnetcore.app.ref.9.0.15.nupkg.sha512"
-  ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "message": "Problem reading the cache file C:\\Users\\pocho\\Documents\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
-      "projectPath": "C:\\Users\\pocho\\Documents\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\pocho\\Documents\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "projectFilePath": "C:\\Users\\MANGUBAT\\Downloads\\NICO CODES\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
+  "expectedPackageFiles": [],
+  "logs": []
 }
