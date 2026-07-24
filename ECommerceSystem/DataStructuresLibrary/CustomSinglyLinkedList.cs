@@ -58,19 +58,19 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
 
         return false;
     }
-    public bool Search(T item)
-    {
-        Node current = _head;
-        while (current != null)
+    public bool Search(T item) 
         {
-            if (current.Data.CompareTo(item) == 0)
-                return true;
-            current = current.Next;
-        }
-        return false;
+    Node current = _head;
+    while (current != null)
+    {
+        if (current.Data.CompareTo(item) == 0)
+            return true;
+        current = current.Next;
     }
+    return false;
+}
 
-
+    
     public void Sort()
     {
         if (_head == null) return;
@@ -95,3 +95,4 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
     }
 
 }
+
