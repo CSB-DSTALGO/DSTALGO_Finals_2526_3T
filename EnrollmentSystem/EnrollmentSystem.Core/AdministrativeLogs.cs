@@ -1,40 +1,63 @@
+namespace EnrollmentSystem.Core;
+
 using System;
 using DataStructuresLibrary;
 
-namespace EnrollmentSystem.Core
+public class AdministrativeLogs
 {
-    public class AdministrativeLogs
+    private readonly CustomStack<Log> _logs = new();
+
+    public int Count => _logs.Count;
+
+    public void PushSystemLog(Log log)
     {
-        private readonly CustomStack<Log> _stack = new CustomStack<Log>();
+        _logs.Push(log);
+    }
 
-        public int Count => _stack.Count;
+    public Log RollbackLastLog()
+    {
+        return _logs.Pop();
+    }
 
-        public void PushSystemLog(Log log)
+    public Log ViewLatestLog()
+    {
+        return _logs.Peek();
+    }
+
+    public Log PeekLatestLog()
+    {
+        return _logs.Peek();
+    }
+
+    public Log PopSystemLog()
+    {
+        return _logs.Pop();
+    }
+
+    public bool CheckLogsEmpty()
+    {
+        if (_logs.IsEmpty())
         {
-            _stack.Push(log);
+            return true;
         }
-
-        public Log PopSystemLog()
+        else
         {
-            return _stack.Pop();
+            Console.WriteLine("Logs are not empty, remaining: " + _logs.Count);
+            return false;
         }
+    }
 
-        public Log PeekLatestLog()
-        {
-            return _stack.Peek();
-        }
+    public int GetLogCount() => Count;
 
-        public int GetLogCount() => Count;
+    // Hint: Delegate search and sort to CustomStack<T>
+    public int SearchLog(Log log)
+    {
+        var foundLog = _logs.Search(l => l.Equals(log));
+        return foundLog != null ? 1 : -1;
+    }
 
-        // Hint: Delegate search and sort to CustomStack<T>
-        public void SortLogsById()
-        {
-            _stack.Sort((log1, log2) => string.Compare(log1.LogId, log2.LogId));
-        }
-
-        public Log? SearchLogById(string logId)
-        {
-            return _stack.Search(log => log.LogId == logId);
-        }
+    public void SortLogsById()
+    {
+        _logs.Sort((log1, log2) => string.Compare(log1.LogId, log2.LogId));
     }
 }
