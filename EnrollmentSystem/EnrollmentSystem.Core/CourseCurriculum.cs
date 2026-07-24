@@ -2,19 +2,20 @@ namespace EnrollmentSystem.Core;
 
 using DataStructuresLibrary;
 
-public class CourseCurriculum
-{
-    namespace EnrollmentSystem.Core
+namespace EnrollmentSystem.Core
 {
     public class CourseCurriculum
     {
+        // The  linked list that stores Course objects.
         private readonly CustomSinglyLinkedList<Course> _curriculum;
 
+        // Initializes a new empty course curriculum.
         public CourseCurriculum()
         {
             _curriculum = new CustomSinglyLinkedList<Course>();
         }
 
+        // Adds a course to the end of the curriculum.  Throws ArgumentNullException if the course is null.
         public void InsertCourse(Course course)
         {
             if (course == null)
@@ -23,6 +24,7 @@ public class CourseCurriculum
             _curriculum.AddLast(course);
         }
 
+        // Removes a course from the curriculum by its course code. Uses RemoveByPredicate to perform a linear search for the target. Returns true if the course was found and removed; false otherwise.
         public bool DeleteCourse(string courseCode)
         {
             if (string.IsNullOrEmpty(courseCode))
@@ -31,6 +33,7 @@ public class CourseCurriculum
             return _curriculum.RemoveByPredicate(c => c.Code == courseCode);
         }
 
+        // Searches for a course by its course code.Returns the matching Course if found; null otherwise.
         public Course? SearchCourse(string courseCode)
         {
             if (string.IsNullOrEmpty(courseCode))
@@ -39,6 +42,7 @@ public class CourseCurriculum
             return _curriculum.Find(c => c.Code == courseCode);
         }
 
+        // Displays all courses currently in the curriculum.
         public void ShowCurriculum()
         {
             Console.WriteLine("--- Course Curriculum ---");
@@ -51,6 +55,7 @@ public class CourseCurriculum
             _curriculum.Traverse(course => Console.WriteLine($"  {course.Code} | {course.Title} | {course.Units} units"));
         }
 
+        // Calculates the total number of units across all courses.
         public int CalculateTotalUnits()
         {
             int total = 0;
@@ -58,13 +63,16 @@ public class CourseCurriculum
             return total;
         }
 
+        // Returns the total number of courses in the curriculum.
         public int GetCourseCount()
         {
             return _curriculum.Count;
         }
+
+        // Sorts the curriculum alphabetically by course code.Uses the Bubble Sort algorithm integrated into the linked list.
+        public void SortCurriculum()
+        {
+            _curriculum.Sort((a, b) => string.Compare(a.Code, b.Code, StringComparison.OrdinalIgnoreCase));
+        }
     }
-
-
-    //DIKO PA GAWA SORT GUYS 
-    //public void SortCurriculumByUnits() => throw new NotImplementedException();
 }

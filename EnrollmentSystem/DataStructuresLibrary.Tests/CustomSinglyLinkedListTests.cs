@@ -6,7 +6,7 @@ namespace DataStructuresLibrary.Tests
 {
     public class CustomSinglyLinkedListTests
     {
-
+        // Make sure that AddLast correctly inserts into an empty list.
         [Fact]
         public void AddLast_ShouldAddToEmptyList()
         {
@@ -17,6 +17,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(10, list.Head!.Data);
         }
 
+        // Verifies that AddLast appends multiple items in the correct order.
         [Fact]
         public void AddLast_ShouldAppendMultipleItems()
         {
@@ -31,7 +32,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal("CS103", list.Head.Next.Next!.Data);
         }
 
-
+        // Verifies that Remove correctly removes the head node.
         [Fact]
         public void Remove_ShouldRemoveHead()
         {
@@ -46,6 +47,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(20, list.Head!.Data);
         }
 
+        // Verifies that Remove correctly removes a middle node.
         [Fact]
         public void Remove_ShouldRemoveMiddleNode()
         {
@@ -62,6 +64,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(30, list.Head.Next!.Data);
         }
 
+        // Verifies that Remove returns false when the item is not found.
         [Fact]
         public void Remove_ShouldReturnFalse_WhenNotFound()
         {
@@ -73,6 +76,7 @@ namespace DataStructuresLibrary.Tests
             Assert.False(removed);
         }
 
+        // Verifies that Remove returns false when the list is empty.
         [Fact]
         public void Remove_ShouldReturnFalse_WhenEmpty()
         {
@@ -81,7 +85,7 @@ namespace DataStructuresLibrary.Tests
             Assert.False(removed);
         }
 
-
+        // Verifies that RemoveByPredicate removes an item matching a condition.
         [Fact]
         public void RemoveByPredicate_ShouldRemoveMatchingItem()
         {
@@ -95,7 +99,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(1, list.Count);
         }
 
-
+        // Verifies that Find returns the correct item when it exists.
         [Fact]
         public void Find_ShouldReturnMatchingItem()
         {
@@ -108,6 +112,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(20, result);
         }
 
+        // Verifies that Find returns the default value when the item is not found.
         [Fact]
         public void Find_ShouldReturnDefault_WhenNotFound()
         {
@@ -119,7 +124,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(0, result);
         }
 
-
+        // Verifies that Traverse visits every item in the list.
         [Fact]
         public void Traverse_ShouldVisitAllItems()
         {
@@ -134,7 +139,23 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(6, sum);
         }
 
+        // Verifies that Sort arranges items in ascending order.
+        [Fact]
+        public void Sort_ShouldArrangeItemsInOrder()
+        {
+            var list = new CustomSinglyLinkedList<int>();
+            list.AddLast(3);
+            list.AddLast(1);
+            list.AddLast(2);
 
+            list.Sort((a, b) => a.CompareTo(b));
+
+            Assert.Equal(1, list.Head!.Data);
+            Assert.Equal(2, list.Head.Next!.Data);
+            Assert.Equal(3, list.Head.Next.Next!.Data);
+        }
+
+        // Verifies that Count is zero for a newly created list.
         [Fact]
         public void Count_ShouldBeZero_OnNewList()
         {
@@ -142,6 +163,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(0, list.Count);
         }
 
+        // Verifies that Count updates correctly after insertions and deletions.
         [Fact]
         public void Count_ShouldTrackCorrectly()
         {
@@ -158,5 +180,4 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(1, list.Count);
         }
     }
-
 }
