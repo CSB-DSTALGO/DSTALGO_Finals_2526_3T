@@ -5,38 +5,143 @@ using DataStructuresLibrary;
 
 public class CustomSinglyLinkedListTests
 {
+    // ---------- Add ----------
+
     [Fact]
-    public void Add_ShouldAppendNodeAndIncrementCount()
+    public void Add_ShouldIncrementCount_WhenSingleItemAdded()
     {
-        // TODO: Test appending items to the linked list
-        throw new NotImplementedException();
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(10);
+        Assert.Equal(1, list.Count);
     }
 
     [Fact]
-    public void Remove_ShouldUpdateNodePointersCorrectly()
+    public void Add_ShouldIncrementCount_ForEachItemAdded()
     {
-        // TODO: Test removing head, middle, and tail nodes
-        throw new NotImplementedException();
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(10);
+        list.Add(20);
+        list.Add(30);
+        Assert.Equal(3, list.Count);
     }
+
+    [Fact]
+    public void Add_ShouldMakeItemFindableViaSearch()
+    {
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(10);
+        Assert.True(list.Search(10));
+    }
+
+    // ---------- Remove ----------
+
+    [Fact]
+    public void Remove_ShouldRemoveHeadNode_WhenOnlyOneItemExists()
+    {
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(10);
+
+        bool removed = list.Remove(10);
+
+        Assert.True(removed);
+        Assert.Equal(0, list.Count);
+        Assert.False(list.Search(10));
+    }
+
+    [Fact]
+    public void Remove_ShouldRemoveMiddleNode_AndKeepOthersIntact()
+    {
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(10);
+        list.Add(20);
+        list.Add(30);
+
+        bool removed = list.Remove(20);
+
+        Assert.True(removed);
+        Assert.Equal(2, list.Count);
+        Assert.True(list.Search(10));
+        Assert.True(list.Search(30));
+        Assert.False(list.Search(20));
+    }
+
+    [Fact]
+    public void Remove_ShouldReturnFalse_WhenItemDoesNotExist()
+    {
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(10);
+
+        bool removed = list.Remove(999);
+
+        Assert.False(removed);
+        Assert.Equal(1, list.Count);
+    }
+
+    // ---------- Search ----------
 
     [Fact]
     public void Search_ShouldReturnTrue_WhenItemExistsInNodes()
     {
-        // TODO: Test linear node traversal finding existing data
-        throw new NotImplementedException();
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(10);
+        Assert.True(list.Search(10));
     }
 
     [Fact]
     public void Search_ShouldReturnFalse_WhenItemIsAbsent()
     {
-        // TODO: Test linear search returning false for missing data
-        throw new NotImplementedException();
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(10);
+        Assert.False(list.Search(20));
     }
 
     [Fact]
-    public void Sort_ShouldRearrangeNodePointersInAscendingOrder()
+    public void Search_ShouldReturnFalse_WhenListIsEmpty()
     {
-        // TODO: Test node re-linking to verify ascending list order
-        throw new NotImplementedException();
+        var list = new CustomSinglyLinkedList<int>();
+        Assert.False(list.Search(10));
+    }
+
+    // ---------- Sort ----------
+
+    [Fact]
+    public void Sort_ShouldNotChangeCount()
+    {
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(30);
+        list.Add(10);
+        list.Add(20);
+
+        list.Sort();
+
+        Assert.Equal(3, list.Count);
+    }
+
+    [Fact]
+    public void Sort_ShouldKeepAllItemsSearchable()
+    {
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(30);
+        list.Add(10);
+        list.Add(20);
+
+        list.Sort();
+
+        Assert.True(list.Search(10));
+        Assert.True(list.Search(20));
+        Assert.True(list.Search(30));
+    }
+
+    [Fact]
+    public void Sort_ShouldHandleAlreadySortedList_WithoutError()
+    {
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(10);
+        list.Add(20);
+        list.Add(30);
+
+        list.Sort();
+
+        Assert.Equal(3, list.Count);
     }
 }
