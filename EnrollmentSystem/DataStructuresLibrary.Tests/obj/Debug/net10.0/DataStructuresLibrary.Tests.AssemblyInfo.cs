@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DataStructuresLibrary.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0e1e0cf6dd2171a979cba038d0c0b3ec9407ddc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a37464b7e110186f85bddfb20805d07c1a3e6c3c")]
 [assembly: System.Reflection.AssemblyProductAttribute("DataStructuresLibrary.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DataStructuresLibrary.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
