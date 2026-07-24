@@ -37,51 +37,52 @@ public class CustomStack<T> where T : IComparable<T>
     }
 
     public T Pop()
-{
-    if (Count == 0)
     {
-        throw new InvalidOperationException("Stack is empty.");
+        if (Count == 0)
+        {
+            throw new InvalidOperationException("Stack is empty.");
+        }
+
+        Count--;
+        T item = _items[Count];
+        _items[Count] = default!;
+
+        return item;
     }
-
-    Count--;
-    T item = _items[Count];
-    _items[Count] = default!;
-
-    return item;
-}
 
     public T Peek()
-{
-    if (Count == 0)
     {
-        throw new InvalidOperationException("Stack is empty.");
-    }
+        if (Count == 0)
+        {
+            throw new InvalidOperationException("Stack is empty.");
+        }
 
-    return _items[Count - 1];
-}
+        return _items[Count - 1];
+    }
 
     public int Search(T item)
-{
-    for (int i = Count - 1, depth = 1; i >= 0; i--, depth++)
     {
-        if (_items[i].CompareTo(item) == 0)
-            return depth;
+        for (int i = Count - 1, depth = 1; i >= 0; i--, depth++)
+        {
+            if (_items[i].CompareTo(item) == 0)
+                return depth;
+        }
+
+        return -1;
     }
 
-    return -1;
-}
     public void Sort()
-{
-    // Bubble Sort (descending in array so smallest ends up on top)
-    for (int i = 0; i < Count - 1; i++)
     {
-        for (int j = 0; j < Count - i - 1; j++)
+        for (int i = 0; i < Count - 1; i++)
         {
-            if (_items[j].CompareTo(_items[j + 1]) < 0)
+            for (int j = 0; j < Count - i - 1; j++)
             {
-                T temp = _items[j];
-                _items[j] = _items[j + 1];
-                _items[j + 1] = temp;
+                if (_items[j].CompareTo(_items[j + 1]) < 0)
+                {
+                    T temp = _items[j];
+                    _items[j] = _items[j + 1];
+                    _items[j + 1] = temp;
+                }
             }
         }
     }
