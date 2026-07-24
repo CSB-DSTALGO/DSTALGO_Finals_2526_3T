@@ -32,6 +32,10 @@ namespace DataStructuresLibrary
 
         public T Get(int index)
         {
+            if (index < 0 || index >= _count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index));;
+            }
             return _items[index];
         }
 
@@ -39,14 +43,16 @@ namespace DataStructuresLibrary
         {
             if (index < 0 || index >= _count)
             {
-                throw new ArgumentOutOfRangeException("index");
+                throw new ArgumentOutOfRangeException(nameof(index));;
             }
 
             for (int i = index; i < _count - 1; i++)
             {
-                _items[i] = default(T);
-                _count--;
+                _items[i] = _items[i + 1];
             }
+
+            _items[_count - 1] = default(T);
+            _count--;
         }
 
         private void Resize()
@@ -63,5 +69,6 @@ namespace DataStructuresLibrary
                 _items = new_items;
             }
         }
+
     }
 }

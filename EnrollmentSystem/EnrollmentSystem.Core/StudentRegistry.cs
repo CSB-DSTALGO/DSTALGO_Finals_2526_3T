@@ -30,8 +30,13 @@ namespace EnrollmentSystem.Core
             Console.WriteLine("All Students:\n");
             for (int i = 0; i < _registry.Count; i++)
             {
-                Console.Write($"_registry.Get(i)\t");
+                Console.Write(_registry.Get(i) + "\t");
             }
+        }
+
+        public void SortStudents()
+        {
+            
         }
     }
 }
