@@ -30,6 +30,48 @@ namespace EnrollmentSystem.Tests
             Assert.True(removed);
             Assert.Equal(0, registry.GetStudentCount());
         }
+
+        [Fact]
+        public void RemoveStudent_ByIdString_ShouldReturnTrue_WhenStudentExists()
+        {
+            var registry = new StudentRegistry();
+            var alice = new Student(20260001, "Alice", 3.5);
+            var bob = new Student(20260002, "Bob", 2.8);
+            registry.RegisterStudent(alice);
+            registry.RegisterStudent(bob);
+
+            bool removed = registry.RemoveStudent("20260001");
+
+            Assert.True(removed);
+            Assert.Equal(1, registry.GetStudentCount());
+            Assert.Equal("Bob", registry.GetStudentAt(0).Name);
+        }
+
+        [Fact]
+        public void CalculateAverageGpa_ShouldReturnAverageOfRegisteredStudents()
+        {
+            var registry = new StudentRegistry();
+            registry.RegisterStudent(new Student(20260001, "Alice", 3.5));
+            registry.RegisterStudent(new Student(20260002, "Bob", 2.5));
+
+            double average = registry.CalculateAverageGpa();
+
+            Assert.Equal(3.0, average, 2);
+        }
+
+        [Fact]
+        public void SearchStudent_ShouldReturnIndex_WhenStudentExists()
+        {
+            var registry = new StudentRegistry();
+            var alice = new Student(20260001, "Alice", 3.5);
+            var bob = new Student(20260002, "Bob", 2.5);
+            registry.RegisterStudent(alice);
+            registry.RegisterStudent(bob);
+
+            int index = registry.SearchStudent(bob);
+
+            Assert.Equal(1, index);
+        }
     }
 
     public class CourseCurriculumTests
@@ -59,6 +101,38 @@ namespace EnrollmentSystem.Tests
             Assert.True(removed);
             Assert.Equal(0, curriculum.GetTotalUnits());
         }
+
+        [Fact]
+        public void DeleteCourse_ShouldReturnFalse_WhenCourseCodeDoesNotExist()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS101", "Intro to CS", 3));
+
+            bool removed = curriculum.DeleteCourse("CS999");
+
+            Assert.False(removed);
+            Assert.Equal(3, curriculum.CalculateTotalUnits());
+        }
+
+        [Fact]
+        public void CalculateTotalUnits_ShouldReturnSumOfAllInsertedCourses()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS101", "Intro to CS", 3));
+            curriculum.InsertCourse(new Course("CS102", "Data Structures", 4));
+
+            Assert.Equal(7, curriculum.CalculateTotalUnits());
+        }
+
+        [Fact]
+        public void SearchCourse_ShouldReturnTrue_WhenCourseExists()
+        {
+            var curriculum = new CourseCurriculum();
+            var course = new Course("CS102", "Data Structures", 4);
+            curriculum.InsertCourse(course);
+
+            Assert.True(curriculum.SearchCourse(course));
+        }
     }
 
     public class AdmissionsDeskTests
@@ -85,6 +159,30 @@ namespace EnrollmentSystem.Tests
             var desk = new AdmissionsDesk();
 
             Assert.Throws<InvalidOperationException>(() => desk.ServeNextTicket());
+        }
+
+        [Fact]
+        public void ViewNextTicket_ShouldReturnFirstTicketInQueue()
+        {    
+            var desk = new AdmissionsDesk();
+            var t1 = new Ticket { LogId = 1, Action = "First Action", Timestamp = DateTime.Now, TicketId = "T-101" };
+            var t2 = new Ticket { LogId = 2, Action = "Second Action", Timestamp = DateTime.Now, TicketId = "T-102" };            
+
+            desk.IssueAdmissionsTicket(t1);
+            desk.IssueAdmissionsTicket(t2);
+
+            var served = desk.ViewNextTicket();
+            Assert.Equal("T-101", served.TicketId);
+            
+            
+        }
+
+        [Fact]
+        public void ViewNextTicket_ShouldThrowException_WhenQueueIsEmpty()
+        {
+            var desk = new AdmissionsDesk();
+
+            Assert.Throws<InvalidOperationException>(() => desk.ViewNextTicket());
         }
     }
 
@@ -119,8 +217,6 @@ namespace EnrollmentSystem.Tests
             Assert.Equal(1, logs.GetLogCount());
         }
 
-        // (spec method)
-
         [Fact]
         public void PushSystemLog_NullLog_ThrowsArgumentNullException()
         {
@@ -140,8 +236,6 @@ namespace EnrollmentSystem.Tests
 
             Assert.Equal(3, logs.GetLogCount());
         }
-
-        // (spec method)
 
         [Fact]
         public void RollbackLastLog_ReturnsMostRecentLogAndRemovesIt()
@@ -164,8 +258,6 @@ namespace EnrollmentSystem.Tests
             Assert.Throws<InvalidOperationException>(() => logs.RollbackLastLog());
         }
 
-        // (spec method) 
-
         [Fact]
         public void ViewLatestLog_DoesNotRemoveTheLog()
         {
@@ -185,8 +277,6 @@ namespace EnrollmentSystem.Tests
 
             Assert.Throws<InvalidOperationException>(() => logs.ViewLatestLog());
         }
-
-        //  (spec method) 
 
         [Fact]
         public void CheckLogsEmpty_OnNewInstance_ReturnsTrue()
@@ -215,8 +305,6 @@ namespace EnrollmentSystem.Tests
             Assert.True(logs.CheckLogsEmpty());
         }
 
-        // (insertion sort) 
-
         [Fact]
         public void GetLogsSortedById_ReturnsLogsInAscendingOrder()
         {
@@ -240,7 +328,6 @@ namespace EnrollmentSystem.Tests
 
             logs.GetLogsSortedById();
 
-            //last pushed (L-001) is still on top.
             Assert.Equal("L-001", logs.ViewLatestLog().LogId);
         }
 
@@ -253,8 +340,6 @@ namespace EnrollmentSystem.Tests
 
             Assert.Empty(sorted);
         }
-
-        // (binary search)
 
         [Fact]
         public void SearchLogById_ExistingId_ReturnsMatchingLog()
@@ -292,3 +377,4 @@ namespace EnrollmentSystem.Tests
         }
     }
 }
+

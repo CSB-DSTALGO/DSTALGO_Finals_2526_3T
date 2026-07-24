@@ -132,5 +132,46 @@ namespace EnrollmentSystem.Core
             }
             return false;
         }
+            // Overload: allows removing a student by a string-formatted ID too.
+public bool RemoveStudent(string id)
+        {
+            if (int.TryParse(id, out int parsedId))
+            {
+                return RemoveStudent(parsedId);
+            }
+            return false;
+        }
+
+        // Calculates the average GPA across all currently registered students.
+        public double CalculateAverageGpa()
+        {
+            if (_registry.Count == 0)
+            {
+                return 0;
+            }
+
+            double total = 0;
+            for (int i = 0; i < _registry.Count; i++)
+            {
+                total += _registry.Get(i).Gpa;
+            }
+
+            return total / _registry.Count;
+        }
+
+        // Returns the index of a matching student (by Id), or -1 if not found.
+        public int SearchStudent(Student student)
+        {
+            for (int i = 0; i < _registry.Count; i++)
+            {
+                if (_registry.Get(i).Id == student.Id)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
     }
-}
+  }
+
