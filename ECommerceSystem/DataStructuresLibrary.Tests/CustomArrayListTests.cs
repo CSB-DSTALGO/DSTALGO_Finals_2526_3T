@@ -78,4 +78,48 @@ public class CustomArrayListTests
         Assert.Equal(20, list.Get(1));
         Assert.Equal(30, list.Get(2));
     }
+
+    [Fact]
+    public void Add_ShouldResizeArray_WhenCapacityIsExceeded()
+    {
+        // TEST FOR: RESIZING
+        var list = new CustomArrayList<int>();
+
+        list.Add(1);
+        list.Add(2);
+        list.Add(3);
+        list.Add(4);
+        list.Add(5);
+
+        Assert.Equal(5, list.Count);
+        Assert.Equal(5, list.Get(4));
+    }
+
+    [Fact]
+    public void Remove_ShouldReturnFalse_WhenItemDoesNotExist()
+    {
+        // TEST FOR: REMOVING AN ITEM THAT DOES NOT EXIST
+        var list = new CustomArrayList<int>();
+
+        list.Add(10);
+        list.Add(20);
+
+        bool result = list.Remove(30);
+
+        Assert.False(result);
+        Assert.Equal(2, list.Count);
+    }
+
+    [Fact]
+    public void Get_ShouldThrowException_WhenIndexIsInvalid()
+    {
+        // TEST FOR: IF INVALID INDEXES ARE HANDLED CORRECTLY. 
+        var list = new CustomArrayList<int>();
+
+        list.Add(10);
+
+        Assert.Throws<ArgumentOutOfRangeException>(() => list.Get(5));
+    }
+
+
 }
