@@ -21,3 +21,4 @@ public class AdmissionsDesk
     public bool SearchApplication(AdmissionApplication app) => _applications.Search(app); // Search for an application in the queue
     public void SortApplicationsByPriority() => _applications.Sort((a, b) => a.PriorityScore.CompareTo(b.PriorityScore)); // Sort applications by priority score
 }
+

@@ -1,4 +1,3 @@
-// CustomQueue.cs
 using System;
 
 namespace DataStructuresLibrary
@@ -10,7 +9,7 @@ namespace DataStructuresLibrary
         private int _rear; // Next element
         private int _count; // Number of elements in the queue
 
-        public int Count 
+        public int Count
         {
             get { return _count; } // Property to get the number of elements in the queue
         }
@@ -87,3 +86,4 @@ namespace DataStructuresLibrary
         }
     }
 }
+

@@ -207,7 +207,7 @@ namespace DataStructuresLibrary.Tests
             bool found = queue.Search(20); // Search for an existing item
             Assert.True(found); // Verifies that the item was found
         }
-        
+
         [Fact]
         public void Search_ReturnsFirstMatchingItem() // Test for searching and returning the first matching item
         {
