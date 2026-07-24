@@ -1,4 +1,3 @@
-// CustomStack.cs
 using System;
 
 namespace DataStructuresLibrary
@@ -69,35 +68,6 @@ namespace DataStructuresLibrary
             }
 
             _items = newItems; // make _items reference the new larger array
-        }
-
-        public int Search(T item, Func<T, T, bool> comparer) // searches item in stack using custom comparer
-        {
-            for (int i = 0; i < _top; i++)
-            {
-                if (comparer(_items[i], item)) // check if match
-                {
-                    return i; // return index if found
-                }
-            }
-
-            return -1; // return -1 if not found
-        }
-
-        public void Sort(Func<T, T, bool> shouldSwap) // sorts items in stack
-        {
-            for (int i = 0; i < _top - 1; i++)
-            {
-                for (int j = 0; j < _top - i - 1; j++)
-                {
-                    if (shouldSwap(_items[j], _items[j + 1])) // check if needs to swap
-                    {
-                        T temp = _items[j];
-                        _items[j] = _items[j + 1];
-                        _items[j + 1] = temp;
-                    }
-                }
-            }
         }
     }
 }
