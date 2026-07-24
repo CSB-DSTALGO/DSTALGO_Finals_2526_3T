@@ -27,7 +27,7 @@ namespace EnrollmentSystem.Tests
             var student = new Student(20260001, "Alice", 0.0);
             registry.RegisterStudent(student);
 
-            bool removed = registry.UnregisterStudent(20260001);
+            bool removed = registry.RemoveStudent("20260001");
 
             Assert.True(removed);
             Assert.Equal(0, registry.GetStudentCount());
