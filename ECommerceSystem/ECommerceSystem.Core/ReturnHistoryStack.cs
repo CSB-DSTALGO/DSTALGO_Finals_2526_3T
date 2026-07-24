@@ -1,13 +1,14 @@
-namespace ECommerceSystem.Core;
-
 using DataStructuresLibrary;
 
-public class ReturnHistoryStack
+namespace ECommerceSystem.Core
 {
-    private readonly CustomStack<ReturnRequest> _returns = new();
+    public class ReturnHistoryStack
+    {
+        private readonly CustomStack<ReturnRequest> _returns = new();
 
-    public int Count => _returns.Count;
+        public int Count => _returns.Count;
 
+<<<<<<< Updated upstream
     public void PushReturn(ReturnRequest request)
     {
         _returns.Push(request);
@@ -33,3 +34,31 @@ public class ReturnHistoryStack
         _returns.Sort();
     }
 }
+=======
+        public void PushReturn(ReturnRequest request)
+        {
+            _returns.Push(request);
+        }
+
+        public ReturnRequest PopReturn()
+        {
+            return _returns.Pop();
+        }
+
+        public ReturnRequest PeekLatestReturn()
+        {
+            return _returns.Peek();
+        }
+
+        public int SearchReturn(ReturnRequest request)
+        {
+            return _returns.Search(request);
+        }
+
+        public void SortReturns()
+        {
+            _returns.Sort();
+        }
+    }
+}
+>>>>>>> Stashed changes

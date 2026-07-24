@@ -9,7 +9,10 @@ public class CustomArrayListTests
     public void Add_ShouldIncreaseCountAndStoreItems()
     {
         var list = new CustomArrayList<int>();
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
         list.Add(10);
         list.Add(20);
         list.Add(30);
@@ -18,6 +21,7 @@ public class CustomArrayListTests
         Assert.Equal(10, list.Get(0));
         Assert.Equal(20, list.Get(1));
         Assert.Equal(30, list.Get(2));
+<<<<<<< Updated upstream
     }
 
     [Fact]
@@ -43,17 +47,23 @@ public class CustomArrayListTests
 
         Assert.Equal(5, list.Get(0));
         Assert.Equal(15, list.Get(1));
+=======
+>>>>>>> Stashed changes
     }
 
     [Fact]
     public void Remove_ShouldShiftElementsCorrectly()
     {
         var list = new CustomArrayList<int>();
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
         list.Add(10);
         list.Add(20);
         list.Add(30);
 
+<<<<<<< Updated upstream
         bool result = list.Remove(20);
 
         Assert.True(result);
@@ -122,18 +132,34 @@ public class CustomArrayListTests
         list.Add(10);
 
         Assert.Throws<IndexOutOfRangeException>(() => list.Get(-1));
+=======
+        bool removed = list.Remove(20);
+
+        Assert.True(removed);
+        Assert.Equal(2, list.Count);
+        Assert.Equal(10, list.Get(0));
+        Assert.Equal(30, list.Get(1));
+>>>>>>> Stashed changes
     }
 
     [Fact]
     public void Search_ShouldReturnCorrectIndex_WhenItemExists()
     {
         var list = new CustomArrayList<int>();
+<<<<<<< Updated upstream
 
         list.Add(10);
         list.Add(20);
         list.Add(30);
 
         int index = list.Search(20);
+=======
+        list.Add(5);
+        list.Add(15);
+        list.Add(25);
+
+        int index = list.Search(15);
+>>>>>>> Stashed changes
 
         Assert.Equal(1, index);
     }
@@ -142,6 +168,7 @@ public class CustomArrayListTests
     public void Search_ShouldReturnMinusOne_WhenItemDoesNotExist()
     {
         var list = new CustomArrayList<int>();
+<<<<<<< Updated upstream
 
         list.Add(10);
         list.Add(20);
@@ -162,15 +189,30 @@ public class CustomArrayListTests
         int index = list.Search(10);
 
         Assert.Equal(0, index);
+=======
+        list.Add(5);
+        list.Add(15);
+        list.Add(25);
+
+        int index = list.Search(100);
+
+        Assert.Equal(-1, index);
+>>>>>>> Stashed changes
     }
 
     [Fact]
     public void Sort_ShouldOrderElementsInAscendingSequence()
     {
         var list = new CustomArrayList<int>();
+<<<<<<< Updated upstream
 
         list.Add(30);
         list.Add(10);
+=======
+        list.Add(40);
+        list.Add(10);
+        list.Add(30);
+>>>>>>> Stashed changes
         list.Add(20);
 
         list.Sort();
@@ -178,6 +220,7 @@ public class CustomArrayListTests
         Assert.Equal(10, list.Get(0));
         Assert.Equal(20, list.Get(1));
         Assert.Equal(30, list.Get(2));
+<<<<<<< Updated upstream
     }
 
     [Fact]
@@ -208,5 +251,8 @@ public class CustomArrayListTests
         list.Sort();
 
         Assert.Equal(50, list.Get(2));
+=======
+        Assert.Equal(40, list.Get(3));
+>>>>>>> Stashed changes
     }
 }

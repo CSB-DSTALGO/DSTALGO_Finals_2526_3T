@@ -20,11 +20,19 @@ public class ProductCatalog
 
     public bool SearchProduct(Product product)
     {
+<<<<<<< Updated upstream
         return _products.Search(product) != -1;
+=======
+        return _products.Search(product);
+>>>>>>> Stashed changes
     }
 
     public void SortCatalog()
     {
         _products.Sort();
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

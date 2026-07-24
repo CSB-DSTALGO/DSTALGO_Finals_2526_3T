@@ -10,17 +10,34 @@ public class CustomSinglyLinkedListTests
     [Fact]
     public void Add_ShouldAppendNodeAndIncrementCount()
     {
+<<<<<<< Updated upstream
         var list = new CustomSinglyLinkedList<int>();
 
         list.Add(10);
 
         Assert.Equal(1, list.Count);
         Assert.True(list.Search(10));
+=======
+        // Arrange
+        var list = new CustomSinglyLinkedList<int>();
+
+        // Act
+        list.Add(10);
+        list.Add(20);
+        list.Add(30);
+
+        // Assert
+        Assert.Equal(3, list.Count);
+        Assert.Equal(10, list.GetAt(0));
+        Assert.Equal(20, list.GetAt(1));
+        Assert.Equal(30, list.GetAt(2));
+>>>>>>> Stashed changes
     }
 
     [Fact]
     public void Add_MultipleItems_ShouldIncrementCountEachTime()
     {
+<<<<<<< Updated upstream
         var list = new CustomSinglyLinkedList<int>();
 
         list.Add(1);
@@ -28,6 +45,31 @@ public class CustomSinglyLinkedListTests
         list.Add(3);
 
         Assert.Equal(3, list.Count);
+=======
+        // Arrange
+        var list = new CustomSinglyLinkedList<int>();
+
+        list.Add(10);
+        list.Add(20);
+        list.Add(30);
+        list.Add(40);
+
+        // Act & Assert - Remove head
+        Assert.True(list.Remove(10));
+        Assert.Equal(3, list.Count);
+        Assert.Equal(20, list.GetAt(0));
+
+        // Act & Assert - Remove middle
+        Assert.True(list.Remove(30));
+        Assert.Equal(2, list.Count);
+        Assert.Equal(20, list.GetAt(0));
+        Assert.Equal(40, list.GetAt(1));
+
+        // Act & Assert - Remove tail
+        Assert.True(list.Remove(40));
+        Assert.Equal(1, list.Count);
+        Assert.Equal(20, list.GetAt(0));
+>>>>>>> Stashed changes
     }
 
     [Fact]
@@ -96,22 +138,52 @@ public class CustomSinglyLinkedListTests
     [Fact]
     public void Search_ShouldReturnTrue_WhenItemExistsInNodes()
     {
+<<<<<<< Updated upstream
         var list = new CustomSinglyLinkedList<int>();
         list.Add(4);
         list.Add(8);
         list.Add(15);
 
         Assert.True(list.Search(8));
+=======
+        // Arrange
+        var list = new CustomSinglyLinkedList<int>();
+
+        list.Add(5);
+        list.Add(10);
+        list.Add(15);
+
+        // Act
+        bool result = list.Search(10);
+
+        // Assert
+        Assert.True(result);
+>>>>>>> Stashed changes
     }
 
     [Fact]
     public void Search_ShouldReturnFalse_WhenItemIsAbsent()
     {
+<<<<<<< Updated upstream
         var list = new CustomSinglyLinkedList<int>();
         list.Add(4);
         list.Add(8);
 
         Assert.False(list.Search(100));
+=======
+        // Arrange
+        var list = new CustomSinglyLinkedList<int>();
+
+        list.Add(5);
+        list.Add(10);
+        list.Add(15);
+
+        // Act
+        bool result = list.Search(100);
+
+        // Assert
+        Assert.False(result);
+>>>>>>> Stashed changes
     }
 
     [Fact]
@@ -127,6 +199,7 @@ public class CustomSinglyLinkedListTests
     [Fact]
     public void Sort_ShouldRearrangeNodePointersInAscendingOrder()
     {
+<<<<<<< Updated upstream
         var list = new CustomSinglyLinkedList<int>();
         list.Add(30);
         list.Add(10);
@@ -168,5 +241,24 @@ public class CustomSinglyLinkedListTests
 
         Assert.Equal(0, emptyList.Count);
         Assert.Equal(1, singleList.Count);
+=======
+        // Arrange
+        var list = new CustomSinglyLinkedList<int>();
+
+        list.Add(30);
+        list.Add(10);
+        list.Add(20);
+        list.Add(40);
+
+        // Act
+        list.Sort();
+
+        // Assert
+        Assert.Equal(10, list.GetAt(0));
+        Assert.Equal(20, list.GetAt(1));
+        Assert.Equal(30, list.GetAt(2));
+        Assert.Equal(40, list.GetAt(3));
+>>>>>>> Stashed changes
     }
 }
+
