@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net8.0": {
       "coverlet.collector/6.0.4": {
@@ -1047,19 +1047,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/caan/.nuget/packages/": {}
+    "/Users/louisesilo/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Tests/EnrollmentSystem.Tests.csproj",
+      "projectUniqueName": "/Users/louisesilo/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Tests/EnrollmentSystem.Tests.csproj",
       "projectName": "EnrollmentSystem.Tests",
-      "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Tests/EnrollmentSystem.Tests.csproj",
-      "packagesPath": "/Users/caan/.nuget/packages/",
-      "outputPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Tests/obj/",
+      "projectPath": "/Users/louisesilo/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Tests/EnrollmentSystem.Tests.csproj",
+      "packagesPath": "/Users/louisesilo/.nuget/packages/",
+      "outputPath": "/Users/louisesilo/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/caan/.nuget/NuGet/NuGet.Config"
+        "/Users/louisesilo/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -1069,13 +1069,14 @@
       },
       "frameworks": {
         "net8.0": {
+          "framework": "net8.0",
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
-              "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
+            "/Users/louisesilo/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
+              "projectPath": "/Users/louisesilo/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
             },
-            "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj": {
-              "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj"
+            "/Users/louisesilo/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj": {
+              "projectPath": "/Users/louisesilo/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj"
             }
           }
         }
@@ -1090,10 +1091,11 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net8.0": {
+        "framework": "net8.0",
         "targetAlias": "net8.0",
         "dependencies": {
           "Microsoft.NET.Test.Sdk": {
@@ -1127,11 +1129,11 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.22, 8.0.22]"
+            "version": "[8.0.27, 8.0.27]"
           },
           {
             "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.22, 8.0.22]"
+            "version": "[8.0.27, 8.0.27]"
           }
         ],
         "frameworkReferences": {
@@ -1139,7 +1141,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
