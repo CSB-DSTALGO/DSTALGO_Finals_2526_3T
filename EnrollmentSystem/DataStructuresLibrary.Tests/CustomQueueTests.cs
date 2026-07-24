@@ -1,7 +1,8 @@
-using System;
-using Xunit;
 using DataStructuresLibrary;
+using System;
+using System.Collections;
 using System.Security.Cryptography.X509Certificates;
+using Xunit;
 
 namespace DataStructuresLibrary.Tests
 {
@@ -14,7 +15,7 @@ namespace DataStructuresLibrary.Tests
             CustomQueue<string> queue = new CustomQueue<string>();
             queue.Enqueue("Student 1");
             queue.Enqueue("Student 2");
-            queue.Enqueue("Student 3");          
+            queue.Enqueue("Student 3");
             Assert.Equal(3, queue.Count);
 
         }
@@ -52,6 +53,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(5, queue.Count);
 
         }
-
+       
+        
     }
 }

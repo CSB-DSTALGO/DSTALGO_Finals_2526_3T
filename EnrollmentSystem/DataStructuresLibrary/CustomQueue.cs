@@ -3,7 +3,7 @@ using System;
 
 namespace DataStructuresLibrary
 {
-    public class CustomQueue<T>
+    public class CustomQueue<T> where T : IComparable<T>
     {
         private T[] _items;
         private int _front;
@@ -48,8 +48,8 @@ namespace DataStructuresLibrary
                 Console.WriteLine("No items in queue");
                 return default(T);
             }
-            T removedItem = _items[_front];
-            _front = (_front + 1) % _items.Length;
+            T removedItem = _items[_front]; //removed item is stored here, set to the front because queue is FIFO
+            _front = (_front + 1) % _items.Length; //front is set to the position behind front 
             _count--;
             return removedItem;
         }
@@ -72,8 +72,51 @@ namespace DataStructuresLibrary
         {
             return _count == 0;
         }
+        public void BubbleSortQueue()
+        {
+            int n = _count;
+            bool swapped;
 
-        
+            for (int i = 0; i < n - 1; i++)
+            {
+                swapped = false;
+
+                for (int j = 0; j < n - 1 - i; j++)
+                {
+                    int current = (_front + j) % _items.Length; //current has the index of the current item being compared
+                    int next = (_front + j + 1) % _items.Length; //next has the index of the next item being compared
+                                                                //these two variables us used for easy access of the items we need to compare
+
+                    if (_items[current].CompareTo(_items[next]) > 0)
+                    {
+                        //actual bubble sort logic
+                        T temp = _items[current];
+                        _items[current] = _items[next];
+                        _items[next] = temp;
+
+                        swapped = true;
+                    }
+                }
+
+                if (!swapped)
+                    break;
+            }
+        }
+        public bool LinearSearch(T target)
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                int index = (_front + i) % _items.Length; //start at _front then move i positions, think of this as i positions from _front (front 0 + i[2] is the third index
+                if (_items[index].Equals(target))
+                {
+                    Console.WriteLine("Student found at queue: " + i);
+                    return true;
+                }
+              
+            }
+            return false;
+        }
+
 
     }
 }
