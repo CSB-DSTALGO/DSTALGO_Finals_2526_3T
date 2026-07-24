@@ -3,42 +3,83 @@ using System;
 
 namespace DataStructuresLibrary
 {
-    public class Node<T>
+    public class Node<T> // declares a generic class
     {
-        public T Data { get; set; }
-        public Node<T>? Next { get; set; } // Mark as nullable with '?'
+        public T Data { get; set; } // stores the actual value the node holds
+        public Node<T>? Next { get; set; } // points to the next node in the chain
 
         public Node(T data)
         {
-            Data = data;
-            Next = null; 
+            Data = data; // save whatever value that was passed
+            Next = null; // no next node
         }
     }
 
-    public class CustomSinglyLinkedList<T>
+    public class CustomSinglyLinkedList<T> // a list made of nodes one after another
     {
-        private Node<T>? _head; // Mark as nullable with '?'
+        private Node<T>? _head; // first node in the list
 
-        public Node<T>? Head // Mark as nullable to match the field
+        public Node<T>? Head // marks it nullable to match
         {
-            get { throw new NotImplementedException(); }
+            get { return _head; } // exposes the _head to the outside
         }
 
-        public int Count { get; set; }
+        public int Count { get; set; } // how many items are currently in the list
 
         public CustomSinglyLinkedList()
         {
-            _head = null; 
+            _head = null;
         }
 
         public void AddLast(T item)
         {
-            throw new NotImplementedException();
-        }
+            Node<T> newNode = new Node<T>(item); // make a new node
+
+            if (_head == null) // list is empty
+            {
+                _head = newNode; // new node is now the whole list
+                Count++;
+                return;
+            }
+            Node<T> current = _head;
+            while (current.Next != null)
+            {
+                current = current.Next;
+            }
+            current.Next = newNode;
+            Count++;
+        } // add last close
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            if (_head == null)
+            {
+                return false;
+            }
+
+            if (_head.Data.Equals(item))
+            {
+                _head = _head.Next;
+                Count--;
+                return true;
+            }
+
+            Node<T> previous = _head;
+            Node<T> current = _head.Next;
+
+            while (current != null)
+            {
+                if (current.Data.Equals(item))
+                {
+                    previous.Next = current.Next;
+                    Count--;
+                    return true;
+                }
+                previous = current;
+                current = current.Next;
+            }
+
+            return false;
         }
     }
 }
