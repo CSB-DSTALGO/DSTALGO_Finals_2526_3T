@@ -1,7 +1,9 @@
+
 using System;
  
 namespace DataStructuresLibrary
 {
+    
     public class CustomArrayList<T>
     {
         private T[] _items;
@@ -14,10 +16,10 @@ namespace DataStructuresLibrary
             _count = 0;
         }
  
-      
+        
         public int Count => _count;
  
-       
+        
         public void Add(T item)
         {
             if (_count == _items.Length)
@@ -28,7 +30,7 @@ namespace DataStructuresLibrary
             _count++;
         }
  
-      
+        
         public void RemoveAt(int index)
         {
             ValidateIndex(index);
@@ -38,28 +40,25 @@ namespace DataStructuresLibrary
                 _items[i] = _items[i + 1];
             }
  
-            _items[_count - 1] = default!; // clear the now-unused last slot
+            _items[_count - 1] = default!; 
             _count--;
         }
  
-        /// Returns the item at the given index
+        
         public T GetAt(int index)
         {
             ValidateIndex(index);
             return _items[index];
         }
  
-        /// Replaces the item at the given index.
+       
         public void SetAt(int index, T value)
         {
             ValidateIndex(index);
             _items[index] = value;
         }
  
-        
-        /// Returns a snapshot array of exactly Count length (no unused trailing slots).
-        /// Used for printing, sorting, and searching.
-   
+       
         public T[] ToArray()
         {
             T[] result = new T[_count];
@@ -82,4 +81,3 @@ namespace DataStructuresLibrary
         }
     }
 }
- 
