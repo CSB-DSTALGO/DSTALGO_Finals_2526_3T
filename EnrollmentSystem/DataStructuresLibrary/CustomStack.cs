@@ -1,4 +1,3 @@
-// CustomStack.cs
 using System;
 
 namespace DataStructuresLibrary
@@ -8,27 +7,18 @@ namespace DataStructuresLibrary
         private T[] _items;
         private int _top;
 
-<<<<<<< HEAD
         public int Count => _top;
-=======
-        public int Count 
-        {
-            get { return _top; }
-        }
->>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
 
         public CustomStack(int initialCapacity = 4)
         {
-<<<<<<< HEAD
+            if (initialCapacity <= 0)
+                initialCapacity = 4;
+
             _items = new T[initialCapacity];
-=======
-            _items = new T[4];
->>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
             _top = 0;
         }
 
         public void Push(T item)
-<<<<<<< HEAD
         {
             if (_top == _items.Length)
             {
@@ -36,66 +26,33 @@ namespace DataStructuresLibrary
             }
 
             _items[_top++] = item;
-=======
-        {            
-            if (_top == _items.Length)
-            {
-                T[] newItems = new T[_items.Length * 2];
-
-                for (int i = 0; i < _items.Length; i++)
-                {
-                    newItems[i] = _items[i];
-                }
-
-                _items = newItems;
-            }
-
-            _items[_top] = item;
-            _top++;
->>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
         }
 
         public T Pop()
         {
             if (IsEmpty())
             {
-<<<<<<< HEAD
-                throw new InvalidOperationException("Stack is empty");
-            }
-
-            return _items[--_top];
-=======
                 throw new InvalidOperationException("Stack is empty.");
             }
 
             _top--;
-            return _items[_top];
->>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
+            T item = _items[_top];
+            _items[_top] = default!;
+            return item;
         }
 
         public T Peek()
         {
             if (IsEmpty())
             {
-<<<<<<< HEAD
-                throw new InvalidOperationException("Stack is empty");
-=======
                 throw new InvalidOperationException("Stack is empty.");
->>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
             }
 
             return _items[_top - 1];
         }
 
-        public bool IsEmpty() => _top == 0;
-
-        private void Resize()
+        public bool IsEmpty()
         {
-<<<<<<< HEAD
-            var doubled = new T[_items.Length * 2];
-            Array.Copy(_items, doubled, _items.Length);
-            _items = doubled;
-=======
             return _top == 0;
         }
 
@@ -103,7 +60,7 @@ namespace DataStructuresLibrary
         {
             for (int i = 0; i < _top; i++)
             {
-                if (_items[i].Equals(item))
+                if (Equals(_items[i], item))
                 {
                     return i;
                 }
@@ -114,8 +71,17 @@ namespace DataStructuresLibrary
 
         public void SortById()
         {
+            // TODO: Implement if required by your project.
+        }
 
->>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
+        private void Resize()
+        {
+            int newCapacity = _items.Length == 0 ? 4 : _items.Length * 2;
+
+            T[] newItems = new T[newCapacity];
+            Array.Copy(_items, newItems, _items.Length);
+
+            _items = newItems;
         }
     }
 }
