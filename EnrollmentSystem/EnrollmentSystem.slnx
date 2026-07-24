@@ -1,7 +1,0 @@
-<Solution>
-  <Project Path="EnrollmentSystem.ConsoleApp/EnrollmentSystem.ConsoleApp.csproj" />
-  <Project Path="EnrollmentSystem.Core/EnrollmentSystem.Core.csproj" />
-  <Project Path="DataStructuresLibrary/DataStructuresLibrary.csproj" />
-  <Project Path="EnrollmentSystem.Tests/EnrollmentSystem.Tests.csproj" />
-  <Project Path="DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj" />
-</Solution>
