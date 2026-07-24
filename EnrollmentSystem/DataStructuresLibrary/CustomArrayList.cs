@@ -74,19 +74,35 @@ namespace DataStructuresLibrary
             _items = tItems; // replace old array with the new array
         }
 
-        // I dont know if i deleted this method ?
+        //LINEAR SEARCH
         public int Search(T item)
         {
-            for (int i = 0; i < _count; i++)
+            for (int i = 0; i < _count; i++)//checks the elements of the array one by one
             {
-                if (_items[i]!.Equals(item))
+                if (_items[i]!.Equals(item))//returns the index if the item is found
+                {
                     return i;
+                }
+                   
             }
-            return -1;
+            return -1;//returns -1 if the item not found
         }
+        
+        //BUBBLE SORT - ascending order
         public void Sort()
         {
-            Array.Sort(_items, 0, _count);
+            for(int i = 0; i < _count - 1; i++)//repeats until the array is sorted
+            {
+                for(int j = 0; j < _count - i -1; j++)//compares adjacent elements
+                {
+                    if (Comparer<T>.Default.Compare(_items[j], _items[j + 1]) > 0)//swaps if the elements are in the wrong order
+                    {
+                        T temp = _items[j];
+                        _items[j] = _items[j + 1];  
+                        _items[j + 1] = temp;
+                    }
+                }
+            }
         }
     }
 }

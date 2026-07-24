@@ -78,7 +78,7 @@ namespace EnrollmentSystem.ConsoleApp
                     case "2":
                         Console.Write("Enter Student ID to remove: ");
                         string targetId = Console.ReadLine() ?? "";
-                        bool removed = _registry.UnregisterStudent(int.Parse(targetId));
+                        bool removed = _registry.RemoveStudent(int.Parse(targetId));//changed UnregistgteredStudent to RegisteredStudent because it wont delete when code runs :D
                         Console.WriteLine(removed ? "\nStudent removed successfully." : "\nStudent not found.");
                         if (removed)
                         {
