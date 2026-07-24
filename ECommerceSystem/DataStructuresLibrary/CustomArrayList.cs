@@ -10,9 +10,8 @@ public class CustomArrayList<T> where T : IComparable<T>
         _items = new T[initialCapacity];
     }
 
-    /// <summary>
     /// Adds an item to the end of the array list.
-    /// </summary>
+
     public void Add(T item)
     {
         if (Count == _items.Length)
@@ -23,9 +22,7 @@ public class CustomArrayList<T> where T : IComparable<T>
         _items[Count++] = item;
     }
 
-    /// <summary>
     /// Removes the first matching item.
-    /// </summary>
     public bool Remove(T item)
     {
         int index = Search(item);
@@ -44,9 +41,8 @@ public class CustomArrayList<T> where T : IComparable<T>
         return true;
     }
 
-    /// <summary>
     /// Returns the item at the specified index.
-    /// </summary>
+
     public T Get(int index)
     {
         if (index < 0 || index >= Count)
@@ -55,9 +51,8 @@ public class CustomArrayList<T> where T : IComparable<T>
         return _items[index];
     }
 
-    /// <summary>
     /// Performs a linear search.
-    /// </summary>
+
     public int Search(T item)
     {
         for (int i = 0; i < Count; i++)
@@ -69,9 +64,7 @@ public class CustomArrayList<T> where T : IComparable<T>
         return -1;
     }
 
-    /// <summary>
     /// Sorts the array using Bubble Sort.
-    /// </summary>
     public void Sort()
     {
         for (int i = 0; i < Count - 1; i++)
