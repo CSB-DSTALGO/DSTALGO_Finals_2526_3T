@@ -1,3 +1,4 @@
+// 12521269 Joaquin Bryan G. Ross
 namespace ECommerceSystem.Core;
 
 public class Product : IComparable<Product>
@@ -6,6 +7,7 @@ public class Product : IComparable<Product>
     public string Name { get; set; }
     public decimal Price { get; set; }
 
+    // Builds a catalogue product. Price is what CompareTo orders by.
     public Product(int id, string name, decimal price)
     {
         Id = id;
@@ -27,6 +29,7 @@ public class Order : IComparable<Order>
     public string CustomerName { get; set; }
     public decimal TotalAmount { get; set; }
 
+    // Builds a customer order. TotalAmount is what CompareTo orders by.
     public Order(int orderId, string customerName, decimal totalAmount)
     {
         OrderId = orderId;
@@ -48,6 +51,7 @@ public class ReturnRequest : IComparable<ReturnRequest>
     public int OrderId { get; set; }
     public string Reason { get; set; }
 
+    // Builds a return request. ReturnId is what CompareTo orders by.
     public ReturnRequest(int returnId, int orderId, string reason)
     {
         ReturnId = returnId;

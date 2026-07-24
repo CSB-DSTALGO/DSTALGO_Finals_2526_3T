@@ -1,3 +1,4 @@
+// 12521269 Joaquin Bryan G. Ross
 ﻿namespace ECommerceSystem.ConsoleApp;
 
 using System;
@@ -52,7 +53,9 @@ public class Program
         Console.WriteLine("1. Add Product");
         Console.WriteLine("2. Search Product");
         Console.WriteLine("3. Sort Catalog by Price");
-        Console.WriteLine("4. Return to Main Menu");
+        Console.WriteLine("4. Show All Products");
+        Console.WriteLine("5. Get Product Details by Index");
+        Console.WriteLine("6. Return to Main Menu");
         Console.Write("\nChoice: ");
 
         switch (Console.ReadLine()?.Trim())
@@ -66,14 +69,47 @@ public class Program
                 break;
             case "2":
                 decimal searchPrice = ReadDecimal("Enter Product Price to search: ");
-                bool found = Catalog.SearchProduct(new Product(0, "", searchPrice));
-                Pause(found ? "MATCH FOUND in catalog!" : "Product NOT found in catalog.");
+
+                // SearchProduct matches on the product record itself, not on a
+                // field, so the record has to be located before it can be searched
+                // for. Passing a throwaway Product built from the price alone would
+                // never match, since two products at the same price are still two
+                // different records.
+                Product? candidate = null;
+                for (int i = 0; i < Catalog.Count; i++)
+                {
+                    if (Catalog.GetProductDetails(i).Price == searchPrice)
+                    {
+                        candidate = Catalog.GetProductDetails(i);
+                        break;
+                    }
+                }
+
+                bool found = candidate != null && Catalog.SearchProduct(candidate);
+                Pause(found ? $"MATCH FOUND in catalog: {candidate!.Name}" : "Product NOT found in catalog.");
                 break;
             case "3":
                 Catalog.SortCatalog();
                 Pause("Catalog sorted by price in ascending order!");
                 break;
-            case "4": return;
+            case "4":
+                Console.WriteLine();
+                Catalog.ShowAllProfiles();
+                Pause("End of catalog.");
+                break;
+            case "5":
+                int detailIndex = ReadInt("Enter catalog index: ");
+                try
+                {
+                    Product detail = Catalog.GetProductDetails(detailIndex);
+                    Pause($"#{detail.Id} {detail.Name} - ${detail.Price:F2}");
+                }
+                catch (Exception ex)
+                {
+                    Pause($"Error: {ex.Message}");
+                }
+                break;
+            case "6": return;
             default: Pause("Invalid choice."); break;
         }
     }
@@ -98,7 +134,9 @@ public class Program
         Console.WriteLine("1. Add Item to Cart");
         Console.WriteLine("2. Search Item Position");
         Console.WriteLine("3. Sort Cart by Price");
-        Console.WriteLine("4. Return to Main Menu");
+        Console.WriteLine("4. Show All Items");
+        Console.WriteLine("5. Remove Item by Index");
+        Console.WriteLine("6. Return to Main Menu");
         Console.Write("\nChoice: ");
 
         switch (Console.ReadLine()?.Trim())
@@ -112,14 +150,36 @@ public class Program
                 break;
             case "2":
                 decimal targetPrice = ReadDecimal("Enter Product Price to locate in cart: ");
-                int index = Cart.SearchItem(new Product(0, "", targetPrice));
+
+                // Same as the catalog: locate the record, then search for it.
+                Product? inCart = null;
+                for (int i = 0; i < Cart.Count; i++)
+                {
+                    if (Cart.GetItemAt(i).Price == targetPrice)
+                    {
+                        inCart = Cart.GetItemAt(i);
+                        break;
+                    }
+                }
+
+                int index = inCart == null ? -1 : Cart.SearchItem(inCart);
                 Pause(index != -1 ? $"Item found at Index: {index}" : "Item NOT found in cart.");
                 break;
             case "3":
                 Cart.SortCartByPrice();
                 Pause("Cart items sorted by price!");
                 break;
-            case "4": return;
+            case "4":
+                Console.WriteLine();
+                Cart.ShowAllItems();
+                Pause("End of cart.");
+                break;
+            case "5":
+                int removeIndex = ReadInt("Enter cart index to remove: ");
+                bool removed = Cart.RemoveItem(removeIndex);
+                Pause(removed ? $"Removed the item at index {removeIndex}." : "That index is not in the cart.");
+                break;
+            case "6": return;
             default: Pause("Invalid choice."); break;
         }
     }
@@ -131,7 +191,8 @@ public class Program
     {
         Console.Clear();
         Console.WriteLine("--- Order Processing Queue ---");
-        Console.WriteLine($"Orders Pending: {OrderQueue.Count}\n");
+        Console.WriteLine($"Orders Pending: {OrderQueue.Count}");
+        Console.WriteLine($"Queue Empty: {OrderQueue.CheckOrderQueueEmpty()}\n");
         Console.WriteLine("1. Enqueue New Order");
         Console.WriteLine("2. Process (Dequeue) Next Order");
         Console.WriteLine("3. Peek Next Order");
@@ -163,7 +224,7 @@ public class Program
             case "3":
                 try
                 {
-                    Order next = OrderQueue.PeekNextOrder();
+                    Order next = OrderQueue.ViewNextOrder();
                     Pause($"Next in line: Order #{next.OrderId} - {next.CustomerName} (${next.TotalAmount})");
                 }
                 catch (Exception ex)
@@ -173,8 +234,20 @@ public class Program
                 break;
             case "4":
                 decimal searchAmount = ReadDecimal("Enter Order Total to check status: ");
-                bool exists = OrderQueue.SearchOrder(new Order(0, "", searchAmount));
-                Pause(exists ? "Order exists in processing queue!" : "Order NOT found in queue.");
+
+                // A queue exposes only its front, so locating the order means
+                // cycling the whole line once. Dequeuing and re-enqueuing in the
+                // same pass puts every order back in its original position.
+                Order? wanted = null;
+                for (int i = OrderQueue.Count; i > 0; i--)
+                {
+                    Order cycled = OrderQueue.ProcessNextOrder();
+                    if (cycled.TotalAmount == searchAmount && wanted == null) wanted = cycled;
+                    OrderQueue.EnqueueOrder(cycled);
+                }
+
+                bool exists = wanted != null && OrderQueue.SearchOrder(wanted);
+                Pause(exists ? $"Order #{wanted!.OrderId} for {wanted.CustomerName} is in the queue!" : "Order NOT found in queue.");
                 break;
             case "5":
                 OrderQueue.SortOrders();
@@ -192,7 +265,8 @@ public class Program
     {
         Console.Clear();
         Console.WriteLine("--- Return Request History ---");
-        Console.WriteLine($"Total Return Log Entries: {ReturnStack.Count}\n");
+        Console.WriteLine($"Total Return Log Entries: {ReturnStack.Count}");
+        Console.WriteLine($"History Empty: {ReturnStack.CheckHistoryEmpty()}\n");
         Console.WriteLine("1. Push New Return Request");
         Console.WriteLine("2. Pop Latest Return Request");
         Console.WriteLine("3. Peek Top Return Entry");
@@ -233,9 +307,26 @@ public class Program
                 }
                 break;
             case "4":
-                int searchId = ReadInt("Enter Return ID to check depth: ");
-                int depth = ReturnStack.SearchReturn(new ReturnRequest(searchId, 0, ""));
-                Pause(depth != -1 ? $"Return Request found at depth level: {depth}" : "Return request NOT found.");
+                int searchReturnId = ReadInt("Enter Return ID to check depth: ");
+
+                // A stack exposes only its top, so locating the entry means
+                // popping the whole stack into a holding stack and pushing it
+                // back, which restores the original order.
+                var holdingReturns = new ReturnHistoryStack();
+                ReturnRequest? wantedReturn = null;
+                while (!ReturnStack.CheckHistoryEmpty())
+                {
+                    ReturnRequest popped = ReturnStack.PopReturn();
+                    if (popped.ReturnId == searchReturnId) wantedReturn = popped;
+                    holdingReturns.PushReturn(popped);
+                }
+                while (!holdingReturns.CheckHistoryEmpty())
+                {
+                    ReturnStack.PushReturn(holdingReturns.PopReturn());
+                }
+
+                int returnDepth = wantedReturn == null ? -1 : ReturnStack.SearchReturn(wantedReturn);
+                Pause(returnDepth != -1 ? $"Return Request found at depth level: {returnDepth}" : "Return request NOT found.");
                 break;
             case "5":
                 ReturnStack.SortReturns();
