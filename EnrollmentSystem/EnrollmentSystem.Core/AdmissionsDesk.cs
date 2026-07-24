@@ -5,14 +5,14 @@ using DataStructuresLibrary;
 public class AdmissionsDesk
 {
     private readonly CustomQueue<AdmissionApplication> _applications = new();
-    private readonly CustomQueue<Ticket> _tickets = new();//Front end queue for students
+    private readonly CustomQueue<Ticket> _tickets = new(); //Front end queue for students
     public int Count => _applications.Count;
 
     public void IssueAdmissionsTicket(AdmissionApplication app)
     {
         _applications.Enqueue(app);
     }
-    public void IssueAdmissionsTicket(Ticket ticket) 
+    public void IssueAdmissionsTicket(Ticket ticket)
     {
         _tickets.Enqueue(ticket);
     }
@@ -24,7 +24,7 @@ public class AdmissionsDesk
     {
         return _tickets.Dequeue();
     }
-        public AdmissionApplication ViewNextTicket()
+    public AdmissionApplication ViewNextTicket()
     {
         return _applications.Peek();
     }
