@@ -8,97 +8,14 @@ public class CourseCurriculum
 
     public int Count => _courses.Count;
 
-    public void InsertCourse(Course course)
-    {
-        if (course == null)
-        {
-            throw new ArgumentNullException(nameof(course));
-        }
+    public void InsertCourse(Course course) => throw new NotImplementedException();
+    public bool DeleteCourse(string code) => throw new NotImplementedException();
 
-        _courses.AddLast(course);
-    }
+    // Hint: Sum total credit units across all courses
+    public int CalculateTotalUnits() => throw new NotImplementedException();
+    public void ShowCurriculum() => throw new NotImplementedException(); 
 
-    public bool DeleteCourse(string code)
-    {
-        if (string.IsNullOrWhiteSpace(code))
-        {
-            return false;
-        }
-
-        Node<Course>? current = _courses.Head;
-
-        while (current != null)
-        {
-            if (string.Equals(
-                current.Data.Code,
-                code,
-                StringComparison.OrdinalIgnoreCase))
-            {
-                return _courses.Remove(current.Data);
-            }
-
-            current = current.Next;
-        }
-
-        return false;
-    }
-
-    public int CalculateTotalUnits()
-    {
-        int totalUnits = 0;
-        Node<Course>? current = _courses.Head;
-
-        while (current != null)
-        {
-            totalUnits += current.Data.Units;
-            current = current.Next;
-        }
-
-        return totalUnits;
-    }
-
-    public void ShowCurriculum()
-    {
-        Node<Course>? current = _courses.Head;
-
-        if (current == null)
-        {
-            Console.WriteLine("No courses in the curriculum.");
-            return;
-        }
-
-        while (current != null)
-        {
-            Console.Write(
-                $"{current.Data.Code} ({current.Data.Units} units)"
-            );
-
-            if (current.Next != null)
-            {
-                Console.Write(" -> ");
-            }
-
-            current = current.Next;
-        }
-
-        Console.WriteLine();
-    }
-
-    public bool SearchCourse(Course course)
-    {
-        if (course == null)
-        {
-            return false;
-        }
-
-        return _courses.Search(course);
-    }
-
-    public void SortCurriculumByUnits()
-    {
-        _courses.Sort(
-            (firstCourse, secondCourse) =>
-                firstCourse.Units.CompareTo(secondCourse.Units)
-        );
-    }
+    // Hint: Delegate search and sort to CustomSinglyLinkedList<T>
+    public bool SearchCourse(Course course) => throw new NotImplementedException();
+    public void SortCurriculumByUnits() => throw new NotImplementedException();
 }
