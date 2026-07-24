@@ -49,27 +49,29 @@ namespace ECommerceSystem.Core
     public class ReturnRequest : IComparable<ReturnRequest>
     {
         public int ReturnId { get; set; }
-        public string CustomerName { get; set; } = string.Empty;
+        public int OrderId { get; set; }
         public string Reason { get; set; } = string.Empty;
 
-        public ReturnRequest(int returnId, string customerName, string reason)
+        public ReturnRequest(int returnId, int orderId, string reason)
         {
             ReturnId = returnId;
-            CustomerName = customerName;
+            OrderId = orderId;
             Reason = reason;
         }
 
         public int CompareTo(ReturnRequest? other)
         {
             if (other == null)
+            {
                 return 1;
+            }
 
             return ReturnId.CompareTo(other.ReturnId);
         }
 
         public override string ToString()
         {
-            return $"Return #{ReturnId} - {CustomerName}: {Reason}";
+            return $"Return #{ReturnId} | Order #{OrderId} | Reason: {Reason}";
         }
     }
 }
