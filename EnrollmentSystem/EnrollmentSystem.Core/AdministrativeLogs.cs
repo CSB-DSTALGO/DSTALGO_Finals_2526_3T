@@ -1,6 +1,7 @@
 namespace EnrollmentSystem.Core;
 
 using DataStructuresLibrary;
+using System.Collections.Generic;
 
 public class AdministrativeLogs
 {
@@ -8,15 +9,26 @@ public class AdministrativeLogs
 
     public int Count => _logs.Count;
 
-    public void PushSystemLog(Log log) => throw new NotImplementedException();
-    public Log RollbackLastLog() => throw new NotImplementedException();
-    public Log ViewLatestLog() => throw new NotImplementedException();
-    public Log PeekLatestLog() => throw new NotImplementedException();
-    public Log PopSystemLog() => throw new NotImplementedException();
-    public bool CheckLogsEmpty() => throw new NotImplementedException();
+    public void PushSystemLog(Log log) => _logs.Push(log);
+    public Log RollbackLastLog() => _logs.Pop();
+    public Log ViewLatestLog() => _logs.Peek();
+    public Log PeekLatestLog() => _logs.Peek();
+    public Log PopSystemLog() => _logs.Pop();
+    public bool CheckLogsEmpty() => _logs.IsEmpty();
     public int GetLogCount() => Count;
 
     // Hint: Delegate search and sort to CustomStack<T>
-    public int SearchLog(Log log) => throw new NotImplementedException();
-    public void SortLogsById() => throw new NotImplementedException();
+    public int SearchLog(Log log) => _logs.Search(log);
+    public void SortLogsById()
+    {
+        var buffer = new List<Log>();
+        while (!_logs.IsEmpty())
+        buffer.Add(_logs.Pop());
+
+        buffer.Sort((a, b) => string.Compare(a.LogId, b.LogId, System.StringComparison.Ordinal));
+
+        for (int i = buffer.Count - 1; i >= 0; i--)
+         _logs.Push(buffer[i]);
+    }
+
 }
