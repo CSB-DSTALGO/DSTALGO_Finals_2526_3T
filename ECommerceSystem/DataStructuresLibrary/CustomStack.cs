@@ -18,6 +18,8 @@ public class CustomStack<T> where T : IComparable<T>
 
     public int Count { get; private set; }
 
+    // Push
+
     public void Push(T item)
     {
         Node newNode = new Node(item);
@@ -26,6 +28,7 @@ public class CustomStack<T> where T : IComparable<T>
         Count++;
     }
 
+    //Pop
     public T Pop()
     {
         if (Count == 0)
@@ -38,6 +41,7 @@ public class CustomStack<T> where T : IComparable<T>
         return item;
     }
 
+    // Peek
     public T Peek()
     {
         if (Count == 0)
@@ -46,6 +50,7 @@ public class CustomStack<T> where T : IComparable<T>
         return top!.Data;
     }
 
+    //Search (Linear)
     public int Search(T item)
     {
         Node? current = top;
@@ -63,31 +68,40 @@ public class CustomStack<T> where T : IComparable<T>
         return -1;
     }
 
+    //Sorting Method 
     public void Sort()
     {
         if (Count <= 1)
-            return;
+        return;
 
-        bool swapped;
+        Node? sorted = null;
+        Node? current = top;
 
-        do
+        while (current != null)
         {
-            swapped = false;
-            Node? current = top;
-
-            while (current != null && current.Next != null)
+            Node? next = current.Next;
+            if (sorted == null || current.Data.CompareTo(sorted.Data) < 0)
             {
-                if (current.Data.CompareTo(current.Next.Data) > 0)
+                current.Next = sorted;
+                sorted = current;
+            }
+            else
+            {
+                Node? temp = sorted;
+
+                while (temp.Next != null &&
+                       temp.Next.Data.CompareTo(current.Data) <= 0)
                 {
-                    T temp = current.Data;
-                    current.Data = current.Next.Data;
-                    current.Next.Data = temp;
-                    swapped = true;
+                    temp = temp.Next;
                 }
 
-                current = current.Next;
+                current.Next = temp.Next;
+                temp.Next = current;
             }
 
-        } while (swapped);
+            current = next;
+        }
+
+        top = sorted;
     }
 }
