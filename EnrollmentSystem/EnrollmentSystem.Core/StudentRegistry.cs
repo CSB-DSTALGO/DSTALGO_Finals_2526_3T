@@ -45,7 +45,7 @@ namespace EnrollmentSystem.Core
             }
         }
  
-        /// <summary>Prints every student currently in the registry.</summary>
+        
         public void ShowAllStudents()
         {
             Student[] all = _registry.ToArray();
