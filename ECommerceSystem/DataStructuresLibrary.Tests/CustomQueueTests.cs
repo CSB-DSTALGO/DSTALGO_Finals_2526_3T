@@ -1,112 +1,68 @@
-<<<<<<< Updated upstream
-=======
+namespace DataStructuresLibrary.Tests;//LIAM 
+
 using Xunit;
->>>>>>> Stashed changes
 using DataStructuresLibrary;
-using Xunit;
 
-namespace DataStructuresLibrary.Tests
+public class CustomQueueTests
 {
-    public class CustomQueueTests
+    [Fact]
+    public void EnqueueAndDequeue_ShouldMaintainStrictFIFOOrder()
     {
-        [Fact]
-<<<<<<< Updated upstream
-        public void EnqueueAndDequeue_ShouldMaintainStrictFIFOOrder()
-        {
-            // TODO: Test First-In, First-Out behavior
-            throw new NotImplementedException();
-        }
+        var queue = new CustomQueue<int>();
 
-        [Fact]
-        public void Peek_ShouldReturnFrontElement_WithoutRemovingIt()
-        {
-            // TODO: Test Peek maintaining Count and queue head state
-            throw new NotImplementedException();
-        }
+        queue.Enqueue(10);
+        queue.Enqueue(20);
+        queue.Enqueue(30);
 
-        [Fact]
-        public void Search_ShouldFindElement_WithoutAlteringQueueOrder()
-        {
-            // TODO: Verify Search finds item and leaves queue order intact
-            throw new NotImplementedException();
-        }
+        Assert.Equal(10, queue.Dequeue());
+        Assert.Equal(20, queue.Dequeue());
+        Assert.Equal(30, queue.Dequeue());
+        Assert.Equal(0, queue.Count);
+    }
 
-        [Fact]
-        public void Sort_ShouldReorderQueueElementsInAscendingSequence()
-        {
-            // TODO: Test sorting elements inside the FIFO queue
-            throw new NotImplementedException();
-=======
-        public void Dequeue_ShouldFollowFIFOOrder()
-        {
-            // Arrange
-            var queue = new CustomQueue<int>();
-            queue.Enqueue(10);
-            queue.Enqueue(20);
-            queue.Enqueue(30);
+    [Fact]
+    public void Peek_ShouldReturnFrontElement_WithoutRemovingIt()
+    {
+        var queue = new CustomQueue<int>();
 
-            // Act & Assert
-            Assert.Equal(10, queue.Dequeue());
-            Assert.Equal(20, queue.Dequeue());
-            Assert.Equal(30, queue.Dequeue());
-            Assert.Equal(0, queue.Count);
-        }
+        queue.Enqueue(5);
+        queue.Enqueue(10);
 
-        [Fact]
-        public void Peek_ShouldReturnFrontElement_WithoutRemovingIt()
-        {
-            // Arrange
-            var queue = new CustomQueue<int>();
-            queue.Enqueue(5);
-            queue.Enqueue(10);
+        Assert.Equal(5, queue.Peek());
+        Assert.Equal(2, queue.Count);
+        Assert.Equal(5, queue.Dequeue());
+    }
 
-            // Act
-            var front = queue.Peek();
+    [Fact]
+    public void Search_ShouldFindElement_WithoutAlteringQueueOrder()
+    {
+        var queue = new CustomQueue<int>();
 
-            // Assert
-            Assert.Equal(5, front);
-            Assert.Equal(2, queue.Count); // Count should remain unchanged
-            Assert.Equal(5, queue.Dequeue()); // Front element should still be there
-        }
+        queue.Enqueue(1);
+        queue.Enqueue(2);
+        queue.Enqueue(3);
 
-        [Fact]
-        public void Search_ShouldFindElement_WithoutAlteringQueueOrder()
-        {
-            // Arrange
-            var queue = new CustomQueue<int>();
-            queue.Enqueue(1);
-            queue.Enqueue(2);
-            queue.Enqueue(3);
+        Assert.True(queue.Search(2));
 
-            // Act
-            bool found = queue.Search(2);
+        Assert.Equal(1, queue.Dequeue());
+        Assert.Equal(2, queue.Dequeue());
+        Assert.Equal(3, queue.Dequeue());
+    }
 
-            // Assert
-            Assert.True(found);
+    [Fact]
+    public void Sort_ShouldReorderQueueElementsInAscendingSequence()
+    {
+        var queue = new CustomQueue<int>();
 
-            // Ensure queue order is unchanged
-            Assert.Equal(1, queue.Dequeue());
-            Assert.Equal(2, queue.Dequeue());
-            Assert.Equal(3, queue.Dequeue());
-        }
+        queue.Enqueue(30);
+        queue.Enqueue(10);
+        queue.Enqueue(20);
 
-        [Fact]
-        public void Sort_ShouldReorderQueueElementsInAscendingSequence()
-        {
-            // Arrange
-            var queue = new CustomQueue<int>();
-            queue.Enqueue(30);
-            queue.Enqueue(10);
-            queue.Enqueue(20);
+        queue.Sort();
 
-            // Act
-            queue.Sort();
-
-            // Assert
-            Assert.Equal(10, queue.Dequeue());
-            Assert.Equal(20, queue.Dequeue());
-            Assert.Equal(30, queue.Dequeue());
->>>>>>> Stashed changes
-        }
+        Assert.Equal(10, queue.Dequeue());
+        Assert.Equal(20, queue.Dequeue());
+        Assert.Equal(30, queue.Dequeue());
     }
 }
+
