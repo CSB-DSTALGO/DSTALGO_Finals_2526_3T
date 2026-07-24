@@ -143,16 +143,36 @@ namespace EnrollmentSystem.Tests
         public void IssueAdmissionsTicket_ShouldQueueTicketsInFIFOOrder()
         {
             var desk = new AdmissionsDesk();
-            var t1 = new Ticket { LogId = 1, Action = "First Action", Timestamp = DateTime.Now };
-            var t2 = new Ticket { LogId = 2, Action = "Second Action", Timestamp = DateTime.Now };
+            var t1 = new Ticket
+            {
+                LogId = 1,
+                Action = "First Action",
+                Timestamp = DateTime.Now,
+                TicketId = "T-101"
+
+            };
+
+            var t2 = new Ticket
+            {
+                LogId = 2,
+                Action = "Second Action",
+                Timestamp = DateTime.Now,
+                TicketId = "T-102"
+            };
 
             desk.IssueAdmissionsTicket(t1);
             desk.IssueAdmissionsTicket(t2);
 
             Assert.Equal(2, desk.GetQueueCount());
-            
-            var served = desk.ServeNextTicket();
-            Assert.Equal("T-101", served.TicketId);
+
+            var firstServed = desk.ServeNextTicket();
+            var secondServed = desk.ServeNextTicket();
+
+            Assert.Equal("T-101", firstServed.TicketId);
+            Assert.Equal("T-102", secondServed.TicketId);
+            Assert.Equal(0, desk.GetQueueCount());
+
+
         }
 
         [Fact]
@@ -165,18 +185,18 @@ namespace EnrollmentSystem.Tests
 
         [Fact]
         public void ViewNextTicket_ShouldReturnFirstTicketInQueue()
-        {    
+        {
             var desk = new AdmissionsDesk();
             var t1 = new Ticket { LogId = 1, Action = "First Action", Timestamp = DateTime.Now, TicketId = "T-101" };
-            var t2 = new Ticket { LogId = 2, Action = "Second Action", Timestamp = DateTime.Now, TicketId = "T-102" };            
+            var t2 = new Ticket { LogId = 2, Action = "Second Action", Timestamp = DateTime.Now, TicketId = "T-102" };
 
             desk.IssueAdmissionsTicket(t1);
             desk.IssueAdmissionsTicket(t2);
 
             var served = desk.ViewNextTicket();
             Assert.Equal("T-101", served.TicketId);
-            
-            
+
+
         }
 
         [Fact]
@@ -186,6 +206,124 @@ namespace EnrollmentSystem.Tests
 
             Assert.Throws<InvalidOperationException>(() => desk.ViewNextTicket());
         }
+
+        [Fact]
+        public void CheckQueueEmpty_NewDesk_ReturnsTrue()
+        {
+            var desk = new AdmissionsDesk();
+
+            bool result = desk.CheckQueueEmpty();
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void CheckQueueEmpty_AfterIssuingTicket_ReturnsFalse()
+        {
+            var desk = new AdmissionsDesk();
+
+            var ticket = new Ticket
+            {
+                TicketId = "T-101"
+            };
+
+            desk.IssueAdmissionsTicket(ticket);
+
+            bool result = desk.CheckQueueEmpty();
+
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void SearchApplication_ExistingApplication_ReturnsTrue()
+        {
+            var desk = new AdmissionsDesk();
+
+            var application = new AdmissionApplication(101, "Alice", 80);
+
+            desk.SubmitApplication(application);
+
+            bool result = desk.SearchApplication(application);
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void SearchApplication_MissingApplication_ReturnFalse()
+        {
+            var desk = new AdmissionsDesk();
+            var existingApplication = new AdmissionApplication(101, "Alice", 80);
+
+            var missingApplication = new AdmissionApplication(999, "Unknown", 50);
+
+            desk.SubmitApplication(existingApplication);
+
+            bool result = desk.SearchApplication(missingApplication);
+
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void SearchApplication_EmptyQueue_ReturnsFalse()
+        {
+            var desk = new AdmissionsDesk();
+
+            var application = new AdmissionApplication(101, "Alice", 80);
+
+            bool result = desk.SearchApplication(application);
+
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void SortApplicationsByPriority_HighestPriorityBecomesFirst()
+        {
+            var desk = new AdmissionsDesk();
+
+            desk.SubmitApplication(
+                new AdmissionApplication(101, "Alice", 60));
+
+             desk.SubmitApplication(
+                new AdmissionApplication(102, "Bob", 90));
+
+             desk.SubmitApplication(
+                new AdmissionApplication(103, "Charlie", 75));
+
+            desk.SortApplicationsByPriority();
+
+            AdmissionApplication firstApplication = desk.ViewNextApplication();
+
+            Assert.Equal(102, firstApplication.ApplicationId);
+            Assert.Equal(90, firstApplication.PriorityScore);
+
+        }
+
+        [Fact]
+        public void SortApplicationsByPriority_SingleApplicationRemainsFirst()
+        {
+            var desk = new AdmissionsDesk();
+            desk.SubmitApplication(
+                new AdmissionApplication(101, "Alice", 89));
+
+            desk.SortApplicationsByPriority();
+
+            AdmissionApplication firstApplication = desk.ViewNextApplication();
+
+            Assert.Equal(101, firstApplication.ApplicationId);
+
+        }
+
+        [Fact]
+        public void SortApplicationsByPriority_EmptyQueueDoesNotThrowException()
+        {
+            var desk = new AdmissionsDesk();
+
+            Exception? error = Record.Exception(() => desk.SortApplicationsByPriority());
+
+            Assert.Null(error);
+        }
+
+
     }
 
     public class AdministrativeLogsTests
