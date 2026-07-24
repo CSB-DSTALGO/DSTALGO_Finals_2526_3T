@@ -105,6 +105,18 @@ namespace EnrollmentSystem.Tests
         }
 
         [Fact]
+<<<<<<< HEAD
+        public void SearchCourse_ShouldFindExistingCourseByCode()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS101", "Intro to CS", 3));
+            curriculum.InsertCourse(new Course("CS102", "Data Structures", 3));
+
+            var found = curriculum.SearchCourse("CS102");
+
+            Assert.NotNull(found);
+            Assert.Equal("CS102", found!.Code);
+=======
         public void DeleteCourse_ShouldReturnFalse_WhenCourseCodeDoesNotExist()
         {
             var curriculum = new CourseCurriculum();
@@ -134,6 +146,7 @@ namespace EnrollmentSystem.Tests
             curriculum.InsertCourse(course);
 
             Assert.True(curriculum.SearchCourse(course));
+>>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
         }
     }
 

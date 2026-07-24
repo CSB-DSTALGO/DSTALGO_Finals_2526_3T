@@ -5,26 +5,37 @@ namespace DataStructuresLibrary
 {
     public class CustomQueue<T>
     {
+        // Array that stores the queue items
         private T[] _items;
+
+        // Index of the first item
         private int _front;
+
+        // Index where the next item will be added
         private int _rear;
+
+        // Current number of items
         private int _count;
 
+        // Default size of the queue
         private const int DefaultCapacity = 4;
 
-        public int Count
-        {
-            get { return _count; }
-        }
+        // Returns the number of items in the queue
+        public int Count => _count;
 
-        public CustomQueue()
+        // Creates a new queue
+        public CustomQueue(int initialCapacity = DefaultCapacity)
         {
-            _items = new T[DefaultCapacity];
+            if (initialCapacity <= 0)
+                initialCapacity = DefaultCapacity;
+
+            _items = new T[initialCapacity];
             _front = 0;
             _rear = 0;
             _count = 0;
         }
 
+        // Adds an item to the back of the queue
         public void Enqueue(T item)
         {
             if (_count == _items.Length)
@@ -37,6 +48,7 @@ namespace DataStructuresLibrary
             _count++;
         }
 
+        // Removes and returns the first item
         public T Dequeue()
         {
             if (IsEmpty())
@@ -52,6 +64,7 @@ namespace DataStructuresLibrary
             return item;
         }
 
+        // Returns the first item without removing it
         public T Peek()
         {
             if (IsEmpty())
@@ -62,11 +75,13 @@ namespace DataStructuresLibrary
             return _items[_front];
         }
 
+        // Checks if the queue is empty
         public bool IsEmpty()
         {
             return _count == 0;
         }
 
+        // Searches for an item in the queue
         public int Search(T item)
         {
             for (int i = 0; i < _count; i++)
@@ -82,6 +97,7 @@ namespace DataStructuresLibrary
             return -1;
         }
 
+        // Sorts the queue using insertion sort
         public void Sort()
         {
             if (_count <= 1)
@@ -89,11 +105,13 @@ namespace DataStructuresLibrary
 
             T[] temp = new T[_count];
 
+            // Copy queue items to a temporary array
             for (int i = 0; i < _count; i++)
             {
                 temp[i] = _items[(_front + i) % _items.Length];
             }
 
+            // Perform insertion sort
             for (int i = 1; i < temp.Length; i++)
             {
                 T key = temp[i];
@@ -108,15 +126,17 @@ namespace DataStructuresLibrary
                 temp[j + 1] = key;
             }
 
+            // Copy sorted items back to the queue
             for (int i = 0; i < temp.Length; i++)
             {
                 _items[i] = temp[i];
             }
 
             _front = 0;
-            _rear = _count % _items.Length;
+            _rear = _count;
         }
 
+        // Checks if any item matches the given condition
         public bool Contains(Predicate<T> match)
         {
             if (match == null)
@@ -135,11 +155,13 @@ namespace DataStructuresLibrary
             return false;
         }
 
+        // Doubles the size of the queue when it is full
         private void Resize()
         {
             int newCapacity = _items.Length == 0 ? DefaultCapacity : _items.Length * 2;
             T[] newItems = new T[newCapacity];
 
+            // Copy existing items to the new array
             for (int i = 0; i < _count; i++)
             {
                 newItems[i] = _items[(_front + i) % _items.Length];

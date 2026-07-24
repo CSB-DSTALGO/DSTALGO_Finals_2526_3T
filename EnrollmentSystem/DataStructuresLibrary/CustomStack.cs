@@ -1,4 +1,3 @@
-// CustomStack.cs
 using System;
 
 namespace DataStructuresLibrary
@@ -8,33 +7,25 @@ namespace DataStructuresLibrary
         private T[] _items;
         private int _top;
 
-        public int Count 
-        {
-            get { return _top; }
-        }
+        public int Count => _top;
 
-        public CustomStack()
+        public CustomStack(int initialCapacity = 4)
         {
-            _items = new T[4];
+            if (initialCapacity <= 0)
+                initialCapacity = 4;
+
+            _items = new T[initialCapacity];
             _top = 0;
         }
 
         public void Push(T item)
-        {            
+        {
             if (_top == _items.Length)
             {
-                T[] newItems = new T[_items.Length * 2];
-
-                for (int i = 0; i < _items.Length; i++)
-                {
-                    newItems[i] = _items[i];
-                }
-
-                _items = newItems;
+                Resize();
             }
 
-            _items[_top] = item;
-            _top++;
+            _items[_top++] = item;
         }
 
         public T Pop()
@@ -45,7 +36,9 @@ namespace DataStructuresLibrary
             }
 
             _top--;
-            return _items[_top];
+            T item = _items[_top];
+            _items[_top] = default!;
+            return item;
         }
 
         public T Peek()
@@ -67,7 +60,7 @@ namespace DataStructuresLibrary
         {
             for (int i = 0; i < _top; i++)
             {
-                if (_items[i].Equals(item))
+                if (Equals(_items[i], item))
                 {
                     return i;
                 }
@@ -78,7 +71,17 @@ namespace DataStructuresLibrary
 
         public void SortById()
         {
+            // TODO: Implement if required by your project.
+        }
 
+        private void Resize()
+        {
+            int newCapacity = _items.Length == 0 ? 4 : _items.Length * 2;
+
+            T[] newItems = new T[newCapacity];
+            Array.Copy(_items, newItems, _items.Length);
+
+            _items = newItems;
         }
     }
 }
