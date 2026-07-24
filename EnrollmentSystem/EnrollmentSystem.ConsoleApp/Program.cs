@@ -149,6 +149,7 @@ namespace EnrollmentSystem.ConsoleApp
                     case "3":
                         Console.WriteLine("\n--- Curriculum Matrix ---");
                         Console.WriteLine($"Total Curriculum Units: {_curriculum.CalculateTotalUnits()}");
+                        _curriculum.ShowCurriculum();
                         break;
                 }
             }

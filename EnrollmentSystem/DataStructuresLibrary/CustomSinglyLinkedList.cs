@@ -3,42 +3,84 @@ using System;
 
 namespace DataStructuresLibrary
 {
-    public class Node<T>
+    public class Node<T> // set up node class
     {
         public T Data { get; set; }
-        public Node<T>? Next { get; set; } // Mark as nullable with '?'
+        public Node<T>? Next { get; set; }
 
         public Node(T data)
         {
             Data = data;
-            Next = null; 
+            Next = null;
         }
     }
 
     public class CustomSinglyLinkedList<T>
     {
-        private Node<T>? _head; // Mark as nullable with '?'
+        private Node<T>? _head;
 
-        public Node<T>? Head // Mark as nullable to match the field
+        public Node<T>? Head
         {
-            get { throw new NotImplementedException(); }
+            get { return _head; }
         }
 
-        public int Count { get; set; }
+        public int Count { get; set; } // item count
 
         public CustomSinglyLinkedList()
         {
-            _head = null; 
+            _head = null;
         }
 
         public void AddLast(T item)
         {
-            throw new NotImplementedException();
+            Node<T> newNode = new Node<T>(item); // new node
+
+            if (_head == null) // if empty list, assign new node as head node
+            {
+                _head = newNode;
+            }
+            else
+            {
+                Node<T> current = _head; // temporary pointer to the head node
+
+                while (current.Next != null) // iterates until it finds the last node (points to null)
+                {
+                    current = current.Next;
+                }
+                current.Next = newNode; // changes the last node's pointer to the new node
+            }
+            Count++; // add item count
         }
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            if (_head == null)
+            {
+                return false;
+            }
+
+            if (_head.Data.Equals(item)) // if the data value given is the same as head node, remove head node
+            {
+                _head = _head.Next;
+                Count--;
+                return true;
+            }
+
+            Node<T> current = _head;
+
+            while (current.Next != null)  // looks for the node with the target value to remove
+            {
+                if (current.Next.Data.Equals(item))
+                {
+                    current.Next = current.Next.Next;
+                    Count--;
+                    return true;
+                }
+
+                current = current.Next;
+            }
+
+            return false;
         }
     }
 }
