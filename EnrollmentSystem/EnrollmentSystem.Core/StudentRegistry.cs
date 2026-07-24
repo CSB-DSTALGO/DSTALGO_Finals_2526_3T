@@ -10,7 +10,7 @@ namespace EnrollmentSystem.Core
 
         public int Count => _students.Count;
 
-        // Add student. Check for null, empty name, duplicates
+        // Add student. Check for null, duplicate ID
         public void RegisterStudent(Student student)
         {
             if (student == null)
@@ -42,7 +42,7 @@ namespace EnrollmentSystem.Core
             return true;
         }
 
-        // Remove by ID. Return true if found
+        // Remove by ID (int). Return true if found
         public bool RemoveStudent(int id)
         {
             for (int i = 0; i < _students.Count; i++)
@@ -111,23 +111,23 @@ namespace EnrollmentSystem.Core
             return _students.Count;
         }
 
-        // Sort by name A to Z
+        // Bonus: Sort by name A to Z
         public void SortStudentsByName()
         {
             _students.QuickSort((a, b) =>
                 string.Compare(a.Name, b.Name, StringComparison.OrdinalIgnoreCase));
         }
 
-        // Sort by ID (use before Binary Search)
+        // Bonus: Sort by ID (use before Binary Search)
         public void SortStudentsById()
         {
             _students.QuickSort((a, b) => a.Id.CompareTo(b.Id));
         }
 
-        // Print all students
+        // Bonus: Print all students
         public void ShowAllStudents()
         {
-            Console.WriteLine("\n------------- REGISTERED STUDENTS -----------------");
+            Console.WriteLine("\n------------ REGISTERED STUDENTS ------------");
 
             if (_students.Count == 0)
             {

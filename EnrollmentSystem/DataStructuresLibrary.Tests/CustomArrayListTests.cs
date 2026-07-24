@@ -31,7 +31,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Throws<IndexOutOfRangeException>(() => list.Get(5));
         }
 
-        // Test 3: Remove middle, others shift left
+        // Test 3: Remove middle item, others shift left
         [Fact]
         public void RemoveAt_ValidIndex_RemovesAndShifts()
         {
@@ -83,7 +83,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal("Charlie", list.Get(2));
         }
 
-        // Test 6: Binary Search finds item
+        // Test 6: Binary Search finds item in sorted list
         [Fact]
         public void BinarySearch_FindsExistingItem()
         {
@@ -99,7 +99,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(2, index);
         }
 
-        // Test 7: Binary Search not found returns -1
+        // Test 7: Binary Search returns -1 when item not found
         [Fact]
         public void BinarySearch_ItemNotFound_ReturnsNegativeOne()
         {
