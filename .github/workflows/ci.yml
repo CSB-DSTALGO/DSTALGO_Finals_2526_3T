@@ -1,0 +1,38 @@
+name: DSTALGO CI
+
+# Runs on every push and pull request to this branch. For each system it runs
+# the DataStructuresLibrary tests and the Core tests, and rejects any use of
+# built-in collections in the custom data structures.
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: ${{ matrix.system }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        system: [ECommerceSystem, EnrollmentSystem]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Reject built-in collections
+        run: |
+          if grep -rn "System.Collections" --include=*.cs --exclude-dir=obj --exclude-dir=bin ${{ matrix.system }}/DataStructuresLibrary; then
+            echo "::error::System.Collections is prohibited in the custom data structures."
+            exit 1
+          fi
+          echo "No built-in collections found."
+
+      - name: Library tests
+        run: dotnet test ${{ matrix.system }}/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj --nologo -v minimal
+
+      - name: Core tests
+        run: dotnet test ${{ matrix.system }}/${{ matrix.system }}.Tests/${{ matrix.system }}.Tests.csproj --nologo -v minimal
