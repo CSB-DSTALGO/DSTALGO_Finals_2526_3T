@@ -1,5 +1,3 @@
-// CustomSinglyLinkedList.cs
-// GUYS TINATAMAD PA AKU MAG CUMENT SURI
 
 using System;
 

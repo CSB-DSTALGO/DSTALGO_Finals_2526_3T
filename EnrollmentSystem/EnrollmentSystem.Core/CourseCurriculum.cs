@@ -1,4 +1,3 @@
-namespace EnrollmentSystem.Core;
 
 using DataStructuresLibrary;
 
@@ -32,6 +31,10 @@ namespace EnrollmentSystem.Core
 
             return _curriculum.RemoveByPredicate(c => c.Code == courseCode);
         }
+        public bool RemoveCourse(string courseCode)
+        {
+            return DeleteCourse(courseCode);
+        }
 
         // Searches for a course by its course code.Returns the matching Course if found; null otherwise.
         public Course? SearchCourse(string courseCode)
@@ -40,6 +43,14 @@ namespace EnrollmentSystem.Core
                 return null;
 
             return _curriculum.Find(c => c.Code == courseCode);
+        }
+
+        public bool SearchCourse(Course course)
+        {
+            if (course == null)
+                return false;
+
+            return _curriculum.Find(c => c.Code == course.Code) != null;
         }
 
         // Displays all courses currently in the curriculum.
@@ -61,6 +72,10 @@ namespace EnrollmentSystem.Core
             int total = 0;
             _curriculum.Traverse(course => total += course.Units);
             return total;
+        }
+        public int GetTotalUnits()
+        {
+            return CalculateTotalUnits();
         }
 
         // Returns the total number of courses in the curriculum.

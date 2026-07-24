@@ -12,11 +12,9 @@ public class AdmissionsDesk
     public void IssueAdmissionsTicket(Ticket ticket) => _tickets.Enqueue(ticket); // Enqueue a ticket
     public AdmissionApplication ServeNextStudent() => _applications.Dequeue(); // Dequeue to serve the next student
     public Ticket ServeNextTicket() => _tickets.Dequeue(); // Dequeue to serve the next ticket
-    public AdmissionApplication ViewNextTicket() => _applications.Peek(); // Peek to view the next admission application
+    public Ticket ViewNextTicket() => _tickets.Peek(); // Peek to view the next admission application
     public bool CheckQueueEmpty() => _applications.IsEmpty(); // Checks if the application queue is empty
-    public int GetQueueCount() => Count; // Count of application in the queue
-
-    // Hint: Delegate search and sort to CustomQueue<T>
+    public int GetQueueCount() => _tickets.Count; // Count of application in the queue
     public bool SearchApplication(AdmissionApplication app) => _applications.Search(app); // Search for an application in the queue
     public void SortApplicationsByPriority() => _applications.Sort((a, b) => a.PriorityScore.CompareTo(b.PriorityScore)); // Sort applications by priority score
 }

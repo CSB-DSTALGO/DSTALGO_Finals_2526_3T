@@ -25,9 +25,14 @@ namespace DataStructuresLibrary
         // Adds an item to the end of the queue
         public void Enqueue(T item)
         {
-            _items[_rear] = item; // Insert the item to the rear
-            _rear = (_rear + 1) % _items.Length; // This moves the rear index forward and wraps around to use the empty space at the front if needed
-            _count++; // Increases the count of items
+            if (_count == _items.Length)
+            {
+                throw new InvalidOperationException("Queue is full.");
+            }
+
+            _items[_rear] = item;
+            _rear = (_rear + 1) % _items.Length;
+            _count++;
         }
 
         // Removes and returns the item at the front of the queue

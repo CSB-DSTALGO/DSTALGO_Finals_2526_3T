@@ -56,7 +56,16 @@ namespace EnrollmentSystem.Core
 
             return false;
         }
+        // Remove by ID (string). Supports IDs like "2026-0001"
+        public bool RemoveStudent(string id)
+        {
+            if (int.TryParse(id.Replace("-", ""), out int numericId))
+            {
+                return RemoveStudent(numericId);
+            }
 
+            return false;
+        }
         // Get student at index
         public Student GetStudentAt(int index)
         {

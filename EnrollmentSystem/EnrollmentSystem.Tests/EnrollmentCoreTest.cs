@@ -10,7 +10,10 @@ namespace EnrollmentSystem.Tests
         public void RegisterStudent_ShouldAddStudentAndIncreaseCount()
         {
             var registry = new StudentRegistry();
-            var student = new Student { Id = "2026-0001", Name = "Alice", CourseCode = "BSIT" };
+            var student = new Student(20260001, "Alice", 3.5)
+            {
+                CourseCode = "BSIT"
+            };
 
             registry.RegisterStudent(student);
 
@@ -22,7 +25,10 @@ namespace EnrollmentSystem.Tests
         public void RemoveStudent_ShouldDecreaseCount_WhenStudentExists()
         {
             var registry = new StudentRegistry();
-            var student = new Student { Id = "2026-0001", Name = "Alice", CourseCode = "BSIT" };
+            var student = new Student(20260001, "Alice", 3.5)
+            {
+                CourseCode = "BSIT"
+            };
             registry.RegisterStudent(student);
 
             bool removed = registry.RemoveStudent("2026-0001");
@@ -80,8 +86,8 @@ namespace EnrollmentSystem.Tests
         public void InsertCourse_ShouldAddInOrder()
         {
             var curriculum = new CourseCurriculum();
-            var c1 = new Course { Code = "CS101", Title = "Intro to CS", Units = 3 };
-            var c2 = new Course { Code = "CS102", Title = "Data Structures", Units = 3 };
+            var c1 = new Course("CS101", "Intro to CS", 3);
+            var c2 = new Course("CS102", "Data Structures", 3);
 
             curriculum.InsertCourse(c1);
             curriculum.InsertCourse(c2);
@@ -93,7 +99,7 @@ namespace EnrollmentSystem.Tests
         public void RemoveCourse_ShouldReturnTrue_WhenCourseIsRemoved()
         {
             var curriculum = new CourseCurriculum();
-            var course = new Course { Code = "CS102", Title = "Data Structures", Units = 3 };
+            var course = new Course("CS102", "Data Structures", 3);
             curriculum.InsertCourse(course);
 
             bool removed = curriculum.RemoveCourse("CS102");
