@@ -73,5 +73,20 @@ namespace DataStructuresLibrary
             }
             _items = tItems; // replace old array with the new array
         }
+
+        // I dont know if i deleted this method ?
+        public int Search(T item)
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                if (_items[i]!.Equals(item))
+                    return i;
+            }
+            return -1;
+        }
+        public void Sort()
+        {
+            Array.Sort(_items, 0, _count);
+        }
     }
 }
