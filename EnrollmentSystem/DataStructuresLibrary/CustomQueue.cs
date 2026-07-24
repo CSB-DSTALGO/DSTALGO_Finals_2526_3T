@@ -10,7 +10,7 @@ namespace DataStructuresLibrary
         private int _rear;
         private int _count;
 
-        public int Count ();
+        public int Count 
         { 
             get { return _count; } 
         }
