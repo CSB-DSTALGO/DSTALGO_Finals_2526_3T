@@ -2,13 +2,87 @@ namespace DataStructuresLibrary;
 
 public class CustomStack<T> where T : IComparable<T>
 {
+    private T[] _items;
+    private const int InitialCapacity = 4;
+
     public int Count { get; private set; }
 
-    public void Push(T item) => throw new NotImplementedException();
-    public T Pop() => throw new NotImplementedException();
-    public T Peek() => throw new NotImplementedException();
+    public CustomStack()
+    {
+        _items = new T[InitialCapacity];
+        Count = 0;
+    }
 
-    public int Search(T item) => throw new NotImplementedException();
+    public void Push(T item)
+    {
+        if (item == null)
+        {
+            throw new ArgumentNullException(nameof(item));
+        }
 
-    public void Sort() => throw new NotImplementedException();
+        if (Count == _items.Length)
+        {
+            T[] newArray = new T[_items.Length * 2];
+
+            for (int i = 0; i < Count; i++)
+            {
+                newArray[i] = _items[i];
+            }
+
+            _items = newArray;
+        }
+
+        _items[Count] = item;
+        Count++;
+    }
+
+    public T Pop()
+{
+    if (Count == 0)
+    {
+        throw new InvalidOperationException("Stack is empty.");
+    }
+
+    Count--;
+    T item = _items[Count];
+    _items[Count] = default!;
+
+    return item;
+}
+
+    public T Peek()
+{
+    if (Count == 0)
+    {
+        throw new InvalidOperationException("Stack is empty.");
+    }
+
+    return _items[Count - 1];
+}
+
+    public int Search(T item)
+{
+    for (int i = Count - 1, depth = 1; i >= 0; i--, depth++)
+    {
+        if (_items[i].CompareTo(item) == 0)
+            return depth;
+    }
+
+    return -1;
+}
+    public void Sort()
+{
+    // Bubble Sort (descending in array so smallest ends up on top)
+    for (int i = 0; i < Count - 1; i++)
+    {
+        for (int j = 0; j < Count - i - 1; j++)
+        {
+            if (_items[j].CompareTo(_items[j + 1]) < 0)
+            {
+                T temp = _items[j];
+                _items[j] = _items[j + 1];
+                _items[j + 1] = temp;
+            }
+        }
+    }
 }
