@@ -32,4 +32,9 @@ public class ReturnHistoryStack
     {
         _returns.Sort();
     }
+
+    public bool CheckHistoryEmpty()
+    {
+        return _returns.Count == 0;
+    }
 }
