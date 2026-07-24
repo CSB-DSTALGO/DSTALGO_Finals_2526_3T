@@ -1,1 +1,79 @@
-﻿
+﻿===========================================================
+   CUSTOMQUEUE - SORTING & SEARCH ALGORITHM ANALYSIS
+   Module 3 - Order Processing Queue
+===========================================================
+
+-----------------------------------------------------------
+1. SORTING ALGORITHM: MERGE SORT
+-----------------------------------------------------------
+
+** Structural Mechanism: **
+Merge Sort is a Divide and Conquer algorithm. It works by
+recursively splitting the array into two halves (divide)
+until each sub-array contains only a single element (which
+is inherently sorted). Then, it repeatedly merges these
+sub-arrays back together (conquer) by comparing the first
+elements of each sub-array and placing the smaller one
+into a new combined sorted array.
+
+** Step-by-Step Process: **
+1. If the queue has 0 or 1 element, it is already sorted.
+2. Extract all elements from the circular queue into a flat array.
+3. Recursively divide the array into left and right halves.
+4. Sort the left half and the right half recursively.
+5. Merge the two sorted halves:
+   - Compare the current elements of both halves.
+   - Place the smaller element into the original array.
+   - Continue until all elements are merged.
+
+** Operational Efficiency: **
+The algorithm divides the array log(n) times and performs
+n comparisons at each level of recursion to merge the elements.
+
+** Time Complexity: **
+- Best Case:     O(n log n)
+- Average Case:  O(n log n)
+- Worst Case:    O(n log n)  (Guaranteed performance)
+- Space Complexity: O(n)     (Requires temporary arrays for merging)
+
+** Why used: **
+Merge Sort is used because it guarantees O(n log n) performance
+even in the worst case, making it reliable for processing
+orders where predictable performance is required.
+
+-----------------------------------------------------------
+2. SEARCH ALGORITHM: LINEAR SEARCH
+-----------------------------------------------------------
+
+** Structural Mechanism: **
+Linear Search (also called Sequential Search) iterates
+through every element in the queue one by one, starting
+from the front (head) to the rear (tail), comparing each
+element against the target item until a match is found.
+
+** Step-by-Step Process: **
+1. Start at the head (front) of the queue.
+2. Compare the current element with the target item.
+3. If they match, return 'true' (found).
+4. If they do not match, move to the next element.
+5. Repeat until the tail (rear) is reached.
+6. If no match is found, return 'false' (not found).
+
+** Operational Efficiency: **
+As the number of elements (n) increases, the search time
+increases proportionally.
+
+** Time Complexity: **
+- Best Case:  O(1)     (Item is the first element)
+- Average Case: O(n)   (Item is in the middle)
+- Worst Case:  O(n)    (Item is the last element or absent)
+- Space Complexity: O(1) (No extra memory is used)
+
+** Why used: **
+Linear Search is used because the queue is not always
+sorted. It is simple to implement and works on any data,
+regardless of order.
+
+===========================================================
+   END OF ANALYSIS
+===========================================================
