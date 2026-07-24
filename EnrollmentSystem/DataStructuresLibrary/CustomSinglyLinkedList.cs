@@ -95,5 +95,74 @@ namespace DataStructuresLibrary
             return false;
         }
 
+        public bool Search(T item)
+        {
+            EqualityComparer<T> comparer = EqualityComparer<T>.Default;
+            Node<T>? current = _head;
+
+            while (current != null)
+            {
+                if (comparer.Equals(current.Data, item))
+                {
+                    return true;
+                }
+
+                current = current.Next;
+            }
+
+            return false;
+        }
+
+        public void Sort(Comparison<T> comparison)
+        {
+            if (comparison == null)
+            {
+                throw new ArgumentNullException(nameof(comparison));
+            }
+
+            // An empty or one-item list is already sorted.
+            if (_head == null || _head.Next == null)
+            {
+                return;
+            }
+
+            Node<T>? sortedHead = null;
+            Node<T>? current = _head;
+
+            while (current != null)
+            {
+                // Save the next node before changing links.
+                Node<T>? nextNode = current.Next;
+
+                // Insert at the start of the sorted chain.
+                if (sortedHead == null ||
+                    comparison(current.Data, sortedHead.Data) < 0)
+                {
+                    current.Next = sortedHead;
+                    sortedHead = current;
+                }
+                else
+                {
+                    Node<T> sortedCurrent = sortedHead;
+
+                    // Find the correct position for the current node.
+                    while (sortedCurrent.Next != null &&
+                           comparison(
+                               sortedCurrent.Next.Data,
+                               current.Data) <= 0)
+                    {
+                        sortedCurrent = sortedCurrent.Next;
+                    }
+
+                    current.Next = sortedCurrent.Next;
+                    sortedCurrent.Next = current;
+                }
+
+                current = nextNode;
+            }
+
+            _head = sortedHead;
+        }
+
     }
 }
