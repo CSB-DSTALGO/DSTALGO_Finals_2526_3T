@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 namespace DataStructuresLibrary; //LIAM 
+=======
+namespace DataStructuresLibrary; 
+>>>>>>> 700e51f8fdf98049d3d69b0562ba3101675a1efd
 
 public class CustomQueue<T> where T : IComparable<T>
 {
@@ -55,4 +59,7 @@ public class CustomQueue<T> where T : IComparable<T>
         }
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 700e51f8fdf98049d3d69b0562ba3101675a1efd

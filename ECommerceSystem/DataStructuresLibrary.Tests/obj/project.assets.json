@@ -930,23 +930,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\garri\\.nuget\\packages\\": {},
+    "C:\\Users\\franc\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\garri\\Documents\\DSTALGO_Finals_2526_3T\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary.Tests\\DataStructuresLibrary.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\franc\\source\\repos\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary.Tests\\DataStructuresLibrary.Tests.csproj",
       "projectName": "DataStructuresLibrary.Tests",
-      "projectPath": "C:\\Users\\garri\\Documents\\DSTALGO_Finals_2526_3T\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary.Tests\\DataStructuresLibrary.Tests.csproj",
-      "packagesPath": "C:\\Users\\garri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\garri\\Documents\\DSTALGO_Finals_2526_3T\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary.Tests\\obj\\",
+      "projectPath": "C:\\Users\\franc\\source\\repos\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary.Tests\\DataStructuresLibrary.Tests.csproj",
+      "packagesPath": "C:\\Users\\franc\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\franc\\source\\repos\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\garri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\franc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -955,7 +955,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -963,8 +962,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\garri\\Documents\\DSTALGO_Finals_2526_3T\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
-              "projectPath": "C:\\Users\\garri\\Documents\\DSTALGO_Finals_2526_3T\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj"
+            "C:\\Users\\franc\\source\\repos\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
+              "projectPath": "C:\\Users\\franc\\source\\repos\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj"
             }
           }
         }
@@ -1019,7 +1018,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

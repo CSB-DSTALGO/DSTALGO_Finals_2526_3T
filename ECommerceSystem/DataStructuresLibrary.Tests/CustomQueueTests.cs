@@ -65,3 +65,7 @@ public class CustomQueueTests
         Assert.Equal(30, queue.Dequeue());
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 700e51f8fdf98049d3d69b0562ba3101675a1efd

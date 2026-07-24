@@ -48,7 +48,11 @@ namespace DataStructuresLibrary.Tests
             stack.Push(30);
             stack.Push(40);
 
+<<<<<<< HEAD
             Assert.Equal(1, stack.Search(40)); 
+=======
+            Assert.Equal(1, stack.Search(40));
+>>>>>>> 700e51f8fdf98049d3d69b0562ba3101675a1efd
             Assert.Equal(2, stack.Search(30));
             Assert.Equal(3, stack.Search(20));
             Assert.Equal(4, stack.Search(10));

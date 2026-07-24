@@ -52,7 +52,11 @@ namespace ECommerceSystem.Core
     {
         public int ReturnId { get; set; }
         public int OrderId { get; set; }
+<<<<<<< HEAD
         public string Reason { get; set; }
+=======
+        public string Reason { get; set; } = string.Empty;
+>>>>>>> 700e51f8fdf98049d3d69b0562ba3101675a1efd
 
         public ReturnRequest(int returnId, int orderId, string reason)
         {
@@ -63,12 +67,21 @@ namespace ECommerceSystem.Core
 
         public int CompareTo(ReturnRequest? other)
         {
+<<<<<<< HEAD
             if (other == null) return 1;
+=======
+            if (other == null)
+            {
+                return 1;
+            }
+
+>>>>>>> 700e51f8fdf98049d3d69b0562ba3101675a1efd
             return ReturnId.CompareTo(other.ReturnId);
         }
 
         public override string ToString()
         {
+<<<<<<< HEAD
             return $"Return #{ReturnId} (Order #{OrderId}): {Reason}";
         }
     }
@@ -76,3 +89,10 @@ namespace ECommerceSystem.Core
 }
 
 
+=======
+            return $"Return #{ReturnId} | Order #{OrderId} | Reason: {Reason}";
+        }
+    }
+}
+
+>>>>>>> 700e51f8fdf98049d3d69b0562ba3101675a1efd
