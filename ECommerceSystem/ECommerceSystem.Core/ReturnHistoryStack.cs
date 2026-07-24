@@ -17,16 +17,13 @@ public class ReturnHistoryStack
     }
 
     // Pops the latest return request from the stack
-    public ReturnRequest PopReturn()
-    {
-        return _returns.Pop();
-    }
+    public ReturnRequest PopReturn() => _returns.Pop();
 
     // Peeks at the latest return request without removing it from the stack
-    public ReturnRequest PeekLatestReturn()
-    {
-        return _returns.Peek();
-    }
+    public ReturnRequest PeekLatestReturn() => _returns.Peek();
+
+    // Checks if the return history stack is empty
+    public bool CheckHistoryEmpty() => Count == 0;
 
     // Searches for a return request in the stack and returns its index, or -1 if not found
     public int SearchReturn(ReturnRequest request)
@@ -36,8 +33,5 @@ public class ReturnHistoryStack
     }
 
     // Sorts the return requests in the stack based on their natural ordering
-    public void SortReturns()
-    {
-        _returns.Sort();
-    }
+    public void SortReturns() => _returns.Sort();
 }

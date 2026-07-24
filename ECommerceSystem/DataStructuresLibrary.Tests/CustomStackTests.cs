@@ -79,4 +79,115 @@ public class CustomStackTests
         Assert.Equal(15, stack.Pop());
         Assert.Equal(42, stack.Pop());
     }
+
+    // Test to ensure that popping from an empty stack throws an InvalidOperationException
+    [Fact]
+    public void Pop_ShouldThrowInvalidOperationException_WhenStackIsEmpty()
+    {
+        // Arrange
+        var stack = new CustomStack<int>();
+
+        // Act & Assert
+        Assert.Throws<InvalidOperationException>(() => stack.Pop());
+    }
+
+    // Test to ensure that peeking at an empty stack throws an InvalidOperationException
+    [Fact]
+    public void Peek_ShouldThrowInvalidOperationException_WhenStackIsEmpty()
+    {
+        // Arrange
+        var stack = new CustomStack<string>();
+
+        // Act & Assert
+        Assert.Throws<InvalidOperationException>(() => stack.Peek());
+    }
+
+    // Test to ensure that sorting an already sorted stack maintains the correct order
+    [Fact]
+    public void Sort_ShouldMaintainAscendingOrder_WhenStackIsAlreadySorted()
+    {
+        // Arrange
+        var stack = new CustomStack<int>();
+        stack.Push(42);
+        stack.Push(15);
+        stack.Push(8);
+        stack.Push(3);
+
+        // Act
+        stack.Sort();
+
+        // Assert
+        Assert.Equal(3, stack.Pop());
+        Assert.Equal(8, stack.Pop());
+        Assert.Equal(15, stack.Pop());
+        Assert.Equal(42, stack.Pop());
+    }
+
+    // Test to ensure that pushing a single item makes it the top element
+    [Fact]
+    public void Push_ShouldAddItemToTopOfStack()
+    {
+        // Arrange
+        var stack = new CustomStack<int>();
+
+        // Act
+        stack.Push(99);
+
+        // Assert
+        Assert.Equal(1, stack.Count);
+        Assert.Equal(99, stack.Peek());
+    }
+
+    // Test to ensure that searching for an item not in the stack returns -1
+    [Fact]
+    public void Search_ShouldReturnNegativeOne_WhenItemDoesNotExist()
+    {
+        // Arrange
+        var stack = new CustomStack<string>();
+        stack.Push("Apple");
+        stack.Push("Banana");
+        stack.Push("Cherry");
+
+        // Act
+        int result = stack.Search("Mango");
+
+        // Assert
+        Assert.Equal(-1, result);
+    }
+
+    // Test to ensure that duplicate items can be pushed and are treated as separate elements
+    [Fact]
+    public void Push_ShouldAllowDuplicateItems()
+    {
+        // Arrange
+        var stack = new CustomStack<int>();
+
+        // Act
+        stack.Push(10);
+        stack.Push(10);
+        stack.Push(20);
+
+        // Assert
+        Assert.Equal(3, stack.Count);
+        Assert.Equal(20, stack.Pop());
+        Assert.Equal(10, stack.Pop());
+        Assert.Equal(10, stack.Pop());
+    }
+
+    // Test to ensure that Search returns the depth of the closest duplicate from the top
+    [Fact]
+    public void Search_ShouldReturnClosestDuplicateFromTop()
+    {
+        // Arrange
+        var stack = new CustomStack<int>();
+
+        // Act
+        stack.Push(10);
+        stack.Push(20);
+        stack.Push(10);
+
+        // Assert
+        Assert.Equal(1, stack.Search(10));
+        Assert.Equal(2, stack.Search(20));
+    }
 }
