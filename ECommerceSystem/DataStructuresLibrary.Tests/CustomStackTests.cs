@@ -5,7 +5,64 @@ using DataStructuresLibrary;
 
 public class CustomStackTests
 {
-   
+
+    [Fact]
+    public void Pop_ShouldMaintainStrictLIFOOrder()
+    {
+        var stack = new CustomStack<int>();
+
+        stack.Push(10);
+        stack.Push(20);
+        stack.Push(30);
+
+        Assert.Equal(30, stack.Pop());
+        Assert.Equal(20, stack.Pop());
+        Assert.Equal(10, stack.Pop());
+    }
+
+    [Fact]
+    public void Peek_ShouldReturnTopElement_WithoutRemovingIt()
+    {
+        var stack = new CustomStack<int>();
+
+        stack.Push(10);
+        stack.Push(20);
+
+        Assert.Equal(20, stack.Peek());
+        Assert.Equal(2, stack.Count);
+    }
+
+    [Fact]
+    public void Search_ShouldReturnOneBasedDepthFromTop_WhenItemExists()
+    {
+        var stack = new CustomStack<int>();
+
+        stack.Push(10);
+        stack.Push(20);
+        stack.Push(30);
+
+        Assert.Equal(1, stack.Search(30));
+        Assert.Equal(2, stack.Search(20));
+        Assert.Equal(3, stack.Search(10));
+    }
+
+
+    [Fact]
+    public void Sort_ShouldReorderStack_WithSmallestItemAtTop()
+    {
+        var stack = new CustomStack<int>();
+
+        stack.Push(5);
+        stack.Push(1);
+        stack.Push(3);
+
+        stack.Sort();
+
+        Assert.Equal(1, stack.Peek());
+    }
+
+
+
     [Fact]
     public void Push_ShouldIncreaseCount()
     {
@@ -40,19 +97,6 @@ public class CustomStackTests
     }
 
 
-    [Fact]
-    public void Pop_ShouldMaintainStrictLIFOOrder()
-    {
-        var stack = new CustomStack<int>();
-
-        stack.Push(10);
-        stack.Push(20);
-        stack.Push(30);
-
-        Assert.Equal(30, stack.Pop());
-        Assert.Equal(20, stack.Pop());
-        Assert.Equal(10, stack.Pop());
-    }
 
     [Fact]
     public void Pop_ShouldDecreaseCount()
@@ -77,18 +121,6 @@ public class CustomStackTests
 
 
     [Fact]
-    public void Peek_ShouldReturnTopElement_WithoutRemovingIt()
-    {
-        var stack = new CustomStack<int>();
-
-        stack.Push(10);
-        stack.Push(20);
-
-        Assert.Equal(20, stack.Peek());
-        Assert.Equal(2, stack.Count);
-    }
-
-    [Fact]
     public void Peek_MultipleCalls_ShouldReturnSameValue()
     {
         var stack = new CustomStack<int>();
@@ -107,19 +139,6 @@ public class CustomStackTests
         Assert.Throws<InvalidOperationException>(() => stack.Peek());
     }
 
-    [Fact]
-    public void Search_ShouldReturnOneBasedDepthFromTop_WhenItemExists()
-    {
-        var stack = new CustomStack<int>();
-
-        stack.Push(10);
-        stack.Push(20);
-        stack.Push(30);
-
-        Assert.Equal(1, stack.Search(30));
-        Assert.Equal(2, stack.Search(20));
-        Assert.Equal(3, stack.Search(10));
-    }
 
     [Fact]
     public void Search_ItemNotFound_ShouldReturnMinusOne()
@@ -141,19 +160,6 @@ public class CustomStackTests
     }
 
 
-    [Fact]
-    public void Sort_ShouldReorderStack_WithSmallestItemAtTop()
-    {
-        var stack = new CustomStack<int>();
-
-        stack.Push(5);
-        stack.Push(1);
-        stack.Push(3);
-
-        stack.Sort();
-
-        Assert.Equal(1, stack.Peek());
-    }
 
     [Fact]
     public void Sort_AlreadySorted_ShouldRemainSorted()
