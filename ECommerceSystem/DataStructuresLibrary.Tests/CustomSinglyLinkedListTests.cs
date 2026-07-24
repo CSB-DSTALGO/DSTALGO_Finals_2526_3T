@@ -5,7 +5,7 @@ using DataStructuresLibrary;
 
 public class CustomSinglyLinkedListTests
 {
-    // Add 
+    // Add
 
     [Fact]
     public void Add_ShouldAppendNodeAndIncrementCount()
@@ -39,12 +39,12 @@ public class CustomSinglyLinkedListTests
         list.Add(5);
         list.Add(1);
         list.Add(9);
-        list.ForEach(item => visited.Add(item));
+        list.ForEach(item => visited.Add(item)); // collect in traversal order
 
         Assert.Equal(new List<int> { 5, 1, 9 }, visited);
     }
 
-    // Remove 
+    // Remove
 
     [Fact]
     public void Remove_HeadNode_ShouldUpdateHeadAndDecrementCount()
@@ -54,7 +54,7 @@ public class CustomSinglyLinkedListTests
         list.Add(2);
         list.Add(3);
 
-        bool removed = list.Remove(1);
+        bool removed = list.Remove(1); // removes head
 
         Assert.True(removed);
         Assert.Equal(2, list.Count);
@@ -69,7 +69,7 @@ public class CustomSinglyLinkedListTests
         list.Add(2);
         list.Add(3);
 
-        bool removed = list.Remove(2);
+        bool removed = list.Remove(2); // removes middle node
 
         var visited = new List<int>();
         list.ForEach(item => visited.Add(item));
@@ -85,13 +85,13 @@ public class CustomSinglyLinkedListTests
         list.Add(1);
         list.Add(2);
 
-        bool removed = list.Remove(99);
+        bool removed = list.Remove(99); // not present
 
         Assert.False(removed);
         Assert.Equal(2, list.Count);
     }
 
-    // Search 
+    // Search
 
     [Fact]
     public void Search_ShouldReturnTrue_WhenItemExistsInNodes()
@@ -119,10 +119,10 @@ public class CustomSinglyLinkedListTests
     {
         var list = new CustomSinglyLinkedList<int>();
 
-        Assert.False(list.Search(1));
+        Assert.False(list.Search(1)); // empty list case
     }
 
-    // Sort 
+    // Sort
 
     [Fact]
     public void Sort_ShouldRearrangeNodePointersInAscendingOrder()
@@ -163,8 +163,8 @@ public class CustomSinglyLinkedListTests
         var singleList = new CustomSinglyLinkedList<int>();
         singleList.Add(42);
 
-        emptyList.Sort();
-        singleList.Sort();
+        emptyList.Sort();  // 0 nodes
+        singleList.Sort(); // 1 node
 
         Assert.Equal(0, emptyList.Count);
         Assert.Equal(1, singleList.Count);

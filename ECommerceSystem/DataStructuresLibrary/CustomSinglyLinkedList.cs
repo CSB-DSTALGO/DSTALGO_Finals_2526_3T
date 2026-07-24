@@ -18,14 +18,15 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
 
         if (_head == null)
         {
-            _head = newNode;
+            _head = newNode; // list was empty
         }
         else
         {
             Node current = _head;
             while (current.Next != null)
-                current = current.Next;
-            current.Next = newNode;
+                current = current.Next; // walk to the last node
+
+            current.Next = newNode; // attach at the end
         }
 
         Count++;
@@ -37,7 +38,7 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
 
         if (_head.Data.CompareTo(item) == 0)
         {
-            _head = _head.Next;
+            _head = _head.Next; // removing the head
             Count--;
             return true;
         }
@@ -72,7 +73,7 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
 
     public void Sort()
     {
-        if (_head == null || _head.Next == null) return;
+        if (_head == null || _head.Next == null) return; // 0 or 1 node, already sorted
 
         Node? sorted = null;
         Node? current = _head;
@@ -83,8 +84,7 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
 
             if (sorted == null || sorted.Data.CompareTo(current.Data) >= 0)
             {
-                // Insert at the front of the sorted section
-                current.Next = sorted;
+                current.Next = sorted; // insert at the front
                 sorted = current;
             }
             else
@@ -92,16 +92,16 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
                 Node temp = sorted;
                 while (temp.Next != null && temp.Next.Data.CompareTo(current.Data) < 0)
                 {
-                    temp = temp.Next;
+                    temp = temp.Next; // find insertion point
                 }
                 current.Next = temp.Next;
-                temp.Next = current;
+                temp.Next = current; // insert here
             }
 
-            current = next;
+            current = next; // move to next unsorted node
         }
 
-        _head = sorted;
+        _head = sorted; // sorted chain is now the real list
     }
 
     public void ForEach(Action<T> action)

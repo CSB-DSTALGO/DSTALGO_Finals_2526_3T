@@ -10,17 +10,17 @@ public class OrderProcessingQueue
 
     public void EnqueueOrder(Order order)
     {
-        _orders.Enqueue(order);
+        _orders.Enqueue(order); // add to rear
     }
 
     public Order ProcessNextOrder()
     {
-        return _orders.Dequeue();
+        return _orders.Dequeue(); // remove from front
     }
 
     public Order PeekNextOrder()
     {
-        return _orders.Peek();
+        return _orders.Peek(); // look at front without removing
     }
 
     public bool SearchOrder(Order order)
