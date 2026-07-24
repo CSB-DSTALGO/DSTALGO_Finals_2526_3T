@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
   <Project Path="DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj" />
   <Project Path="DataStructuresLibrary/DataStructuresLibrary.csproj" />
   <Project Path="ECommerceSystem.ConsoleApp/ECommerceSystem.ConsoleApp.csproj" />
