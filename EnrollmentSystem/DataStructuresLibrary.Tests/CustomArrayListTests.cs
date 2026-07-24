@@ -1,51 +1,67 @@
-namespace DataStructuresLibrary.Tests;
-
+using System;
 using Xunit;
 using DataStructuresLibrary;
 
-public class CustomArrayListTests
+namespace DataStructuresLibrary.Tests
 {
-    [Fact]
-    public void Add_ShouldIncreaseCountAndStoreItems()
+    public class CustomArrayListTests
     {
-        // TODO: Implement test for Add and Get indexing
-        CustomArrayList<int> list = new CustomArrayList<int>();
-        list.Add(10);
-        list.Add(20);
-        Assert.Equal(2, list.Count);
-        list.Add(21);
-        Assert.Equal(3, list.Count);
-        list.Add(22);
-        list.Add(23);
-        Assert.Equal(5, list.Count);
-        
-    }
+        [Fact]
+        public void Add_SingleItem_IncreasesCountAndStoresValue()
+        {
+            var list = new CustomArrayList<int>();
 
-    [Fact]
-    public void Remove_ShouldShiftElementsCorrectly()
-    {
-        // TODO: Implement test verifying element removal and index shifting
-        throw new NotImplementedException();
-    }
+            list.Add(42);
 
-    [Fact]
-    public void Search_ShouldReturnCorrectIndex_WhenItemExists()
-    {
-        // TODO: Test Search returning zero-based index for existing element
-        throw new NotImplementedException();
-    }
+            Assert.Equal(1, list.Count);
+            Assert.Equal(42, list.Get(0));
+        }
 
-    [Fact]
-    public void Search_ShouldReturnMinusOne_WhenItemDoesNotExist()
-    {
-        // TODO: Test Search returning -1 when element is absent
-        throw new NotImplementedException();
-    }
+        [Fact]
+        public void Add_BeyondInitialCapacity_TriggersResizeWithoutDataLoss()
+        {
+            var list = new CustomArrayList<string>();
 
-    [Fact]
-    public void Sort_ShouldOrderElementsInAscendingSequence()
-    {
-        // TODO: Test Sort ordering an unsorted CustomArrayList<int>
-        throw new NotImplementedException();
+            list.Add("First");
+            list.Add("Second");
+            list.Add("Third"); // Triggers Resize()
+
+            Assert.Equal(3, list.Count);
+            Assert.Equal("Third", list.Get(2));
+        }
+
+        [Fact]
+        public void Get_IndexOutOfBounds_ThrowsIndexOutOfRangeException()
+        {
+            var list = new CustomArrayList<double>();
+            list.Add(3.14);
+
+            // Adding { } forces C# to treat this as a void Action
+            Assert.Throws<IndexOutOfRangeException>(() => { list.Get(1); });
+            Assert.Throws<IndexOutOfRangeException>(() => { list.Get(-1); });
+        }
+
+        [Fact]
+        public void RemoveAt_ValidIndex_RemovesItemAndShiftsRemainingElements()
+        {
+            var list = new CustomArrayList<char>();
+            list.Add('A');
+            list.Add('B');
+            list.Add('C');
+
+            list.RemoveAt(1); // Removing 'B'
+
+            Assert.Equal(2, list.Count);
+            Assert.Equal('A', list.Get(0));
+            Assert.Equal('C', list.Get(1)); // 'C' shifts left to index 1
+        }
+
+        [Fact]
+        public void RemoveAt_IndexOutOfBounds_ThrowsIndexOutOfRangeException()
+        {
+            var list = new CustomArrayList<int>();
+
+            Assert.Throws<IndexOutOfRangeException>(() => { list.RemoveAt(0); });
+        }
     }
 }

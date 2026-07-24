@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y6haC3iUQcI=",
+  "dgSpecHash": "s22foW9HEm8=",
   "success": true,
-  "projectFilePath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
-  "expectedPackageFiles": [
-    "/Users/caan/.nuget/packages/microsoft.netcore.app.ref/8.0.22/microsoft.netcore.app.ref.8.0.22.nupkg.sha512",
-    "/Users/caan/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.22/microsoft.aspnetcore.app.ref.8.0.22.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\ASUS\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

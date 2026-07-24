@@ -1,21 +1,81 @@
-namespace EnrollmentSystem.Core;
-
+// CourseCurriculum.cs
+using System;
 using DataStructuresLibrary;
 
-public class CourseCurriculum
+namespace EnrollmentSystem.Core
 {
-    private readonly CustomSinglyLinkedList<Course> _courses = new();
+    public class CourseCurriculum
+    {
+        private readonly CustomSinglyLinkedList<Course> _curriculum;
 
-    public int Count => _courses.Count;
+        public CourseCurriculum()
+        {
+            _curriculum = new CustomSinglyLinkedList<Course>();
+        }
 
-    public void InsertCourse(Course course) => throw new NotImplementedException();
-    public bool DeleteCourse(string code) => throw new NotImplementedException();
+        public void InsertCourse(Course course)
+        {
+            _curriculum.AddLast(course);
+        }
 
-    // Hint: Sum total credit units across all courses
-    public int CalculateTotalUnits() => throw new NotImplementedException();
-    public void ShowCurriculum() => throw new NotImplementedException(); 
+        public void DeleteCourse(string courseCode)
+        {
+            RemoveCourse(courseCode);
+        }
 
-    // Hint: Delegate search and sort to CustomSinglyLinkedList<T>
-    public bool SearchCourse(Course course) => throw new NotImplementedException();
-    public void SortCurriculumByUnits() => throw new NotImplementedException();
+        public Course? SearchCourse(string courseCode)
+        {
+            var current = _curriculum.Head;
+            while (current != null)
+            {
+                if (current.Data != null && current.Data.Code == courseCode)
+                {
+                    return current.Data;
+                }
+                current = current.Next;
+            }
+            return null;
+        }
+
+        public void ShowCurriculum()
+        {
+            var current = _curriculum.Head;
+            while (current != null)
+            {
+                if (current.Data != null)
+                {
+                    Console.WriteLine($"{current.Data.Code}: {current.Data.Title}({current.Data.Units} Units)");
+                }
+                current = current.Next;
+            }
+        }
+        // METHODS REQUIRED BY EnrollmentCoreTest.cs
+        public bool RemoveCourse(string courseCode)
+        {
+            var current = _curriculum.Head;
+            while (current != null)
+            {
+                if (current.Data != null && current.Data.Code == courseCode)
+                {
+                    return _curriculum.Remove(current.Data);
+                }
+                current = current.Next;
+            }
+            return false;
+        }
+        public int GetTotalUnits()
+        {
+            int totalUnits = 0;
+            var current = _curriculum.Head;
+            while (current != null)
+            {
+                if (current.Data != null)
+                {
+                    totalUnits += current.Data.Units;
+                }
+                current = current.Next;
+            }
+            return totalUnits;
+        }
+    }
 }

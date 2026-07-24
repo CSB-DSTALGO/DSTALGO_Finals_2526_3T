@@ -9,33 +9,57 @@ namespace DataStructuresLibrary
         private int _top;
 
         public int Count 
-        { 
-            get { throw new NotImplementedException(); } 
+        {
+            get => _top;
         }
 
         public CustomStack()
         {
-            throw new NotImplementedException();
+            _items = new T[2]; //initial capacity
         }
 
         public void Push(T item)
         {
-            throw new NotImplementedException();
+            //inline expansion when array capacity is reached
+            if (_top == _items.Length)
+            {
+                T[] newArray = new T[+_items.Length * 2];
+                for (int i = 0; i < _top; i++)
+                {
+                    newArray[i] = _items[i];
+                }
+                _items = newArray;
+            }
+            _items[_top] = item;
+            _top++;
         }
 
         public T Pop()
         {
-            throw new NotImplementedException();
+            if (IsEmpty())
+            {
+                throw new InvalidOperationException("[ ERROR: Stack is empty! ]");
+            }
+            _top--;
+            T item = _items[_top];
+            _items[_top] = default;
+
+            return item;
         }
 
         public T Peek()
         {
-            throw new NotImplementedException();
+            if (IsEmpty())
+            {
+                throw new InvalidOperationException("[ ERROR: Stack is empty! ]");
+            }
+
+            return _items[_top - 1];
         }
 
         public bool IsEmpty()
         {
-            throw new NotImplementedException();
+            return _top == 0;
         }
     }
 }
