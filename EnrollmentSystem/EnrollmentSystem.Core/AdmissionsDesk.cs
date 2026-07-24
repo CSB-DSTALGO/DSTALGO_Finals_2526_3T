@@ -38,6 +38,7 @@ public class AdmissionsDesk
 
     public bool CheckQueueEmpty() => Count == 0;
 
+<<<<<<< HEAD
     public int GetQueueCount() => Count;
 
     public bool SearchApplication(AdmissionApplication app)
@@ -53,3 +54,16 @@ public class AdmissionsDesk
 
     public void SortApplicationsByPriority() { }
 }
+=======
+    public void IssueAdmissionsTicket(Ticket ticket) => throw new NotImplementedException();
+    public AdmissionApplication ServeNextStudent() => throw new NotImplementedException();
+    public Ticket ServeNextTicket() => throw new NotImplementedException();
+    public AdmissionApplication ViewNextTicket() => throw new NotImplementedException();
+    public bool CheckQueueEmpty() => throw new NotImplementedException();
+    public int GetQueueCount() => Count;
+
+    // Hint: Delegate search and sort to CustomQueue<T>
+    public bool SearchApplication(AdmissionApplication app) => throw new NotImplementedException();
+    public void SortApplicationsByPriority() => throw new NotImplementedException();
+}
+>>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d

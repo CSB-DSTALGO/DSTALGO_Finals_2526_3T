@@ -1,5 +1,5 @@
-// CustomQueue.cs
 using System;
+using System.Collections.Generic;
 
 namespace DataStructuresLibrary
 {
@@ -10,11 +10,24 @@ namespace DataStructuresLibrary
         private int _rear;
         private int _count;
 
+<<<<<<< HEAD
         public int Count => _count;
+=======
+        private const int DefaultCapacity = 4;
+
+        public int Count
+        {
+            get { return _count; }
+        }
+>>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
 
         public CustomQueue(int initialCapacity = 4)
         {
+<<<<<<< HEAD
             _items = new T[initialCapacity];
+=======
+            _items = new T[DefaultCapacity];
+>>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
             _front = 0;
             _rear = 0;
             _count = 0;
@@ -36,13 +49,14 @@ namespace DataStructuresLibrary
         {
             if (IsEmpty())
             {
-                throw new InvalidOperationException("Queue is empty");
+                throw new InvalidOperationException("Queue is empty.");
             }
 
             T item = _items[_front];
             _items[_front] = default!;
             _front = (_front + 1) % _items.Length;
             _count--;
+
             return item;
         }
 
@@ -50,7 +64,7 @@ namespace DataStructuresLibrary
         {
             if (IsEmpty())
             {
-                throw new InvalidOperationException("Queue is empty.");
+                throw new InvalidOperationException("Cannot peek: the queue is empty.");
             }
 
             return _items[_front];
@@ -60,6 +74,7 @@ namespace DataStructuresLibrary
 
         private void Resize()
         {
+<<<<<<< HEAD
             var doubled = new T[_items.Length * 2];
             for (int i = 0; i < _count; i++)
             {
@@ -67,6 +82,90 @@ namespace DataStructuresLibrary
             }
 
             _items = doubled;
+=======
+            return _count == 0;
+        }
+
+        public int Search(T item)
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                int actualIndex = (_front + i) % _items.Length;
+
+                if (EqualityComparer<T>.Default.Equals(_items[actualIndex], item))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        public void Sort()
+        {
+            if (_count <= 1)
+                return;
+
+            T[] temp = new T[_count];
+
+            for (int i = 0; i < _count; i++)
+            {
+                temp[i] = _items[(_front + i) % _items.Length];
+            }
+
+            for (int i = 1; i < temp.Length; i++)
+            {
+                T key = temp[i];
+                int j = i - 1;
+
+                while (j >= 0 && Comparer<T>.Default.Compare(temp[j], key) > 0)
+                {
+                    temp[j + 1] = temp[j];
+                    j--;
+                }
+
+                temp[j + 1] = key;
+            }
+
+            for (int i = 0; i < temp.Length; i++)
+            {
+                _items[i] = temp[i];
+            }
+
+            _front = 0;
+            _rear = _count % _items.Length;
+        }
+
+        public bool Contains(Predicate<T> match)
+        {
+            if (match == null)
+                throw new ArgumentNullException(nameof(match));
+
+            for (int i = 0; i < _count; i++)
+            {
+                int actualIndex = (_front + i) % _items.Length;
+
+                if (match(_items[actualIndex]))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void Resize()
+        {
+            int newCapacity = _items.Length == 0 ? DefaultCapacity : _items.Length * 2;
+            T[] newItems = new T[newCapacity];
+
+            for (int i = 0; i < _count; i++)
+            {
+                newItems[i] = _items[(_front + i) % _items.Length];
+            }
+
+            _items = newItems;
+>>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
             _front = 0;
             _rear = _count;
         }

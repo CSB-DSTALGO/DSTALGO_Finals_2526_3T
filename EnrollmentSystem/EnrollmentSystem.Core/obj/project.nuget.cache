@@ -1,11 +1,21 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "Yj/Tejsuuj8=",
   "success": true,
   "projectFilePath": "/Users/saimerlan/Desktop/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj",
   "expectedPackageFiles": [
     "/Users/saimerlan/.nuget/packages/microsoft.netcore.app.ref/8.0.26/microsoft.netcore.app.ref.8.0.26.nupkg.sha512",
     "/Users/saimerlan/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.26/microsoft.aspnetcore.app.ref.8.0.26.nupkg.sha512"
+=======
+  "dgSpecHash": "aTygcUo+X5k=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\layug\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.23\\microsoft.windowsdesktop.app.ref.8.0.23.nupkg.sha512",
+    "C:\\Users\\layug\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.23\\microsoft.netcore.app.ref.8.0.23.nupkg.sha512",
+    "C:\\Users\\layug\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.23\\microsoft.aspnetcore.app.ref.8.0.23.nupkg.sha512"
+>>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
   ],
   "logs": []
 }
