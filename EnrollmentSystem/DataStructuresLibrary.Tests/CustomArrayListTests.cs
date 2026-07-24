@@ -1,86 +1,51 @@
-using System;
+namespace DataStructuresLibrary.Tests;
+
 using Xunit;
 using DataStructuresLibrary;
 
-namespace DataStructuresLibrary.Tests
+public class CustomArrayListTests
 {
-    public class CustomArrayListTests
+    [Fact]
+    public void Add_ShouldIncreaseCountAndStoreItems()
     {
-       [Fact]
-        public void Add_IncreasesCount()
-        {
-            var list = new CustomArrayList<int>();
-            list.Add(10);
-            Assert.Equal(1, list.Count);
-        }
+        // TODO: Implement test for Add and Get indexing
+        CustomArrayList<int> list = new CustomArrayList<int>();
+        list.Add(10);
+        list.Add(20);
+        Assert.Equal(2, list.Count);
+        list.Add(21);
+        Assert.Equal(3, list.Count);
+        list.Add(22);
+        list.Add(23);
+        Assert.Equal(5, list.Count);
+        
+    }
 
-        [Fact]
-        public void GetAt_ReturnsCorrectItem()
-        {
-            var list = new CustomArrayList<string>();
-            list.Add("Alice");
-            list.Add("Bob");
+    [Fact]
+    public void Remove_ShouldShiftElementsCorrectly()
+    {
+        // TODO: Implement test verifying element removal and index shifting
+        throw new NotImplementedException();
+    }
 
-            Assert.Equal("Alice", list.GetAt(0));
-            Assert.Equal("Bob", list.GetAt(1));
-        }
+    [Fact]
+    public void Search_ShouldReturnCorrectIndex_WhenItemExists()
+    {
+        // TODO: Test Search returning zero-based index for existing element
+        throw new NotImplementedException();
+    }
 
-        [Fact]
-        public void RemoveAt_ShiftsRemainingItemsLeft()
-        {
-            var list = new CustomArrayList<string>();
-            list.Add("Alice");
-            list.Add("Bob");
-            list.Add("Carol");
+    [Fact]
+    public void Search_ShouldReturnMinusOne_WhenItemDoesNotExist()
+    {
+        // TODO: Test Search returning -1 when element is absent
+        throw new NotImplementedException();
+    }
 
-            list.RemoveAt(0); // remove "Alice"
-
-            Assert.Equal(2, list.Count);
-            Assert.Equal("Bob", list.GetAt(0));
-            Assert.Equal("Carol", list.GetAt(1));
-        }
-
-        [Fact]
-        public void GetAt_InvalidIndex_ThrowsIndexOutOfRangeException()
-        {
-            var list = new CustomArrayList<int>();
-            list.Add(1);
-
-            Assert.Throws<IndexOutOfRangeException>(() => list.GetAt(5));
-        }
-
-        [Fact]
-        public void RemoveAt_InvalidIndex_ThrowsIndexOutOfRangeException()
-        {
-            var list = new CustomArrayList<int>();
-            Assert.Throws<IndexOutOfRangeException>(() => list.RemoveAt(0));
-        }
-
-        [Fact]
-        public void Add_BeyondInitialCapacity_ResizesWithoutLosingData()
-        {
-            var list = new CustomArrayList<int>(initialCapacity: 2);
-            list.Add(1);
-            list.Add(2);
-            list.Add(3); // forces a resize internally
-
-            Assert.Equal(3, list.Count);
-            Assert.Equal(1, list.GetAt(0));
-            Assert.Equal(2, list.GetAt(1));
-            Assert.Equal(3, list.GetAt(2));
-        }
-
-        [Fact]
-        public void ToArray_ReturnsExactCountLength_NoTrailingEmptySlots()
-        {
-            var list = new CustomArrayList<int>(initialCapacity: 10);
-            list.Add(1);
-            list.Add(2);
-
-            int[] result = list.ToArray();
-
-            Assert.Equal(2, result.Length);
-        }
- 
+    [Fact]
+    public void Sort_ShouldOrderElementsInAscendingSequence()
+    {
+        // TODO: Test Sort ordering an unsorted CustomArrayList<int>
+        throw new NotImplementedException();
     }
 }

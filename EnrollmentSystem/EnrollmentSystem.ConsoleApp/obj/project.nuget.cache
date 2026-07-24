@@ -1,5 +1,6 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "1j9HsbKxJ2A=",
   "success": true,
   "projectFilePath": "/Users/louisesilo/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.ConsoleApp/EnrollmentSystem.ConsoleApp.csproj",
@@ -7,6 +8,16 @@
     "/Users/louisesilo/.nuget/packages/microsoft.netcore.app.ref/8.0.27/microsoft.netcore.app.ref.8.0.27.nupkg.sha512",
     "/Users/louisesilo/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.27/microsoft.aspnetcore.app.ref.8.0.27.nupkg.sha512",
     "/Users/louisesilo/.nuget/packages/microsoft.netcore.app.host.osx-arm64/8.0.27/microsoft.netcore.app.host.osx-arm64.8.0.27.nupkg.sha512"
+=======
+  "dgSpecHash": "8p72/bHU3uk=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.ConsoleApp\\EnrollmentSystem.ConsoleApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\layug\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.23\\microsoft.windowsdesktop.app.ref.8.0.23.nupkg.sha512",
+    "C:\\Users\\layug\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.23\\microsoft.netcore.app.ref.8.0.23.nupkg.sha512",
+    "C:\\Users\\layug\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.23\\microsoft.aspnetcore.app.ref.8.0.23.nupkg.sha512",
+    "C:\\Users\\layug\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.23\\microsoft.netcore.app.host.win-x64.8.0.23.nupkg.sha512"
+>>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
   ],
   "logs": []
 }

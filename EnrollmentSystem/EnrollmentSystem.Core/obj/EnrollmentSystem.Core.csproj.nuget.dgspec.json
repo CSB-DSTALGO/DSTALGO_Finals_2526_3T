@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "/Users/louisesilo/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj": {}
   },
   "projects": {
@@ -12,14 +13,37 @@
         "projectPath": "/Users/louisesilo/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
         "packagesPath": "/Users/louisesilo/.nuget/packages/",
         "outputPath": "/Users/louisesilo/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/obj/",
+=======
+    "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
+        "projectName": "DataStructuresLibrary",
+        "projectPath": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
+        "packagesPath": "C:\\Users\\layug\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\obj\\",
+>>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
+<<<<<<< HEAD
           "/Users/louisesilo/.nuget/NuGet/NuGet.Config"
+=======
+          "C:\\Users\\layug\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -59,11 +83,23 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
+<<<<<<< HEAD
               "version": "[8.0.27, 8.0.27]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
               "version": "[8.0.27, 8.0.27]"
+=======
+              "version": "[8.0.23, 8.0.23]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.23, 8.0.23]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.23, 8.0.23]"
+>>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
             }
           ],
           "frameworkReferences": {
@@ -71,6 +107,7 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
@@ -83,14 +120,38 @@
         "projectPath": "/Users/louisesilo/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/EnrollmentSystem.Core.csproj",
         "packagesPath": "/Users/louisesilo/.nuget/packages/",
         "outputPath": "/Users/louisesilo/DSTALGO_Finals_2526_3T/EnrollmentSystem/EnrollmentSystem.Core/obj/",
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj",
+        "projectName": "EnrollmentSystem.Core",
+        "projectPath": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\EnrollmentSystem.Core.csproj",
+        "packagesPath": "C:\\Users\\layug\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.Core\\obj\\",
+>>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
+<<<<<<< HEAD
           "/Users/louisesilo/.nuget/NuGet/NuGet.Config"
+=======
+          "C:\\Users\\layug\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -98,8 +159,13 @@
             "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {
+<<<<<<< HEAD
               "/Users/louisesilo/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
                 "projectPath": "/Users/louisesilo/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
+=======
+              "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
+                "projectPath": "C:\\Users\\layug\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj"
+>>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
               }
             }
           }
@@ -134,11 +200,23 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
+<<<<<<< HEAD
               "version": "[8.0.27, 8.0.27]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
               "version": "[8.0.27, 8.0.27]"
+=======
+              "version": "[8.0.23, 8.0.23]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.23, 8.0.23]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.23, 8.0.23]"
+>>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
             }
           ],
           "frameworkReferences": {
@@ -146,7 +224,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.300/PortableRuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
+>>>>>>> e876f7d5389e57616ccf8699a0a73c151963e55d
         }
       }
     }
