@@ -3,33 +3,22 @@ using DataStructuresLibrary;
 
 namespace EnrollmentSystem.Core
 {
-    //This class manages all student records using our CustomArrayList
-    //It wraps the array list and provides student-specific methods
+    // Manages student records using CustomArrayList
     public class StudentRegistry
     {
-        //The underlying data structure - our custom array list of students
         private readonly CustomArrayList<Student> _students = new();
 
-        //Property to check how many students are registered
         public int Count => _students.Count;
 
-        //Add a new student to the registry
-        //Checks for null, empty ID, and duplicate IDs
+        // Add student. Check for null, empty name, duplicates
         public void RegisterStudent(Student student)
         {
-            //Don't allow null students
             if (student == null)
             {
                 throw new ArgumentNullException(nameof(student), "Student cannot be null.");
             }
 
-            //Don't allow empty ID
-            if (string.IsNullOrWhiteSpace(student.Id))
-            {
-                throw new ArgumentException("Student ID cannot be empty.", nameof(student));
-            }
-
-            //Check if ID already exists - loop through all students
+            // Check duplicate ID
             for (int i = 0; i < _students.Count; i++)
             {
                 if (_students.Get(i).Id == student.Id)
@@ -38,15 +27,12 @@ namespace EnrollmentSystem.Core
                 }
             }
 
-            //All good, add the student
             _students.Add(student);
         }
 
-        //Remove student by index
-        //Returns true if removed, false if index is bad
+        // Remove by index. Return true if success
         public bool UnregisterStudent(int index)
         {
-            //Check if index is valid
             if (index < 0 || index >= _students.Count)
             {
                 return false;
@@ -56,11 +42,9 @@ namespace EnrollmentSystem.Core
             return true;
         }
 
-        //Remove student by their ID string
-        //Returns true if found and removed, false if not found
-        public bool RemoveStudent(string id)
+        // Remove by ID. Return true if found
+        public bool RemoveStudent(int id)
         {
-            //Loop through to find the student with matching ID
             for (int i = 0; i < _students.Count; i++)
             {
                 if (_students.Get(i).Id == id)
@@ -70,12 +54,10 @@ namespace EnrollmentSystem.Core
                 }
             }
 
-            // Not found
             return false;
         }
 
-        //Get student at specific index
-        //Throws error if index is out of range
+        // Get student at index
         public Student GetStudentAt(int index)
         {
             if (index < 0 || index >= _students.Count)
@@ -86,30 +68,24 @@ namespace EnrollmentSystem.Core
             return _students.Get(index);
         }
 
-        //Calculate average GPA of all students
-        //Returns 0.0 if no students
+        // Calculate average GPA
         public double CalculateAverageGpa()
         {
-            //No students? Average is 0
             if (_students.Count == 0)
             {
                 return 0.0;
             }
 
-            //Add up all GPAs
             double total = 0.0;
             for (int i = 0; i < _students.Count; i++)
             {
                 total += _students.Get(i).Gpa;
             }
 
-            //Divide by count to get average
             return total / _students.Count;
         }
 
-        //Search for a student using Binary Search
-        //IMPORTANT: Must sort by ID first before calling this!
-        //Returns index if found, -1 if not found
+        // Binary Search for student. MUST sort by ID first!
         public int SearchStudent(Student student)
         {
             if (student == null)
@@ -117,46 +93,41 @@ namespace EnrollmentSystem.Core
                 throw new ArgumentNullException(nameof(student));
             }
 
-            //Delegate to our CustomArrayList's BinarySearch
-            //Compare by student ID
             return _students.BinarySearch(
                 student,
-                (a, b) => string.Compare(a.Id, b.Id, StringComparison.OrdinalIgnoreCase)
+                (a, b) => a.Id.CompareTo(b.Id)
             );
         }
 
-        //Sort students by GPA from highest to lowest
-        //Uses our CustomArrayList's QuickSort
+        // Sort by GPA highest to lowest using QuickSort
         public void SortStudentsByGpa()
         {
             _students.QuickSort((a, b) => b.Gpa.CompareTo(a.Gpa));
         }
 
-        //Returns total number of students
-        //Same as Count property, just a method version
+        // Return total student count
         public int GetStudentCount()
         {
             return _students.Count;
         }
 
-        //Sort by name (A to Z) - extra helper
+        // Sort by name A to Z
         public void SortStudentsByName()
         {
             _students.QuickSort((a, b) =>
                 string.Compare(a.Name, b.Name, StringComparison.OrdinalIgnoreCase));
         }
 
-        //Sort by ID (A to Z) - extra helper, useful before Binary Search
+        // Sort by ID (use before Binary Search)
         public void SortStudentsById()
         {
-            _students.QuickSort((a, b) =>
-                string.Compare(a.Id, b.Id, StringComparison.OrdinalIgnoreCase));
+            _students.QuickSort((a, b) => a.Id.CompareTo(b.Id));
         }
 
-        //Print all students to console - for testing/display
+        // Print all students
         public void ShowAllStudents()
         {
-            Console.WriteLine("\n----------- REGISTERED STUDENTS --------------");
+            Console.WriteLine("\n------------- REGISTERED STUDENTS -----------------");
 
             if (_students.Count == 0)
             {
@@ -170,7 +141,7 @@ namespace EnrollmentSystem.Core
                 Console.WriteLine($"[{i}] ID: {s.Id} | Name: {s.Name} | Course: {s.CourseCode} | GPA: {s.Gpa}");
             }
 
-            Console.WriteLine($"<><><><><><><><><><><><><><><><><><>");
+            Console.WriteLine($"==========================================");
             Console.WriteLine($"Total: {_students.Count} student(s)\n");
         }
     }

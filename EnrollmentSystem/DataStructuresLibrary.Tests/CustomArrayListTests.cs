@@ -1,15 +1,12 @@
-namespace DataStructuresLibrary.Tests;
-
+using System;
 using Xunit;
 using DataStructuresLibrary;
 
-public class CustomArrayListTests
+namespace DataStructuresLibrary.Tests
 {
-    [Fact]
-    public void Add_ShouldIncreaseCountAndStoreItems()
+    public class CustomArrayListTests
     {
-    
-        //Test: Can we add multiple items and get them back correctly?
+        // Test 1: Add items and check stored correctly
         [Fact]
         public void Add_MultipleItems_StoresCorrectly()
         {
@@ -24,7 +21,7 @@ public class CustomArrayListTests
             Assert.Equal("Charlie", list.Get(2));
         }
 
-        //Test: Does it throw error when we ask for invalid index?
+        // Test 2: Bad index should throw error
         [Fact]
         public void Get_InvalidIndex_ThrowsException()
         {
@@ -34,7 +31,7 @@ public class CustomArrayListTests
             Assert.Throws<IndexOutOfRangeException>(() => list.Get(5));
         }
 
-        //Test: Remove middle item, make sure others shift left properly
+        // Test 3: Remove middle, others shift left
         [Fact]
         public void RemoveAt_ValidIndex_RemovesAndShifts()
         {
@@ -43,14 +40,14 @@ public class CustomArrayListTests
             list.Add(20);
             list.Add(30);
 
-            list.RemoveAt(1);  // Remove 20
+            list.RemoveAt(1);
 
             Assert.Equal(2, list.Count);
             Assert.Equal(10, list.Get(0));
-            Assert.Equal(30, list.Get(1));  // 30 should have shifted to index 1
+            Assert.Equal(30, list.Get(1));
         }
 
-        //Test: Quick Sort on numbers - should go from random to ascending
+        // Test 4: Quick Sort numbers smallest to biggest
         [Fact]
         public void QuickSort_SortsIntegersAscending()
         {
@@ -63,7 +60,6 @@ public class CustomArrayListTests
 
             list.QuickSort((a, b) => a.CompareTo(b));
 
-            //After sort: 11, 12, 22, 25, 64
             Assert.Equal(11, list.Get(0));
             Assert.Equal(12, list.Get(1));
             Assert.Equal(22, list.Get(2));
@@ -71,7 +67,7 @@ public class CustomArrayListTests
             Assert.Equal(64, list.Get(4));
         }
 
-        //Test: Quick Sort on strings - alphabetical order
+        // Test 5: Quick Sort strings A to Z
         [Fact]
         public void QuickSort_SortsStringsAlphabetically()
         {
@@ -82,13 +78,12 @@ public class CustomArrayListTests
 
             list.QuickSort((a, b) => string.Compare(a, b, StringComparison.Ordinal));
 
-            //After sort: Alice, Bob, Charlie
             Assert.Equal("Alice", list.Get(0));
             Assert.Equal("Bob", list.Get(1));
             Assert.Equal("Charlie", list.Get(2));
         }
 
-        //Test: Binary Search finds existing item in sorted list
+        // Test 6: Binary Search finds item
         [Fact]
         public void BinarySearch_FindsExistingItem()
         {
@@ -101,10 +96,10 @@ public class CustomArrayListTests
 
             int index = list.BinarySearch(22, (a, b) => a.CompareTo(b));
 
-            Assert.Equal(2, index);  // 22 is at index 2
+            Assert.Equal(2, index);
         }
 
-        //Test: Binary Search returns -1 when item doesn't exist
+        // Test 7: Binary Search not found returns -1
         [Fact]
         public void BinarySearch_ItemNotFound_ReturnsNegativeOne()
         {
@@ -118,64 +113,21 @@ public class CustomArrayListTests
             Assert.Equal(-1, index);
         }
 
-        //Test: Sort first, then search - the full workflow
+        // Test 8: Sort then search full workflow
         [Fact]
         public void BinarySearch_AfterQuickSort_FindsItemCorrectly()
         {
             var list = new CustomArrayList<int>();
-            //Add in random order
             list.Add(64);
             list.Add(25);
             list.Add(12);
             list.Add(22);
             list.Add(11);
 
-            list.QuickSort((a, b) => a.CompareTo(b));  //Sort first!
+            list.QuickSort((a, b) => a.CompareTo(b));
             int index = list.BinarySearch(25, (a, b) => a.CompareTo(b));
 
-            //After sort: 11, 12, 22, 25, 64 -> 25 is at index 3
             Assert.Equal(3, index);
         }
-
-        // TODO: Implement test for Add and Get indexing
-        CustomArrayList<int> list = new CustomArrayList<int>();
-        list.Add(10);
-        list.Add(20);
-        Assert.Equal(2, list.Count);
-        list.Add(21);
-        Assert.Equal(3, list.Count);
-        list.Add(22);
-        list.Add(23);
-        Assert.Equal(5, list.Count);
-        
-
-    }
-
-    [Fact]
-    public void Remove_ShouldShiftElementsCorrectly()
-    {
-        // TODO: Implement test verifying element removal and index shifting
-        throw new NotImplementedException();
-    }
-
-    [Fact]
-    public void Search_ShouldReturnCorrectIndex_WhenItemExists()
-    {
-        // TODO: Test Search returning zero-based index for existing element
-        throw new NotImplementedException();
-    }
-
-    [Fact]
-    public void Search_ShouldReturnMinusOne_WhenItemDoesNotExist()
-    {
-        // TODO: Test Search returning -1 when element is absent
-        throw new NotImplementedException();
-    }
-
-    [Fact]
-    public void Sort_ShouldOrderElementsInAscendingSequence()
-    {
-        // TODO: Test Sort ordering an unsorted CustomArrayList<int>
-        throw new NotImplementedException();
     }
 }
