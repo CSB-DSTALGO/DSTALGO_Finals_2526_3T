@@ -10,29 +10,25 @@ namespace DataStructuresLibrary
         private int _rear;
         private int _count;
 
-        public int Count 
-        { 
-            get { return _count; } 
-        }
+        public int Count => _count;
 
-        public CustomQueue()
+        public CustomQueue(int initialCapacity = 4)
         {
-            _items = new T[10];
-            _front  = 0;
+            _items = new T[initialCapacity];
+            _front = 0;
             _rear = 0;
             _count = 0;
-
         }
 
         public void Enqueue(T item)
         {
-            if(_count == _items.Length)
+            if (_count == _items.Length)
             {
-                throw new InvalidOperationException("Queue is full");
+                Resize();
             }
 
-            _rear++;
             _items[_rear] = item;
+            _rear = (_rear + 1) % _items.Length;
             _count++;
         }
 
@@ -42,9 +38,10 @@ namespace DataStructuresLibrary
             {
                 throw new InvalidOperationException("Queue is empty");
             }
-             
+
             T item = _items[_front];
-            _front++;
+            _items[_front] = default!;
+            _front = (_front + 1) % _items.Length;
             _count--;
             return item;
         }
@@ -59,9 +56,19 @@ namespace DataStructuresLibrary
             return _items[_front];
         }
 
-        public bool IsEmpty()
+        public bool IsEmpty() => _count == 0;
+
+        private void Resize()
         {
-           return _count == 0;
+            var doubled = new T[_items.Length * 2];
+            for (int i = 0; i < _count; i++)
+            {
+                doubled[i] = _items[(_front + i) % _items.Length];
+            }
+
+            _items = doubled;
+            _front = 0;
+            _rear = _count;
         }
     }
 }

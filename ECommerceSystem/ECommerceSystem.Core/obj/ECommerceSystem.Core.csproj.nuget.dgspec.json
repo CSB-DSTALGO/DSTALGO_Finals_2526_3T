@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj": {}
+    "/Users/saimerlan/Desktop/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj": {}
   },
   "projects": {
-    "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
+    "/Users/saimerlan/Desktop/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
+        "projectUniqueName": "/Users/saimerlan/Desktop/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
         "projectName": "DataStructuresLibrary",
-        "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
-        "packagesPath": "/Users/caan/.nuget/packages/",
-        "outputPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/ECommerceSystem/DataStructuresLibrary/obj/",
+        "projectPath": "/Users/saimerlan/Desktop/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
+        "packagesPath": "/Users/saimerlan/.nuget/packages/",
+        "outputPath": "/Users/saimerlan/Desktop/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/caan/.nuget/NuGet/NuGet.Config"
+          "/Users/saimerlan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net10.0": {
@@ -59,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.203/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -337,17 +337,17 @@
         }
       }
     },
-    "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj": {
+    "/Users/saimerlan/Desktop/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj",
+        "projectUniqueName": "/Users/saimerlan/Desktop/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj",
         "projectName": "ECommerceSystem.Core",
-        "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj",
-        "packagesPath": "/Users/caan/.nuget/packages/",
-        "outputPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/ECommerceSystem/ECommerceSystem.Core/obj/",
+        "projectPath": "/Users/saimerlan/Desktop/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/ECommerceSystem.Core.csproj",
+        "packagesPath": "/Users/saimerlan/.nuget/packages/",
+        "outputPath": "/Users/saimerlan/Desktop/DSTALGO_Finals_2526_3T/ECommerceSystem/ECommerceSystem.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/caan/.nuget/NuGet/NuGet.Config"
+          "/Users/saimerlan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -359,8 +359,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
-                "projectPath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
+              "/Users/saimerlan/Desktop/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
+                "projectPath": "/Users/saimerlan/Desktop/DSTALGO_Finals_2526_3T/ECommerceSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
               }
             }
           }
@@ -375,7 +375,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net10.0": {
@@ -396,7 +396,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.203/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

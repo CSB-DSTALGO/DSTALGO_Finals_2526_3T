@@ -61,6 +61,19 @@ namespace EnrollmentSystem.Tests
             Assert.True(removed);
             Assert.Equal(0, curriculum.CalculateTotalUnits());
         }
+
+        [Fact]
+        public void SearchCourse_ShouldFindExistingCourseByCode()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS101", "Intro to CS", 3));
+            curriculum.InsertCourse(new Course("CS102", "Data Structures", 3));
+
+            var found = curriculum.SearchCourse("CS102");
+
+            Assert.NotNull(found);
+            Assert.Equal("CS102", found!.Code);
+        }
     }
 
     public class AdmissionsDeskTests
