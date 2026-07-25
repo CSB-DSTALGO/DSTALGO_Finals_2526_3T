@@ -1,7 +1,8 @@
 namespace DataStructuresLibrary.Tests;
 
-using Xunit;
+using System;
 using DataStructuresLibrary;
+using Xunit;
 
 public class CustomSinglyLinkedListTests
 {
@@ -11,7 +12,9 @@ public class CustomSinglyLinkedListTests
     public void Add_ShouldIncrementCount_WhenSingleItemAdded()
     {
         var list = new CustomSinglyLinkedList<int>();
+
         list.Add(10);
+
         Assert.Equal(1, list.Count);
     }
 
@@ -19,9 +22,11 @@ public class CustomSinglyLinkedListTests
     public void Add_ShouldIncrementCount_ForEachItemAdded()
     {
         var list = new CustomSinglyLinkedList<int>();
+
         list.Add(10);
         list.Add(20);
         list.Add(30);
+
         Assert.Equal(3, list.Count);
     }
 
@@ -29,7 +34,9 @@ public class CustomSinglyLinkedListTests
     public void Add_ShouldMakeItemFindableViaSearch()
     {
         var list = new CustomSinglyLinkedList<int>();
+
         list.Add(10);
+
         Assert.True(list.Search(10));
     }
 
@@ -52,6 +59,7 @@ public class CustomSinglyLinkedListTests
     public void Remove_ShouldRemoveMiddleNode_AndKeepOthersIntact()
     {
         var list = new CustomSinglyLinkedList<int>();
+
         list.Add(10);
         list.Add(20);
         list.Add(30);
@@ -84,6 +92,7 @@ public class CustomSinglyLinkedListTests
     {
         var list = new CustomSinglyLinkedList<int>();
         list.Add(10);
+
         Assert.True(list.Search(10));
     }
 
@@ -92,6 +101,7 @@ public class CustomSinglyLinkedListTests
     {
         var list = new CustomSinglyLinkedList<int>();
         list.Add(10);
+
         Assert.False(list.Search(20));
     }
 
@@ -99,7 +109,44 @@ public class CustomSinglyLinkedListTests
     public void Search_ShouldReturnFalse_WhenListIsEmpty()
     {
         var list = new CustomSinglyLinkedList<int>();
+
         Assert.False(list.Search(10));
+    }
+
+    // ---------- Get ----------
+
+    [Fact]
+    public void Get_ShouldReturnFirstItem_WhenIndexIsZero()
+    {
+        var list = new CustomSinglyLinkedList<int>();
+
+        list.Add(10);
+        list.Add(20);
+        list.Add(30);
+
+        Assert.Equal(10, list.Get(0));
+    }
+
+    [Fact]
+    public void Get_ShouldReturnCorrectItem_WhenIndexIsValid()
+    {
+        var list = new CustomSinglyLinkedList<int>();
+
+        list.Add(10);
+        list.Add(20);
+        list.Add(30);
+
+        Assert.Equal(30, list.Get(2));
+    }
+
+    [Fact]
+    public void Get_ShouldThrow_WhenIndexIsOutsideList()
+    {
+        var list = new CustomSinglyLinkedList<int>();
+        list.Add(10);
+
+        Assert.Throws<IndexOutOfRangeException>(
+            () => list.Get(1));
     }
 
     // ---------- Sort ----------
@@ -108,6 +155,7 @@ public class CustomSinglyLinkedListTests
     public void Sort_ShouldNotChangeCount()
     {
         var list = new CustomSinglyLinkedList<int>();
+
         list.Add(30);
         list.Add(10);
         list.Add(20);
@@ -121,6 +169,7 @@ public class CustomSinglyLinkedListTests
     public void Sort_ShouldKeepAllItemsSearchable()
     {
         var list = new CustomSinglyLinkedList<int>();
+
         list.Add(30);
         list.Add(10);
         list.Add(20);
@@ -136,6 +185,7 @@ public class CustomSinglyLinkedListTests
     public void Sort_ShouldHandleAlreadySortedList_WithoutError()
     {
         var list = new CustomSinglyLinkedList<int>();
+
         list.Add(10);
         list.Add(20);
         list.Add(30);

@@ -54,6 +54,27 @@ public class OrderProcessingQueue
     }
 
     /// <summary>
+    /// Views the next order without removing it.
+    /// This method follows the exact name in the requirements.
+    ///
+    /// Time complexity: O(1)
+    /// </summary>
+    public Order ViewNextOrder()
+    {
+        return _orders.Peek();
+    }
+
+    /// <summary>
+    /// Checks whether the order queue is empty.
+    ///
+    /// Time complexity: O(1)
+    /// </summary>
+    public bool CheckOrderQueueEmpty()
+    {
+        return _orders.Count == 0;
+    }
+
+    /// <summary>
     /// Searches for an order in the queue.
     ///
     /// Time complexity: O(n)
