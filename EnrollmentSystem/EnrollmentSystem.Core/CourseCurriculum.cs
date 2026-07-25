@@ -57,17 +57,26 @@ public class CourseCurriculum
     // Hint: Delegate search and sort to CustomSinglyLinkedList<T>
     public bool SearchCourse(Course course)
     {
+        return SearchCourse(course.Code) != null;
+
+    }
+    public Course? SearchCourse(string courseCode)
+    {
         var current = _courses.Head;
+
         while (current != null)
         {
-            if (current.Data != null && current.Data.Equals(course))
+            if (current.Data.Code == courseCode)
             {
-                return true;
+                return current.Data;
             }
+
             current = current.Next;
         }
-        return false;
+
+        return null;
     }
+
 
     public void SortCurriculumByUnits()
     {
