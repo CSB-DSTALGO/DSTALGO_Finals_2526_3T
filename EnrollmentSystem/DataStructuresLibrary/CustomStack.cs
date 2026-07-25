@@ -56,11 +56,11 @@ namespace DataStructuresLibrary
             return _top == 0;
         }
 
-        public int Search(T item)
+        public int Search(T target, Comparison<T> comparer)
         {
             for (int i = 0; i < _top; i++)
             {
-                if (Equals(_items[i], item))
+                if (comparer(_items[i], target) == 0)
                 {
                     return i;
                 }

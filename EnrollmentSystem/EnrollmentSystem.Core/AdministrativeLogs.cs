@@ -35,6 +35,13 @@ public class AdministrativeLogs
     public int GetLogCount() => Count;
 
     // Hint: Delegate search and sort to CustomStack<T>
-    public int SearchLog(Log log) => throw new NotImplementedException();
-    public void SortLogsById() => throw new NotImplementedException();
+    public int SearchLog(Log log)
+    {
+        return _logs.Search(log, (a, b) => a.LogId.CompareTo(b.LogId));
+    }
+
+    public void SortLogsById()
+    {
+        _logs.Sort((a, b) => a.LogId.CompareTo(b.LogId));
+    }
 }

@@ -184,7 +184,7 @@ namespace DataStructuresLibrary.Tests
             stack.Push(20);
             stack.Push(30);
 
-            Assert.Equal(1, stack.Search(20));
+            Assert.Equal(1, stack.Search(20, (a, b) => a.CompareTo(b)));
         }
 
         [Fact]
@@ -195,7 +195,7 @@ namespace DataStructuresLibrary.Tests
             stack.Push(10);
             stack.Push(20);
 
-            Assert.Equal(-1, stack.Search(99));
+            Assert.Equal(-1, stack.Search(99, (a, b) => a.CompareTo(b)));
         }
 
         [Fact]
@@ -203,7 +203,7 @@ namespace DataStructuresLibrary.Tests
         {
             var stack = new CustomStack<int>();
 
-            Assert.Equal(-1, stack.Search(5));
+            Assert.Equal(-1, stack.Search(5, (a, b) => a.CompareTo(b)));
         }
 
         [Fact]
