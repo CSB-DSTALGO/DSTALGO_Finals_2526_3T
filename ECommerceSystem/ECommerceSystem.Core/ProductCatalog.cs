@@ -5,7 +5,7 @@ namespace ECommerceSystem.Core
     public class ECommerceSystem
     {
         public int ProductID { get; set; }
-        public string ProductName { get; set; }
+        public string ProductName { get; set; } = string.Empty;
         public double Price { get; set; }
 
         public Product Next { get; set; }
