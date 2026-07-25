@@ -182,7 +182,12 @@ namespace EnrollmentSystem.ConsoleApp
                         string studentId = Console.ReadLine() ?? "";
                         string ticketId = $"T-{100 + _desk.GetQueueCount() + 1}";
 
-                        _desk.IssueAdmissionsTicket(new Ticket { TicketId = ticketId, StudentId = studentId });
+                        _desk.IssueAdmissionsTicket(new Ticket
+                        {
+                            TicketId = ticketId,
+                            StudentId = studentId,
+                            Timestamp = DateTime.Now
+                        });
                         Console.WriteLine($"\nTicket {ticketId} successfully issued to Student {studentId}.");
                         break;
 
