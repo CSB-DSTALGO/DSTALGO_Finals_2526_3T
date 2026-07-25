@@ -3,15 +3,15 @@ namespace EnrollmentSystem.Core;
 using DataStructuresLibrary;
 using System;
 using System.Collections.Generic;
-
+// Simulates a line of students waiting for admission, using CustomQueue<T>.
 public class AdmissionsDesk
 {
    private readonly CustomQueue<AdmissionApplication> _applications = new();
    private readonly CustomQueue<Ticket> _tickets = new();
    private int _nextTicketNumber = 1;
-
+// Returns how many students are currently in line.
 public int Count => _applications.Count;
-
+// Adds a student directly using an AdmissionApplication and gives them a ticket ID.
    public void IssueAdmissionsTicket(AdmissionApplication app)
    {
       if (app is null)
@@ -93,6 +93,7 @@ public Ticket ServeNextTicket()
 }
 
 public int GetQueueCount() => Count;
+// Linear search (O(n)): checks every application in line for a match, preserving
 
 public bool SearchApplication(AdmissionApplication app)
 {
@@ -117,7 +118,7 @@ public bool SearchApplication(AdmissionApplication app)
 
     return found;
 }
-
+// Bubble sort (O(n^2)): reorders the line so higher PriorityScore students go first.
 public void SortApplicationsByPriority()
 {
     int totalItems = _applications.Count;
