@@ -5,13 +5,29 @@ using DataStructuresLibrary;
 public class ProductCatalog
 {
     private readonly CustomSinglyLinkedList<Product> _products = new();
-
     public int Count => _products.Count;
 
-    public void AddProduct(Product product) => throw new NotImplementedException();
-    public bool RemoveProduct(Product product) => throw new NotImplementedException();
+    // adds product 
+    public void AddProduct(Product product)
+    {
+        _products.Add(product);
+    }
 
-    
-    public bool SearchProduct(Product product) => throw new NotImplementedException();
-    public void SortCatalog() => throw new NotImplementedException();
+    // removes product 
+    public bool RemoveProduct(Product product)
+    {
+        return _products.Remove(product);
+    }
+
+    // to check if a product exists
+    public bool SearchProduct(Product product)
+    {
+        return _products.Search(product);
+    }
+
+    // Sorts all products
+    public void SortCatalog()
+    {
+        _products.Sort();
+    }
 }

@@ -8,35 +8,83 @@ public class CustomArrayListTests
     [Fact]
     public void Add_ShouldIncreaseCountAndStoreItems()
     {
-        // TODO: Implement test for Add and Get indexing
-        throw new NotImplementedException();
+        
+        var list = new CustomArrayList<int>();
+
+        list.Add(100);
+        list.Add(200);
+        list.Add(300);
+
+        Assert.Equal(3, list.Count);
+        Assert.True(list.Get(0).Equals(100));
+        Assert.True(list.Get(1).Equals(200));
+        Assert.True(list.Get(2).Equals(300));
     }
 
     [Fact]
     public void Remove_ShouldShiftElementsCorrectly()
     {
-        // TODO: Implement test verifying element removal and index shifting
-        throw new NotImplementedException();
+       
+
+        var list = new CustomArrayList<int>();
+
+        list.Add(100);
+        list.Add(200);
+        list.Add(300);
+
+        list.Remove(200);
+
+        Assert.Equal(2, list.Count);
+        Assert.True(list.Get(0).Equals(100));
+        Assert.True(list.Get(1).Equals(300));        
     }
 
     [Fact]
     public void Search_ShouldReturnCorrectIndex_WhenItemExists()
     {
-        // TODO: Test Search returning zero-based index for existing element
-        throw new NotImplementedException();
+        
+
+        var list = new CustomArrayList<int>();
+
+        list.Add(100);
+        list.Add(200);
+        list.Add(300);
+
+        int index = list.Search(100);
+
+        Assert.Equal(0, index);
     }
 
     [Fact]
     public void Search_ShouldReturnMinusOne_WhenItemDoesNotExist()
     {
-        // TODO: Test Search returning -1 when element is absent
-        throw new NotImplementedException();
+        
+        var list = new CustomArrayList<int>();
+
+        list.Add(100);
+        list.Add(200);
+        list.Add(300);
+
+        int notFound = list.Search(400);
+
+        Assert.Equal(-1, notFound);
     }
 
     [Fact]
     public void Sort_ShouldOrderElementsInAscendingSequence()
     {
-        // TODO: Test Sort ordering an unsorted CustomArrayList<int>
-        throw new NotImplementedException();
+       
+        var list = new CustomArrayList<int>();
+        
+        list.Add(200);
+        list.Add(100);
+        list.Add(300);
+
+        list.Sort();
+
+       
+        Assert.Equal(100, list.Get(0));
+        Assert.Equal(200, list.Get(1));
+        Assert.Equal(300, list.Get(2));
     }
 }
