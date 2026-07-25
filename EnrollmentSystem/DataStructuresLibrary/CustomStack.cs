@@ -65,5 +65,35 @@ namespace DataStructuresLibrary
     }
     _items = newItems;
 }
+    public int Search(T item)
+        {
+            var comparer = System.Collections.Generic.EqualityComparer<T>.Default;
+            for (int i = _count - 1; i >= 0; i--)
+            {
+                if (comparer.Equals(_items[i], item))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        public void Sort()
+{
+    var comparer = System.Collections.Generic.Comparer<T>.Default;
+
+    for (int i = 1; i < _count; i++)
+    {
+        T key = _items[i];
+        int j = i - 1;
+
+        while (j >= 0 && comparer.Compare(_items[j], key) > 0)
+        {
+            _items[j + 1] = _items[j];
+            j--;
+        }
+
+        _items[j + 1] = key;
+    }
+}
     }
 }
