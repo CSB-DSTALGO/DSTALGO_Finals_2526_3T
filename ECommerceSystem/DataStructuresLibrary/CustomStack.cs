@@ -1,113 +1,92 @@
-namespace DataStructuresLibrary;
+using System;
 
-
-public class CustomStack<T> where T : IComparable<T>
+namespace DataStructuresLibrary
 {
-    private T[] _items = new T[4];
-    private int _top = -1; 
-
-    public int Count { get; private set; }
-
-    
-    public void Push(T item)
+    public class CustomStack<T>
     {
-        if (_top + 1 == _items.Length)
-            Resize();
+        private T[] _items;
+        private int _top;
 
-        _top++;
-        _items[_top] = item;
-        Count++;
-    }
+        public int Count { get; private set; }
 
-   
-    public T Pop()
-    {
-        if (Count == 0)
-            throw new InvalidOperationException("Cannot pop: the stack is empty.");
-
-        T item = _items[_top];
-        _items[_top] = default!;
-        _top--;
-        Count--;
-        return item;
-    }
-
-    
-    public T Peek()
-    {
-        if (Count == 0)
-            throw new InvalidOperationException("Cannot peek: the stack is empty.");
-
-        return _items[_top];
-    }
-
-   
-    public int Search(T item)
-    {
-        for (int i = _top; i >= 0; i--)
+        public CustomStack()
         {
-            if (_items[i].CompareTo(item) == 0)
-                return _top - i + 1;
+            _items = new T[4];
+            _top = -1;
+            Count = 0;
         }
 
-        return -1;
-    }
-
-    
-    public void Sort()
-    {
-        QuickSort(_items, 0, _top);
-    }
-
-    private void QuickSort(T[] arr, int low, int high)
-    {
-        if (low < high)
+        public void Push(T item)
         {
-            int pivotIndex = Partition(arr, low, high);
-            QuickSort(arr, low, pivotIndex - 1);
-            QuickSort(arr, pivotIndex + 1, high);
-        }
-    }
-
-    private int Partition(T[] arr, int low, int high)
-    {
-        T pivot = arr[high];
-        int i = low - 1;
-
-        for (int j = low; j < high; j++)
-        {
-            
-            if (arr[j].CompareTo(pivot) >= 0)
+            if (Count == _items.Length)
             {
-                i++;
-                (arr[i], arr[j]) = (arr[j], arr[i]);
+                T[] newArray = new T[_items.Length * 2];
+                Array.Copy(_items, newArray, _items.Length);
+                _items = newArray;
+            }
+
+            _items[++_top] = item;
+            Count++;
+        }
+
+        public T Pop()
+        {
+            if (IsEmpty())
+                throw new InvalidOperationException("Stack is empty.");
+
+            T item = _items[_top];
+            _items[_top] = default!;
+            _top--;
+            Count--;
+
+            return item;
+        }
+
+        public T Peek()
+        {
+            if (IsEmpty())
+                throw new InvalidOperationException("Stack is empty.");
+
+            return _items[_top];
+        }
+
+        public bool IsEmpty()
+        {
+            return Count == 0;
+        }
+
+        public int Search(T item)
+        {
+            for (int i = _top; i >= 0; i--)
+            {
+                if (Equals(_items[i], item))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        public void Sort()
+        {
+            if (!typeof(IComparable).IsAssignableFrom(typeof(T)))
+                throw new InvalidOperationException("Type must implement IComparable.");
+
+            for (int i = 0; i < Count - 1; i++)
+            {
+                for (int j = 0; j < Count - i - 1; j++)
+                {
+                    IComparable current = (IComparable)_items[j]!;
+
+                    if (current.CompareTo(_items[j + 1]) > 0)
+                    {
+                        T temp = _items[j];
+                        _items[j] = _items[j + 1];
+                        _items[j + 1] = temp;
+                    }
+                }
             }
         }
-
-        (arr[i + 1], arr[high]) = (arr[high], arr[i + 1]);
-        return i + 1;
     }
-
-   
-    private void Resize()
-    {
-        int newCapacity = _items.Length == 0 ? 4 : _items.Length * 2;
-        T[] newArray = new T[newCapacity];
-        Array.Copy(_items, newArray, _items.Length);
-        _items = newArray;
-    }
-}
-namespace DataStructuresLibrary;
-
-public class CustomStack<T> where T : IComparable<T>
-{
-    public int Count { get; private set; }
-
-    public void Push(T item) => throw new NotImplementedException();
-    public T Pop() => throw new NotImplementedException();
-    public T Peek() => throw new NotImplementedException();
-
-    public int Search(T item) => throw new NotImplementedException();
-
-    public void Sort() => throw new NotImplementedException();
 }
