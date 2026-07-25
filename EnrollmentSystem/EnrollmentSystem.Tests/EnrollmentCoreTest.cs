@@ -6,41 +6,81 @@ namespace EnrollmentSystem.Tests
 {
     public class StudentRegistryTests
     {
+        // RegisterStudent tests
         [Fact]
         public void RegisterStudent_ShouldAddStudentAndIncreaseCount()
         {
             var registry = new StudentRegistry();
-            // Student constructor requires (int id, string name, double gpa)
             var student = new Student(20260001, "Alice", 0.0);
-
             registry.RegisterStudent(student);
-
             Assert.Equal(1, registry.GetStudentCount());
             Assert.Equal("Alice", registry.GetStudentAt(0).Name);
         }
 
         [Fact]
-        public void RemoveStudent_ShouldDecreaseCount_WhenStudentExists()
+        public void RegisterStudent_MultipleStudents_MaintainsOrder()
         {
             var registry = new StudentRegistry();
-            // Use matching constructor and id type for removal
-            var student = new Student(20260001, "Alice", 0.0);
-            registry.RegisterStudent(student);
-
-            bool removed = registry.UnregisterStudent(20260001);
-
-            Assert.True(removed);
-            Assert.Equal(0, registry.GetStudentCount());
+            registry.RegisterStudent(new Student(1, "A", 3.0));
+            registry.RegisterStudent(new Student(2, "B", 3.5));
+            registry.RegisterStudent(new Student(3, "C", 4.0));
+            
+            Assert.Equal(3, registry.GetStudentCount());
+            Assert.Equal("C", registry.GetStudentAt(2).Name);
         }
 
+        [Fact]
+        public void RegisterStudent_SameStudentTwice_AllowsDuplicates()
+        {
+            var registry = new StudentRegistry();
+            var s = new Student(1, "A", 3.0);
+            registry.RegisterStudent(s);
+            registry.RegisterStudent(s);
+            Assert.Equal(2, registry.GetStudentCount());
+        }
+
+        // UnregisterStudent tests
+        [Fact]
+        public void UnregisterStudent_ShouldDecreaseCount_WhenValidIndex()
+        {
+            var registry = new StudentRegistry();
+            registry.RegisterStudent(new Student(1, "Alice", 0.0));
+            registry.RegisterStudent(new Student(2, "Bob", 0.0));
+            
+            bool removed = registry.UnregisterStudent(0);
+            
+            Assert.True(removed);
+            Assert.Equal(1, registry.GetStudentCount());
+            Assert.Equal("Bob", registry.GetStudentAt(0).Name);
+        }
+
+        [Fact]
+        public void UnregisterStudent_InvalidIndex_ShouldReturnFalse()
+        {
+            var registry = new StudentRegistry();
+            registry.RegisterStudent(new Student(1, "A", 3.0));
+            bool removed = registry.UnregisterStudent(5);
+            Assert.False(removed);
+            Assert.Equal(1, registry.GetStudentCount());
+        }
+
+        [Fact]
+        public void UnregisterStudent_NegativeIndex_ShouldReturnFalse()
+        {
+            var registry = new StudentRegistry();
+            registry.RegisterStudent(new Student(1, "A", 3.0));
+            bool removed = registry.UnregisterStudent(-1);
+            Assert.False(removed);
+            Assert.Equal(1, registry.GetStudentCount());
+        }
+
+        // RemoveStudent tests
         [Fact]
         public void RemoveStudent_ByIdString_ShouldReturnTrue_WhenStudentExists()
         {
             var registry = new StudentRegistry();
-            var alice = new Student(20260001, "Alice", 3.5);
-            var bob = new Student(20260002, "Bob", 2.8);
-            registry.RegisterStudent(alice);
-            registry.RegisterStudent(bob);
+            registry.RegisterStudent(new Student(20260001, "Alice", 3.5));
+            registry.RegisterStudent(new Student(20260002, "Bob", 2.8));
 
             bool removed = registry.RemoveStudent("20260001");
 
@@ -49,6 +89,117 @@ namespace EnrollmentSystem.Tests
             Assert.Equal("Bob", registry.GetStudentAt(0).Name);
         }
 
+        [Fact]
+        public void RemoveStudent_ByInvalidIdString_ShouldReturnFalse()
+        {
+            var registry = new StudentRegistry();
+            registry.RegisterStudent(new Student(1, "A", 3.5));
+            bool removed = registry.RemoveStudent("InvalidID");
+            Assert.False(removed);
+            Assert.Equal(1, registry.GetStudentCount());
+        }
+
+        [Fact]
+        public void RemoveStudent_ByNonExistentId_ShouldReturnFalse()
+        {
+            var registry = new StudentRegistry();
+            registry.RegisterStudent(new Student(1, "A", 3.5));
+            bool removed = registry.RemoveStudent("999");
+            Assert.False(removed);
+            Assert.Equal(1, registry.GetStudentCount());
+        }
+
+        // GetStudentAt & GetStudentDetails tests
+        [Fact]
+        public void GetStudentAt_ValidIndex_ReturnsStudent()
+        {
+            var registry = new StudentRegistry();
+            var s = new Student(1, "A", 3.0);
+            registry.RegisterStudent(s);
+            Assert.Equal(s, registry.GetStudentAt(0));
+            Assert.Equal(s, registry.GetStudentDetails(0));
+        }
+
+        [Fact]
+        public void GetStudentAt_InvalidIndex_ThrowsException()
+        {
+            var registry = new StudentRegistry();
+            registry.RegisterStudent(new Student(1, "A", 3.0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => registry.GetStudentAt(1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => registry.GetStudentDetails(1));
+        }
+
+        [Fact]
+        public void GetStudentAt_NegativeIndex_ThrowsException()
+        {
+            var registry = new StudentRegistry();
+            registry.RegisterStudent(new Student(1, "A", 3.0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => registry.GetStudentAt(-1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => registry.GetStudentDetails(-1));
+        }
+
+        // ShowAllStudents tests
+        [Fact]
+        public void ShowAllStudents_PrintsToConsole()
+        {
+            var registry = new StudentRegistry();
+            registry.RegisterStudent(new Student(1, "Test", 3.5));
+            
+            using var sw = new System.IO.StringWriter();
+            Console.SetOut(sw);
+            
+            registry.ShowAllStudents();
+            
+            var output = sw.ToString().Trim();
+            Assert.Contains("Test", output);
+            Assert.Contains("3.5", output);
+            
+            var standardOutput = new System.IO.StreamWriter(Console.OpenStandardOutput());
+            standardOutput.AutoFlush = true;
+            Console.SetOut(standardOutput);
+        }
+
+        [Fact]
+        public void ShowAllStudents_EmptyRegistry_PrintsNothing()
+        {
+            var registry = new StudentRegistry();
+            
+            using var sw = new System.IO.StringWriter();
+            Console.SetOut(sw);
+            
+            registry.ShowAllStudents();
+            
+            var output = sw.ToString();
+            Assert.Empty(output);
+            
+            var standardOutput = new System.IO.StreamWriter(Console.OpenStandardOutput());
+            standardOutput.AutoFlush = true;
+            Console.SetOut(standardOutput);
+        }
+
+        [Fact]
+        public void ShowAllStudents_MultipleStudents_PrintsInOrder()
+        {
+            var registry = new StudentRegistry();
+            registry.RegisterStudent(new Student(1, "A", 1.0));
+            registry.RegisterStudent(new Student(2, "B", 2.0));
+            
+            using var sw = new System.IO.StringWriter();
+            sw.NewLine = "\n";
+            Console.SetOut(sw);
+            
+            registry.ShowAllStudents();
+            
+            var output = sw.ToString().Trim();
+            Assert.Contains("Name: A", output);
+            Assert.Contains("Name: B", output);
+            
+            var standardOutput = new System.IO.StreamWriter(Console.OpenStandardOutput());
+            standardOutput.AutoFlush = true;
+            Console.SetOut(standardOutput);
+        }
+
+        // CalculateAverageGpa tests
         [Fact]
         public void CalculateAverageGpa_ShouldReturnAverageOfRegisteredStudents()
         {
@@ -62,6 +213,24 @@ namespace EnrollmentSystem.Tests
         }
 
         [Fact]
+        public void CalculateAverageGpa_EmptyRegistry_ShouldReturnZero()
+        {
+            var registry = new StudentRegistry();
+            double average = registry.CalculateAverageGpa();
+            Assert.Equal(0.0, average, 2);
+        }
+
+        [Fact]
+        public void CalculateAverageGpa_SingleStudent_ShouldReturnStudentGpa()
+        {
+            var registry = new StudentRegistry();
+            registry.RegisterStudent(new Student(1, "A", 4.0));
+            double average = registry.CalculateAverageGpa();
+            Assert.Equal(4.0, average, 2);
+        }
+
+        // SearchStudent tests
+        [Fact]
         public void SearchStudent_ShouldReturnIndex_WhenStudentExists()
         {
             var registry = new StudentRegistry();
@@ -73,6 +242,76 @@ namespace EnrollmentSystem.Tests
             int index = registry.SearchStudent(bob);
 
             Assert.Equal(1, index);
+        }
+
+        [Fact]
+        public void SearchStudent_ShouldReturnMinusOne_WhenStudentDoesNotExist()
+        {
+            var registry = new StudentRegistry();
+            var alice = new Student(1, "Alice", 3.5);
+            var bob = new Student(2, "Bob", 2.5);
+            registry.RegisterStudent(alice);
+
+            int index = registry.SearchStudent(bob);
+
+            Assert.Equal(-1, index);
+        }
+
+        [Fact]
+        public void SearchStudent_EmptyRegistry_ShouldReturnMinusOne()
+        {
+            var registry = new StudentRegistry();
+            var bob = new Student(2, "Bob", 2.5);
+            int index = registry.SearchStudent(bob);
+            Assert.Equal(-1, index);
+        }
+
+        // SortStudentsByGpa tests
+        [Fact]
+        public void SortStudentsByGpa_SortsAscending()
+        {
+            var registry = new StudentRegistry();
+            registry.RegisterStudent(new Student(1, "A", 3.5));
+            registry.RegisterStudent(new Student(2, "B", 2.0));
+            registry.RegisterStudent(new Student(3, "C", 4.0));
+
+            registry.SortStudentsByGpa();
+
+            Assert.Equal(2.0, registry.GetStudentAt(0).Gpa);
+            Assert.Equal(3.5, registry.GetStudentAt(1).Gpa);
+            Assert.Equal(4.0, registry.GetStudentAt(2).Gpa);
+        }
+
+        [Fact]
+        public void SortStudentsByGpa_AlreadySorted_MaintainsOrder()
+        {
+            var registry = new StudentRegistry();
+            registry.RegisterStudent(new Student(1, "A", 1.0));
+            registry.RegisterStudent(new Student(2, "B", 2.0));
+
+            registry.SortStudentsByGpa();
+
+            Assert.Equal(1.0, registry.GetStudentAt(0).Gpa);
+            Assert.Equal(2.0, registry.GetStudentAt(1).Gpa);
+        }
+
+        [Fact]
+        public void SortStudentsByGpa_EmptyRegistry_DoesNotThrow()
+        {
+            var registry = new StudentRegistry();
+            registry.SortStudentsByGpa();
+            Assert.Equal(0, registry.GetStudentCount());
+        }
+
+        // GetStudentCount tests
+        [Fact]
+        public void GetStudentCount_ReturnsCorrectCount()
+        {
+            var registry = new StudentRegistry();
+            Assert.Equal(0, registry.GetStudentCount());
+            
+            registry.RegisterStudent(new Student(1, "A", 3.0));
+            Assert.Equal(1, registry.GetStudentCount());
         }
     }
 
@@ -150,11 +389,7 @@ namespace EnrollmentSystem.Tests
             desk.IssueAdmissionsTicket(t2);
 
             Assert.Equal(2, desk.GetQueueCount());
-<<<<<<< HEAD
-            
-=======
 
->>>>>>> 2fc57e7f3a28feb8a600393a95d41523dc7a49de
             var served = desk.ServeNextTicket();
             Assert.Equal("T-101", served.TicketId);
         }
@@ -169,30 +404,17 @@ namespace EnrollmentSystem.Tests
 
         [Fact]
         public void ViewNextTicket_ShouldReturnFirstTicketInQueue()
-<<<<<<< HEAD
-        {    
-            var desk = new AdmissionsDesk();
-            var t1 = new Ticket { LogId = 1, Action = "First Action", Timestamp = DateTime.Now, TicketId = "T-101" };
-            var t2 = new Ticket { LogId = 2, Action = "Second Action", Timestamp = DateTime.Now, TicketId = "T-102" };            
-=======
         {
             var desk = new AdmissionsDesk();
             var t1 = new Ticket { LogId = 1, Action = "First Action", Timestamp = DateTime.Now, TicketId = "T-101" };
             var t2 = new Ticket { LogId = 2, Action = "Second Action", Timestamp = DateTime.Now, TicketId = "T-102" };
->>>>>>> 2fc57e7f3a28feb8a600393a95d41523dc7a49de
 
             desk.IssueAdmissionsTicket(t1);
             desk.IssueAdmissionsTicket(t2);
 
             var served = desk.ViewNextTicket();
             Assert.Equal("T-101", served.TicketId);
-<<<<<<< HEAD
-            
-            
-=======
 
-
->>>>>>> 2fc57e7f3a28feb8a600393a95d41523dc7a49de
         }
 
         [Fact]
