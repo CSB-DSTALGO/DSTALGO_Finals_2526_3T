@@ -44,5 +44,7 @@ namespace EnrollmentSystem.Core
         {
             return _queue.Count;
         }
+
+        
     }
 }
