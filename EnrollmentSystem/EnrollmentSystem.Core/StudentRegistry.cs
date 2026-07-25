@@ -16,14 +16,19 @@ public class StudentRegistry
         _students.Add(student);
     }
 
-    public bool UnregisterStudent(int index)
+    public bool UnregisterStudent(int id)
+{
+    for (int i = 0; i < _students.Count; i++)
     {
-        if (index < 0 || index >= _students.Count)
-            return false;
-
-        _students.RemoveAt(index);
-        return true;
+        if (_students.Get(i).Id == id)
+        {
+            _students.RemoveAt(i);
+            return true;
+        }
     }
+
+    return false;
+}
 
     public bool RemoveStudent(string id)
     {
