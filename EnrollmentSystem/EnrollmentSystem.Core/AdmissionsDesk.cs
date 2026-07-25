@@ -29,10 +29,18 @@ public class AdmissionsDesk
     }
     public Ticket ServeNextTicket()
     {
+        if (_applications.IsEmpty())
+        {
+            throw new InvalidOperationException();
+        }
         return _tickets.Dequeue();
     }
     public AdmissionApplication ViewNextTicket()
     {
+        if (_applications.IsEmpty())
+        {
+            throw new InvalidOperationException();
+        }
         return _applications.Peek();
     }
     public bool CheckQueueEmpty() 
