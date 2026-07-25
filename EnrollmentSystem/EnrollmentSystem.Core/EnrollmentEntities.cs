@@ -80,8 +80,14 @@ public class Ticket : IComparable<Ticket>
     }
 }
 
-public class Log
+public class Log : IComparable<Log>
 {
     public string LogId { get; set; } = string.Empty;
     public string ActionSummary { get; set; } = string.Empty;
+
+    public int CompareTo(Log? other)
+    {
+        if (other == null) return 1;
+        return string.Compare(LogId, other.LogId, StringComparison.Ordinal);
+    }
 }

@@ -3,5 +3,5 @@
   <Project Path="EnrollmentSystem.Core/EnrollmentSystem.Core.csproj" />
   <Project Path="DataStructuresLibrary/DataStructuresLibrary.csproj" />
   <Project Path="EnrollmentSystem.Tests/EnrollmentSystem.Tests.csproj" />
-  <Project Path="DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj" />
+  <Project Path="DataStructuresLibrary.Tests/" />
 </Solution>

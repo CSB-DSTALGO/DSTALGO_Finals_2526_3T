@@ -63,6 +63,51 @@ namespace DataStructuresLibrary
             return _count == 0;
         }
 
+        public int Search(T item)
+{
+    var comparer = System.Collections.Generic.EqualityComparer<T>.Default;
+    for (int i = 0; i < _count; i++)
+    {
+        if (comparer.Equals(_items[(_front + i) % _items.Length], item))
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+public void Sort()
+{
+    var comparer = System.Collections.Generic.Comparer<T>.Default;
+    // Linearize into a temp array first since indices wrap around
+    T[] temp = new T[_count];
+    for (int i = 0; i < _count; i++)
+    {
+        temp[i] = _items[(_front + i) % _items.Length];
+    }
+
+    // Insertion sort on the linear copy
+    for (int i = 1; i < _count; i++)
+    {
+        T key = temp[i];
+        int j = i - 1;
+        while (j >= 0 && comparer.Compare(temp[j], key) > 0)
+        {
+            temp[j + 1] = temp[j];
+            j--;
+        }
+        temp[j + 1] = key;
+    }
+
+    // Write back, resetting front/rear since order is now linear
+    for (int i = 0; i < _count; i++)
+    {
+        _items[i] = temp[i];
+    }
+    _front = 0;
+    _rear = _count - 1;
+}
+
         private void Resize()
         {
             T[] newItems = new T[_items.Length * 2];

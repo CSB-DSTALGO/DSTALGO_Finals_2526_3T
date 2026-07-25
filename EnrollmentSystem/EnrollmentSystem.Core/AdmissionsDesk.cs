@@ -8,15 +8,35 @@ public class AdmissionsDesk
 
     public int Count => _applications.Count;
 
-    public void IssueAdmissionsTicket(AdmissionApplication app) => throw new NotImplementedException();
-    public void IssueAdmissionsTicket(Ticket ticket) => throw new NotImplementedException();
-    public AdmissionApplication ServeNextStudent() => throw new NotImplementedException();
-    public Ticket ServeNextTicket() => throw new NotImplementedException();
-    public AdmissionApplication ViewNextTicket() => throw new NotImplementedException();
-    public bool CheckQueueEmpty() => throw new NotImplementedException();
+    public void IssueAdmissionsTicket(AdmissionApplication app)
+    {
+        _applications.Enqueue(app);
+    }
+
+    public AdmissionApplication ServeNextStudent()
+    {
+        return _applications.Dequeue();
+    }
+
+    public AdmissionApplication ViewNextTicket()
+    {
+        return _applications.Peek();
+    }
+
+    public bool CheckQueueEmpty()
+    {
+        return _applications.IsEmpty();
+    }
+
     public int GetQueueCount() => Count;
 
-    // Hint: Delegate search and sort to CustomQueue<T>
-    public bool SearchApplication(AdmissionApplication app) => throw new NotImplementedException();
-    public void SortApplicationsByPriority() => throw new NotImplementedException();
+    public bool SearchApplication(AdmissionApplication app)
+    {
+        return _applications.Search(app) != -1;
+    }
+
+    public void SortApplicationsByPriority()
+    {
+        _applications.Sort();
+    }
 }

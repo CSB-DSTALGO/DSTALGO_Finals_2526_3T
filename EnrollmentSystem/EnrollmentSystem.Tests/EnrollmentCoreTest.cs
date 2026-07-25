@@ -27,7 +27,7 @@ namespace EnrollmentSystem.Tests
             var student = new Student(20260001, "Alice", 0.0);
             registry.RegisterStudent(student);
 
-            bool removed = registry.UnregisterStudent(20260001);
+            bool removed = registry.RemoveStudent(20260001);
 
             Assert.True(removed);
             Assert.Equal(0, registry.GetStudentCount());
@@ -63,33 +63,32 @@ namespace EnrollmentSystem.Tests
         }
     }
 
-    public class AdmissionsDeskTests
-    {
-        [Fact]
-        public void IssueAdmissionsTicket_ShouldQueueTicketsInFIFOOrder()
-        {
-            var desk = new AdmissionsDesk();
-            var t1 = new Ticket { LogId = 1, Action = "First Action", Timestamp = DateTime.Now };
-            var t2 = new Ticket { LogId = 2, Action = "Second Action", Timestamp = DateTime.Now };
+public class AdmissionsDeskTests
+   {
+       [Fact]
+       public void IssueAdmissionsTicket_ShouldQueueApplicationsInFIFOOrder()
+       {
+           var desk = new AdmissionsDesk();
+           var a1 = new AdmissionApplication(1, "Alice", 10);
+           var a2 = new AdmissionApplication(2, "Bob", 20);
 
-            desk.IssueAdmissionsTicket(t1);
-            desk.IssueAdmissionsTicket(t2);
+           desk.IssueAdmissionsTicket(a1);
+           desk.IssueAdmissionsTicket(a2);
 
-            Assert.Equal(2, desk.GetQueueCount());
-            
-            var served = desk.ServeNextTicket();
-            Assert.Equal("T-101", served.TicketId);
-        }
+           Assert.Equal(2, desk.GetQueueCount());
 
-        [Fact]
-        public void ServeNextTicket_ShouldThrowException_WhenQueueIsEmpty()
-        {
-            var desk = new AdmissionsDesk();
+           var served = desk.ServeNextStudent();
+           Assert.Equal(1, served.ApplicationId);
+       }
 
-            Assert.Throws<InvalidOperationException>(() => desk.ServeNextTicket());
-        }
-    }
+       [Fact]
+       public void ServeNextStudent_ShouldThrowException_WhenQueueIsEmpty()
+       {
+           var desk = new AdmissionsDesk();
 
+           Assert.Throws<InvalidOperationException>(() => desk.ServeNextStudent());
+       }
+   }
     public class AdministrativeLogsTests
     {
         [Fact]

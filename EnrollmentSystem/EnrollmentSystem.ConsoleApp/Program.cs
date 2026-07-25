@@ -161,52 +161,54 @@ namespace EnrollmentSystem.ConsoleApp
             Console.ReadKey();
         }
 
-        static void NavigateAdmissionsDesk()
+       static void NavigateAdmissionsDesk()
+{
+    Console.Clear();
+    Console.WriteLine("--- ADMISSIONS DESK QUEUE ---");
+    Console.WriteLine("1. Issue New Application (Enqueue)");
+    Console.WriteLine("2. Serve Next Student (Dequeue)");
+    Console.WriteLine("3. View Queue Status");
+    Console.WriteLine("4. Back to Main Menu");
+    Console.Write("Choice: ");
+    string choice = Console.ReadLine() ?? "";
+
+    try
+    {
+        switch (choice)
         {
-            Console.Clear();
-            Console.WriteLine("--- ADMISSIONS DESK QUEUE ---");
-            Console.WriteLine("1. Issue New Ticket (Enqueue)");
-            Console.WriteLine("2. Serve Next Student (Dequeue)");
-            Console.WriteLine("3. View Queue Status");
-            Console.WriteLine("4. Back to Main Menu");
-            Console.Write("Choice: ");
-            string choice = Console.ReadLine() ?? "";
+            case "1":
+                Console.Write("Enter Student Name: ");
+                string studentName = Console.ReadLine() ?? "";
+                Console.Write("Enter Priority Score: ");
+                int.TryParse(Console.ReadLine(), out int priorityScore);
+                int applicationId = _desk.GetQueueCount() + 1;
 
-            try
-            {
-                switch (choice)
-                {
-                    case "1":
-                        Console.Write("Enter Student ID for Ticket: ");
-                        string studentId = Console.ReadLine() ?? "";
-                        string ticketId = $"T-{100 + _desk.GetQueueCount() + 1}";
+                _desk.IssueAdmissionsTicket(new AdmissionApplication(applicationId, studentName, priorityScore));
+                Console.WriteLine($"\nApplication #{applicationId} successfully issued for {studentName}.");
+                break;
 
-                        _desk.IssueAdmissionsTicket(new Ticket { TicketId = ticketId, StudentId = studentId });
-                        Console.WriteLine($"\nTicket {ticketId} successfully issued to Student {studentId}.");
-                        break;
+            case "2":
+                var served = _desk.ServeNextStudent();
+                Console.WriteLine($"\n[SERVED] Processing Application #{served.ApplicationId} for Student: {served.StudentName}");
+                break;
 
-                    case "2":
-                        var served = _desk.ServeNextTicket();
-                        Console.WriteLine($"\n[SERVED] Processing Ticket: {served.TicketId} for Student: {served.StudentId}");
-                        break;
-
-                    case "3":
-                        Console.WriteLine($"\nTickets remaining in queue line: {_desk.GetQueueCount()}");
-                        break;
-                }
-            }
-            catch (NotImplementedException)
-            {
-                DisplayNotImplementedMessage();
-            }
-            catch (InvalidOperationException)
-            {
-                Console.WriteLine("\nNo tickets left in queue. The queue line is empty.");
-            }
-
-            Console.WriteLine("\nPress any key to continue...");
-            Console.ReadKey();
+            case "3":
+                Console.WriteLine($"\nApplications remaining in queue line: {_desk.GetQueueCount()}");
+                break;
         }
+    }
+    catch (NotImplementedException)
+    {
+        DisplayNotImplementedMessage();
+    }
+    catch (InvalidOperationException)
+    {
+        Console.WriteLine("\nNo applications left in queue. The queue line is empty.");
+    }
+
+    Console.WriteLine("\nPress any key to continue...");
+    Console.ReadKey();
+}
 
         static void NavigateAdministrativeLogs()
         {

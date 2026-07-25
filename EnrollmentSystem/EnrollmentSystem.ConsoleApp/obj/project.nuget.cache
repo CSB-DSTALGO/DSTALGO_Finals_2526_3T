@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rSjkSsv7h98=",
+  "dgSpecHash": "cogpbvZtmno=",
   "success": true,
-  "projectFilePath": "/Users/caan/Development/BENILDE/FINALS/DataStructureFinals/GITHUB Project/EnrollmentSystem/EnrollmentSystem.ConsoleApp/EnrollmentSystem.ConsoleApp.csproj",
-  "expectedPackageFiles": [
-    "/Users/caan/.nuget/packages/microsoft.netcore.app.ref/8.0.22/microsoft.netcore.app.ref.8.0.22.nupkg.sha512",
-    "/Users/caan/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.22/microsoft.aspnetcore.app.ref.8.0.22.nupkg.sha512",
-    "/Users/caan/.nuget/packages/microsoft.netcore.app.host.osx-arm64/8.0.22/microsoft.netcore.app.host.osx-arm64.8.0.22.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\david\\OneDrive\\Documents\\GitHub\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\EnrollmentSystem.ConsoleApp\\EnrollmentSystem.ConsoleApp.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
