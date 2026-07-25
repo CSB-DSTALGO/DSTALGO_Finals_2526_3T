@@ -36,7 +36,7 @@ namespace DataStructuresLibrary
                 throw new InvalidOperationException("Stack is empty.");
             }
             T item = _items[_top];
-            _items[_top] = default!; // clear the memory slot
+            _items[_top] = default!; //clear the memory slot
             _top--;
             return item;
         }
@@ -57,7 +57,7 @@ namespace DataStructuresLibrary
 
         private void Resize()
         {
-            T[] newArray = new T[_items.Length * 2]; // double the size
+            T[] newArray = new T[_items.Length * 2]; //double the size
             Array.Copy(_items, newArray, _items.Length);
             _items = newArray;
         }
@@ -68,12 +68,12 @@ namespace DataStructuresLibrary
         }
 
         // Bubble Sort
-        // Structural Mechanism: Loops through active items only and swaps adjacent elements if out of order.
+        // Loops through active items only and swaps adjacent elements if out of order.
         public void Sort(Comparison<T> comparison)
         {
             if (Count <= 1) return;
 
-            for (int i = 0; i < Count - 1; i++) // outer loop
+            for (int i = 0; i < Count - 1; i++) //outer loop
             {
                 for (int j = 0; j < Count - i - 1; j++) // inner loop for comparing
                 {
@@ -88,7 +88,7 @@ namespace DataStructuresLibrary
         }
 
         // Reverse Linear Search
-        // Structural Mechanism: Scans the array backwards from _top down to index 0.
+        // Scans the array backwards from _top down to index 0.
         public T? Search(Func<T, bool> match)
         {
             for (int i = _top; i >= 0; i--) // starts at top and goes down
