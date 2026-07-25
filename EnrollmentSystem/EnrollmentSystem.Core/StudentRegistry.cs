@@ -1,25 +1,24 @@
-
 using System;
 using DataStructuresLibrary;
- 
+
 namespace EnrollmentSystem.Core
 {
     public class StudentRegistry
     {
         private readonly CustomArrayList<Student> _registry;
- 
+
         public StudentRegistry()
         {
             _registry = new CustomArrayList<Student>();
         }
- 
-        /// Inserts a new student record at the end of the registry.
+
+        // Inserts a new student record at the end of the registry.
         public void RegisterStudent(Student student)
         {
             _registry.Add(student);
         }
- 
-        /// Removes a student record by its index in the registry.
+
+        // Removes a student record by its index in the registry.
         public void UnregisterStudent(int index)
         {
             try
@@ -31,7 +30,7 @@ namespace EnrollmentSystem.Core
                 Console.WriteLine($"No student found at index {index}.");
             }
         }
- 
+
         public void GetStudentDetails(int index)
         {
             try
@@ -44,74 +43,76 @@ namespace EnrollmentSystem.Core
                 Console.WriteLine($"No student found at index {index}.");
             }
         }
- 
-        
+
         public void ShowAllStudents()
         {
-            Student[] all = _registry.ToArray();
- 
-            if (all.Length == 0)
+            if (_registry.Count == 0)
             {
                 Console.WriteLine("No students registered yet.");
                 return;
             }
- 
-            for (int i = 0; i < all.Length; i++)
+
+            for (int i = 0; i < _registry.Count; i++)
             {
-                Console.WriteLine($"[{i}] {all[i].Name} (ID: {all[i].Id}, GPA: {all[i].Gpa}, Course: {all[i].CourseCode})");
+                Student student = _registry.GetAt(i);
+                Console.WriteLine($"[{i}] {student.Name} (ID: {student.Id}, GPA: {student.Gpa}, Course: {student.CourseCode})");
             }
         }
- 
+
+        // Sorts students by GPA using Selection Sort.
+        // Builds a plain array by hand from the registry, sorts that array,
+        // then prints the sorted result.
         public void SortStudentsByGpa()
         {
-            Student[] students = _registry.ToArray();
-            int n = students.Length;
- 
-            for (int i = 0; i < n - 1; i++)
+            int count = _registry.Count;
+            Student[] students = new Student[count];
+
+            for (int i = 0; i < count; i++)
+            {
+                students[i] = _registry.GetAt(i);
+            }
+
+            for (int i = 0; i < count - 1; i++)
             {
                 int smallestIndex = i;
- 
-                for (int j = i + 1; j < n; j++)
+
+                for (int j = i + 1; j < count; j++)
                 {
-                    if (students[j].CompareTo(students[smallestIndex]) < 0)
+                    if (students[j].Gpa < students[smallestIndex].Gpa)
                     {
                         smallestIndex = j;
                     }
                 }
- 
+
                 if (smallestIndex != i)
                 {
-                    (students[i], students[smallestIndex]) = (students[smallestIndex], students[i]);
+                    Student temp = students[i];
+                    students[i] = students[smallestIndex];
+                    students[smallestIndex] = temp;
                 }
             }
- 
-            for (int i = 0; i < students.Length; i++)
+
+            Console.WriteLine("Students sorted by GPA:");
+            for (int i = 0; i < count; i++)
             {
-                _registry.SetAt(i, students[i]);
+                Console.WriteLine($"[{i}] {students[i].Name} (ID: {students[i].Id}, GPA: {students[i].Gpa})");
             }
         }
- 
+
+        // Searches for a student by Id using Linear Search.
+        // Checks each student one at a time from the start of the registry.
         public Student? SearchStudentById(int id)
         {
-            Student[] snapshot = _registry.ToArray();
-            Array.Sort(snapshot, (a, b) => a.Id.CompareTo(b.Id));
- 
-            int low = 0;
-            int high = snapshot.Length - 1;
- 
-            while (low <= high)
+            for (int i = 0; i < _registry.Count; i++)
             {
-                int mid = low + (high - low) / 2;
-                int comparison = snapshot[mid].Id.CompareTo(id);
- 
-                if (comparison == 0)
-                    return snapshot[mid];
-                else if (comparison < 0)
-                    low = mid + 1;
-                else
-                    high = mid - 1;
+                Student student = _registry.GetAt(i);
+
+                if (student.Id == id)
+                {
+                    return student;
+                }
             }
- 
+
             return null; // not found
         }
     }

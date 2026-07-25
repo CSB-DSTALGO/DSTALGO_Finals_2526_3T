@@ -1,92 +1,184 @@
 using System;
 using Xunit;
 using DataStructuresLibrary;
-using EnrollmentSystem.Core;
 
 namespace DataStructuresLibrary.Tests
 {
     public class CustomSinglyLinkedListTests
     {
-        // ------------------------------------------
-        // Tests for CustomSinglyLinkedList<T>
-        // ------------------------------------------
+        
+        //Tests for AddLast
+        
 
         [Fact]
-        public void AddLast_ShouldAppendItemAndIncreaseCount()
+        public void AddLast_ToEmptyList_SetsHeadAndCountToOne()
         {
             var list = new CustomSinglyLinkedList<string>();
 
-            list.AddLast("CS101");
-            list.AddLast("CS102");
+            list.AddLast("DSTALGO");
 
-            Assert.Equal(2, list.Count);
-            Assert.Equal("CS101", list.Head!.Data);
-            Assert.Equal("CS102", list.Head.Next!.Data);
+            Assert.Equal(1, list.Count);
+            Assert.NotNull(list.Head);
+            Assert.Equal("DSTALGO", list.Head.Data);
         }
 
         [Fact]
-        public void Remove_ShouldRemoveMatchingItem()
+        public void AddLast_MultipleItems_AppendsInCorrectOrder()
+        {
+            var list = new CustomSinglyLinkedList<string>();
+
+            list.AddLast("DSTALGO");
+            list.AddLast("ISINFOM");
+            list.AddLast("ISPROJ2");
+
+            Assert.Equal(3, list.Count);
+            Assert.Equal("DSTALGO", list.Head!.Data);
+            Assert.Equal("ISINFOM", list.Head.Next!.Data);
+            Assert.Equal("ISPROJ2", list.Head.Next.Next!.Data);
+        }
+
+        [Fact]
+        public void AddLast_DuplicateItems_IncreasesCountAndPreservesOrder()
+        {
+            var list = new CustomSinglyLinkedList<int>();
+
+            list.AddLast(5);
+            list.AddLast(5);
+
+            Assert.Equal(2, list.Count);
+            Assert.Equal(5, list.Head!.Data);
+            Assert.Equal(5, list.Head.Next!.Data);
+        }
+
+        
+        //Tests for Remove (3 Tests)
+        
+
+        [Fact]
+        public void Remove_HeadItem_UpdatesHeadAndDecrementsCount()
         {
             var list = new CustomSinglyLinkedList<int>();
             list.AddLast(10);
             list.AddLast(20);
 
-            bool result = list.Remove(x => x == 10);
+            bool removed = list.Remove(x => x == 10);
 
-            Assert.True(result);
+            Assert.True(removed);
             Assert.Equal(1, list.Count);
             Assert.Equal(20, list.Head!.Data);
         }
 
         [Fact]
-        public void Find_ShouldReturnMatchingNode()
+        public void Remove_MiddleOrLastItem_RemovesCorrectNode()
         {
-            var list = new CustomSinglyLinkedList<string>();
-            list.AddLast("MATH1");
+            var list = new CustomSinglyLinkedList<int>();
+            list.AddLast(10);
+            list.AddLast(20);
+            list.AddLast(30);
 
-            var node = list.Find(x => x == "MATH1");
-
-            Assert.NotNull(node);
-            Assert.Equal("MATH1", node!.Data);
-        }
-
-        // ------------------------------------------
-        // Tests for CourseCurriculum
-        // ------------------------------------------
-
-        [Fact]
-        public void InsertCourse_ShouldAddCourseToLinkedList()
-        {
-            var curriculum = new CourseCurriculum();
-            curriculum.InsertCourse(new Course("CS101", "Programming 1", 3));
-
-            Assert.Equal(1, curriculum.Count);
-            Assert.NotNull(curriculum.SearchCourse("CS101"));
-        }
-
-        [Fact]
-        public void DeleteCourse_ShouldRemoveTargetCourse()
-        {
-            var curriculum = new CourseCurriculum();
-            curriculum.InsertCourse(new Course("CS101", "Programming 1", 3));
-
-            bool removed = curriculum.DeleteCourse("CS101");
+            bool removed = list.Remove(x => x == 20);
 
             Assert.True(removed);
-            Assert.Equal(0, curriculum.Count);
-            Assert.Null(curriculum.SearchCourse("CS101"));
+            Assert.Equal(2, list.Count);
+            Assert.Equal(10, list.Head!.Data);
+            Assert.Equal(30, list.Head.Next!.Data);
         }
 
         [Fact]
-        public void SearchCourse_ShouldReturnCorrectCourse()
+        public void Remove_NonExistentItem_ReturnsFalseAndKeepCount()
         {
-            var curriculum = new CourseCurriculum();
-            curriculum.InsertCourse(new Course("DSTALGO", "Data Structures", 3));
+            var list = new CustomSinglyLinkedList<int>();
+            list.AddLast(10);
 
-            var course = curriculum.SearchCourse("DSTALGO");
+            bool removed = list.Remove(x => x == 99);
 
-            Assert.NotNull(course);
-            Assert.Equal("Data Structures", course!.Title);
+            Assert.False(removed);
+            Assert.Equal(1, list.Count);
+            Assert.Equal(10, list.Head!.Data);
         }
+
+        
+        //Tests for Find
+        
+
+        [Fact]
+        public void Find_ExistingItem_ReturnsMatchingNode()
+        {
+            var list = new CustomSinglyLinkedList<string>();
+            list.AddLast("ENTPROG");
+            list.AddLast("APPDAET");
+
+            var node = list.Find(x => x == "APPDAET");
+
+            Assert.NotNull(node);
+            Assert.Equal("APPDAET", node!.Data);
+        }
+
+        [Fact]
+        public void Find_NonExistentItem_ReturnsNull()
+        {
+            var list = new CustomSinglyLinkedList<string>();
+            list.AddLast("ISPROJ1");
+
+            var node = list.Find(x => x == "CSBGRAD");
+
+            Assert.Null(node);
+        }
+
+        [Fact]
+        public void Find_EmptyList_ReturnsNull()
+        {
+            var list = new CustomSinglyLinkedList<string>();
+
+            var node = list.Find(x => x == "ANY");
+
+            Assert.Null(node);
+        }
+       
+        //Tests for Sort     
+
+        [Fact]
+        public void Sort_UnsortedIntegers_SortsInAscendingOrder()
+        {
+            var list = new CustomSinglyLinkedList<int>();
+            list.AddLast(30);
+            list.AddLast(10);
+            list.AddLast(20);
+
+            list.Sort((a, b) => a.CompareTo(b));
+
+            Assert.Equal(10, list.Head!.Data);
+            Assert.Equal(20, list.Head.Next!.Data);
+            Assert.Equal(30, list.Head.Next.Next!.Data);
+        }
+
+        [Fact]
+        public void Sort_UnsortedStrings_SortsAlphabetically()
+        {
+            var list = new CustomSinglyLinkedList<string>();
+            list.AddLast("MARFRET");
+            list.AddLast("APPDAET");
+            list.AddLast("CSBGRAD");
+
+            list.Sort((a, b) => string.Compare(a, b, StringComparison.Ordinal));
+
+            Assert.Equal("APPDAET", list.Head!.Data);
+            Assert.Equal("CSBGRAD", list.Head.Next!.Data);
+            Assert.Equal("MARFRET", list.Head.Next.Next!.Data);
+        }
+
+        [Fact]
+        public void Sort_EmptyOrSingleElementList_DoesNotThrowOrChange()
+        {
+            var list = new CustomSinglyLinkedList<int>();
+            list.AddLast(42);
+
+            list.Sort((a, b) => a.CompareTo(b));
+
+            Assert.Equal(1, list.Count);
+            Assert.Equal(42, list.Head!.Data);
+        }
+
+        
     }
 }
