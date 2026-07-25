@@ -90,4 +90,21 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
             Add(item);
         }
     }
+
+    public IEnumerator<T> GetEnumerator()
+        {
+            var current = _head;
+
+            while (current != null)
+            {
+                yield return current.Data;
+                current = current.Next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    
 }
