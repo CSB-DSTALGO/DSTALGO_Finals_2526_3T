@@ -204,7 +204,7 @@ public class ECommerceCoreTests
             cart.ShowAllItems);
 
         Assert.Contains(
-            product.ToString(),
+            product.Name,
             output);
     }
 
@@ -229,8 +229,8 @@ public class ECommerceCoreTests
         string output = CaptureConsoleOutput(
             cart.ShowAllItems);
 
-        Assert.Contains(p1.ToString(), output);
-        Assert.Contains(p2.ToString(), output);
+        Assert.Contains(p1.Name, output);
+        Assert.Contains(p2.Name, output);
         Assert.Equal(2, cart.Count);
     }
 
@@ -413,7 +413,7 @@ public class ECommerceCoreTests
             catalog.ShowAllProfiles);
 
         Assert.Contains(
-            product.ToString(),
+            product.Name,
             output);
     }
 
@@ -438,8 +438,8 @@ public class ECommerceCoreTests
         string output = CaptureConsoleOutput(
             catalog.ShowAllProfiles);
 
-        Assert.Contains(p1.ToString(), output);
-        Assert.Contains(p2.ToString(), output);
+        Assert.Contains(p1.Name, output);
+        Assert.Contains(p2.Name, output);
         Assert.Equal(2, catalog.Count);
     }
 

@@ -1,5 +1,9 @@
 namespace DataStructuresLibrary;
 
+/// <summary>
+/// A custom singly linked list implemented with nodes.
+/// Each node stores one item and a reference to the next node.
+/// </summary>
 public class CustomSinglyLinkedList<T> where T : IComparable<T>
 {
     private class Node
@@ -15,8 +19,15 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
 
     private Node? _head;
 
+    /// <summary>
+    /// Gets the number of nodes currently stored in the list.
+    /// </summary>
     public int Count { get; private set; }
 
+    /// <summary>
+    /// Appends an item to the end of the linked list.
+    /// Time complexity: O(n).
+    /// </summary>
     public void Add(T item)
     {
         Node newNode = new Node(item);
@@ -40,6 +51,11 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
         Count++;
     }
 
+    /// <summary>
+    /// Removes the first node whose data compares equal to the target.
+    /// Returns false when the target is not found.
+    /// Time complexity: O(n).
+    /// </summary>
     public bool Remove(T item)
     {
         if (_head == null)
@@ -51,7 +67,6 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
         {
             _head = _head.Next;
             Count--;
-
             return true;
         }
 
@@ -64,7 +79,6 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
             {
                 previous.Next = current.Next;
                 Count--;
-
                 return true;
             }
 
@@ -75,6 +89,10 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
         return false;
     }
 
+    /// <summary>
+    /// Performs a linear traversal to check whether an item exists.
+    /// Time complexity: O(n).
+    /// </summary>
     public bool Search(T item)
     {
         Node? current = _head;
@@ -93,7 +111,8 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
     }
 
     /// <summary>
-    /// Returns the item stored at the specified index.
+    /// Returns the item stored at the specified zero-based index.
+    /// Time complexity: O(n).
     /// </summary>
     public T Get(int index)
     {
@@ -112,6 +131,11 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
         return current.Data;
     }
 
+    /// <summary>
+    /// Sorts node data in ascending order using bubble sort.
+    /// Time complexity: O(n^2).
+    /// Space complexity: O(1).
+    /// </summary>
     public void Sort()
     {
         if (_head == null)
@@ -133,7 +157,6 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
                     T temporary = current.Data;
                     current.Data = current.Next.Data;
                     current.Next.Data = temporary;
-
                     swapped = true;
                 }
 

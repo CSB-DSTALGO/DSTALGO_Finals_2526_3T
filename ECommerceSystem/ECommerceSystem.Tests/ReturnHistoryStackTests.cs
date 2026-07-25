@@ -74,6 +74,37 @@ public class ReturnHistoryStackTests
     }
 
     // =====================================================
+    // PEEK LATEST RETURN TESTS
+    // =====================================================
+
+    [Fact]
+    public void PeekLatestReturn_ShouldReturnLatestRequest()
+    {
+        var history = BuildHistory(1, 2);
+
+        Assert.Equal(2, history.PeekLatestReturn().ReturnId);
+    }
+
+    [Fact]
+    public void PeekLatestReturn_ShouldNotRemoveRequest()
+    {
+        var history = BuildHistory(1, 2);
+
+        history.PeekLatestReturn();
+
+        Assert.Equal(2, history.Count);
+    }
+
+    [Fact]
+    public void PeekLatestReturn_ShouldThrowWhenEmpty()
+    {
+        var history = new ReturnHistoryStack();
+
+        Assert.Throws<InvalidOperationException>(
+            () => history.PeekLatestReturn());
+    }
+
+    // =====================================================
     // PEEK LAST RETURN TESTS
     // =====================================================
 

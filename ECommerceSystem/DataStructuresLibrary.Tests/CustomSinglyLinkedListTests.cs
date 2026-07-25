@@ -166,7 +166,7 @@ public class CustomSinglyLinkedListTests
     }
 
     [Fact]
-    public void Sort_ShouldKeepAllItemsSearchable()
+    public void Sort_ShouldOrderItemsAscending()
     {
         var list = new CustomSinglyLinkedList<int>();
 
@@ -176,9 +176,9 @@ public class CustomSinglyLinkedListTests
 
         list.Sort();
 
-        Assert.True(list.Search(10));
-        Assert.True(list.Search(20));
-        Assert.True(list.Search(30));
+        Assert.Equal(10, list.Get(0));
+        Assert.Equal(20, list.Get(1));
+        Assert.Equal(30, list.Get(2));
     }
 
     [Fact]

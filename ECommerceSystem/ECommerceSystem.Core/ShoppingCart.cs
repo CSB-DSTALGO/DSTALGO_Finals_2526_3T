@@ -2,14 +2,21 @@ namespace ECommerceSystem.Core;
 
 using DataStructuresLibrary;
 
+/// <summary>
+/// Manages products in a shopping cart using CustomArrayList.
+/// </summary>
 public class ShoppingCart
 {
     private readonly CustomArrayList<Product> _items = new();
 
+    /// <summary>
+    /// Gets the number of products currently in the cart.
+    /// </summary>
     public int Count => _items.Count;
 
     /// <summary>
-    /// Adds a product to the shopping cart.
+    /// Adds a product to the end of the cart.
+    /// Amortized time complexity: O(1).
     /// </summary>
     public void AddItem(Product product)
     {
@@ -17,8 +24,8 @@ public class ShoppingCart
     }
 
     /// <summary>
-    /// Removes the first product that matches the given product.
-    /// This keeps Lim's existing method.
+    /// Removes the first product that compares equal to the target.
+    /// Time complexity: O(n).
     /// </summary>
     public bool RemoveItem(Product product)
     {
@@ -26,8 +33,8 @@ public class ShoppingCart
     }
 
     /// <summary>
-    /// Removes a product using its index.
-    /// This follows the exact method required in the project.
+    /// Removes a product using its zero-based index.
+    /// Time complexity: O(n).
     /// </summary>
     public void RemoveItem(int index)
     {
@@ -35,7 +42,8 @@ public class ShoppingCart
     }
 
     /// <summary>
-    /// Returns the product stored at the given index.
+    /// Returns the product stored at the specified index.
+    /// Time complexity: O(1).
     /// </summary>
     public Product GetItemAt(int index)
     {
@@ -43,7 +51,8 @@ public class ShoppingCart
     }
 
     /// <summary>
-    /// Displays all products currently stored in the cart.
+    /// Prints every product currently stored in the cart.
+    /// Time complexity: O(n).
     /// </summary>
     public void ShowAllItems()
     {
@@ -55,12 +64,16 @@ public class ShoppingCart
 
         for (int i = 0; i < _items.Count; i++)
         {
-            Console.WriteLine(_items.Get(i));
+            Product product = _items.Get(i);
+
+            Console.WriteLine(
+                $"ID: {product.Id}, Name: {product.Name}, Price: {product.Price:0.00}");
         }
     }
 
     /// <summary>
-    /// Calculates the total price of all products in the cart.
+    /// Calculates and returns the sum of all product prices.
+    /// Time complexity: O(n).
     /// </summary>
     public decimal CalculateTotal()
     {
@@ -75,8 +88,9 @@ public class ShoppingCart
     }
 
     /// <summary>
-    /// Searches for a product and returns its index.
+    /// Performs a linear search and returns the matching product index.
     /// Returns -1 when the product is not found.
+    /// Time complexity: O(n).
     /// </summary>
     public int SearchItem(Product product)
     {
@@ -84,7 +98,8 @@ public class ShoppingCart
     }
 
     /// <summary>
-    /// Sorts the products according to Product.CompareTo().
+    /// Sorts products by price using the array list's insertion sort.
+    /// Time complexity: O(n^2).
     /// </summary>
     public void SortCartByPrice()
     {
