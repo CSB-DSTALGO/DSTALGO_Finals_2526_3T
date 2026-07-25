@@ -30,10 +30,10 @@ namespace DataStructuresLibrary
             {
                 throw new InvalidOperationException("Queue is full.");
             }
-            // This adds the item to the rear and updates the rear index and count
-            _items[_rear] = item;
-            _rear = (_rear + 1) % _items.Length;
-            _count++;
+            
+            _items[_rear] = item; // Add the item at the rear index
+            _rear = (_rear + 1) % _items.Length; // Move rear to the next index
+            _count++; // Increase the count of items
         }
 
         // Removes and returns the item at the front of the queue
