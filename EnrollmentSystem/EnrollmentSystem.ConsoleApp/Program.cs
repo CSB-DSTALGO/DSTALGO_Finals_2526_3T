@@ -65,14 +65,26 @@ namespace EnrollmentSystem.ConsoleApp
                     case "1":
                         Console.Write("Enter Student ID: ");
                         string id = Console.ReadLine() ?? "";
+
                         Console.Write("Enter Full Name: ");
                         string name = Console.ReadLine() ?? "";
+
                         Console.Write("Enter Course Code: ");
                         string course = Console.ReadLine() ?? "";
-                        
-                        _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0));
+
+                        Student student = new Student(int.Parse(id), name, 0.0);
+                        student.CourseCode = course;
+
+                        _registry.RegisterStudent(student);
+
                         Console.WriteLine("\nStudent registered successfully.");
-                        _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Registered student {id}" });
+
+                        _logs.PushSystemLog(new Log
+                        {
+                            LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}",
+                            ActionSummary = $"Registered student {id}"
+                        });
+
                         break;
 
                     case "2":
