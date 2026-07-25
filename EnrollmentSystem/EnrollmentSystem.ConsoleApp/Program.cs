@@ -137,6 +137,7 @@ namespace EnrollmentSystem.ConsoleApp
 
                         _curriculum.InsertCourse(new Course(code, title, units));
                         Console.WriteLine("\nCourse inserted into curriculum.");
+                        _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Inserted course {code}" });
                         break;
 
                     case "2":
@@ -144,6 +145,10 @@ namespace EnrollmentSystem.ConsoleApp
                         string targetCode = Console.ReadLine() ?? "";
                         bool removed = _curriculum.DeleteCourse(targetCode);
                         Console.WriteLine(removed ? "\nCourse removed successfully." : "\nCourse not found.");
+                        if (removed)
+                        {                                                                                                                                   
+                            _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Removed course {targetCode}" });
+                        }
                         break;
 
                     case "3":
@@ -189,11 +194,13 @@ namespace EnrollmentSystem.ConsoleApp
                             Timestamp = DateTime.Now
                         });
                         Console.WriteLine($"\nTicket {ticketId} successfully issued to Student {studentId}.");
+                        _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Issued ticket {ticketId} to student {studentId}" });
                         break;
 
                     case "2":
                         var served = _desk.ServeNextTicket();
                         Console.WriteLine($"\n[SERVED] Processing Ticket: {served.TicketId} for Student: {served.StudentId}");
+                        _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Served ticket {served.TicketId} for student {served.StudentId}" });
                         break;
 
                     case "3":
