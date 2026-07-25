@@ -87,4 +87,36 @@ public class AdmissionsDesk
             Timestamp = DateTime.Now
         };
     }
+
+    public void ShowQueue()
+    {
+        if (_applications.IsEmpty())
+        {
+            Console.WriteLine("No tickets in the queue.");
+            return;
+        }
+
+        int count = _applications.Count;
+        var temp = new List<AdmissionApplication>();
+
+        Console.WriteLine("\nCurrent Queue:");
+
+        for (int i = 0; i < count; i++)
+        {
+            AdmissionApplication application = _applications.Dequeue();
+
+            Console.WriteLine(
+                $"[{i + 1}] Ticket: {application.TicketId} | Student: {application.StudentName}"
+            );
+
+            temp.Add(application);
+        }
+
+        foreach (var application in temp)
+        {
+            _applications.Enqueue(application);
+        }
+    }
+
+
 }
