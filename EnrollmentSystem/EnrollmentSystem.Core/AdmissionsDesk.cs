@@ -32,5 +32,6 @@ namespace EnrollmentSystem.Core
         {
             return _queue.IsEmpty();
         }
+        public int GetQueueCount() => _queue.Count;
     }
 }
