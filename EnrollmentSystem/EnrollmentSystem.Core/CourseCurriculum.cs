@@ -1,5 +1,6 @@
 namespace EnrollmentSystem.Core;
 
+using System;
 using DataStructuresLibrary;
 
 public class CourseCurriculum
@@ -10,15 +11,16 @@ public class CourseCurriculum
 
     public void InsertCourse(Course course)
     {
+        if (course == null) throw new ArgumentNullException(nameof(course));
         _courses.AddLast(course);
     }
 
     public bool DeleteCourse(string code)
     {
-        var current = _courses.Head;
+        Node<Course> current = _courses.Head;
         while (current != null)
         {
-            if (current.Data != null && current.Data.CourseCode == code)
+            if (current.Data != null && current.Data.Code == code)
             {
                 return _courses.Remove(current.Data);
             }
@@ -27,94 +29,53 @@ public class CourseCurriculum
         return false;
     }
 
+    // Sum total credit units across all courses
     public int CalculateTotalUnits()
     {
-        int total = 0;
-        var current = _courses.Head;
+        int totalUnits = 0;
+        Node<Course> current = _courses.Head;
+        
         while (current != null)
         {
             if (current.Data != null)
             {
-                total += current.Data.Units;
+                totalUnits += current.Data.Units;
             }
             current = current.Next;
         }
-        return total;
+        
+        return totalUnits;
     }
 
     public void ShowCurriculum()
     {
-        Console.WriteLine("--- Course Curriculum ---");
-        var current = _courses.Head;
-        if (current == null)
-        {
-            Console.WriteLine("No courses enrolled.");
-            return;
-        }
-
-        while (current != null)
-        {
-            if (current.Data != null)
-            {
-                Console.WriteLine($"[{current.Data.CourseCode}] {current.Data.CourseName} ({current.Data.Units} Units)");
-            }
-            current = current.Next;
-        }
-        Console.WriteLine("-------------------------");
+        _courses.ShowAll(); 
     }
 
+    // Delegate search to CustomSinglyLinkedList<T>
     public bool SearchCourse(Course course)
     {
-        var current = _courses.Head;
+        return _courses.Contains(course);
+    }
+
+    public Course SearchCourse(string courseCode)
+    {
+        Node<Course> current = _courses.Head;
         while (current != null)
         {
-            if (current.Data != null && current.Data.CourseCode == course.CourseCode)
+            if (current.Data != null && current.Data.Code == courseCode)
             {
-                return true;
+                return current.Data;
             }
             current = current.Next;
         }
-        return false;
+        return null;
     }
 
+    // Delegate sort to CustomSinglyLinkedList<T>
     public void SortCurriculumByUnits()
     {
-        if (_courses.Head == null || _courses.Count <= 1) return;
-
-        int n = _courses.Count;
-        bool swapped;
-
-        for (int i = 0; i < n - 1; i++)
-        {
-            swapped = false;
-            var current = _courses.Head;
-
-            for (int j = 0; j < n - i - 1; j++)
-            {
-                if (current != null && current.Next != null &&
-                    current.Data != null && current.Next.Data != null)
-                {
-                    if (current.Data.Units > current.Next.Data.Units)
-                    {
-                        string tempCode = current.Data.CourseCode;
-                        string tempName = current.Data.CourseName;
-                        int tempUnits = current.Data.Units;
-
-                        current.Data.CourseCode = current.Next.Data.CourseCode;
-                        current.Data.CourseName = current.Next.Data.CourseName;
-                        current.Data.Units = current.Next.Data.Units;
-
-                        current.Next.Data.CourseCode = tempCode;
-                        current.Next.Data.CourseName = tempName;
-                        current.Next.Data.Units = tempUnits;
-
-                        swapped = true;
-                    }
-                }
-                current = current.Next;
-            }
-            if (!swapped) break;
-        }
-        Console.WriteLine("Curriculum sorted by Units!");
+        // Sorts descending (highest units first). Swap c1 and c2 to sort ascending.
+        _courses.Sort((c1, c2) => c2.Units.CompareTo(c1.Units));
     }
 }

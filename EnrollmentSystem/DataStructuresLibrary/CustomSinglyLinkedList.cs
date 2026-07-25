@@ -99,5 +99,44 @@ namespace DataStructuresLibrary
                 current = current.Next;
             }
         }
+
+        // REQUIRED ADDITION: Supports SearchCourse delegation
+        public bool Contains(T item)
+        {
+            Node<T>? current = _head;
+            while (current != null)
+            {
+                if (current.Data != null && current.Data.Equals(item))
+                    return true;
+                current = current.Next;
+            }
+            return false;
+        }
+
+        // REQUIRED ADDITION: Supports SortCurriculumByUnits delegation
+        public void Sort(Comparison<T> comparison)
+        {
+            if (_head == null || _head.Next == null) return;
+
+            bool swapped;
+            do
+            {
+                swapped = false;
+                Node<T>? current = _head;
+                
+                while (current.Next != null)
+                {
+                    if (comparison(current.Data, current.Next.Data) > 0)
+                    {
+                        // Swap the data between nodes
+                        T temp = current.Data;
+                        current.Data = current.Next.Data;
+                        current.Next.Data = temp;
+                        swapped = true;
+                    }
+                    current = current.Next;
+                }
+            } while (swapped);
+        }
     }
 }

@@ -65,7 +65,7 @@ namespace DataStructuresLibrary.Tests
         [Fact]
         public void Dequeue_Throws_Exception_If_Queue_Is_Empty()
         {
-            var queue = new CustomQueueTests<int>();
+            var queue = new CustomQueue<int>();
             Assert.Throws<InvalidOperationException>(() => queue.Dequeue());
         }
     }
