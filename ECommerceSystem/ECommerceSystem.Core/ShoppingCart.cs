@@ -2,50 +2,54 @@ namespace ECommerceSystem.Core;
 
 using DataStructuresLibrary;
 
+// Represents a customer's shopping cart.
+// It stores Product items using CustomArrayList, a teammate's custom
+// data structure (similar to a resizable array / List<T>).
 public class ShoppingCart
 {
+    // The underlying storage for cart items.
+    // "readonly" means this field itself can't be reassigned after
+    // construction, though items can still be added/removed inside it.
     private readonly CustomArrayList<Product> _items = new();
 
-    public int Count
-    {
-        get { return _items.Count; }
-    }
+    // Exposes how many items are currently in the cart.
+    // This just forwards to the underlying list's Count.
+    public int Count => _items.Count;
 
-    public void AddItem(Product product)
-    {
-        _items.Add(product);
-    }
+    // Adds a product to the cart.
+    public void AddItem(Product product) => _items.Add(product);
 
-    public bool RemoveItem(Product product)
-    {
-        return _items.Remove(product);
-    }
+    // Removes a product from the cart.
+    // Returns true if the product was found and removed, false otherwise.
+    public bool RemoveItem(Product product) => _items.Remove(product);
 
-    public Product GetItemAt(int index)
-    {
-        return _items.Get(index);
-    }
+    // Retrieves the product at a specific position (index) in the cart.
+    public Product GetItemAt(int index) => _items.Get(index);
 
+    // Adds up the Price of every item currently in the cart
+    // and returns the total cost.
     public decimal CalculateTotal()
     {
         decimal total = 0m;
 
+        // Loop through every item by index and add its price to the running total.
         for (int i = 0; i < _items.Count; i++)
         {
-            Product currentProduct = _items.Get(i);
-            total = total + currentProduct.Price;
+            total += _items.Get(i).Price;
         }
 
         return total;
     }
 
-    public int SearchItem(Product product)
-    {
-        return _items.Search(product);
-    }
+    // Looks for a product in the cart.
+    // Returns its index if found, or a "not found" indicator
+    // (depends on how CustomArrayList.Search is implemented,
+    // typically -1 when not found).
+    public int SearchItem(Product product) => _items.Search(product);
 
-    public void SortCartByPrice()
-    {
-        _items.Sort();
-    }
+    // Sorts the items in the cart by price, using CustomArrayList's
+    // own Sort implementation.
+    public void SortCartByPrice() => _items.Sort();
 }
+
+
