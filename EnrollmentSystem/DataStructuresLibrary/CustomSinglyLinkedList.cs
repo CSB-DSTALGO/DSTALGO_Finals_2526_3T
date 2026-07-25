@@ -33,23 +33,22 @@ namespace DataStructuresLibrary
         }
 
         public void AddLast(T item)
-        {
+        {   
             Node<T> newNode = new Node<T>(item);
             if (_head == null)
             {
                 _head = newNode;
+                Count++;
+                return;
                 
             }
-            else
-            {
-                Node<T>? next = _head;
-                while (next.Next != null)
-                {
-                    next = next.Next;
-                }
-                next.Next = newNode;
-            }
-            Count++;
+           Node<T>? next = _head;
+           while (next.Next != null)
+             {
+                next = next.Next;
+             }
+          next.Next = newNode;
+          Count++;
 
         }
 
