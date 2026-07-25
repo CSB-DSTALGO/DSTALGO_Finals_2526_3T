@@ -26,7 +26,7 @@ public int Count => _applications.Count;
 
 
     _applications.Enqueue(app);
-
+// Adds a student using a Ticket, converting it into a matching AdmissionApplication.
    }
 
    public void IssueAdmissionsTicket(Ticket ticket)
@@ -50,7 +50,12 @@ applicationId: ticket.LogId,
 
     _applications.Enqueue(application);
     _tickets.Enqueue(ticket);
+
+
    }
+
+    // Serves (removes) the student who has waited the longest, returning their application.
+
    public AdmissionApplication ServeNextStudent()
    {
         if (CheckQueueEmpty())
@@ -65,6 +70,8 @@ applicationId: ticket.LogId,
    return _applications.Dequeue();
    
 }
+
+    // Serves (removes) the student who has waited the longest, returning their original ticket.
 public Ticket ServeNextTicket()
 {
 
@@ -75,7 +82,7 @@ public Ticket ServeNextTicket()
    _applications.Dequeue();
    return _tickets.Dequeue();
    }
-
+// Looks at the next student in line without removing them.
     public Ticket ViewNextTicket()
     {
         if (_tickets.IsEmpty())
@@ -86,15 +93,16 @@ public Ticket ServeNextTicket()
         return _tickets.Peek();
     }
 
+    // Returns true if no students are currently waiting.
+
     public bool CheckQueueEmpty()
 {
     return _applications.IsEmpty();
 
 }
-
+// Returns how many students are currently waiting.
 public int GetQueueCount() => Count;
 // Linear search (O(n)): checks every application in line for a match, preserving
-
 public bool SearchApplication(AdmissionApplication app)
 {
     if (app is null)
