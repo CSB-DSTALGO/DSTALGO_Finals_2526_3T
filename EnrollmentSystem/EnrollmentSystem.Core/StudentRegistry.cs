@@ -17,7 +17,7 @@ public class StudentRegistry
         // Add a safety check to prevent IndexOutOfRangeException
         if (index < 0 || index >= _students.Count)
         {
-            return false;
+            throw new IndexOutOfRangeException();
         }
 
         _students.RemoveAt(index);
@@ -92,6 +92,7 @@ public class StudentRegistry
     {
         return _students.Count;
     }
+
     public void ShowAllStudents()
     {
         if (_students.Count == 0)

@@ -69,10 +69,10 @@ namespace EnrollmentSystem.ConsoleApp
                         string name = Console.ReadLine() ?? "";
                         Console.Write("Enter Course Code: ");
                         string course = Console.ReadLine() ?? "";
-                        
+
                         _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0, course));
                         Console.WriteLine("\nStudent registered successfully.");
-                        _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Registered student {id}" });
+                        _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Registered student {id}" });
                         break;
 
                     case "2":
@@ -82,7 +82,7 @@ namespace EnrollmentSystem.ConsoleApp
                         Console.WriteLine(removed ? "\nStudent removed successfully." : "\nStudent not found.");
                         if (removed)
                         {
-                            _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Removed student {targetId}" });
+                            _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Removed student {targetId}" });
                         }
                         break;
 
@@ -107,7 +107,7 @@ namespace EnrollmentSystem.ConsoleApp
             {
                 Console.WriteLine($"\nError: {ex.Message}");
             }
-            
+
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
         }
