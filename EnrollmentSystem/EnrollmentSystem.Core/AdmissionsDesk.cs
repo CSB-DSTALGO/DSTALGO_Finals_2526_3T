@@ -23,6 +23,12 @@ namespace EnrollmentSystem.Core
             return _queue.Dequeue();
         }
 
+       
+        public Ticket ServeNextTicket()
+        {
+            return ServeNextStudent();
+        }
+
         public Ticket ViewNextTicket()
         {
             return _queue.Peek();
@@ -31,6 +37,12 @@ namespace EnrollmentSystem.Core
         public bool CheckQueueEmpty()
         {
             return _queue.IsEmpty();
+        }
+
+        
+        public int GetQueueCount()
+        {
+            return _queue.Count;
         }
     }
 }

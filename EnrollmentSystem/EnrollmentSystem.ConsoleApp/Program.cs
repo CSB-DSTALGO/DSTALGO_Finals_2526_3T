@@ -89,7 +89,7 @@ namespace EnrollmentSystem.ConsoleApp
 
                     case "3":
                         Console.WriteLine("\n--- Current Student List ---");
-                        // If students haven't implemented a printing function, this handles it via the tracking metrics
+                       
                         int count = _registry.GetStudentCount();
                         Console.WriteLine($"Total Students: {count}");
                         for (int i = 0; i < count; i++)
