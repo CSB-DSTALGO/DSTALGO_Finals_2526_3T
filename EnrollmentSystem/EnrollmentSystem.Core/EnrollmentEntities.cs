@@ -46,6 +46,7 @@ public class Course : IComparable<Course>
 public class AdmissionApplication : IComparable<AdmissionApplication>
 {
     public int ApplicationId { get; set; }
+    public string StudentId { get; set; } = string.Empty;
     public string StudentName { get; set; }
     public int PriorityScore { get; set; }
     public string TicketId { get; set; } = string.Empty;

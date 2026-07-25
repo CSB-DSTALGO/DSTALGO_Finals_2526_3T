@@ -82,5 +82,19 @@ namespace DataStructuresLibrary
             }
             return false;
         }
+    public void Sort()
+        {
+            var items = new List<T>();
+            while (Count > 0)
+            {
+                items.Add(Dequeue());
+            }
+            items.Sort();
+            
+            foreach (var item in items)
+            {
+                Enqueue(item);
+            }
+        }
     }
 }
