@@ -1,106 +1,147 @@
 // CustomSinglyLinkedList.cs
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace DataStructuresLibrary
 {
     public class Node<T>
     {
         public T Data { get; set; }
-        public Node<T>? Next { get; set; } // Mark as nullable with '?'
+        public Node<T>? Next { get; set; }
 
         public Node(T data)
         {
             Data = data;
-            Next = null; 
+            Next = null;
         }
     }
 
-    public class CustomSinglyLinkedList<T>
+    public class CustomSinglyLinkedList<T> : IEnumerable<T> where T : IComparable<T>
     {
-        private Node<T>? _head; // Mark as nullable with '?'
+        private Node<T>? _head;
 
-        public Node<T>? Head // Mark as nullable to match the field
-        {
-            // UNSURE !! Not clear on if this needs something !! UNSURE
-            get { throw new NotImplementedException(); }
-        }
+        public Node<T>? Head => _head;
 
         public int Count { get; set; }
 
         public CustomSinglyLinkedList()
         {
-            // PROBLEMATIC !! This Code might not work as intended !! PROBLEMATIC
-            // Intended to when called does search & merge sorting, put here as per the hint
-            if (_head == null || _head.next == null)
-                return _head;
-
-            Node _altitem = Split(_head);
-
-            _head = CustomSinglyLinkedList(_head);
-            _altitem = CustomSinglyLinkedList(_altitem);
-            return Merge(_head, _altitem);
+            _head = null;
+            Count = 0;
         }
 
         public void AddLast(T item)
         {
-            // Intended to append specified Node to bottom of Linked List
-            Node _newNode = new Node(item);
+           
+            Node<T> newNode = new Node<T>(item);
             if (_head == null)
             {
-                _head = _newNode;
-                return
+                _head = newNode;
+                Count++;
+                return;
             }
 
-            Node current = _head;
-            while (current != null)
+            Node<T> current = _head;
+            while (current.Next != null)
             {
-                current = current.next;
+                current = current.Next;
             }
-            current.Next = _newNode;
+            current.Next = newNode;
+            Count++;
         }
 
         public bool Remove(T item)
         {
-            // Intended to remove specified Node from Linked List
+            
             if (_head == null)
-            {
-                return null;
-            }
-            _head.Remove(item);
-        }
+                return false;
 
-        static Node Split()
-        {
-            // Intended to create two Linked Lists from singular LL
-            Node A = _head;
-            Node B = _head;
-            while (A != null && A.next != null)
+            if (System.Collections.Generic.EqualityComparer<T>.Default.Equals(_head.Data, item))
             {
-                A = A.next.next;
-                if (A != null)
+                _head = _head.Next;
+                Count--;
+                return true;
+            }
+
+            Node<T> current = _head;
+            while (current.Next != null)
+            {
+                if (System.Collections.Generic.EqualityComparer<T>.Default.Equals(current.Next.Data, item))
                 {
-                    B = B.next;
+                    current.Next = current.Next.Next;
+                    Count--;
+                    return true;
                 }
+                current = current.Next;
             }
+            return false;
         }
 
-        static Node Merge(Node A, Node B)
+        public void Sort()
         {
-            // Intended to merge both, must be used after Split to prevent exception error
-            if (A == null)
-                return B;
-            if (B == null)
-                return A;
-            if (A.Data < B.Data)
+            
+            _head = MergeSort(_head);
+        }
+
+        private static Node<T>? MergeSort(Node<T>? head)
+        {
+            if (head == null || head.Next == null)
+                return head;
+
+            Node<T> secondHalf = Split(head);
+            Node<T>? left = MergeSort(head);
+            Node<T>? right = MergeSort(secondHalf);
+            return Merge(left, right);
+        }
+
+        private static Node<T> Split(Node<T> head)
+        {
+            
+            Node<T> slow = head;
+            Node<T> fast = head;
+
+            while (fast.Next != null && fast.Next.Next != null)
             {
-                A.next = Merge(A.next, B);
-                return A;
+                slow = slow.Next!;
+                fast = fast.Next.Next;
+            }
+
+            Node<T> secondHalf = slow.Next!;
+            slow.Next = null;
+            return secondHalf;
+        }
+
+        private static Node<T>? Merge(Node<T>? a, Node<T>? b)
+        {
+            
+            if (a == null)
+                return b;
+            if (b == null)
+                return a;
+
+            if (a.Data.CompareTo(b.Data) <= 0)
+            {
+                a.Next = Merge(a.Next, b);
+                return a;
             }
             else
             {
-                B.next = Merge(A, B.next);
-                return B;
+                b.Next = Merge(a, b.Next);
+                return b;
             }
         }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            Node<T>? current = _head;
+            while (current != null)
+            {
+                yield return current.Data;
+                current = current.Next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

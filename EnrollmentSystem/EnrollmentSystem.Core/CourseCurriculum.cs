@@ -5,45 +5,73 @@ using DataStructuresLibrary;
 public class CourseCurriculum
 {
     private readonly CustomSinglyLinkedList<Course> _courses = new();
-
     public int Count => _courses.Count;
-
+    
     public void InsertCourse(Course course)
     {
         // Appends to the last section of the list
         _courses.AddLast(course);
     }
-    public bool DeleteCourse(string code)
+
+    public bool RemoveCourse(string code)
     {
-        // intended to use Remove method to remove specified course
-        _courses.Remove(code);
+        // Remove() needs a Course instance (matched via Course.Equals by Code),
+        // not a raw string, so find the matching course first.
+        Course? match = FindByCode(code);
+        if (match == null)
+            return false;
+
+        return _courses.Remove(match);
     }
-    // Hint: Sum total credit units across all courses
-    public int CalculateTotalUnits()
+
+    private Course? FindByCode(string code)
     {
-        // todo later unable to determine value of 'Courses' to display Credit Units
-        throw new NotImplementedException();
+        foreach (Course c in _courses)
+        {
+            if (c.Code == code)
+                return c;
+        }
+        return null;
     }
+
+    // Sum total credit units across all courses
+    public int GetTotalUnits()
+    {
+        int total = 0;
+        foreach (Course c in _courses)
+        {
+            total += c.Units;
+        }
+        return total;
+    }
+    public int CalculateTotalUnits() => GetTotalUnits();
+    public bool DeleteCourse(string code) => RemoveCourse(code);
+
     public void ShowCurriculum()
     {
-        // intended to show each node in the course list
+        // _courses yields Course objects, not strings
         Console.WriteLine("CURRENT COURSES:");
-        foreach (string str in _courses)
+        foreach (Course c in _courses)
         {
-            Console.WriteLine(str);
+            Console.WriteLine(c);
         }
     }
 
-    // Hint: Delegate search and sort to CustomSinglyLinkedList<T>
+    // Delegate search to the linked list by scanning for a matching Course
     public bool SearchCourse(Course course)
     {
-        // PROBLEMATIC !! This Code might not work as intended !! PROBLEMATIC
-        Node Search = CustomSinglyLinkedList(course);
-        Console.WriteLine(Search);
+        foreach (Course c in _courses)
+        {
+            if (c.Equals(course))
+                return true;
+        }
+        return false;
     }
+
+    // Delegate sort to CustomSinglyLinkedList<T>, which sorts using
+    // Course.CompareTo (ordering by Units)
     public void SortCurriculumByUnits()
     {
-        // todo after 'Calculate Total Units', need to determine value of 'Courses' & Credit Unit to implement
-        throw new NotImplementedException();
+        _courses.Sort();
     }
 }

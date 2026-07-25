@@ -65,13 +65,17 @@ namespace EnrollmentSystem.ConsoleApp
                 {
                     case "1":
                         Console.Write("Enter Student ID: ");
-                        string id = Console.ReadLine() ?? "";
+                        int.TryParse(Console.ReadLine(), out int id);
                         Console.Write("Enter Full Name: ");
                         string name = Console.ReadLine() ?? "";
+                        Console.Write("Enter GPA: ");
+                        double.TryParse(Console.ReadLine(), out double gpa);
                         Console.Write("Enter Course Code: ");
                         string course = Console.ReadLine() ?? "";
 
-                        _registry.RegisterStudent(new Student { Id = id, Name = name, CourseCode = course });
+                        var newStudent = new Student(id, name, gpa);
+                        newStudent.CourseCode = course;
+                        _registry.RegisterStudent(newStudent);
                         Console.WriteLine("\nStudent registered successfully.");
                         _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Registered student {id}" });
                         break;
@@ -136,10 +140,9 @@ namespace EnrollmentSystem.ConsoleApp
                         Console.Write("Enter Credit Units: ");
                         int.TryParse(Console.ReadLine(), out int units);
 
-                        _curriculum.InsertCourse(new Course { Code = code, Title = title, Units = units });
+                        _curriculum.InsertCourse(new Course(code, title, units));
                         Console.WriteLine("\nCourse inserted into curriculum.");
                         break;
-
                     case "2":
                         Console.Write("Enter Course Code to remove: ");
                         string targetCode = Console.ReadLine() ?? "";
