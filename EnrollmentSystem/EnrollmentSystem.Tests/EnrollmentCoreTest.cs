@@ -27,7 +27,7 @@ namespace EnrollmentSystem.Tests
             var student = new Student(20260001, "Alice", 0.0, "CS102");
             registry.RegisterStudent(student);
 
-            bool removed = registry.UnregisterStudent(20260001);
+            bool removed = registry.UnregisterStudent(0);
 
             Assert.True(removed);
             Assert.Equal(0, registry.GetStudentCount());
@@ -73,6 +73,89 @@ namespace EnrollmentSystem.Tests
             int index = registry.SearchStudent(bob);
 
             Assert.Equal(1, index);
+        }
+
+        [Fact]
+        public void UnregisterStudent_MiddleIndex_ShouldRemoveCorrectStudent()
+        {
+            var registry = new StudentRegistry();
+
+            registry.RegisterStudent(
+                new Student(20260001, "Alice", 3.5, "CS102"));
+
+            registry.RegisterStudent(
+                new Student(20260002, "Bob", 2.8, "CS101"));
+
+            registry.RegisterStudent(
+                new Student(20260003, "Charlie", 3.0, "CS101"));
+
+            bool removed = registry.UnregisterStudent(1);
+
+            Assert.True(removed);
+            Assert.Equal(2, registry.GetStudentCount());
+            Assert.Equal("Charlie", registry.GetStudentDetails(1).Name);
+        }
+
+        [Fact]
+        public void GetStudentDetails_FirstIndex_ShouldReturnFirstStudent()
+        {
+            var registry = new StudentRegistry();
+
+            registry.RegisterStudent(
+                new Student(20260001, "Alice", 3.5, "CS102"));
+
+            registry.RegisterStudent(
+                new Student(20260002, "Bob", 2.8, "CS101"));
+
+            Student result = registry.GetStudentDetails(0);
+
+            Assert.Equal(20260001, result.Id);
+            Assert.Equal("Alice", result.Name);
+        }
+        [Fact]
+        public void ShowAllStudents_OneStudent_ShouldDisplayStudentName()
+        {
+            var registry = new StudentRegistry();
+
+            registry.RegisterStudent(
+                new Student(20260001, "Alice", 3.5, "CS102"));
+
+            var originalOutput = Console.Out;
+            using var output = new StringWriter();
+
+            try
+            {
+                Console.SetOut(output);
+
+                registry.ShowAllStudents();
+
+                Assert.Contains("Alice", output.ToString());
+            }
+            finally
+            {
+                Console.SetOut(originalOutput);
+            }
+        }
+
+        [Fact]
+        public void SortStudentsByGpa_MultipleStudents_ShouldSortAscending()
+        {
+            var registry = new StudentRegistry();
+
+            registry.RegisterStudent(
+                new Student(20260001, "Alice", 3.5, "CS102"));
+
+            registry.RegisterStudent(
+                new Student(20260002, "Bob", 2.5, "CS101"));
+
+            registry.RegisterStudent(
+                new Student(20260003, "Charlie", 3.0, "CS103"));
+
+            registry.SortStudentsByGpa();
+
+            Assert.Equal("Bob", registry.GetStudentDetails(0).Name);
+            Assert.Equal("Charlie", registry.GetStudentDetails(1).Name);
+            Assert.Equal("Alice", registry.GetStudentDetails(2).Name);
         }
     }
 
