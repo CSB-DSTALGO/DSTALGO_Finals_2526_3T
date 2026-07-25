@@ -18,7 +18,7 @@ namespace DataStructuresLibrary
         }
 
         // Stores the first node of the list
-        private Node _head;
+        private Node __head;
 
         // Counts how many items are inside the list
         public int Count { get; private set; }
@@ -53,8 +53,7 @@ namespace DataStructuresLibrary
         // Removes the first matching item from the list
         public bool Remove(T item)
         {
-            if (_head == null)
-                return false;
+            if (_head == null) return false;
 
             // Check if the first node is the one to remove
             if (_head.Data.CompareTo(item) == 0)
@@ -143,6 +142,7 @@ namespace DataStructuresLibrary
             } while (swapped);
         }
 
+
         // Gets the first item in the list
         public T PeekFirst()
         {
@@ -155,8 +155,7 @@ namespace DataStructuresLibrary
         // Gets the last item in the list
         public T PeekLast()
         {
-            if (_head == null)
-                throw new InvalidOperationException("List is empty.");
+            if (_head == null) throw new InvalidOperationException("List is empty.");
 
             Node current = _head;
 
