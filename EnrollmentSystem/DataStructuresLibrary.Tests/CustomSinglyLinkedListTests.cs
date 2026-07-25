@@ -40,7 +40,7 @@ namespace DataStructuresLibrary.Tests
         [Fact]
         public void Remove()
         {
-            var list = new CustomSinglyLinkedList<int>();
+            var list = new CustomSinglyLinkedList<string>();
             bool result = list.Remove(10);
             Assert.False(result);
         }

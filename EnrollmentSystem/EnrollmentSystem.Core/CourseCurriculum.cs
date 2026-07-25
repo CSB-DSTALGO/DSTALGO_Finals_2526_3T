@@ -100,3 +100,4 @@ public class CourseCurriculum
         _courses.Head = head;
     }
 }
+
