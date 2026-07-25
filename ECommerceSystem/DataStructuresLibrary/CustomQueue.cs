@@ -80,7 +80,7 @@ public class CustomQueue<T> where T : IComparable<T>
         {
             for (int j = 0; j < Count - 1 - i; j++)
             {
-                if (temp[j].CompareTo(temp[j + 1]) < 0)
+                if (temp[j].CompareTo(temp[j + 1]) > 0)
                 {
                     T swap = temp[j];
                     temp[j] = temp[j + 1];

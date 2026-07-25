@@ -66,7 +66,7 @@ public class CustomStack<T> where T : IComparable<T>
         {
             for (int j = 0; j < Count - 1 - i; j++)
             {
-                if (_items[j].CompareTo(_items[j + 1]) > 0)
+                if (_items[j].CompareTo(_items[j + 1]) < 0)
                 {
                     T temp = _items[j];
                     _items[j] = _items[j + 1];
