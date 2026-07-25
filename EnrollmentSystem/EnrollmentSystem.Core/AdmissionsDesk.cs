@@ -13,7 +13,7 @@ public class AdmissionsDesk
 
     public void IssueAdmissionsTicket(Ticket ticket)
     {
-        ticket.TicketId = (_applications.Count + 1).ToString();
+        ticket.TicketId = $"T-{101 + _applications.Count}";
         
         var application = new AdmissionApplication(ticket.LogId, ticket.StudentId, 0);
         application.TicketId = ticket.TicketId;
