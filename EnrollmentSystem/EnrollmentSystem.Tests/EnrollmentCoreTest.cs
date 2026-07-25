@@ -317,6 +317,7 @@ namespace EnrollmentSystem.Tests
 
     public class CourseCurriculumTests
     {
+        // InsertCourse tests
         [Fact]
         public void InsertCourse_ShouldAddInOrder()
         {
@@ -330,6 +331,30 @@ namespace EnrollmentSystem.Tests
             Assert.Equal(6, curriculum.CalculateTotalUnits());
         }
 
+        [Fact]
+        public void InsertCourse_ShouldIncrementCount()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS101", "Intro to CS", 3));
+            curriculum.InsertCourse(new Course("CS102", "Data Structures", 4));
+            Assert.Equal(2, curriculum.Count);
+        }
+
+        [Fact]
+        public void InsertCourse_ShouldMaintainInsertionOrder()
+        {
+            var curriculum = new CourseCurriculum();
+            var c1 = new Course("CS101", "Intro to CS", 3);
+            var c2 = new Course("CS102", "Data Structures", 4);
+            curriculum.InsertCourse(c1);
+            curriculum.InsertCourse(c2);
+
+            // GetCourseAt checks ordering
+            Assert.Equal("CS101", curriculum.GetCourseAt(0)!.Code);
+            Assert.Equal("CS102", curriculum.GetCourseAt(1)!.Code);
+        }
+
+        // DeleteCourse tests
         [Fact]
         public void RemoveCourse_ShouldReturnTrue_WhenCourseIsRemoved()
         {
@@ -356,6 +381,18 @@ namespace EnrollmentSystem.Tests
         }
 
         [Fact]
+        public void DeleteCourse_ShouldDecrementCount()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS101", "A", 3));
+            curriculum.InsertCourse(new Course("CS102", "B", 3));
+            curriculum.DeleteCourse("CS101");
+            Assert.Equal(1, curriculum.Count);
+            Assert.Equal("CS102", curriculum.GetCourseAt(0)!.Code);
+        }
+
+        // CalculateTotalUnits tests
+        [Fact]
         public void CalculateTotalUnits_ShouldReturnSumOfAllInsertedCourses()
         {
             var curriculum = new CourseCurriculum();
@@ -366,6 +403,22 @@ namespace EnrollmentSystem.Tests
         }
 
         [Fact]
+        public void CalculateTotalUnits_EmptyCurriculum_ShouldReturnZero()
+        {
+            var curriculum = new CourseCurriculum();
+            Assert.Equal(0, curriculum.CalculateTotalUnits());
+        }
+
+        [Fact]
+        public void CalculateTotalUnits_SingleCourse_ShouldReturnItsUnits()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS101", "Intro to CS", 5));
+            Assert.Equal(5, curriculum.CalculateTotalUnits());
+        }
+
+        // SearchCourse tests
+        [Fact]
         public void SearchCourse_ShouldReturnTrue_WhenCourseExists()
         {
             var curriculum = new CourseCurriculum();
@@ -373,6 +426,58 @@ namespace EnrollmentSystem.Tests
             curriculum.InsertCourse(course);
 
             Assert.True(curriculum.SearchCourse(course));
+        }
+
+        [Fact]
+        public void SearchCourse_ShouldReturnFalse_WhenCourseDoesNotExist()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS101", "Intro to CS", 3));
+
+            var absent = new Course("CS999", "Nonexistent", 0);
+            Assert.False(curriculum.SearchCourse(absent));
+        }
+
+        [Fact]
+        public void SearchCourse_EmptyCurriculum_ShouldReturnFalse()
+        {
+            var curriculum = new CourseCurriculum();
+            Assert.False(curriculum.SearchCourse(new Course("CS101", "A", 3)));
+        }
+
+        // SortCurriculumByUnits tests
+        [Fact]
+        public void SortCurriculumByUnits_ShouldOrderAscending()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS103", "C", 5));
+            curriculum.InsertCourse(new Course("CS101", "A", 2));
+            curriculum.InsertCourse(new Course("CS102", "B", 4));
+
+            curriculum.SortCurriculumByUnits();
+
+            Assert.Equal(2, curriculum.GetCourseAt(0)!.Units);
+            Assert.Equal(4, curriculum.GetCourseAt(1)!.Units);
+            Assert.Equal(5, curriculum.GetCourseAt(2)!.Units);
+        }
+
+        [Fact]
+        public void SortCurriculumByUnits_AlreadySorted_ShouldRemainSorted()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS101", "A", 1));
+            curriculum.InsertCourse(new Course("CS102", "B", 2));
+            curriculum.SortCurriculumByUnits();
+            Assert.Equal(1, curriculum.GetCourseAt(0)!.Units);
+            Assert.Equal(2, curriculum.GetCourseAt(1)!.Units);
+        }
+
+        [Fact]
+        public void SortCurriculumByUnits_EmptyCurriculum_ShouldNotThrow()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.SortCurriculumByUnits();
+            Assert.Equal(0, curriculum.Count);
         }
     }
 
