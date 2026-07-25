@@ -8,15 +8,48 @@ public class AdministrativeLogs
 
     public int Count => _logs.Count;
 
-    public void PushSystemLog(Log log) => throw new NotImplementedException();
-    public Log RollbackLastLog() => throw new NotImplementedException();
-    public Log ViewLatestLog() => throw new NotImplementedException();
-    public Log PeekLatestLog() => throw new NotImplementedException();
-    public Log PopSystemLog() => throw new NotImplementedException();
-    public bool CheckLogsEmpty() => throw new NotImplementedException();
-    public int GetLogCount() => Count;
+    public void PushSystemLog(Log log)
+    {
+        _logs.Push(log);
+    }
 
-    // Hint: Delegate search and sort to CustomStack<T>
-    public int SearchLog(Log log) => throw new NotImplementedException();
-    public void SortLogsById() => throw new NotImplementedException();
+    public Log RollbackLastLog()
+    {
+        return _logs.Pop();
+    }
+
+    public Log ViewLatestLog()
+    {
+        return _logs.Peek();
+    }
+
+    public Log PeekLatestLog()
+    {
+        return _logs.Peek();
+    }
+
+    public Log PopSystemLog()
+    {
+        return _logs.Pop();
+    }
+
+    public bool CheckLogsEmpty()
+    {
+        return _logs.IsEmpty();
+    }
+
+    public int GetLogCount()
+    {
+        return Count;
+    }
+
+    public int SearchLog(Log log)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SortLogsById()
+    {
+        throw new NotImplementedException();
+    }
 }
