@@ -36,9 +36,9 @@ public class ProductCatalog
         productList.Sort((p1, p2) => p1.Name.CompareTo(p2.Name));
 
         _products.Clear();
-        foreach (var product in productList)
+        foreach (var product in _productList)
         {
-            _products.Add(product);
+            _products.Add(product.Name);
         }
     }
 }
