@@ -8,9 +8,9 @@ namespace DataStructuresLibrary
         private T[] _items;
         private int _count;
 
-        public int Count 
-        { 
-            get { throw new NotImplementedException(); } 
+        public int Count
+        {
+            get { throw new NotImplementedException(); }
         }
 
         public CustomArrayList()
