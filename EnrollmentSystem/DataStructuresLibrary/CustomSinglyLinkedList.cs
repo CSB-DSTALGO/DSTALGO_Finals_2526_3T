@@ -34,19 +34,22 @@ namespace DataStructuresLibrary
 
         public void AddLast(T item)
         {
-            Node<T>? next = _head;
             Node<T> newNode = new Node<T>(item);
             if (_head == null)
             {
                 _head = newNode;
-                return;
+                
             }
-            while (next.Next != null)
+            else
             {
-                next = next.Next;
+                Node<T>? next = _head;
+                while (next.Next != null)
+                {
+                    next = next.Next;
+                }
+                next.Next = newNode;
             }
-            next.Next = newNode;
-
+            Count++;
 
         }
 
@@ -68,6 +71,7 @@ namespace DataStructuresLibrary
                 if (current.Next.Data.Equals(item))
                 {
                     current.Next = current.Next.Next;
+                    Count--;
                     return true;
                 }
                 current = current.Next;

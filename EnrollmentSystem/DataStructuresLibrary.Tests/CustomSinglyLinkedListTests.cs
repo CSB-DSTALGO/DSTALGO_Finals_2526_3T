@@ -41,7 +41,7 @@ namespace DataStructuresLibrary.Tests
         public void Remove()
         {
             var list = new CustomSinglyLinkedList<string>();
-            bool result = list.Remove(10);
+            bool result = list.Remove("DATA STRUCTURES");
             Assert.False(result);
         }
 
