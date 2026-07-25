@@ -7,11 +7,12 @@ public class Student : IComparable<Student>
     public double Gpa { get; set; }
     public string CourseCode { get; set; } = string.Empty;
 
-    public Student(int id, string name, double gpa)
+    public Student(int id, string name, double gpa, string courseCode ="")
     {
         Id = id;
         Name = name;
         Gpa = gpa;
+        CourseCode = courseCode;
     }
 
     // Hint: Compare by GPA for registry sorting
