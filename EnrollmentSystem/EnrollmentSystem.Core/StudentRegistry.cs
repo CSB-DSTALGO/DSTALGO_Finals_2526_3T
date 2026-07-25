@@ -19,15 +19,16 @@ namespace EnrollmentSystem.Core
         }
 
         // Removes a student record by its index in the registry.
-        public void UnregisterStudent(int index)
+        public bool UnregisterStudent(int index)
         {
             try
             {
                 _registry.RemoveAt(index);
+                return true;
             }
             catch (IndexOutOfRangeException)
             {
-                Console.WriteLine($"No student found at index {index}.");
+                return false;
             }
         }
 
@@ -114,6 +115,16 @@ namespace EnrollmentSystem.Core
             }
 
             return null; // not found
+        }
+
+        public int GetStudentCount()
+        {
+            return _registry.Count;
+        }
+
+        public Student GetStudentAt(int index)
+        {
+            return _registry.GetAt(index);
         }
     }
 }
