@@ -1,103 +1,41 @@
+// CustomArrayList.cs
 using System;
 
 namespace DataStructuresLibrary
 {
-    public class Node<T>
+    public class CustomArrayList<T>
     {
-        public T Data { get; set; }
-        public Node<T>? Next { get; set; }
+        private T[] _items;
+        private int _count;
 
-        public Node(T data)
+        public int Count
         {
-            Data = data;
-            Next = null;
-        }
-    }
-
-    public class CustomSinglyLinkedList<T>
-    {
-        private Node<T>? _head;
-
-        public Node<T>? Head
-        {
-            get { return _head; }
+            get { throw new NotImplementedException(); }
         }
 
-        public int Count { get; set; }
-
-        public CustomSinglyLinkedList()
+        public CustomArrayList()
         {
-            _head = null;
-            Count = 0;
+            throw new NotImplementedException();
         }
 
-        public void AddLast(T item)
+        public void Add(T item)
         {
-            Node<T> newNode = new Node<T>(item);
-
-            if (_head == null)
-            {
-                _head = newNode;
-            }
-            else
-            {
-                Node<T> current = _head;
-                while (current.Next != null)
-                {
-                    current = current.Next;
-                }
-                current.Next = newNode;
-            }
-            Count++;
+            throw new NotImplementedException();
         }
 
-        public bool Remove(T item)
+        public T Get(int index)
         {
-            if (_head == null) return false;
-
-            if (_head.Data != null && _head.Data.Equals(item))
-            {
-                _head = _head.Next;
-                Count--;
-                return true;
-            }
-
-            Node<T> current = _head;
-            while (current.Next != null)
-            {
-                if (current.Next.Data != null && current.Next.Data.Equals(item))
-                {
-                    current.Next = current.Next.Next;
-                    Count--;
-                    return true;
-                }
-                current = current.Next;
-            }
-
-            return false;
+            throw new NotImplementedException();
         }
 
-        public T GetAt(int index)
+        public void RemoveAt(int index)
         {
-            if (index < 0 || index >= Count)
-                throw new IndexOutOfRangeException("Index out of bounds");
-
-            Node<T> current = _head;
-            for (int i = 0; i < index; i++)
-            {
-                current = current.Next;
-            }
-            return current.Data;
+            throw new NotImplementedException();
         }
 
-        public void ShowAll()
+        private void Resize()
         {
-            Node<T> current = _head;
-            while (current != null)
-            {
-                Console.WriteLine(current.Data?.ToString());
-                current = current.Next;
-            }
+            throw new NotImplementedException();
         }
     }
 }
