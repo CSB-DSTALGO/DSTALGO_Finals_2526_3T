@@ -24,12 +24,13 @@ namespace DataStructuresLibrary
 
         // Adds an item to the end of the queue
         public void Enqueue(T item)
-        {
+        {    
+            // Check if the queue is full and throw exception if it is
             if (_count == _items.Length)
             {
                 throw new InvalidOperationException("Queue is full.");
             }
-
+            // This adds the item to the rear and updates the rear index and count
             _items[_rear] = item;
             _rear = (_rear + 1) % _items.Length;
             _count++;
