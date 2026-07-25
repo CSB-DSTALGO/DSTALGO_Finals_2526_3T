@@ -22,7 +22,6 @@ namespace DataStructuresLibrary
 
         public int Count { get; private set; }
 
-        // ✅ Add item
         public void Add(T item)
         {
             var newNode = new Node(item);
@@ -44,7 +43,6 @@ namespace DataStructuresLibrary
             Count++;
         }
 
-        // ✅ Remove item
         public bool Remove(T item)
         {
             if (_head == null) return false;
@@ -72,7 +70,6 @@ namespace DataStructuresLibrary
             return false;
         }
 
-        // ✅ Search item
         public bool Search(T item)
         {
             var current = _head;
@@ -88,20 +85,17 @@ namespace DataStructuresLibrary
             return false;
         }
 
-        // ✅ Required by your error (Contains)
         public bool Contains(T item)
         {
             return Search(item);
         }
 
-        // ✅ Required by your error (Clear)
         public void Clear()
         {
             _head = null;
             Count = 0;
         }
 
-        // ✅ Sort list
         public void Sort()
         {
             if (_head == null || _head.Next == null) return;
@@ -126,7 +120,6 @@ namespace DataStructuresLibrary
             }
         }
 
-        // ✅ Required for foreach
         public IEnumerator<T> GetEnumerator()
         {
             var current = _head;
@@ -143,21 +136,4 @@ namespace DataStructuresLibrary
             return GetEnumerator();
         }
     }
-
-    public IEnumerator<T> GetEnumerator()
-        {
-            var current = _head;
-
-            while (current != null)
-            {
-                yield return current.Data;
-                current = current.Next;
-            }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-    
 }
