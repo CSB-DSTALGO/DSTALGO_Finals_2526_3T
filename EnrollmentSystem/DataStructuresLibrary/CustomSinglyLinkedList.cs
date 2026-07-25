@@ -6,39 +6,83 @@ namespace DataStructuresLibrary
     public class Node<T>
     {
         public T Data { get; set; }
-        public Node<T>? Next { get; set; } // Mark as nullable with '?'
+        public Node<T>? Next { get; set; }
 
         public Node(T data)
         {
             Data = data;
-            Next = null; 
+            Next = null;
         }
     }
 
     public class CustomSinglyLinkedList<T>
     {
-        private Node<T>? _head; // Mark as nullable with '?'
+        private Node<T>? _head;
 
-        public Node<T>? Head // Mark as nullable to match the field
+        public Node<T>? Head
         {
-            get { throw new NotImplementedException(); }
+            get { return _head; }
         }
 
-        public int Count { get; set; }
+        public int Count { get; private set; }
 
         public CustomSinglyLinkedList()
         {
-            _head = null; 
+            _head = null;
+            Count = 0;
         }
 
         public void AddLast(T item)
         {
-            throw new NotImplementedException();
+            Node<T> newNode = new Node<T>(item);
+
+            if (_head == null)
+            {
+                _head = newNode;
+            }
+            else
+            {
+                Node<T> current = _head;
+
+                while (current.Next != null)
+                {
+                    current = current.Next;
+                }
+
+                current.Next = newNode;
+            }
+
+            Count++;
         }
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            if (_head == null)
+                return false;
+
+            // Remove head node
+            if (_head.Data!.Equals(item))
+            {
+                _head = _head.Next;
+                Count--;
+                return true;
+            }
+
+            Node<T> current = _head;
+
+            while (current.Next != null)
+            {
+                if (current.Next.Data!.Equals(item))
+                {
+                    current.Next = current.Next.Next;
+                    Count--;
+                    return true;
+                }
+
+                current = current.Next;
+            }
+
+            return false;
         }
     }
 }
