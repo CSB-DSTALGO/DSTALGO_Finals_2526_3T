@@ -18,11 +18,12 @@ public class CourseCurriculum
         var current = _courses.Head;
         while (current != null)
         {
-            if (current.Data.Code == code)
+            if (current.Data!= null && current.Data.Code.Equals(code))
             {
                 remove = current.Data;
                 break;
             }
+            current = current.Next;
         }
         if (remove != null)
         {
