@@ -1,21 +1,158 @@
 namespace EnrollmentSystem.Core;
 
 using DataStructuresLibrary;
+using System;
+using System.Collections.Generic;
 
 public class AdmissionsDesk
 {
-    private readonly CustomQueue<AdmissionApplication> _applications = new();
+   private readonly CustomQueue<AdmissionApplication> _applications = new();
+   private readonly CustomQueue<Ticket> _tickets = new();
+   private int _nextTicketNumber = 1;
 
-    public int Count => _applications.Count;
+public int Count => _applications.Count;
 
-    public void IssueAdmissionsTicket(Ticket ticket) => throw new NotImplementedException();
-    public AdmissionApplication ServeNextStudent() => throw new NotImplementedException();
-    public Ticket ServeNextTicket() => throw new NotImplementedException();
-    public AdmissionApplication ViewNextTicket() => throw new NotImplementedException();
-    public bool CheckQueueEmpty() => throw new NotImplementedException();
-    public int GetQueueCount() => Count;
+   public void IssueAdmissionsTicket(AdmissionApplication app)
+   {
+      if (app is null)
+      {
+    throw new ArgumentNullException(nameof(app));
 
-    // Hint: Delegate search and sort to CustomQueue<T>
-    public bool SearchApplication(AdmissionApplication app) => throw new NotImplementedException();
-    public void SortApplicationsByPriority() => throw new NotImplementedException();
+   }
+
+
+   app.TicketId = $"T-10{_nextTicketNumber}";
+   _nextTicketNumber++;
+
+
+    _applications.Enqueue(app);
+
+   }
+
+   public void IssueAdmissionsTicket(Ticket ticket)
+   {
+    if (ticket is null)
+    {
+        throw new ArgumentNullException(nameof(ticket));
+
+    }
+    ticket.TicketId = $"T-10{_nextTicketNumber}";
+    _nextTicketNumber++;
+
+    var application = new AdmissionApplication(
+applicationId: ticket.LogId,
+        studentName: ticket.StudentId,
+        priorityScore: 0)
+    {
+        TicketId = ticket.TicketId
+
+    };
+
+    _applications.Enqueue(application);
+    _tickets.Enqueue(ticket);
+   }
+   public AdmissionApplication ServeNextStudent()
+   {
+        if (CheckQueueEmpty())
+        {
+            throw new InvalidOperationException("No students are waiting to be served.");
+        }
+
+  if (!_tickets.IsEmpty())
+   {
+    _tickets.Dequeue();
+   }
+   return _applications.Dequeue();
+   
 }
+public Ticket ServeNextTicket()
+{
+
+   if(_tickets.IsEmpty())
+   {
+    throw new InvalidOperationException("No tickets are waiting to be served.");
+   }
+   _applications.Dequeue();
+   return _tickets.Dequeue();
+   }
+
+    public Ticket ViewNextTicket()
+    {
+        if (_tickets.IsEmpty())
+        {
+            throw new InvalidOperationException("No tickets are waiting to be served.");
+        }
+
+        return _tickets.Peek();
+    }
+
+    public bool CheckQueueEmpty()
+{
+    return _applications.IsEmpty();
+
+}
+
+public int GetQueueCount() => Count;
+
+public bool SearchApplication(AdmissionApplication app)
+{
+    if (app is null)
+    {
+        return false;
+    }
+
+    int totalItems = _applications.Count;
+    bool found = false;
+
+    for (int i = 0; i < totalItems; i++)
+    {
+        AdmissionApplication current = _applications.Dequeue();
+
+        if (current.ApplicationId == app.ApplicationId)
+        {
+            found = true;
+        }
+        _applications.Enqueue(current);
+    }
+
+    return found;
+}
+
+public void SortApplicationsByPriority()
+{
+    int totalItems = _applications.Count;
+    var list = new List<AdmissionApplication>();
+
+    for (int i = 0; i < totalItems; i++)
+    {
+        list.Add(_applications.Dequeue());
+    }
+
+    for (int i = 0; i < list.Count - 1; i++)
+    {
+        for (int j = 0; j < list.Count - i - 1; j++)
+        {
+            if (list[j].PriorityScore < list[j + 1].PriorityScore)
+            {
+               (list[j], list[j +1]) = (list[j + 1], list[j]);  
+            }
+        }
+
+    }
+
+    foreach (var app in list)
+    {
+        _applications.Enqueue(app);
+    }
+
+}
+}
+
+
+
+
+
+
+
+
+

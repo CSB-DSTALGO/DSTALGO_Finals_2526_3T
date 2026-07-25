@@ -8,11 +8,13 @@ public class CourseCurriculum
 
     public int Count => _courses.Count;
 
+    // Inserts a course at the end of the curriculum.
     public void InsertCourse(Course course)
     {
         _courses.AddLast(course);
     }
 
+    // Deletes a course based on its course code.
     public bool DeleteCourse(string code)
     {
         Node<Course>? current = _courses.Head;
@@ -30,6 +32,7 @@ public class CourseCurriculum
         return false;
     }
 
+    // Calculates the total number of units in the curriculum.
     public int CalculateTotalUnits()
     {
         int total = 0;
@@ -44,6 +47,7 @@ public class CourseCurriculum
         return total;
     }
 
+    // Displays all courses in the curriculum.
     public void ShowCurriculum()
     {
         Node<Course>? current = _courses.Head;
@@ -55,6 +59,51 @@ public class CourseCurriculum
         }
     }
 
-    public bool SearchCourse(Course course) => throw new NotImplementedException();
-    public void SortCurriculumByUnits() => throw new NotImplementedException();
+    // Searches the curriculum for a course with the specified course code.
+    public bool SearchCourse(Course course)
+    {
+        Node<Course>? current = _courses.Head;
+
+        while (current != null)
+        {
+            if (current.Data.Code == course.Code)
+            {
+                return true;
+            }
+
+            current = current.Next;
+        }
+
+        return false;
+    }
+
+    // Sorts the curriculum in ascending order by course units using Bubble Sort.
+    public void SortCurriculumByUnits()
+    {
+        if (_courses.Head == null || _courses.Head.Next == null)
+            return;
+
+        bool swapped;
+
+        do
+        {
+            swapped = false;
+            Node<Course>? current = _courses.Head;
+
+            while (current != null && current.Next != null)
+            {
+                if (current.Data.CompareTo(current.Next.Data) > 0)
+                {
+                    Course temp = current.Data;
+                    current.Data = current.Next.Data;
+                    current.Next.Data = temp;
+
+                    swapped = true;
+                }
+
+                current = current.Next;
+            }
+
+        } while (swapped);
+    }
 }
