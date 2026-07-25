@@ -75,4 +75,3 @@ public T Peek()
         }
     }
 }
-
