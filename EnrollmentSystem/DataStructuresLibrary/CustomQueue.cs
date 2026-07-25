@@ -1,43 +1,85 @@
-// CustomQueue.cs
 using System;
 
 namespace DataStructuresLibrary
 {
     public class CustomQueue<T>
     {
+        // ALL CODE BELOW IS AI-GENERATED FOR TESTING PURPOSES.
+        // Final program fails to run without this, please modify.
+
         private T[] _items;
         private int _front;
         private int _rear;
         private int _count;
+        private const int DefaultCapacity = 4;
 
         public int Count 
         { 
-            get { throw new NotImplementedException(); } 
+            get { return _count; } 
         }
 
         public CustomQueue()
         {
-            throw new NotImplementedException();
+            _items = new T[DefaultCapacity];
+            _front = 0;
+            _rear = 0;
+            _count = 0;
         }
 
         public void Enqueue(T item)
         {
-            throw new NotImplementedException();
+            if (_count == _items.Length)
+            {
+                Resize();
+            }
+
+            _items[_rear] = item;
+            _rear = (_rear + 1) % _items.Length;
+            _count++;
         }
 
         public T Dequeue()
         {
-            throw new NotImplementedException();
+            if (_count == 0)
+            {
+                throw new InvalidOperationException("Queue is empty.");
+            }
+
+            T item = _items[_front];
+            _items[_front] = default(T)!; 
+            _front = (_front + 1) % _items.Length;
+            _count--;
+            return item;
         }
 
         public T Peek()
         {
-            throw new NotImplementedException();
+            if (_count == 0)
+            {
+                throw new InvalidOperationException("Queue is empty.");
+            }
+
+            return _items[_front];
         }
 
         public bool IsEmpty()
         {
-            throw new NotImplementedException();
+            return _count == 0;
+        }
+
+        private void Resize()
+        {
+            int newCapacity = _items.Length * 2;
+            T[] newArray = new T[newCapacity];
+
+            for (int i = 0; i < _count; i++)
+            {
+                newArray[i] = _items[(_front + i) % _items.Length];
+            }
+
+            _items = newArray;
+            _front = 0;
+            _rear = _count;
         }
     }
 }

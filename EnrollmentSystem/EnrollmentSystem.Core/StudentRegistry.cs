@@ -13,6 +13,12 @@ public class StudentRegistry
     {
         if (student == null)
             throw new ArgumentNullException(nameof(student));
+
+        if (string.IsNullOrEmpty(student.CourseCode))
+        {
+            student.CourseCode = "N/A";
+        }
+
         _students.Add(student);
     }
 
