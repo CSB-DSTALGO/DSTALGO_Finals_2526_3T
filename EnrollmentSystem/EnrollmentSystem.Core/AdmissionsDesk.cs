@@ -8,7 +8,7 @@ public class AdmissionsDesk
 
     private readonly CustomQueue<Ticket> _ticketQueue = new();
 
-    public int Count => _applications.Count; // number of applications in queue
+    public int Count => _ticketQueue.Count; // number of tickets in queue
 
     public void IssueAdmissionsTicket(AdmissionApplication app) // issues a ticket for the student to be served
     {
