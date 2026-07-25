@@ -33,8 +33,10 @@ namespace EnrollmentSystem.Core
         // Returns true if there are no logs.
         public bool CheckLogsEmpty() => _stack.IsEmpty();
 
-        // Sorting algorithm: Insertion Sort.
-        // Sorts a snapshot copy of the logs by LogId (does not affect the real stack).
+        // Since a stack only exposes its top item, GetLogsSortedById() takes a snapshot copy via
+        // ToArray() and sorts that. Each item is compared against the already sorted portion to its
+        //left and shifted into its correct position like sorting playing cards by hand, one at a time.
+        //Time complexity: O(n) best case (already sorted), O(n²) worst case.
         public Log[] GetLogsSortedById()
         {
             Log[] snapshot = _stack.ToArray();
@@ -56,8 +58,10 @@ namespace EnrollmentSystem.Core
             return snapshot;
         }
 
-        // Search algorithm: Binary Search.
-        // Requires the sorted snapshot from GetLogsSortedById().
+        // SearchLogById() searches the sorted array from above, repeatedly comparing the target
+        //against the midpoint and eliminating half the remaining range each time like looking up a
+        //word in a dictionary. Requires sorted input, which is why it's paired directly with Insertion Sort.
+        //Time complexity: O(log n)
         public Log? SearchLogById(string logId)
         {
             Log[] sorted = GetLogsSortedById();
