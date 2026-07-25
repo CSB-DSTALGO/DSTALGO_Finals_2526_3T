@@ -9,7 +9,7 @@ public class StudentRegistry
 
     public int Count => _students.Count;
 
-    /// <summary>Adds a new student record to the registry.</summary>
+    
     public void RegisterStudent(Student student)
     {
         if (student is null)
@@ -96,10 +96,9 @@ public class StudentRegistry
     public bool RemoveStudent(string id) => throw new NotImplementedException();
     public Student GetStudentAt(int index) => throw new NotImplementedException();
 
-    // Hint: Calculate average GPA of all registered students
     public double CalculateAverageGpa() => throw new NotImplementedException();
 
-    // Hint: Delegate search and sort to CustomArrayList<T>
+  
     public int SearchStudent(Student student) => throw new NotImplementedException();
     public void SortStudentsByGpa() => throw new NotImplementedException();
     public int GetStudentCount() => throw new NotImplementedException();
