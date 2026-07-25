@@ -43,6 +43,23 @@ public class StudentRegistry
         return true;
     }
 
+    public bool RemoveStudent(string id)
+    {
+        if (!int.TryParse(id, out int parsedId))
+        {
+            return false;
+        }
+
+        int index = SearchStudentById(parsedId);
+        if (index == -1)
+        {
+            return false;
+        }
+
+        _registry.RemoveAt(index);
+        return true;
+    }
+
     // Prints a single student's details by index (required by rubric)
     public void GetStudentDetails(int index)
     {
