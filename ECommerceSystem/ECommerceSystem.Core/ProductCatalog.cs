@@ -26,11 +26,11 @@ public class ProductCatalog
 
     public void SortCatalog()
     {
-        _products.Sort();
+        _products.Sort(); 
     }
 
     public void PrintCatalog()
     {
-        _products.Print();
+        _products.Print(); 
     }
 }
