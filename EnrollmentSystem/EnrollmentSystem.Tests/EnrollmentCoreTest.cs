@@ -462,5 +462,110 @@ namespace EnrollmentSystem.Tests
             Assert.Equal("L-002", popped.LogId);
             Assert.Equal(1, logs.GetLogCount());
         }
+
+        [Fact]
+        public void RollbackLastLog_ShouldReturnLatestLog()
+        {
+            var logs = new AdministrativeLogs();
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "First" });
+            logs.PushSystemLog(new Log { LogId = "L-002", ActionSummary = "Second" });
+
+            Log result = logs.RollbackLastLog();
+
+            Assert.Equal("L-002", result.LogId);
+        }
+
+        [Fact]
+        public void RollbackLastLog_ShouldDecreaseCount()
+        {
+            var logs = new AdministrativeLogs();
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "First" });
+
+            logs.RollbackLastLog();
+
+            Assert.Equal(0, logs.GetLogCount());
+        }
+
+        [Fact]
+        public void RollbackLastLog_EmptyStack_ShouldThrowException()
+        {
+            var logs = new AdministrativeLogs();
+
+            Assert.Throws<InvalidOperationException>(() => logs.RollbackLastLog());
+        }
+
+        [Fact]
+        public void SearchLog_ExistingLog_ShouldReturnIndex()
+        {
+            var logs = new AdministrativeLogs();
+            var first = new Log { LogId = "L-001", ActionSummary = "First" };
+            var second = new Log { LogId = "L-002", ActionSummary = "Second" };
+
+            logs.PushSystemLog(first);
+            logs.PushSystemLog(second);
+
+            int result = logs.SearchLog(second);
+
+            Assert.Equal(1, result);
+        }
+
+        [Fact]
+        public void SearchLog_MissingLog_ShouldReturnNegativeOne()
+        {
+            var logs = new AdministrativeLogs();
+            var existing = new Log { LogId = "L-001", ActionSummary = "First" };
+            var missing = new Log { LogId = "L-999", ActionSummary = "Missing" };
+
+            logs.PushSystemLog(existing);
+
+            int result = logs.SearchLog(missing);
+
+            Assert.Equal(-1, result);
+        }
+
+        [Fact]
+        public void SearchLog_EmptyStack_ShouldReturnNegativeOne()
+        {
+            var logs = new AdministrativeLogs();
+            var missing = new Log { LogId = "L-999", ActionSummary = "Missing" };
+
+            int result = logs.SearchLog(missing);
+
+            Assert.Equal(-1, result);
+        }
+
+        [Fact]
+        public void SortLogsById_MultipleLogs_ShouldPlaceLowestIdOnTop()
+        {
+            var logs = new AdministrativeLogs();
+            logs.PushSystemLog(new Log { LogId = "L-003", ActionSummary = "Third" });
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "First" });
+            logs.PushSystemLog(new Log { LogId = "L-002", ActionSummary = "Second" });
+
+            logs.SortLogsById();
+
+            Assert.Equal("L-001", logs.ViewLatestLog().LogId);
+        }
+
+        [Fact]
+        public void SortLogsById_SingleLog_ShouldRemainOnTop()
+        {
+            var logs = new AdministrativeLogs();
+            logs.PushSystemLog(new Log { LogId = "L-001", ActionSummary = "First" });
+
+            logs.SortLogsById();
+
+            Assert.Equal("L-001", logs.ViewLatestLog().LogId);
+        }
+
+        [Fact]
+        public void SortLogsById_EmptyStack_ShouldNotThrowException()
+        {
+            var logs = new AdministrativeLogs();
+
+            Exception? error = Record.Exception(() => logs.SortLogsById());
+
+            Assert.Null(error);
+        }
     }
 }
