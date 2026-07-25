@@ -10,12 +10,12 @@ namespace DataStructuresLibrary
         private int _rear;
         private int _count;
 
-        public int Count 
+        public int Count // returns the number of items in the queue
         { 
             get { return _count; } 
         }
 
-        public CustomQueue()
+        public CustomQueue() // creates empty queue with initial capacity of 4
         {
             _items = new T[4];
             _front = 0;
@@ -24,7 +24,7 @@ namespace DataStructuresLibrary
 
         }
 
-        public void Enqueue(T item)
+        public void Enqueue(T item) // adds an item at the back of the qeueue
         {
             if (_count == _items.Length) //increases the array size when full
             {
@@ -43,7 +43,7 @@ namespace DataStructuresLibrary
             _count++; //increase the number of items in queue
         }
 
-        public T Dequeue()
+        public T Dequeue() // removes and returns the item at the fron of the queue
         {
            if (_count == 0) 
            {
@@ -64,7 +64,7 @@ namespace DataStructuresLibrary
            return removedItem;
         }
 
-        public T Peek()
+        public T Peek() // returns the front item without removing it from the queue
         {
             if (_count == 0) 
             {
@@ -74,12 +74,12 @@ namespace DataStructuresLibrary
             return _items[_front];
         }
 
-        public bool IsEmpty()
+        public bool IsEmpty() // checks wheter the queue is empty or not
         {
            return _count == 0;
         }
 
-        private void Resize() 
+        private void Resize() // doubles the queue size while maintaining FIFO order
         {
             T[] biggerArray = new T[_items.Length * 2]; //creates a new array with 2x the capacity
 
