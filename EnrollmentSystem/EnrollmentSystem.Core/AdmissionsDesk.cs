@@ -21,9 +21,10 @@ public class AdmissionsDesk
             ? $"T-{_nextTicketNumber++}"
             : ticket.TicketId;
 
-        var application = new AdmissionApplication(ticket.LogId, ticket.StudentId, priorityScore: 0)
+        var application = new AdmissionApplication(ticket.LogId, ticket.StudentId, 0)
         {
-            TicketId = ticketId
+            TicketId = ticketId,
+            Timestamp = ticket.Timestamp
         };
 
         _applications.Enqueue(application);
@@ -84,7 +85,7 @@ public class AdmissionsDesk
             StudentId = application.StudentName,
             LogId = application.ApplicationId,
             Action = "Served",
-            Timestamp = DateTime.Now
+            Timestamp = application.Timestamp
         };
     }
 
@@ -105,9 +106,7 @@ public class AdmissionsDesk
         {
             AdmissionApplication application = _applications.Dequeue();
 
-            Console.WriteLine(
-                $"[{i + 1}] Ticket: {application.TicketId} | Student: {application.StudentName}"
-            );
+            Console.WriteLine($"[{i + 1}] Ticket: {application.TicketId} | Student: {application.StudentName} | Issued: {application.Timestamp:hh:mm:ss tt}");
 
             temp.Add(application);
         }
