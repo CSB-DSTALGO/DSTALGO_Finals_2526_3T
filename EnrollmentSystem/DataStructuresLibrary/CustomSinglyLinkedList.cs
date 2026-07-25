@@ -1,4 +1,4 @@
-// CustomSinglyLinkedList.cs
+
 using System;
 
 namespace DataStructuresLibrary
@@ -6,43 +6,48 @@ namespace DataStructuresLibrary
     public class Node<T>
     {
         public T Data { get; set; }
-        public Node<T>? Next { get; set; } // Mark as nullable with '?'
+        public Node<T>? Next { get; set; }
 
         public Node(T data)
         {
             Data = data;
-            Next = null; 
+            Next = null;
         }
     }
 
     public class CustomSinglyLinkedList<T>
     {
-        private Node<T>? _head; // Mark as nullable with '?'
+        private Node<T>? _head;
 
-        public Node<T>? Head // Mark as nullable to match the field
+        // Returns the first node in the list.
+        public Node<T>? Head
         {
             get { return _head; }
-            //get { throw new NotImplementedException(); }
         }
 
-        public int Count { get; set; }
+        // Returns the total number of nodes.
+        public int Count { get; private set; }
 
         public CustomSinglyLinkedList()
         {
-            _head = null; 
+            _head = null;
+            Count = 0;
         }
 
+        // Adds a new node to the end of the linked list.
         public void AddLast(T item)
         {
             Node<T> newNode = new Node<T>(item);
+
             if (_head == null)
             {
                 _head = newNode;
                 Count++;
                 return;
             }
-            
+
             Node<T> current = _head;
+
             while (current.Next != null)
             {
                 current = current.Next;
@@ -50,9 +55,9 @@ namespace DataStructuresLibrary
 
             current.Next = newNode;
             Count++;
-            //throw new NotImplementedException();
         }
 
+        // Removes the first node that matches the given item.
         public bool Remove(T item)
         {
             if (_head == null)
@@ -82,7 +87,6 @@ namespace DataStructuresLibrary
             }
 
             return false;
-            //throw new NotImplementedException();
         }
     }
 }

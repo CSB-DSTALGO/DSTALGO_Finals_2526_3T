@@ -6,18 +6,20 @@ public class CourseCurriculum
 {
     private readonly CustomSinglyLinkedList<Course> _courses = new();
 
+    // Returns the total number of courses.
     public int Count => _courses.Count;
 
-    
+    // Adds a new course to the curriculum.
     public void InsertCourse(Course course) => _courses.AddLast(course);
-    
-    public bool DeleteCourse(string code)
+
+    // Removes a course using its course code.
+    public bool DeleteCourse(string courseCode)
     {
         Node<Course>? current = _courses.Head;
 
         while (current != null)
         {
-            if (current.Data.Code == code)
+            if (current.Data.Code == courseCode)
             {
                 return _courses.Remove(current.Data);
             }
@@ -28,42 +30,14 @@ public class CourseCurriculum
         return false;
     }
 
-    // Hint: Sum total credit units across all courses
-    
-    public int CalculateTotalUnits()
-    {
-        int totalUnits = 0;
-        Node<Course>? current = _courses.Head;
-
-        while(current != null)
-        {
-            totalUnits += current.Data.Units;
-            current = current.Next;
-        }
-
-        return totalUnits;
-    }
-    
-    public void ShowCurriculum()
+    // Searches for a course using its course code.
+    public bool SearchCourse(string courseCode)
     {
         Node<Course>? current = _courses.Head;
 
         while (current != null)
         {
-            Console.WriteLine($"{current.Data.Code} - {current.Data.Title} ({current.Data.Units} units)");
-            current = current.Next;
-        }
-    }
-
-    // Hint: Delegate search and sort to CustomSinglyLinkedList<T>
-   
-    public bool SearchCourse(Course course)
-    {
-        Node<Course>? current = _courses.Head;
-
-        while (current != null)
-        {
-            if (current.Data.Code == course.Code) 
+            if (current.Data.Code == courseCode)
             {
                 return true;
             }
@@ -73,13 +47,53 @@ public class CourseCurriculum
 
         return false;
     }
-    //public void SortCurriculumByUnits() => throw new NotImplementedException();
-    public void SortCurriculumByUnits()
+
+    // Calculates the total credit units of all courses.
+    public int CalculateTotalUnits()
+    {
+        int totalUnits = 0;
+        Node<Course>? current = _courses.Head;
+
+        while (current != null)
+        {
+            totalUnits += current.Data.Units;
+            current = current.Next;
+        }
+
+        return totalUnits;
+    }
+
+    // Displays all courses in the curriculum.
+    public void ShowCurriculum()
     {
         if (_courses.Head == null)
         {
+            Console.WriteLine("No courses in the curriculum.");
             return;
         }
+
+        Console.WriteLine($"Total Courses: {Count}\n");
+
+        Node<Course>? current = _courses.Head;
+        int index = 0;
+
+        while (current != null)
+        {
+            Console.WriteLine(
+                $"[{index}] Code: {current.Data.Code} | Title: {current.Data.Title} | Units: {current.Data.Units}");
+
+            current = current.Next;
+            index++;
+        }
+
+        Console.WriteLine($"\nTotal Curriculum Units: {CalculateTotalUnits()}");
+    }
+
+    // Sorts the curriculum by credit units in ascending order.
+    public void SortCurriculumByUnits()
+    {
+        if (_courses.Head == null)
+            return;
 
         bool swapped;
 
@@ -95,7 +109,6 @@ public class CourseCurriculum
                     Course temp = current.Data;
                     current.Data = current.Next.Data;
                     current.Next.Data = temp;
-
                     swapped = true;
                 }
 

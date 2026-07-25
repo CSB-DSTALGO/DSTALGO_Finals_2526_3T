@@ -69,33 +69,63 @@ namespace EnrollmentSystem.ConsoleApp
                         string name = Console.ReadLine() ?? "";
                         Console.Write("Enter Course Code: ");
                         string course = Console.ReadLine() ?? "";
+                        double gpa;
 
-                        _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0));
+                        while (true) // Enables only acceptance of valid GPA input.
+                        {
+                            Console.Write("Enter GPA (0.0 - 4.0): ");
+                            if (double.TryParse(Console.ReadLine(), out gpa) &&
+                                    gpa >= 0.0 && gpa <= 4.0){
+                                break;
+                            }
+
+                            Console.WriteLine("Invalid GPA. Please enter a value between 0.0 and 4.0");
+                        }
+
+                        _registry.RegisterStudent(new Student(int.Parse(id), name, gpa, course));
                         Console.WriteLine("\nStudent registered successfully.");
                         _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Registered student {id}" });
                         break;
 
                     case "2":
-                        Console.Write("Enter Student ID to remove: ");
+                        Console.WriteLine("\n--- Current Student List ---");
+                        _registry.ShowAllStudents();
+
+                        Console.Write("\nEnter Student ID to remove: ");
                         string targetId = Console.ReadLine() ?? "";
+
                         bool removed = _registry.UnregisterStudent(int.Parse(targetId));
-                        Console.WriteLine(removed ? "\nStudent removed successfully." : "\nStudent not found.");
+
+                        Console.WriteLine(removed
+                            ? "\nStudent removed successfully."
+                            : "\nStudent not found.");
+
                         if (removed)
                         {
-                            _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Removed student {targetId}" });
+                            _logs.PushSystemLog(new Log
+                            {
+                                LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}",
+                                ActionSummary = $"Removed student {targetId}"
+                            });
                         }
+
                         break;
 
                     case "3":
                         Console.WriteLine("\n--- Current Student List ---");
-                        // If students haven't implemented a printing function, this handles it via the tracking metrics
-                        int count = _registry.GetStudentCount();
-                        Console.WriteLine($"Total Students: {count}");
-                        for (int i = 0; i < count; i++)
+                        Console.WriteLine("1. Original Order");
+                        Console.WriteLine("2. Sort by GPA (Permanent Change to Order)");
+                        Console.Write("Choice: ");
+
+                        string viewChoice = Console.ReadLine() ?? "";
+
+                        if (viewChoice == "2")
                         {
-                            var s = _registry.GetStudentAt(i);
-                            Console.WriteLine($"[{i}] ID: {s.Id} | Name: {s.Name} | Course: {s.CourseCode}");
+                            _registry.SortStudentsByGpa();
+                            Console.WriteLine("\nStudents sorted by GPA.\n");
                         }
+
+                        _registry.ShowAllStudents();
                         break;
                 }
             }
@@ -119,7 +149,8 @@ namespace EnrollmentSystem.ConsoleApp
             Console.WriteLine("1. Insert Course");
             Console.WriteLine("2. Remove Course by Code");
             Console.WriteLine("3. View Curriculum Summary");
-            Console.WriteLine("4. Back to Main Menu");
+            Console.WriteLine("4. Search Course");
+            Console.WriteLine("5. Back to Main Menu");
             Console.Write("Choice: ");
             string choice = Console.ReadLine() ?? "";
 
@@ -148,7 +179,29 @@ namespace EnrollmentSystem.ConsoleApp
 
                     case "3":
                         Console.WriteLine("\n--- Curriculum Matrix ---");
-                        Console.WriteLine($"Total Curriculum Units: {_curriculum.CalculateTotalUnits()}");
+                        Console.WriteLine("1. Original Order");
+                        Console.WriteLine("2. Sort by Credit Units (Permanent Change to Order)");
+                        Console.Write("Choice: ");
+
+                        string viewChoice = Console.ReadLine() ?? "";
+
+                        if (viewChoice == "2")
+                        {
+                            _curriculum.SortCurriculumByUnits();
+                            Console.WriteLine("\nCurriculum sorted by credit units.\n");
+                        }
+
+                        _curriculum.ShowCurriculum();
+                        break;
+
+                    case "4":
+                        Console.Write("Enter Course Code to search: ");
+                        string searchCode = Console.ReadLine() ?? "";
+
+                        bool found = _curriculum.SearchCourse(searchCode);
+                        Console.WriteLine(found
+                            ? "\nCourse found in the curriculum."
+                            : "\nCourse not found.");
                         break;
                 }
             }
