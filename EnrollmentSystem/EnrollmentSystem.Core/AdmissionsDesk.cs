@@ -20,7 +20,8 @@ public class AdmissionsDesk
         return _tickets.Dequeue();
     }
 
-    public Ticket ServeNextTicket() // calls ServeNextStudent() to serve the next ticket
+    public Ticket ServeNextTicket() 
+    {  // calls ServeNextStudent() to serve the next ticket
         return ServeNextStudent();
     }
 
