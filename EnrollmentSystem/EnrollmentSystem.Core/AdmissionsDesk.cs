@@ -5,51 +5,51 @@ namespace EnrollmentSystem.Core;
 
 public class AdmissionsDesk
 {
-    private readonly CustomQueue<Ticket> _tickets = new();
-    private readonly CustomQueue<AdmissionApplication> _applications = new();
+    private readonly CustomQueue<Ticket> _tickets = new(); // stores tickets in FIFO order
+    private readonly CustomQueue<AdmissionApplication> _applications = new(); // stores applications for searching and sorting
 
-    public int Count => _tickets.Count;
+    public int Count => _tickets.Count; // returns number of tickets in the queue
 
-    public void IssueAdmissionsTicket(Ticket ticket)
+    public void IssueAdmissionsTicket(Ticket ticket) // adds a new ticket to the queue
     {
         _tickets.Enqueue(ticket);
     }
 
-    public Ticket ServeNextStudent()
+    public Ticket ServeNextStudent() // removes and returns the next ticket =
     {
         return _tickets.Dequeue();
     }
 
-    public Ticket ServeNextTicket()
-    {
+    public Ticket ServeNextTicket() 
+    {  // calls ServeNextStudent() to serve the next ticket
         return ServeNextStudent();
     }
 
-    public Ticket ViewNextTicket()
+    public Ticket ViewNextTicket() // views the next ticket without removing
     {
         return _tickets.Peek();
     }
 
-    public bool CheckQueueEmpty()
+    public bool CheckQueueEmpty() // checks whether the ticket queue is empty or not
     {
        return _tickets.IsEmpty();
     }
 
-    public int GetQueueCount() => Count;
+    public int GetQueueCount() => Count; // returns the number of tickets in the queue  
 
-    public void SubmitApplication(AdmissionApplication application)
+    public void SubmitApplication(AdmissionApplication application) // adds an application the the application queue
     {
         _applications.Enqueue(application);
     }
 
-    public AdmissionApplication ViewNextApplication()
+    public AdmissionApplication ViewNextApplication() // views the first application without removing it
     {
         return _applications.Peek();
     }
 
     // Hint: Delegate search and sort to CustomQueue<T>
 
-    public bool SearchApplication(AdmissionApplication app)
+    public bool SearchApplication(AdmissionApplication app) //
     {
         bool applicationFound = false;
         int applicationCount = _applications.Count;

@@ -69,20 +69,20 @@ namespace EnrollmentSystem.ConsoleApp
                         string name = Console.ReadLine() ?? "";
                         Console.Write("Enter Course Code: ");
                         string course = Console.ReadLine() ?? "";
-                        
-                        _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0));
+
+                        _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0, course));
                         Console.WriteLine("\nStudent registered successfully.");
-                        _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Registered student {id}" });
+                        _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Registered student {id}" });
                         break;
 
                     case "2":
                         Console.Write("Enter Student ID to remove: ");
                         string targetId = Console.ReadLine() ?? "";
-                        bool removed = _registry.UnregisterStudent(int.Parse(targetId));
+                        bool removed = _registry.RemoveStudent(targetId);
                         Console.WriteLine(removed ? "\nStudent removed successfully." : "\nStudent not found.");
                         if (removed)
                         {
-                            _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Removed student {targetId}" });
+                            _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Removed student {targetId}" });
                         }
                         break;
 
@@ -94,7 +94,7 @@ namespace EnrollmentSystem.ConsoleApp
                         for (int i = 0; i < count; i++)
                         {
                             var s = _registry.GetStudentAt(i);
-                            Console.WriteLine($"[{i}] ID: {s.Id} | Name: {s.Name} | Course: {s.CourseCode}");
+                            Console.WriteLine($"[{i + 1}] ID: {s.Id} | Name: {s.Name} | Course: {s.CourseCode}");
                         }
                         break;
                 }
@@ -107,7 +107,7 @@ namespace EnrollmentSystem.ConsoleApp
             {
                 Console.WriteLine($"\nError: {ex.Message}");
             }
-            
+
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
         }

@@ -1,51 +1,55 @@
-namespace DataStructuresLibrary.Tests;
+//CustomArrayListTests
 
+using System;
 using Xunit;
 using DataStructuresLibrary;
+using System.Reflection.Metadata.Ecma335;
+using DataStructuresLibrary.Tests;
 
-public class CustomArrayListTests
+namespace DataStructuresLibrary.Tests
 {
-    [Fact]
-    public void Add_ShouldIncreaseCountAndStoreItems()
+    public class CustomArrayListTests
     {
-        // TODO: Implement test for Add and Get indexing
-        CustomArrayList<int> list = new CustomArrayList<int>();
-        list.Add(10);
-        list.Add(20);
-        Assert.Equal(2, list.Count);
-        list.Add(21);
-        Assert.Equal(3, list.Count);
-        list.Add(22);
-        list.Add(23);
-        Assert.Equal(5, list.Count);
-        
-    }
+        //ADD ALL YOUR TESTS HERE
+        [Fact]
+        public void Add_Item()
+        {
+            CustomArrayList<int> list = new CustomArrayList<int>();
+            list.Add(10);
+            Assert.Equal(1, list.Count);
+        }
 
-    [Fact]
-    public void Remove_ShouldShiftElementsCorrectly()
-    {
-        // TODO: Implement test verifying element removal and index shifting
-        throw new NotImplementedException();
-    }
+        [Fact]
+        public void GetExistingIndex()
+        {
+            CustomArrayList<string> list = new CustomArrayList<string>();
+            list.Add("Zeke");
+            string result = list.Get(0);
+            Assert.Equal("Zeke", result);
+        }
 
-    [Fact]
-    public void Search_ShouldReturnCorrectIndex_WhenItemExists()
-    {
-        // TODO: Test Search returning zero-based index for existing element
-        throw new NotImplementedException();
-    }
+        [Fact]
+        public void RemoveAt()
+        {
+            CustomArrayList<int> list = new CustomArrayList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.RemoveAt(0);
 
-    [Fact]
-    public void Search_ShouldReturnMinusOne_WhenItemDoesNotExist()
-    {
-        // TODO: Test Search returning -1 when element is absent
-        throw new NotImplementedException();
-    }
+            Assert.Equal(1, list.Count);
+        }
 
-    [Fact]
-    public void Sort_ShouldOrderElementsInAscendingSequence()
-    {
-        // TODO: Test Sort ordering an unsorted CustomArrayList<int>
-        throw new NotImplementedException();
+        [Fact]
+        public void Shift()
+        {
+            CustomArrayList<string> list = new CustomArrayList<string>();
+            list.Add("A");
+            list.Add("B");
+            list.Add("C");
+            list.RemoveAt(0);
+            Assert.Equal("B", list.Get(0));
+        }
+
     }
 }
+

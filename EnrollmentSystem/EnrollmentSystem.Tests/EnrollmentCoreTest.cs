@@ -11,7 +11,7 @@ namespace EnrollmentSystem.Tests
         {
             var registry = new StudentRegistry();
             // Student constructor requires (int id, string name, double gpa)
-            var student = new Student(20260001, "Alice", 0.0);
+            var student = new Student(20260001, "Alice", 0.0,"CS102");
 
             registry.RegisterStudent(student);
 
@@ -24,7 +24,7 @@ namespace EnrollmentSystem.Tests
         {
             var registry = new StudentRegistry();
             // Use matching constructor and id type for removal
-            var student = new Student(20260001, "Alice", 0.0);
+            var student = new Student(20260001, "Alice", 0.0, "CS102");
             registry.RegisterStudent(student);
 
             bool removed = registry.UnregisterStudent(20260001);
@@ -37,8 +37,8 @@ namespace EnrollmentSystem.Tests
         public void RemoveStudent_ByIdString_ShouldReturnTrue_WhenStudentExists()
         {
             var registry = new StudentRegistry();
-            var alice = new Student(20260001, "Alice", 3.5);
-            var bob = new Student(20260002, "Bob", 2.8);
+            var alice = new Student(20260001, "Alice", 3.5, "CS102");
+            var bob = new Student(20260002, "Bob", 2.8, "CS101");
             registry.RegisterStudent(alice);
             registry.RegisterStudent(bob);
 
@@ -53,8 +53,8 @@ namespace EnrollmentSystem.Tests
         public void CalculateAverageGpa_ShouldReturnAverageOfRegisteredStudents()
         {
             var registry = new StudentRegistry();
-            registry.RegisterStudent(new Student(20260001, "Alice", 3.5));
-            registry.RegisterStudent(new Student(20260002, "Bob", 2.5));
+            registry.RegisterStudent(new Student(20260001, "Alice", 3.5, "CS102"));
+            registry.RegisterStudent(new Student(20260002, "Bob", 2.5, "CS101"));
 
             double average = registry.CalculateAverageGpa();
 
@@ -65,8 +65,8 @@ namespace EnrollmentSystem.Tests
         public void SearchStudent_ShouldReturnIndex_WhenStudentExists()
         {
             var registry = new StudentRegistry();
-            var alice = new Student(20260001, "Alice", 3.5);
-            var bob = new Student(20260002, "Bob", 2.5);
+            var alice = new Student(20260001, "Alice", 3.5, "CS102");
+            var bob = new Student(20260002, "Bob", 2.5, "CS101");
             registry.RegisterStudent(alice);
             registry.RegisterStudent(bob);
 
