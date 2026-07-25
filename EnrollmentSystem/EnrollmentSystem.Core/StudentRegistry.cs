@@ -92,7 +92,7 @@ namespace EnrollmentSystem.Core
         public void SortRegistryById()
         {
             // Execute QuickSort passing Student ID comparison delegate
-            _registry.QuickSort((s1, s2) => s1.Id.CompareTo(s2.Id));
+            _registry.QuickSort((s1, s2) => string.Compare(s1.Id, s2.Id, StringComparison.Ordinal));
             _isSortedById = true;
             Console.WriteLine("Student registry successfully sorted by Student ID (QuickSort).");
         }
@@ -100,9 +100,9 @@ namespace EnrollmentSystem.Core
         /// <summary>
         /// Searches for student record by ID using Binary Search algorithm.
         /// </summary>
-        /// <param name="studentId">Target Student ID integer lookup.</param>
+        /// <param name="studentId">Target Student ID lookup (e.g. "2026-0001").</param>
         /// <returns>Zero-based index of matched student, or -1 if not found.</returns>
-        public int SearchStudentById(int studentId)
+        public int SearchStudentById(string studentId)
         {
             if (!_isSortedById)
             {
@@ -112,7 +112,7 @@ namespace EnrollmentSystem.Core
             return _registry.BinarySearch(
                 studentId,
                 student => student.Id,
-                (id1, id2) => id1.CompareTo(id2)
+                (id1, id2) => string.Compare(id1, id2, StringComparison.Ordinal)
             );
         }
 
@@ -120,7 +120,11 @@ namespace EnrollmentSystem.Core
 
         public Student GetStudentAt(int index) => _registry.Get(index);
 
-        public bool RemoveStudent(int id)
+        /// <summary>
+        /// Removes a student record by matching Student Id (string, e.g. "2026-0001").
+        /// This is the exact signature Program.cs and EnrollmentCoreTest.cs call.
+        /// </summary>
+        public bool RemoveStudent(string id)
         {
             for (int i = 0; i < _registry.Count; i++)
             {
@@ -129,15 +133,6 @@ namespace EnrollmentSystem.Core
                     _registry.RemoveAt(i);
                     return true;
                 }
-            }
-            return false;
-        }
-            // Overload: allows removing a student by a string-formatted ID too.
-public bool RemoveStudent(string id)
-        {
-            if (int.TryParse(id, out int parsedId))
-            {
-                return RemoveStudent(parsedId);
             }
             return false;
         }
@@ -173,5 +168,4 @@ public bool RemoveStudent(string id)
             return -1;
         }
     }
-  }
-
+}

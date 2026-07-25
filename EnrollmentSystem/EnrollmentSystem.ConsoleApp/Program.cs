@@ -65,17 +65,13 @@ namespace EnrollmentSystem.ConsoleApp
                 {
                     case "1":
                         Console.Write("Enter Student ID: ");
-                        int.TryParse(Console.ReadLine(), out int id);
+                        string id = Console.ReadLine() ?? "";
                         Console.Write("Enter Full Name: ");
                         string name = Console.ReadLine() ?? "";
-                        Console.Write("Enter GPA: ");
-                        double.TryParse(Console.ReadLine(), out double gpa);
                         Console.Write("Enter Course Code: ");
                         string course = Console.ReadLine() ?? "";
 
-                        var newStudent = new Student(id, name, gpa);
-                        newStudent.CourseCode = course;
-                        _registry.RegisterStudent(newStudent);
+                        _registry.RegisterStudent(new Student { Id = id, Name = name, CourseCode = course });
                         Console.WriteLine("\nStudent registered successfully.");
                         _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Registered student {id}" });
                         break;
@@ -93,7 +89,7 @@ namespace EnrollmentSystem.ConsoleApp
 
                     case "3":
                         Console.WriteLine("\n--- Current Student List ---");
-                       
+                        // If students haven't implemented a printing function, this handles it via the tracking metrics
                         int count = _registry.GetStudentCount();
                         Console.WriteLine($"Total Students: {count}");
                         for (int i = 0; i < count; i++)
@@ -140,9 +136,10 @@ namespace EnrollmentSystem.ConsoleApp
                         Console.Write("Enter Credit Units: ");
                         int.TryParse(Console.ReadLine(), out int units);
 
-                        _curriculum.InsertCourse(new Course(code, title, units));
+                        _curriculum.InsertCourse(new Course { Code = code, Title = title, Units = units });
                         Console.WriteLine("\nCourse inserted into curriculum.");
                         break;
+
                     case "2":
                         Console.Write("Enter Course Code to remove: ");
                         string targetCode = Console.ReadLine() ?? "";

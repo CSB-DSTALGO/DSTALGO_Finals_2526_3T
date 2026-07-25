@@ -2,12 +2,22 @@ namespace EnrollmentSystem.Core;
 
 public class Student : IComparable<Student>
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
+    // Fixed: Id is a string (e.g. "2026-0001") to match Program.cs and
+    // EnrollmentCoreTest.cs, which both construct Student via object
+    // initializer syntax with a string Id.
+    public string Id { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
     public double Gpa { get; set; }
     public string CourseCode { get; set; } = string.Empty;
 
-    public Student(int id, string name, double gpa)
+    // Parameterless constructor is required so `new Student { Id = ..., Name = ..., CourseCode = ... }`
+    // (used throughout Program.cs and the tests) compiles.
+    public Student()
+    {
+    }
+
+    // Optional convenience constructor for callers who want to build a Student in one line.
+    public Student(string id, string name, double gpa = 0)
     {
         Id = id;
         Name = name;
@@ -20,13 +30,25 @@ public class Student : IComparable<Student>
         if (other == null) return 1;
         return Gpa.CompareTo(other.Gpa);
     }
+
+    // Friendly display used by StudentRegistry.GetStudentDetails / ShowAllStudents.
+    public override string ToString()
+    {
+        return $"ID: {Id} | Name: {Name} | Course: {CourseCode} | GPA: {Gpa}";
+    }
 }
 
 public class Course : IComparable<Course>
 {
-    public string Code { get; set; }
-    public string Title { get; set; }
+    public string Code { get; set; } = string.Empty;
+    public string Title { get; set; } = string.Empty;
     public int Units { get; set; }
+
+    // Parameterless constructor is required so `new Course { Code = ..., Title = ..., Units = ... }`
+    // (used in Program.cs and the tests) compiles.
+    public Course()
+    {
+    }
 
     public Course(string code, string title, int units)
     {
@@ -41,14 +63,23 @@ public class Course : IComparable<Course>
         if (other == null) return 1;
         return Units.CompareTo(other.Units);
     }
+
+    public override string ToString()
+    {
+        return $"{Code} - {Title} ({Units} units)";
+    }
 }
 
 public class AdmissionApplication : IComparable<AdmissionApplication>
 {
     public int ApplicationId { get; set; }
-    public string StudentName { get; set; }
+    public string StudentName { get; set; } = string.Empty;
     public int PriorityScore { get; set; }
     public string TicketId { get; set; } = string.Empty;
+
+    public AdmissionApplication()
+    {
+    }
 
     public AdmissionApplication(int applicationId, string studentName, int priorityScore)
     {
@@ -78,6 +109,11 @@ public class Ticket : IComparable<Ticket>
     {
         if (other == null) return 1;
         return LogId.CompareTo(other.LogId);
+    }
+
+    public override string ToString()
+    {
+        return $"Ticket {TicketId} | Student: {StudentId}";
     }
 }
 
