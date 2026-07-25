@@ -57,26 +57,28 @@ namespace DataStructuresLibrary
         // Time complexity: O(n)
         public int Search( T item)
         {
+            int distance = 0;
             for (int i = _top - 1; i >= 0; i--)
             {
-                if (object.Equals(_items[i], item))
-            
-                return i;
+                if (Equals(_items[i], item))
+                return distance;
+                distance++;
             }
-            return -1;
+            return-1;
+            
         }
         //doublea the arrays capcity when its full. no built in array.copy
 // copied manually to satisft the " no built in collections" requirement
         private void Resize()
         {
-            {
-                int newCapacity = _items.Length == 0 ? 4 : _items.Length * 2;
-                var newItems = new T[newCapacity];
-                for (int i = 0; i < _top; i ++)
-                newItems[i] = _items[i];
+            
+            int newCapacity = _items.Length == 0 ? 4 : _items.Length * 2;
+            var newItems = new T[newCapacity];
+            for (int i = 0; i < _top; i ++)
+            newItems[i] = _items[i];
 
-                _items = newItems;
-            }
+            _items = newItems;
+        
             
         }
     }
