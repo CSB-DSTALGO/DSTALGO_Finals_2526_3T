@@ -55,18 +55,18 @@ namespace DataStructuresLibrary
         }
         // uses linear search to find an item, scanning from the top down
         // Time complexity: O(n)
-        public int Search( T item)
+        public int Search(T item)
+{
+    for (int i = 0; i < _top; i++)
+    {
+        if (object.Equals(_items[i], item))
         {
-            int distance = 0;
-            for (int i = _top - 1; i >= 0; i--)
-            {
-                if (Equals(_items[i], item))
-                return distance;
-                distance++;
-            }
-            return-1;
-            
+            return i;
         }
+    }
+
+    return -1;
+}
         //doublea the arrays capcity when its full. no built in array.copy
 // copied manually to satisft the " no built in collections" requirement
         private void Resize()
