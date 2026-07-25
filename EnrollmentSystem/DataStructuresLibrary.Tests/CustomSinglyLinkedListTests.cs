@@ -4,8 +4,11 @@ using DataStructuresLibrary;
 
 namespace DataStructuresLibrary.Tests
 {
+    // Unit tests for the CustomSinglyLinkedList class.
     public class CustomSinglyLinkedListTests
     {
+        // Verifies that adding the first node correctly sets the head
+        // and updates the node count.
         [Fact]
         public void AddLast_ShouldAddFirstNode()
         {
@@ -18,6 +21,8 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(1, list.Count);
         }
 
+        // Verifies that additional nodes are appended to the end
+        // of the linked list in the correct order.
         [Fact]
         public void AddLast_ShouldAppendToEnd()
         {
@@ -32,6 +37,8 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(2, list.Count);
         }
 
+        // Verifies that an existing item is successfully removed
+        // and the linked list is updated correctly.
         [Fact]
         public void Remove_ShouldRemoveExistingItem()
         {
@@ -47,6 +54,8 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(20, list.Head!.Data);
         }
 
+        // Verifies that attempting to remove a non-existent item
+        // returns false and leaves the linked list unchanged.
         [Fact]
         public void Remove_ShouldReturnFalse_WhenItemNotFound()
         {

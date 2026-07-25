@@ -3,86 +3,88 @@ namespace EnrollmentSystem.Core;
 using DataStructuresLibrary;
 using System;
 using System.Collections.Generic;
-// Simulates a line of students waiting for admission, using CustomQueue<T>.
+
+// Manages the admissions queue using custom queue data structures.
 public class AdmissionsDesk
 {
-   private readonly CustomQueue<AdmissionApplication> _applications = new();
-   private readonly CustomQueue<Ticket> _tickets = new();
-   private int _nextTicketNumber = 1;
-// Returns how many students are currently in line.
-public int Count => _applications.Count;
-// Adds a student directly using an AdmissionApplication and gives them a ticket ID.
-   public void IssueAdmissionsTicket(AdmissionApplication app)
-   {
-      if (app is null)
-      {
-    throw new ArgumentNullException(nameof(app));
+    // Stores student admission applications.
+    private readonly CustomQueue<AdmissionApplication> _applications = new();
 
-   }
+    // Stores admission tickets issued to students.
+    private readonly CustomQueue<Ticket> _tickets = new();
 
+    // Tracks the next ticket number to be assigned.
+    private int _nextTicketNumber = 1;
 
-   app.TicketId = $"T-10{_nextTicketNumber}";
-   _nextTicketNumber++;
+    // Returns the current number of students waiting.
+    public int Count => _applications.Count;
 
-
-    _applications.Enqueue(app);
-// Adds a student using a Ticket, converting it into a matching AdmissionApplication.
-   }
-
-   public void IssueAdmissionsTicket(Ticket ticket)
-   {
-    if (ticket is null)
+    // Issues an admission ticket to a student application.
+    public void IssueAdmissionsTicket(AdmissionApplication app)
     {
-        throw new ArgumentNullException(nameof(ticket));
+        if (app is null)
+        {
+            throw new ArgumentNullException(nameof(app));
+        }
 
+        app.TicketId = $"T-10{_nextTicketNumber}";
+        _nextTicketNumber++;
+
+        _applications.Enqueue(app);
     }
-    ticket.TicketId = $"T-10{_nextTicketNumber}";
-    _nextTicketNumber++;
 
-    var application = new AdmissionApplication(
-applicationId: ticket.LogId,
-        studentName: ticket.StudentId,
-        priorityScore: 0)
+    // Issues an admission ticket using an existing Ticket object.
+    public void IssueAdmissionsTicket(Ticket ticket)
     {
-        TicketId = ticket.TicketId
+        if (ticket is null)
+        {
+            throw new ArgumentNullException(nameof(ticket));
+        }
 
-    };
+        ticket.TicketId = $"T-10{_nextTicketNumber}";
+        _nextTicketNumber++;
 
-    _applications.Enqueue(application);
-    _tickets.Enqueue(ticket);
+        var application = new AdmissionApplication(
+            applicationId: ticket.LogId,
+            studentName: ticket.StudentId,
+            priorityScore: 0)
+        {
+            TicketId = ticket.TicketId
+        };
 
+        _applications.Enqueue(application);
+        _tickets.Enqueue(ticket);
+    }
 
-   }
-
-    // Serves (removes) the student who has waited the longest, returning their application.
-
-   public AdmissionApplication ServeNextStudent()
-   {
+    // Serves the next student in the queue (FIFO order).
+    public AdmissionApplication ServeNextStudent()
+    {
         if (CheckQueueEmpty())
         {
             throw new InvalidOperationException("No students are waiting to be served.");
         }
 
-  if (!_tickets.IsEmpty())
-   {
-    _tickets.Dequeue();
-   }
-   return _applications.Dequeue();
-   
-}
+        if (!_tickets.IsEmpty())
+        {
+            _tickets.Dequeue();
+        }
 
-    // Serves (removes) the student who has waited the longest, returning their original ticket.
-public Ticket ServeNextTicket()
-{
+        return _applications.Dequeue();
+    }
 
-   if(_tickets.IsEmpty())
-   {
-    throw new InvalidOperationException("No tickets are waiting to be served.");
-   }
-   _applications.Dequeue();
-   return _tickets.Dequeue();
-   }
-// Looks at the next student in line without removing them.
+    // Serves and returns the next admission ticket.
+    public Ticket ServeNextTicket()
+    {
+        if (_tickets.IsEmpty())
+        {
+            throw new InvalidOperationException("No tickets are waiting to be served.");
+        }
+
+        _applications.Dequeue();
+        return _tickets.Dequeue();
+    }
+
+    // Returns the next ticket without removing it from the queue.
     public Ticket ViewNextTicket()
     {
         if (_tickets.IsEmpty())
@@ -93,75 +95,73 @@ public Ticket ServeNextTicket()
         return _tickets.Peek();
     }
 
-    // Returns true if no students are currently waiting.
-
+    // Checks whether there are any students waiting.
     public bool CheckQueueEmpty()
-{
-    return _applications.IsEmpty();
-
-}
-// Returns how many students are currently waiting.
-public int GetQueueCount() => Count;
-// Linear search (O(n)): checks every application in line for a match, preserving
-public bool SearchApplication(AdmissionApplication app)
-{
-    if (app is null)
     {
-        return false;
+        return _applications.IsEmpty();
     }
 
-    int totalItems = _applications.Count;
-    bool found = false;
+    // Returns the total number of students currently waiting.
+    public int GetQueueCount() => Count;
 
-    for (int i = 0; i < totalItems; i++)
+    // Searches for an application by its Application ID.
+    // Time Complexity: O(n)
+    public bool SearchApplication(AdmissionApplication app)
     {
-        AdmissionApplication current = _applications.Dequeue();
-
-        if (current.ApplicationId == app.ApplicationId)
+        if (app is null)
         {
-            found = true;
+            return false;
         }
-        _applications.Enqueue(current);
-    }
 
-    return found;
-}
-// Bubble sort (O(n^2)): reorders the line so higher PriorityScore students go first.
-public void SortApplicationsByPriority()
-{
-    int totalItems = _applications.Count;
-    var list = new List<AdmissionApplication>();
+        int totalItems = _applications.Count;
+        bool found = false;
 
-    for (int i = 0; i < totalItems; i++)
-    {
-        list.Add(_applications.Dequeue());
-    }
-
-    for (int i = 0; i < list.Count - 1; i++)
-    {
-        for (int j = 0; j < list.Count - i - 1; j++)
+        // Preserve the queue order while searching.
+        for (int i = 0; i < totalItems; i++)
         {
-            if (list[j].PriorityScore < list[j + 1].PriorityScore)
+            AdmissionApplication current = _applications.Dequeue();
+
+            if (current.ApplicationId == app.ApplicationId)
             {
-               (list[j], list[j +1]) = (list[j + 1], list[j]);  
+                found = true;
+            }
+
+            _applications.Enqueue(current);
+        }
+
+        return found;
+    }
+
+    // Sorts applications by PriorityScore using Bubble Sort.
+    // Higher priority applications are placed at the front of the queue.
+    // Time Complexity: O(n²)
+    public void SortApplicationsByPriority()
+    {
+        int totalItems = _applications.Count;
+        var list = new List<AdmissionApplication>();
+
+        // Transfer queue items into a temporary list.
+        for (int i = 0; i < totalItems; i++)
+        {
+            list.Add(_applications.Dequeue());
+        }
+
+        // Bubble Sort by descending priority score.
+        for (int i = 0; i < list.Count - 1; i++)
+        {
+            for (int j = 0; j < list.Count - i - 1; j++)
+            {
+                if (list[j].PriorityScore < list[j + 1].PriorityScore)
+                {
+                    (list[j], list[j + 1]) = (list[j + 1], list[j]);
+                }
             }
         }
 
+        // Restore the sorted applications back into the queue.
+        foreach (var app in list)
+        {
+            _applications.Enqueue(app);
+        }
     }
-
-    foreach (var app in list)
-    {
-        _applications.Enqueue(app);
-    }
-
 }
-}
-
-
-
-
-
-
-
-
-

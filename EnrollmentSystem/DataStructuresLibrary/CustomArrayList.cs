@@ -4,26 +4,31 @@ using System.Collections.Generic;
 
 namespace DataStructuresLibrary
 {
+    // Custom implementation of a dynamic array.
     public class CustomArrayList<T>
     {
-        private T[] _items;   // backing array that stores the elements
-        private int _count;   // number of elements currently stored
+        // Backing array that stores the elements.
+        private T[] _items;
 
-        // Returns how many elements are currently in the list
+        // Tracks the number of elements currently stored.
+        private int _count;
+
+        // Returns the number of elements in the list.
         public int Count
         {
             get { return _count; }
         }
 
-        // Constructor: starts with a small array of size 4
+        // Initializes the list with a default capacity of 4.
         public CustomArrayList()
         {
             _items = new T[4];
             _count = 0;
         }
 
-        // Adds an item to the end of the list
-        // If the array is full, it grows first (Resize)
+        // Adds an item to the end of the list.
+        // Automatically resizes the array when it becomes full.
+        // Time Complexity: O(1) average, O(n) when resizing.
         public void Add(T item)
         {
             if (_count == _items.Length)
@@ -35,8 +40,9 @@ namespace DataStructuresLibrary
             _count++;
         }
 
-        // Returns the item at the given index
-        // Throws an exception if the index is invalid
+        // Returns the item at the specified index.
+        // Throws an exception if the index is invalid.
+        // Time Complexity: O(1)
         public T Get(int index)
         {
             if (index < 0 || index >= _count)
@@ -47,8 +53,9 @@ namespace DataStructuresLibrary
             return _items[index];
         }
 
-        // Removes the item at the given index
-        // Shifts every item after it one spot to the left to fill the gap
+        // Removes the element at the specified index.
+        // Shifts all succeeding elements one position to the left.
+        // Time Complexity: O(n)
         public void RemoveAt(int index)
         {
             if (index < 0 || index >= _count)
@@ -61,12 +68,14 @@ namespace DataStructuresLibrary
                 _items[i] = _items[i + 1];
             }
 
-            _items[_count - 1] = default(T)!; // clear the now-empty last slot
+            // Clear the unused last slot.
+            _items[_count - 1] = default(T)!;
             _count--;
         }
 
-        // Doubles the size of the backing array when it's full
-        // Copies all existing items into the new, bigger array
+        // Doubles the capacity of the backing array.
+        // Copies all existing elements into the new array.
+        // Time Complexity: O(n)
         private void Resize()
         {
             int newCapacity = _items.Length * 2;
@@ -80,9 +89,9 @@ namespace DataStructuresLibrary
             _items = newArray;
         }
 
-        // Linear search: checks each item one by one
-        // Returns the index of the first match, or -1 if not found
-        // Time complexity: O(n)
+        // Performs a linear search for the specified item.
+        // Returns the index if found; otherwise returns -1.
+        // Time Complexity: O(n)
         public int IndexOf(T item)
         {
             for (int i = 0; i < _count; i++)
@@ -92,13 +101,19 @@ namespace DataStructuresLibrary
                     return i;
                 }
             }
+
             return -1;
         }
 
-        // Insertion sort: builds a sorted section one item at a time
-        // Takes each item and moves it left until it's in the correct order
-        // Uses Comparer<T>.Default so it works with any type that supports comparison
-        // Time complexity: O(n^2) worst case, O(n) best case (already sorted)
+        // Wrapper method required by the unit tests.
+        // Calls IndexOf() to locate the specified item.
+        public int Search(T item)
+        {
+            return IndexOf(item);
+        }
+
+        // Sorts the elements in ascending order using insertion sort.
+        // Time Complexity: O(n²) worst case, O(n) best case.
         public void Sort()
         {
             for (int i = 1; i < _count; i++)

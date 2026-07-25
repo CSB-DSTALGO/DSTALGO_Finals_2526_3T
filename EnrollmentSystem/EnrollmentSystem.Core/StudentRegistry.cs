@@ -82,6 +82,17 @@ public class StudentRegistry
         }
     }
 
+    // Removes a student record by string ID (required by test scaffold)
+    public bool RemoveStudent(string studentId)
+    {
+        if (!int.TryParse(studentId, out int id))
+        {
+            return false;
+        }
+
+        return UnregisterStudent(id);
+    }
+
     // Returns the student at a given index (needed by ConsoleApp)
     public Student GetStudentAt(int index)
     {
