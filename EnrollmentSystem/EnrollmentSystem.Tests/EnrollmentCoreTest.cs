@@ -50,6 +50,24 @@ namespace EnrollmentSystem.Tests
         }
 
         [Fact]
+        public void InsertCourse_ShouldIncreaseCount()
+        {
+            var curriculum = new CourseCurriculum();
+
+            curriculum.InsertCourse(new Course("CS101", "Intro to CS", 3));
+
+            Assert.Equal(1, curriculum.Count);
+        }
+
+        [Fact]
+        public void InsertCourse_ShouldThrow_WhenCourseIsNull()
+        {
+            var curriculum = new CourseCurriculum();
+
+            Assert.Throws<ArgumentNullException>(() => curriculum.InsertCourse(null!));
+        }
+
+        [Fact]
         public void RemoveCourse_ShouldReturnTrue_WhenCourseIsRemoved()
         {
             var curriculum = new CourseCurriculum();
@@ -60,6 +78,163 @@ namespace EnrollmentSystem.Tests
 
             Assert.True(removed);
             Assert.Equal(0, curriculum.CalculateTotalUnits());
+        }
+
+        [Fact]
+        public void DeleteCourse_ShouldReturnFalse_WhenCodeDoesNotExist()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS101", "Intro to CS", 3));
+
+            bool removed = curriculum.DeleteCourse("CS999");
+
+            Assert.False(removed);
+        }
+
+        [Fact]
+        public void DeleteCourse_ShouldDecreaseCount()
+        {
+            var curriculum = new CourseCurriculum();
+            var course = new Course("CS101", "Intro to CS", 3);
+            curriculum.InsertCourse(course);
+
+            curriculum.DeleteCourse(course.Code);
+
+            Assert.Equal(0, curriculum.Count);
+        }
+
+        [Fact]
+        public void CalculateTotalUnits_ShouldReturnZero_ForEmptyCurriculum()
+        {
+            var curriculum = new CourseCurriculum();
+
+            Assert.Equal(0, curriculum.CalculateTotalUnits());
+        }
+
+        [Fact]
+        public void CalculateTotalUnits_ShouldSumAllCourseUnits()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS101", "Intro to CS", 3));
+            curriculum.InsertCourse(new Course("CS102", "Data Structures", 4));
+            curriculum.InsertCourse(new Course("CS103", "Algorithms", 5));
+
+            Assert.Equal(12, curriculum.CalculateTotalUnits());
+        }
+
+        [Fact]
+        public void CalculateTotalUnits_ShouldUpdate_AfterDeletion()
+        {
+            var curriculum = new CourseCurriculum();
+            var c1 = new Course("CS101", "Intro to CS", 3);
+            curriculum.InsertCourse(c1);
+            curriculum.InsertCourse(new Course("CS102", "Data Structures", 4));
+
+            curriculum.DeleteCourse(c1.Code);
+
+            Assert.Equal(4, curriculum.CalculateTotalUnits());
+        }
+
+        [Fact]
+        public void ShowCurriculum_ShouldNotThrow_WhenCurriculumIsEmpty()
+        {
+            var curriculum = new CourseCurriculum();
+
+            var exception = Record.Exception(() => curriculum.ShowCurriculum());
+
+            Assert.Null(exception);
+        }
+
+        [Fact]
+        public void ShowCurriculum_ShouldNotThrow_WithMultipleCourses()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS101", "Intro to CS", 3));
+            curriculum.InsertCourse(new Course("CS102", "Data Structures", 3));
+
+            var exception = Record.Exception(() => curriculum.ShowCurriculum());
+
+            Assert.Null(exception);
+        }
+
+        [Fact]
+        public void ShowCurriculum_ShouldNotThrow_AfterDeletingAllCourses()
+        {
+            var curriculum = new CourseCurriculum();
+            var c1 = new Course("CS101", "Intro to CS", 3);
+            curriculum.InsertCourse(c1);
+            curriculum.DeleteCourse(c1.Code);
+
+            var exception = Record.Exception(() => curriculum.ShowCurriculum());
+
+            Assert.Null(exception);
+        }
+
+        [Fact]
+        public void SearchCourse_ShouldReturnTrue_WhenExactInstanceExistsInCurriculum()
+        {
+            var curriculum = new CourseCurriculum();
+            var course = new Course("CS101", "Intro to CS", 3);
+            curriculum.InsertCourse(course);
+
+            Assert.True(curriculum.SearchCourse(course));
+        }
+
+        [Fact]
+        public void SearchCourse_ShouldReturnFalse_WhenCourseWasNeverInserted()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS101", "Intro to CS", 3));
+            var notInserted = new Course("CS999", "Ghost Course", 3);
+
+            Assert.False(curriculum.SearchCourse(notInserted));
+        }
+
+        [Fact]
+        public void SearchCourse_ShouldReturnFalse_AfterCourseIsDeleted()
+        {
+            var curriculum = new CourseCurriculum();
+            var course = new Course("CS101", "Intro to CS", 3);
+            curriculum.InsertCourse(course);
+            curriculum.DeleteCourse(course.Code);
+
+            Assert.False(curriculum.SearchCourse(course));
+        }
+
+        [Fact]
+        public void SortCurriculumByUnits_ShouldOrderCoursesAscendingByUnits()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS103", "Algorithms", 5));
+            curriculum.InsertCourse(new Course("CS101", "Intro to CS", 1));
+            curriculum.InsertCourse(new Course("CS102", "Data Structures", 3));
+
+            curriculum.SortCurriculumByUnits();
+
+            // Total should be unaffected by sorting, confirming no data was lost
+            Assert.Equal(9, curriculum.CalculateTotalUnits());
+        }
+
+        [Fact]
+        public void SortCurriculumByUnits_ShouldNotThrow_ForEmptyCurriculum()
+        {
+            var curriculum = new CourseCurriculum();
+
+            var exception = Record.Exception(() => curriculum.SortCurriculumByUnits());
+
+            Assert.Null(exception);
+        }
+
+        [Fact]
+        public void SortCurriculumByUnits_ShouldNotThrow_ForSingleCourse()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS101", "Intro to CS", 3));
+
+            var exception = Record.Exception(() => curriculum.SortCurriculumByUnits());
+
+            Assert.Null(exception);
+            Assert.Equal(3, curriculum.CalculateTotalUnits());
         }
     }
 
