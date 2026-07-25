@@ -17,7 +17,7 @@ public class StudentRegistry
         _registry.Add(student);
     }
 
-    // Removes a student record by ID. Returns true if found and removed.
+    // Removes a student record by ID (used by ConsoleApp). Returns true if found and removed.
     public bool UnregisterStudent(int id)
     {
         int index = SearchStudentById(id);
@@ -30,7 +30,20 @@ public class StudentRegistry
         return true;
     }
 
-    // Retrieves and prints a single student's details by index (required by rubric)
+    // Removes a student record by matching the Student object itself (required by test scaffold)
+    public bool RemoveStudent(Student student)
+    {
+        int index = _registry.IndexOf(student);
+        if (index == -1)
+        {
+            return false;
+        }
+
+        _registry.RemoveAt(index);
+        return true;
+    }
+
+    // Prints a single student's details by index (required by rubric)
     public void GetStudentDetails(int index)
     {
         Student student = _registry.Get(index);
@@ -64,14 +77,30 @@ public class StudentRegistry
         return _registry.Count;
     }
 
-    // Sorts all students by GPA using CustomArrayList's insertion sort
-    public void SortStudentsByGpa() 
+    // Calculates the average GPA of all registered students (required by test scaffold)
+    public double CalculateAverageGpa()
     {
-        _registry.Sort();
+        if (_registry.Count == 0)
+        {
+            return 0.0;
+        }
+
+        double total = 0.0;
+        for (int i = 0; i < _registry.Count; i++)
+        {
+            total += _registry.Get(i).Gpa;
+        }
+
+        return total / _registry.Count;
     }
 
-    // Searches for a student by ID using linear search
-    // Time complexity: O(n)
+    // Searches for a student by matching the Student object itself (required by test scaffold)
+    public int SearchStudent(Student student)
+    {
+        return _registry.IndexOf(student);
+    }
+
+    // Searches for a student by ID (used internally by UnregisterStudent)
     public int SearchStudentById(int id)
     {
         for (int i = 0; i < _registry.Count; i++)
@@ -82,5 +111,11 @@ public class StudentRegistry
             }
         }
         return -1;
+    }
+
+    // Sorts all students by GPA using CustomArrayList's insertion sort
+    public void SortStudentsByGpa()
+    {
+        _registry.Sort();
     }
 }
