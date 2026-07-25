@@ -70,7 +70,7 @@ namespace EnrollmentSystem.ConsoleApp
                         Console.Write("Enter Course Code: ");
                         string course = Console.ReadLine() ?? "";
                         
-                        _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0));
+                        _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0,course));
                         Console.WriteLine("\nStudent registered successfully.");
                         _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Registered student {id}" });
                         break;
@@ -148,7 +148,8 @@ namespace EnrollmentSystem.ConsoleApp
 
                     case "3":
                         Console.WriteLine("\n--- Curriculum Matrix ---");
-                        Console.WriteLine($"Total Curriculum Units: {_curriculum.CalculateTotalUnits()}");
+                        _curriculum.ShowCurriculum();
+                        Console.WriteLine($"\nTotal Curriculum Units: {_curriculum.CalculateTotalUnits()}");
                         break;
                 }
             }
@@ -192,6 +193,7 @@ namespace EnrollmentSystem.ConsoleApp
 
                     case "3":
                         Console.WriteLine($"\nTickets remaining in queue line: {_desk.GetQueueCount()}");
+                        _desk.ShowQueue();
                         break;
                 }
             }
