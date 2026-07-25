@@ -18,7 +18,7 @@ namespace DataStructuresLibrary
         }
 
         // Stores the first node of the list
-        private Node __head;
+        private Node _head;
 
         // Counts how many items are inside the list
         public int Count { get; private set; }

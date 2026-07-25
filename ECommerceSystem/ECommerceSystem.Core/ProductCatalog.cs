@@ -2,7 +2,6 @@ namespace ECommerceSystem.Core;
 
 using DataStructuresLibrary;
 using System;
-using System.Collections.Generic;
 
 public class ProductCatalog
 {
@@ -22,23 +21,16 @@ public class ProductCatalog
 
     public bool SearchProduct(Product product)
     {
-        return _products.Contains(product);
+        return _products.Search(product);
     }
 
     public void SortCatalog()
     {
-        var productList = new List<Product>();
-        foreach (var item in _products)
-        {
-            productList.Add(item);
-        }
+        _products.Sort();
+    }
 
-        productList.Sort((p1, p2) => p1.Name.CompareTo(p2.Name));
-
-        _products.Clear();
-        foreach (var product in _productList)
-        {
-            _products.Add(product.Name);
-        }
+    public void PrintCatalog()
+    {
+        _products.Print();
     }
 }
