@@ -8,14 +8,95 @@ public class CourseCurriculum
 
     public int Count => _courses.Count;
 
-    public void InsertCourse(Course course) => throw new NotImplementedException();
-    public bool DeleteCourse(string code) => throw new NotImplementedException();
+    public void InsertCourse(Course course)
+    {
+        _courses.AddLast(course);
+    }
+    public bool DeleteCourse(string code)
+    {
+        Course? remove = null;
+        var current = _courses.Head;
+        while (current != null)
+        {
+            if (current.Data.Code == code)
+            {
+                remove = current.Data;
+                break;
+            }
+        }
+        if (remove != null)
+        {
+            return _courses.Remove(remove);
+        }
+        return false;
+    }
 
     // Hint: Sum total credit units across all courses
-    public int CalculateTotalUnits() => throw new NotImplementedException();
-    public void ShowCurriculum() => throw new NotImplementedException(); 
+    public int CalculateTotalUnits()
+    {
+        int totalUnits = 0;
+        var current = _courses.Head;
+        while (current != null)
+        {
+            totalUnits += current.Data.Units;
+            current = current.Next;
+        }
+        return totalUnits;
+    }
+    public void ShowCurriculum()
+    {
+        var current = _courses.Head;
+        while (current != null)
+        {
+            Console.WriteLine(current.Data);
+            current = current.Next;
+        }
+    }
 
     // Hint: Delegate search and sort to CustomSinglyLinkedList<T>
-    public bool SearchCourse(Course course) => throw new NotImplementedException();
-    public void SortCurriculumByUnits() => throw new NotImplementedException();
+    public bool SearchCourse(Course course)
+    {
+        var current = _courses.Head;
+        while (current != null)
+        {
+            if (current.Data != null && current.Data.Equals(course))
+            {
+                return true;
+            }
+            current = current.Next;
+        }
+        return false;
+    }
+
+    public void SortCurriculumByUnits()
+    {
+        if (_courses.Head == null || _courses.Head.Next == null)
+        {
+            return;
+        }
+
+        Node<Course>? head = null;
+        Node<Course>? current = _courses.Head;
+        while (current != null)
+        {
+            Node<Course>? next = current.Next;
+            if (head == null || head.Data.Units >= current.Data.Units)
+            {
+                current.Next = head;
+                head = current;
+            }
+            else
+            {
+                Node<Course> search = head;
+                while (search.Next != null && search.Next.Data.Units < current.Data.Units)
+                {
+                    search = search.Next;
+                }
+                current.Next = search.Next;
+                search.Next = current;
+            }
+            current = next;
+        }
+        _courses.Head = head;
+    }
 }
