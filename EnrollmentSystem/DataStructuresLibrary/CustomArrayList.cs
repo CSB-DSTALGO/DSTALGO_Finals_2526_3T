@@ -68,30 +68,30 @@ namespace DataStructuresLibrary
             _items = newItems; // make _item the reference of the larger array
         }
 
-        public int Search(T item, Func<T, T, bool> comparer)
+        public int Search(T item, Func<T, T, bool> comparer) 
         {
-            for (int i = 0; i < _count; i++)
+            for (int i = 0; i < _count; i++) // search through the array for a matching item
             {
-                if (comparer(_items[i], item))
+                if (comparer(_items[i], item)) // item found
                 {
-                    return i;
+                    return i; // return index of the matching item
                 }
             }
 
-            return -1;
+            return -1; // item not found
         }
 
         public void Sort(Func<T, T, bool> shouldSwap)
         {
-            for (int i = 0; i < _count - 1; i++)
+            for (int i = 0; i < _count - 1; i++) // bubble sort the array based on the given condition
             {
                 for (int j = 0; j < _count - i - 1; j++)
                 {
-                    if (shouldSwap(_items[j], _items[j + 1]))
+                    if (shouldSwap(_items[j], _items[j + 1])) // swap if out of order
                     {
-                        T temp = _items[j];
-                        _items[j] = _items[j + 1];
-                        _items[j + 1] = temp;
+                        T temp = _items[j]; // store current item
+                        _items[j] = _items[j + 1]; // move next item left
+                        _items[j + 1] = temp; // place stored item to the right
                     }
                 }
             }
