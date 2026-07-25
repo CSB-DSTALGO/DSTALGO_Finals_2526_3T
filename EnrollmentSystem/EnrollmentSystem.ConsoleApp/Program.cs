@@ -244,7 +244,19 @@ namespace EnrollmentSystem.ConsoleApp
                         break;
 
                     case "3":
-                        Console.WriteLine($"\nTickets remaining in queue line: {_desk.GetQueueCount()}");
+                        Console.WriteLine($"\nTickets remaining: {_desk.GetQueueCount()}");
+
+                        if (!_desk.CheckQueueEmpty())
+                        {
+                            Ticket next = _desk.ViewNextTicket();
+
+                            Console.WriteLine($"Next Ticket : {next.TicketId}");
+                            Console.WriteLine($"Student ID  : {next.StudentId}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Queue is empty.");
+                        }
                         break;
                 }
             }

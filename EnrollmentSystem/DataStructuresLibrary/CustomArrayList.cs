@@ -68,6 +68,7 @@ namespace DataStructuresLibrary
 
         private void Resize()
         {
+            // Increases the array capacity by one intially then multiplied by 2 onwards. 
             int newSize = (_items.Length == 0) ? 1 : _items.Length * 2;
 
             T[] newItems = new T[newSize];
