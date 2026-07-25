@@ -28,6 +28,8 @@ namespace EnrollmentSystem.Core
         public void ShowAllStudents()
         {
             Console.WriteLine("All Students:\n");
+
+            //Use for loop to display all elements in array
             for (int i = 0; i < _registry.Count; i++)
             {
                 Console.Write(_registry.Get(i) + "\t");
@@ -36,7 +38,19 @@ namespace EnrollmentSystem.Core
 
         public void SortStudents()
         {
-            
+            _registry.BubbleSort();
+        }
+
+        public string SearchStudent(Student student)
+        {
+           int index = _registry.LinearSearch(student);
+
+            if (index == -1)
+            {
+                return "Student not found.";
+            }
+
+            return $"{student.Name} found at index {index}";
         }
     }
 }
