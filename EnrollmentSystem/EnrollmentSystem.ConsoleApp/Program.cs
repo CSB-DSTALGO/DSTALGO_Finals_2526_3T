@@ -70,7 +70,7 @@ namespace EnrollmentSystem.ConsoleApp
                         Console.Write("Enter Course Code: ");
                         string course = Console.ReadLine() ?? "";
                         
-                        _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0));
+                        _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0, course));
                         Console.WriteLine("\nStudent registered successfully.");
                         _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Registered student {id}" });
                         break;
