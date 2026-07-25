@@ -1,43 +1,108 @@
-using DataStructuresLibrary;
+namespace DataStructuresLibrary.Tests;
+
 using Xunit;
+using DataStructuresLibrary;
 
-namespace DataStructuresLibrary.Tests
+public class CustomSinglyLinkedListTests
 {
-    public class CustomSinglyLinkedListTests
+    [Fact]
+    public void Add_ShouldAppendNodeAndIncrementCount()
     {
-        [Fact]
-        public void Add_ShouldAppendNodeAndIncrementCount()
-        {
-            // TODO: Test appending items to the linked list
-            throw new NotImplementedException();
-        }
+        // Arrange
+        var list = new CustomSinglyLinkedList<int>();
 
-        [Fact]
-        public void Remove_ShouldUpdateNodePointersCorrectly()
-        {
-            // TODO: Test removing head, middle, and tail nodes
-            throw new NotImplementedException();
-        }
+        // Act
+        list.Add(10);
+        list.Add(20);
+        list.Add(30);
 
-        [Fact]
-        public void Search_ShouldReturnTrue_WhenItemExistsInNodes()
-        {
-            // TODO: Test linear node traversal finding existing data
-            throw new NotImplementedException();
-        }
+        // Assert
+        Assert.Equal(3, list.Count);
+        Assert.Equal(10, list.GetAt(0));
+        Assert.Equal(20, list.GetAt(1));
+        Assert.Equal(30, list.GetAt(2));
+    }
 
-        [Fact]
-        public void Search_ShouldReturnFalse_WhenItemIsAbsent()
-        {
-            // TODO: Test linear search returning false for missing data
-            throw new NotImplementedException();
-        }
+    [Fact]
+    public void Remove_ShouldUpdateNodePointersCorrectly()
+    {
+        // Arrange
+        var list = new CustomSinglyLinkedList<int>();
 
-        [Fact]
-        public void Sort_ShouldRearrangeNodePointersInAscendingOrder()
-        {
-            // TODO: Test node re-linking to verify ascending list order
-            throw new NotImplementedException();
-        }
+        list.Add(10);
+        list.Add(20);
+        list.Add(30);
+        list.Add(40);
+
+        // Act & Assert - Remove head
+        Assert.True(list.Remove(10));
+        Assert.Equal(3, list.Count);
+        Assert.Equal(20, list.GetAt(0));
+
+        // Act & Assert - Remove middle
+        Assert.True(list.Remove(30));
+        Assert.Equal(2, list.Count);
+        Assert.Equal(20, list.GetAt(0));
+        Assert.Equal(40, list.GetAt(1));
+
+        // Act & Assert - Remove tail
+        Assert.True(list.Remove(40));
+        Assert.Equal(1, list.Count);
+        Assert.Equal(20, list.GetAt(0));
+    }
+
+    [Fact]
+    public void Search_ShouldReturnTrue_WhenItemExistsInNodes()
+    {
+        // Arrange
+        var list = new CustomSinglyLinkedList<int>();
+
+        list.Add(5);
+        list.Add(10);
+        list.Add(15);
+
+        // Act
+        bool result = list.Search(10);
+
+        // Assert
+        Assert.True(result);
+    }
+
+    [Fact]
+    public void Search_ShouldReturnFalse_WhenItemIsAbsent()
+    {
+        // Arrange
+        var list = new CustomSinglyLinkedList<int>();
+
+        list.Add(5);
+        list.Add(10);
+        list.Add(15);
+
+        // Act
+        bool result = list.Search(100);
+
+        // Assert
+        Assert.False(result);
+    }
+
+    [Fact]
+    public void Sort_ShouldRearrangeNodePointersInAscendingOrder()
+    {
+        // Arrange
+        var list = new CustomSinglyLinkedList<int>();
+
+        list.Add(30);
+        list.Add(10);
+        list.Add(20);
+        list.Add(40);
+
+        // Act
+        list.Sort();
+
+        // Assert
+        Assert.Equal(10, list.GetAt(0));
+        Assert.Equal(20, list.GetAt(1));
+        Assert.Equal(30, list.GetAt(2));
+        Assert.Equal(40, list.GetAt(3));
     }
 }

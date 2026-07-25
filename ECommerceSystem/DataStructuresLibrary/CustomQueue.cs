@@ -1,4 +1,4 @@
-namespace DataStructuresLibrary; //LIAM
+namespace DataStructuresLibrary;
 
 public class CustomQueue<T> where T : IComparable<T>
 {
@@ -7,8 +7,6 @@ public class CustomQueue<T> where T : IComparable<T>
     private int rear;
     private int count;
 
-
-    //Initializes queue starting w 4
     public CustomQueue()
     {
         items = new T[4];
@@ -19,7 +17,7 @@ public class CustomQueue<T> where T : IComparable<T>
 
     public int Count => count;
 
-    // Adds item to the rear of the queue
+    // Adds an item to the rear of the queue.
     public void Enqueue(T item)
     {
         if (count == items.Length)
@@ -32,7 +30,7 @@ public class CustomQueue<T> where T : IComparable<T>
         count++;
     }
 
-    // Removes and returns the front item
+    // Removes and returns the front item (FIFO).
     public T Dequeue()
     {
         if (count == 0)
@@ -45,7 +43,7 @@ public class CustomQueue<T> where T : IComparable<T>
         return item;
     }
 
-    // Returns the front item without removing it
+    // Returns the front item without removing it.
     public T Peek()
     {
         if (count == 0)
@@ -54,7 +52,7 @@ public class CustomQueue<T> where T : IComparable<T>
         return items[front];
     }
 
-    // Searches the queue for a specific item
+    // Searches the queue for a specific item.
     public bool Search(T item)
     {
         for (int i = 0; i < count; i++)
@@ -66,7 +64,7 @@ public class CustomQueue<T> where T : IComparable<T>
         return false;
     }
 
-    // Sorts the queue in ascending order using Bubble Sort
+    // Sorts the queue in ascending order using Bubble Sort.
     public void Sort()
     {
         for (int i = 0; i < count - 1; i++)
@@ -86,7 +84,7 @@ public class CustomQueue<T> where T : IComparable<T>
         }
     }
 
-    // Doubles the size of the array when it becomes full
+    // Doubles the size of the array when it becomes full.
     private void Resize()
     {
         T[] newItems = new T[items.Length * 2];

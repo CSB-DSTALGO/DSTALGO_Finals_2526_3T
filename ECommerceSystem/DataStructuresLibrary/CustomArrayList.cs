@@ -16,19 +16,21 @@ namespace DataStructuresLibrary
         public void Add(T item)
         {
             if (Count == _items.Length)
-                Resize();
-
+            {
+                Array.Resize(ref _items, _items.Length * 2);
+            }
             _items[Count++] = item;
         }
 
         public bool Remove(T item)
         {
             int index = Search(item);
-            if (index == -1)
-                return false;
+            if (index == -1) return false;
 
             for (int i = index; i < Count - 1; i++)
+            {
                 _items[i] = _items[i + 1];
+            }
 
             Count--;
             return true;
@@ -45,9 +47,10 @@ namespace DataStructuresLibrary
         public int Search(T item)
         {
             for (int i = 0; i < Count; i++)
+            {
                 if (_items[i].CompareTo(item) == 0)
                     return i;
-
+            }
             return -1;
         }
 
@@ -56,11 +59,12 @@ namespace DataStructuresLibrary
             Array.Sort(_items, 0, Count);
         }
 
-        private void Resize()
+        public void ShowAllItems()
         {
-            T[] newArray = new T[_items.Length * 2];
-            Array.Copy(_items, newArray, _items.Length);
-            _items = newArray;
+            for (int i = 0; i < Count; i++)
+            {
+                Console.WriteLine(_items[i]);
+            }
         }
     }
 }
