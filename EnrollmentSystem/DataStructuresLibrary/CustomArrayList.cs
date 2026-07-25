@@ -68,7 +68,9 @@ namespace DataStructuresLibrary
 
         private void Resize()
         {
-            T[] newItems = new T[_items.Length + 1]; // Adding just 1 capacity
+            int newSize = (_items.Length == 0) ? 1 : _items.Length * 2;
+
+            T[] newItems = new T[newSize];
 
             for (int i = 0; i < _count; i++)
             {
