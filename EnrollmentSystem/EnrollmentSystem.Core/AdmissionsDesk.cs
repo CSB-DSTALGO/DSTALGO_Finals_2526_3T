@@ -25,6 +25,12 @@ public class AdmissionsDesk
         {
             throw new ArgumentNullException(nameof(ticket), "Ticket cannot be null."); // throws exception if null
         }
+
+        if (string.IsNullOrEmpty(ticket.TicketId)) // auto-generate ID if not already set
+        {
+            ticket.TicketId = $"T-{100 + _ticketQueue.Count + 1}";
+        }
+
         _ticketQueue.Enqueue(ticket); // enqueue (ADD) the ticket to the queue
     }
 

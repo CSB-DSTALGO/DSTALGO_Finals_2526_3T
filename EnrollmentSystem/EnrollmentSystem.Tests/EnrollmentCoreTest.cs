@@ -69,8 +69,8 @@ namespace EnrollmentSystem.Tests
         public void IssueAdmissionsTicket_ShouldQueueTicketsInFIFOOrder()
         {
             var desk = new AdmissionsDesk();
-            var t1 = new Ticket { LogId = 1, Action = "First Action", Timestamp = DateTime.Now };
-            var t2 = new Ticket { LogId = 2, Action = "Second Action", Timestamp = DateTime.Now };
+            var t1 = new Ticket {LogId = 1, Action = "First Action", Timestamp = DateTime.Now };
+            var t2 = new Ticket {LogId = 2, Action = "Second Action", Timestamp = DateTime.Now };
 
             desk.IssueAdmissionsTicket(t1);
             desk.IssueAdmissionsTicket(t2);
