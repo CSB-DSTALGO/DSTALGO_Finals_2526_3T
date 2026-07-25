@@ -1,16 +1,20 @@
 namespace DataStructuresLibrary;
 
+// Code by: Victor Tarra
+
 public class CustomArrayList<T> where T : IComparable<T>
 {
     private T[] _items;
     public int Count { get; private set; }
 
+    // Initializes the array list with a default capacity.
     public CustomArrayList(int initialCapacity = 4)
     {
         _items = new T[initialCapacity];
     }
 
     // Adds a new item to the end of the array list.
+    // If capacity is full, it resizes the internal array.
     public void Add(T item)
     {
         if (Count == _items.Length)
@@ -22,16 +26,18 @@ public class CustomArrayList<T> where T : IComparable<T>
         Count++;
     }
 
-    // Removes the first matching item from the array list.
+    // Removes the first matching item using Linear Search.
+    // After removal, elements are shifted left to maintain order.
     public bool Remove(T item)
     {
-        int index = Search(item);
+        int index = Search(item); // Linear Search used here
 
         if (index == -1)
         {
             return false;
         }
 
+        // Shift elements to the left
         for (int i = index; i < Count - 1; i++)
         {
             _items[i] = _items[i + 1];
@@ -53,7 +59,9 @@ public class CustomArrayList<T> where T : IComparable<T>
         return _items[index];
     }
 
-    // Searches for an item and returns its index, or -1 if not found.
+    // Linear Search Algorithm:
+    // Iterates through each element to find a match.
+    // Time Complexity: O(n)
     public int Search(T item)
     {
         for (int i = 0; i < Count; i++)
@@ -67,7 +75,10 @@ public class CustomArrayList<T> where T : IComparable<T>
         return -1;
     }
 
-    // Sorts the array list in ascending order using Bubble Sort.
+    // Bubble Sort Algorithm:
+    // Repeatedly compares adjacent elements and swaps them if out of order.
+    // Largest elements "bubble" to the end after each pass.
+    // Time Complexity: O(n^2)
     public void Sort()
     {
         for (int i = 0; i < Count - 1; i++)
@@ -76,13 +87,14 @@ public class CustomArrayList<T> where T : IComparable<T>
             {
                 if (_items[j].CompareTo(_items[j + 1]) > 0)
                 {
+                    // Swap elements
                     (_items[j], _items[j + 1]) = (_items[j + 1], _items[j]);
                 }
             }
         }
     }
 
-    // Resizes the internal array when capacity is full.
+    // Doubles the capacity of the internal array when full.
     private void Resize()
     {
         int newCapacity = _items.Length == 0 ? 4 : _items.Length * 2;
