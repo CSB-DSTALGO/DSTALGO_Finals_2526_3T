@@ -1,41 +1,39 @@
 // CustomStack.cs
 using System;
 
-namespace DataStructuresLibrary
+namespace EnrollmentSystem.Core
 {
-    public class CustomStack<T>
+    public class AdministrativeLogs
     {
-        private T[] _items;
-        private int _top;
+        private readonly CustomStack<Log> _logs;
 
-        public int Count 
-        { 
-            get { throw new NotImplementedException(); } 
+        public AdministrativeLogs()
+        {
+            _logs = new CustomStack<Log>();
         }
 
-        public CustomStack()
+        // Pushes an action to the top index.
+        public void PushSystemLog(Log log)
         {
-            throw new NotImplementedException();
+            _logs.Push(log);
         }
 
-        public void Push(T item)
+        // Pops the top item off the execution stack.
+        public Log RollbackLastLog()
         {
-            throw new NotImplementedException();
+            return _logs.Pop();
         }
 
-        public T Pop()
+        // Peeks at the topmost active log record.
+        public Log ViewLatestLog()
         {
-            throw new NotImplementedException();
+            return _logs.Peek();
         }
 
-        public T Peek()
+        // Returns true if the stack is empty.
+        public bool CheckLogsEmpty()
         {
-            throw new NotImplementedException();
-        }
-
-        public bool IsEmpty()
-        {
-            throw new NotImplementedException();
+            return _logs.IsEmpty();
         }
     }
 }
