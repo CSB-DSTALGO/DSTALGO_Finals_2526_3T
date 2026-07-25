@@ -279,8 +279,10 @@ namespace EnrollmentSystem.ConsoleApp
             Console.WriteLine("--- SYSTEM ADMINISTRATIVE LOGS ---");
             Console.WriteLine("1. View Current Top Log (Peek)");
             Console.WriteLine("2. Clear/Purge Latest Log (Pop)");
-            Console.WriteLine("3. Check Total Log Capacity");
-            Console.WriteLine("4. Back to Main Menu");
+            Console.WriteLine("3. View Log Summary");
+            Console.WriteLine("4. Sort Logs by Log ID");
+            Console.WriteLine("5. Search Log by ID");
+            Console.WriteLine("6. Back to Main Menu");
             Console.Write("Choice: ");
             string choice = Console.ReadLine() ?? "";
 
@@ -290,16 +292,58 @@ namespace EnrollmentSystem.ConsoleApp
                 {
                     case "1":
                         var latest = _logs.PeekLatestLog();
-                        Console.WriteLine($"\n[TOP LOG] ID: {latest.LogId} | Action: {latest.ActionSummary}");
+
+                        Console.WriteLine($"\n[TOP LOG]");
+                        Console.WriteLine($"Log ID : {latest.LogId}");
+                        Console.WriteLine($"Action : {latest.ActionSummary}");
                         break;
 
                     case "2":
                         var popped = _logs.PopSystemLog();
-                        Console.WriteLine($"\n[REMOVED] Purged Log ID: {popped.LogId} ({popped.ActionSummary}) from system tracking stack.");
+
+                        Console.WriteLine($"\n[REMOVED]");
+                        Console.WriteLine($"Log ID : {popped.LogId}");
+                        Console.WriteLine($"Action : {popped.ActionSummary}");
                         break;
 
                     case "3":
-                        Console.WriteLine($"\nTotal active operations recorded in Stack: {_logs.GetLogCount()}");
+                        Console.WriteLine($"\nTotal active operations recorded: {_logs.GetLogCount()}");
+
+                        if (_logs.CheckLogsEmpty())
+                        {
+                            Console.WriteLine("The log stack is currently empty.");
+                        }
+                        else
+                        {
+                            var top = _logs.PeekLatestLog();
+
+                            Console.WriteLine($"Latest Log ID : {top.LogId}");
+                            Console.WriteLine($"Latest Action : {top.ActionSummary}");
+                        }
+
+                        break;
+
+                    case "4":
+                        _logs.SortLogsById();
+                        Console.WriteLine("\nLogs sorted by Log ID.");
+                        Console.WriteLine("Note: Sorting permanently changes the stack order.");
+                        break;
+
+                    case "5":
+                        Console.Write("Enter Log ID: ");
+                        string id = Console.ReadLine() ?? "";
+
+                        Log log = new Log
+                        {
+                            LogId = id
+                        };
+
+                        bool found = _logs.SearchLog(log);
+
+                        Console.WriteLine(found
+                            ? "\nLog found."
+                            : "\nLog not found.");
+
                         break;
                 }
             }
