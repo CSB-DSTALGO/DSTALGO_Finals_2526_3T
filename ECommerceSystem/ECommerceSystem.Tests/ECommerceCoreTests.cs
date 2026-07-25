@@ -62,6 +62,7 @@ public class ECommerceCoreTests
     // 2. ProductCatalog Tests (Integrates CustomSinglyLinkedList<T>)
     // =========================================================================
 
+    // AddProduct tests
     [Fact]
     public void ProductCatalog_AddProduct_AppendsToCatalog()
     {
@@ -74,6 +75,30 @@ public class ECommerceCoreTests
         Assert.True(catalog.SearchProduct(product));
     }
 
+    [Fact]
+    public void ProductCatalog_AddProduct_MultipleProducts()
+    {
+        var catalog = new ProductCatalog();
+        catalog.AddProduct(new Product(1, "P1", 10m));
+        catalog.AddProduct(new Product(2, "P2", 20m));
+        catalog.AddProduct(new Product(3, "P3", 30m));
+
+        Assert.Equal(3, catalog.Count);
+        Assert.Equal("P3", catalog.GetProductDetails(2).Name);
+    }
+
+    [Fact]
+    public void ProductCatalog_AddProduct_SameProductMultipleTimes()
+    {
+        var catalog = new ProductCatalog();
+        var p = new Product(1, "Test", 10m);
+        catalog.AddProduct(p);
+        catalog.AddProduct(p);
+
+        Assert.Equal(2, catalog.Count);
+    }
+
+    // RemoveProduct tests
     [Fact]
     public void ProductCatalog_RemoveProduct_UpdatesCatalogStructure()
     {
@@ -92,6 +117,61 @@ public class ECommerceCoreTests
     }
 
     [Fact]
+    public void ProductCatalog_RemoveProduct_NonExistentProduct()
+    {
+        var catalog = new ProductCatalog();
+        var p1 = new Product(1, "A", 10m);
+        var p2 = new Product(2, "B", 20m);
+        catalog.AddProduct(p1);
+
+        bool removed = catalog.RemoveProduct(p2);
+
+        Assert.False(removed);
+        Assert.Equal(1, catalog.Count);
+    }
+
+    [Fact]
+    public void ProductCatalog_RemoveProduct_FromEmptyCatalog()
+    {
+        var catalog = new ProductCatalog();
+        var p = new Product(1, "A", 10m);
+
+        bool removed = catalog.RemoveProduct(p);
+
+        Assert.False(removed);
+        Assert.Equal(0, catalog.Count);
+    }
+
+    // SearchProduct tests
+    [Fact]
+    public void ProductCatalog_SearchProduct_ReturnsTrueIfExists()
+    {
+        var catalog = new ProductCatalog();
+        var p = new Product(1, "Test", 10m);
+        catalog.AddProduct(p);
+        Assert.True(catalog.SearchProduct(p));
+    }
+
+    [Fact]
+    public void ProductCatalog_SearchProduct_ReturnsFalseIfNotExists()
+    {
+        var catalog = new ProductCatalog();
+        var p1 = new Product(1, "A", 10m);
+        var p2 = new Product(2, "B", 20m);
+        catalog.AddProduct(p1);
+        Assert.False(catalog.SearchProduct(p2));
+    }
+
+    [Fact]
+    public void ProductCatalog_SearchProduct_EmptyCatalog()
+    {
+        var catalog = new ProductCatalog();
+        var p = new Product(1, "A", 10m);
+        Assert.False(catalog.SearchProduct(p));
+    }
+
+    // SortCatalog tests
+    [Fact]
     public void ProductCatalog_SortCatalog_OrdersProductsByPriceAscending()
     {
         var catalog = new ProductCatalog();
@@ -105,8 +185,119 @@ public class ECommerceCoreTests
 
         catalog.SortCatalog();
 
-        Assert.True(catalog.SearchProduct(p3));
-        Assert.Equal(3, catalog.Count);
+        Assert.Equal(p3, catalog.GetProductDetails(0));
+        Assert.Equal(p1, catalog.GetProductDetails(1));
+        Assert.Equal(p2, catalog.GetProductDetails(2));
+    }
+
+    [Fact]
+    public void ProductCatalog_SortCatalog_AlreadySorted()
+    {
+        var catalog = new ProductCatalog();
+        var p1 = new Product(1, "A", 10m);
+        var p2 = new Product(2, "B", 20m);
+
+        catalog.AddProduct(p1);
+        catalog.AddProduct(p2);
+
+        catalog.SortCatalog();
+
+        Assert.Equal(p1, catalog.GetProductDetails(0));
+        Assert.Equal(p2, catalog.GetProductDetails(1));
+    }
+
+    [Fact]
+    public void ProductCatalog_SortCatalog_EmptyCatalog()
+    {
+        var catalog = new ProductCatalog();
+        catalog.SortCatalog();
+        Assert.Equal(0, catalog.Count);
+    }
+
+    // GetProductDetails tests
+    [Fact]
+    public void ProductCatalog_GetProductDetails_ValidIndex()
+    {
+        var catalog = new ProductCatalog();
+        var p1 = new Product(1, "A", 10m);
+        catalog.AddProduct(p1);
+        Assert.Equal(p1, catalog.GetProductDetails(0));
+    }
+
+    [Fact]
+    public void ProductCatalog_GetProductDetails_NegativeIndexThrows()
+    {
+        var catalog = new ProductCatalog();
+        catalog.AddProduct(new Product(1, "A", 10m));
+        Assert.Throws<System.ArgumentOutOfRangeException>(() => catalog.GetProductDetails(-1));
+    }
+
+    [Fact]
+    public void ProductCatalog_GetProductDetails_OutOfBoundsThrows()
+    {
+        var catalog = new ProductCatalog();
+        catalog.AddProduct(new Product(1, "A", 10m));
+        Assert.Throws<System.ArgumentOutOfRangeException>(() => catalog.GetProductDetails(1));
+    }
+
+    // ShowAllProfiles tests
+    [Fact]
+    public void ProductCatalog_ShowAllProfiles_PrintsToConsole()
+    {
+        var catalog = new ProductCatalog();
+        var p1 = new Product(1, "A", 10m);
+        catalog.AddProduct(p1);
+        
+        using var sw = new System.IO.StringWriter();
+        Console.SetOut(sw);
+        
+        catalog.ShowAllProfiles();
+        
+        var output = sw.ToString().Trim();
+        Assert.Contains("ECommerceSystem.Core.Product", output);
+        
+        var standardOutput = new System.IO.StreamWriter(Console.OpenStandardOutput());
+        standardOutput.AutoFlush = true;
+        Console.SetOut(standardOutput);
+    }
+
+    [Fact]
+    public void ProductCatalog_ShowAllProfiles_EmptyCatalog()
+    {
+        var catalog = new ProductCatalog();
+        
+        using var sw = new System.IO.StringWriter();
+        Console.SetOut(sw);
+        
+        catalog.ShowAllProfiles();
+        
+        var output = sw.ToString();
+        Assert.Empty(output);
+        
+        var standardOutput = new System.IO.StreamWriter(Console.OpenStandardOutput());
+        standardOutput.AutoFlush = true;
+        Console.SetOut(standardOutput);
+    }
+
+    [Fact]
+    public void ProductCatalog_ShowAllProfiles_MultipleProfiles()
+    {
+        var catalog = new ProductCatalog();
+        catalog.AddProduct(new Product(1, "A", 10m));
+        catalog.AddProduct(new Product(2, "B", 20m));
+        
+        using var sw = new System.IO.StringWriter();
+        sw.NewLine = "\n";
+        Console.SetOut(sw);
+        
+        catalog.ShowAllProfiles();
+        
+        var output = sw.ToString().Trim();
+        Assert.Equal("ECommerceSystem.Core.Product\nECommerceSystem.Core.Product", output.Replace("\r\n", "\n"));
+        
+        var standardOutput = new System.IO.StreamWriter(Console.OpenStandardOutput());
+        standardOutput.AutoFlush = true;
+        Console.SetOut(standardOutput);
     }
 
     // =========================================================================

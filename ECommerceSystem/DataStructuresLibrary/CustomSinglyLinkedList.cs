@@ -12,11 +12,127 @@ public class CustomSinglyLinkedList<T> where T : IComparable<T>
     private Node? _head;
     public int Count { get; private set; }
 
-    public void Add(T item) => throw new NotImplementedException();
-    public bool Remove(T item) => throw new NotImplementedException();
+    public void Add(T item)
+    {
+        var newNode = new Node(item);
+        if (_head == null)
+        {
+            _head = newNode;
+        }
+        else
+        {
+            var current = _head;
+            while (current.Next != null)
+            {
+                current = current.Next;
+            }
+            current.Next = newNode;
+        }
+        Count++;
+    }
 
-    public bool Search(T item) => throw new NotImplementedException();
+    public bool Remove(T item)
+    {
+        if (_head == null) return false;
 
-    
-    public void Sort() => throw new NotImplementedException();
+        if (_head.Data.Equals(item))
+        {
+            _head = _head.Next;
+            Count--;
+            return true;
+        }
+
+        var current = _head;
+        while (current.Next != null)
+        {
+            if (current.Next.Data.Equals(item))
+            {
+                current.Next = current.Next.Next;
+                Count--;
+                return true;
+            }
+            current = current.Next;
+        }
+
+        return false;
+    }
+
+    public bool Search(T item)
+    {
+        var current = _head;
+        while (current != null)
+        {
+            if (current.Data.Equals(item))
+            {
+                return true;
+            }
+            current = current.Next;
+        }
+        return false;
+    }
+
+    public T GetItemAt(int index)
+    {
+        if (index < 0 || index >= Count)
+            throw new ArgumentOutOfRangeException(nameof(index));
+
+        var current = _head;
+        for (int i = 0; i < index; i++)
+        {
+            current = current!.Next;
+        }
+        return current!.Data;
+    }
+
+    public void PrintAll()
+    {
+        var current = _head;
+        while (current != null)
+        {
+            Console.WriteLine(current.Data);
+            current = current.Next;
+        }
+    }
+
+    /*
+     * Sorting Algorithm: Bubble Sort
+     * 
+     * Structural Mechanism:
+     * This algorithm iterates through the linked list, comparing adjacent nodes. 
+     * If the current node's data is greater than the next node's data (based on IComparable),
+     * their data values are swapped. This process repeats until a full pass is made without any swaps,
+     * meaning the list is fully sorted.
+     * 
+     * Operational Efficiency:
+     * Since linked lists do not support random access, Bubble Sort is a viable in-place sorting
+     * method that doesn't require extra memory for pointers or new lists. We only swap the data payload.
+     * 
+     * Time Complexity:
+     * - Best Case: O(n) when the list is already sorted (only one pass is needed).
+     * - Average/Worst Case: O(n^2) where n is the number of nodes. 
+     */
+    public void Sort()
+    {
+        if (_head == null || _head.Next == null)
+            return;
+
+        bool swapped;
+        do
+        {
+            swapped = false;
+            var current = _head;
+
+            while (current.Next != null)
+            {
+                if (current.Data.CompareTo(current.Next.Data) > 0)
+                {
+                    var temp = current.Data;
+                    current.Data = current.Next.Data;
+                    current.Next.Data = temp;
+                    swapped = true;
+                }
+                current = current.Next;
+            }
+        } while (swapped);
+    }
 }
