@@ -19,6 +19,9 @@ public class CustomStack<T> where T : IComparable<T>
     //pop removes the item from the top of the stack
     public void Push(T item)
     {
+        if (item == null)
+            throw new ArgumentNullException(nameof(item));
+
         //add at the top of stack
         if (Count == _items.Length)
         {
@@ -42,7 +45,7 @@ public class CustomStack<T> where T : IComparable<T>
         //decrement the count and return the last item
         Count--;
         T item = _items[Count]; //store the item to return
-        _items[Count] = default; // clear the reference to the popped item
+        _items[Count] = default!; // clear the reference to the popped item
 
         return item; //return the popped item
     }
