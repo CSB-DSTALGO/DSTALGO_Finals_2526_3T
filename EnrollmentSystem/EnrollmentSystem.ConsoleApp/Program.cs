@@ -78,11 +78,20 @@ namespace EnrollmentSystem.ConsoleApp
                     case "2":
                         Console.Write("Enter Student ID to remove: ");
                         string targetId = Console.ReadLine() ?? "";
-                        bool removed = _registry.UnregisterStudent(int.Parse(targetId));
-                        Console.WriteLine(removed ? "\nStudent removed successfully." : "\nStudent not found.");
+
+                        bool removed = _registry.RemoveStudent(targetId);
+
+                        Console.WriteLine(removed
+                            ? "\nStudent removed successfully."
+                            : "\nStudent not found.");
+
                         if (removed)
                         {
-                            _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Removed student {targetId}" });
+                            _logs.PushSystemLog(new Log
+                            {
+                                LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}",
+                                ActionSummary = $"Removed student {targetId}"
+                            });
                         }
                         break;
 
