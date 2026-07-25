@@ -33,3 +33,15 @@ C:\Users\Reigna\OneDrive\Desktop\BENILDE\DSTALGO FINALS\ECommerceSystem\DataStru
 C:\Users\Reigna\OneDrive\Desktop\BENILDE\DSTALGO FINALS\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\refint\DataStructuresLibrary.dll
 C:\Users\Reigna\OneDrive\Desktop\BENILDE\DSTALGO FINALS\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.pdb
 C:\Users\Reigna\OneDrive\Desktop\BENILDE\DSTALGO FINALS\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\ref\DataStructuresLibrary.dll
+C:\Users\euseb\source\repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\bin\Debug\net10.0\DataStructuresLibrary.deps.json
+C:\Users\euseb\source\repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\bin\Debug\net10.0\DataStructuresLibrary.dll
+C:\Users\euseb\source\repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\bin\Debug\net10.0\DataStructuresLibrary.pdb
+C:\Users\euseb\source\repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\euseb\source\repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.AssemblyInfoInputs.cache
+C:\Users\euseb\source\repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.AssemblyInfo.cs
+C:\Users\euseb\source\repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.csproj.CoreCompileInputs.cache
+C:\Users\euseb\source\repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.sourcelink.json
+C:\Users\euseb\source\repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.dll
+C:\Users\euseb\source\repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\refint\DataStructuresLibrary.dll
+C:\Users\euseb\source\repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\DataStructuresLibrary.pdb
+C:\Users\euseb\source\repos\DSTALGO_Finals_2526_3T\ECommerceSystem\DataStructuresLibrary\obj\Debug\net10.0\ref\DataStructuresLibrary.dll
