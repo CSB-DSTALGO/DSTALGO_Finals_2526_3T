@@ -17,7 +17,8 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(2, stack.Count);
         }
 
-        [Fact]
+        //ADD ALL YOUR TESTS HERE
+         [Fact]
         public void Push_BeyondInitialCapacity_ResizesAndKeepsAllItems()
         {
             var stack = new CustomStack<int>();
@@ -161,6 +162,172 @@ namespace DataStructuresLibrary.Tests
             stack.Pop();
 
             Assert.Equal(2, stack.Count);
+        }
+
+        
+
+        [Fact]
+        public void ToArray_ReturnsElementsTopToBottom()
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
+
+            var array = stack.ToArray();
+
+            Assert.Equal(new[] { 3, 2, 1 }, array);
+        }
+
+        [Fact]
+        public void ToArray_DoesNotMutateTheStack()
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(1);
+            stack.Push(2);
+
+            stack.ToArray();
+
+            Assert.Equal(2, stack.Count);
+            Assert.Equal(2, stack.Peek());
+        }
+
+        [Fact]
+        public void ToArray_OnEmptyStack_ReturnsEmptyArray()
+        {
+            var stack = new CustomStack<int>();
+
+            var array = stack.ToArray();
+
+            Assert.Empty(array);
+        }
+
+        
+
+        [Fact]
+        public void Sort_OrdersStackAscending_SmallestOnTop()
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(5);
+            stack.Push(1);
+            stack.Push(4);
+            stack.Push(2);
+            stack.Push(3);
+
+            stack.Sort((a, b) => a.CompareTo(b));
+
+            Assert.Equal(1, stack.Pop());
+            Assert.Equal(2, stack.Pop());
+            Assert.Equal(3, stack.Pop());
+            Assert.Equal(4, stack.Pop());
+            Assert.Equal(5, stack.Pop());
+        }
+
+        [Fact]
+        public void Sort_DoesNotChangeCount()
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(3);
+            stack.Push(1);
+            stack.Push(2);
+
+            stack.Sort((a, b) => a.CompareTo(b));
+
+            Assert.Equal(3, stack.Count);
+        }
+
+        [Fact]
+        public void Sort_OnEmptyOrSingleElementStack_DoesNotThrow()
+        {
+            var empty = new CustomStack<int>();
+            var single = new CustomStack<int>();
+            single.Push(42);
+
+            empty.Sort((a, b) => a.CompareTo(b));
+            single.Sort((a, b) => a.CompareTo(b));
+
+            Assert.True(empty.IsEmpty());
+            Assert.Equal(42, single.Peek());
+        }
+
+        [Fact]
+        public void Sort_NullComparison_ThrowsArgumentNullException()
+        {
+            var stack = new CustomStack<int>();
+            stack.Push(1);
+
+            Assert.Throws<ArgumentNullException>(() => stack.Sort(null!));
+        }
+
+        
+
+        [Fact]
+        public void IndexOf_TopItem_ReturnsZero()
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
+
+            var index = stack.IndexOf(x => x == 3);
+
+            Assert.Equal(0, index);
+        }
+
+        [Fact]
+        public void IndexOf_ItemBelowTop_ReturnsDistanceFromTop()
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
+
+            var index = stack.IndexOf(x => x == 1);
+
+            Assert.Equal(2, index);
+        }
+
+        [Fact]
+        public void IndexOf_MissingItem_ReturnsNegativeOne()
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(1);
+            stack.Push(2);
+
+            var index = stack.IndexOf(x => x == 99);
+
+            Assert.Equal(-1, index);
+        }
+
+        [Fact]
+        public void IndexOf_DoesNotChangeStackOrderOrCount()
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(3);
+            stack.Push(1);
+            stack.Push(2);
+
+            stack.IndexOf(x => x == 3);
+
+            Assert.Equal(3, stack.Count);
+            Assert.Equal(2, stack.Peek());
+        }
+
+        [Fact]
+        public void IndexOf_NullPredicate_ThrowsArgumentNullException()
+        {
+            var stack = new CustomStack<int>();
+            stack.Push(1);
+
+            Assert.Throws<ArgumentNullException>(() => stack.IndexOf(null!));
         }
     }
 }
