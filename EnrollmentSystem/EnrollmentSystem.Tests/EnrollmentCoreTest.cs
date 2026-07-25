@@ -150,7 +150,11 @@ namespace EnrollmentSystem.Tests
             desk.IssueAdmissionsTicket(t2);
 
             Assert.Equal(2, desk.GetQueueCount());
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> 2fc57e7f3a28feb8a600393a95d41523dc7a49de
             var served = desk.ServeNextTicket();
             Assert.Equal("T-101", served.TicketId);
         }
@@ -165,18 +169,30 @@ namespace EnrollmentSystem.Tests
 
         [Fact]
         public void ViewNextTicket_ShouldReturnFirstTicketInQueue()
+<<<<<<< HEAD
         {    
             var desk = new AdmissionsDesk();
             var t1 = new Ticket { LogId = 1, Action = "First Action", Timestamp = DateTime.Now, TicketId = "T-101" };
             var t2 = new Ticket { LogId = 2, Action = "Second Action", Timestamp = DateTime.Now, TicketId = "T-102" };            
+=======
+        {
+            var desk = new AdmissionsDesk();
+            var t1 = new Ticket { LogId = 1, Action = "First Action", Timestamp = DateTime.Now, TicketId = "T-101" };
+            var t2 = new Ticket { LogId = 2, Action = "Second Action", Timestamp = DateTime.Now, TicketId = "T-102" };
+>>>>>>> 2fc57e7f3a28feb8a600393a95d41523dc7a49de
 
             desk.IssueAdmissionsTicket(t1);
             desk.IssueAdmissionsTicket(t2);
 
             var served = desk.ViewNextTicket();
             Assert.Equal("T-101", served.TicketId);
+<<<<<<< HEAD
             
             
+=======
+
+
+>>>>>>> 2fc57e7f3a28feb8a600393a95d41523dc7a49de
         }
 
         [Fact]
@@ -190,6 +206,7 @@ namespace EnrollmentSystem.Tests
 
     public class AdministrativeLogsTests
     {
+
         [Fact]
         public void PushSystemLog_ShouldRetrieveLogsInLIFOOrder()
         {

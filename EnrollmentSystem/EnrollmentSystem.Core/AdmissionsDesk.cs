@@ -29,10 +29,18 @@ public class AdmissionsDesk
     }
     public Ticket ServeNextTicket()
     {
+        if (_applications.IsEmpty())
+        {
+            throw new InvalidOperationException();
+        }
         return _tickets.Dequeue();
     }
     public AdmissionApplication ViewNextTicket()
     {
+        if (_applications.IsEmpty())
+        {
+            throw new InvalidOperationException();
+        }
         return _applications.Peek();
     }
     public bool CheckQueueEmpty() 
@@ -51,6 +59,12 @@ public class AdmissionsDesk
     public int GetQueueCount() => Count;
 
     // Hint: Delegate search and sort to CustomQueue<T>
-    public bool SearchApplication(AdmissionApplication app) => throw new NotImplementedException();
-    public void SortApplicationsByPriority() => throw new NotImplementedException();
+    public bool SearchApplication(AdmissionApplication app)
+    {
+        return _applications.LinearSearch(app);
+    }
+    public void SortApplicationsByPriority()
+    {
+        _applications.BubbleSortQueue();
+    }
 }
