@@ -69,9 +69,21 @@ namespace DataStructuresLibrary
             return -1;
         }
 
-        public void SortById()
+        public void Sort(Comparison<T> comparer)
         {
-            // TODO: Implement if required by your project.
+            for (int i = 1; i < _top; i++)
+            {
+                T key = _items[i];
+                int j = i - 1;
+
+                while (j >= 0 && comparer(_items[j], key) > 0)
+                {
+                    _items[j + 1] = _items[j];
+                    j--;
+                }
+
+                _items[j + 1] = key;
+            }
         }
 
         private void Resize()

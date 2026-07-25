@@ -253,4 +253,3 @@ namespace EnrollmentSystem.Tests
             Assert.Equal(1, logs.GetLogCount());
         }
     }
-}
