@@ -21,7 +21,8 @@ namespace DataStructuresLibrary
 
         public Node<T>? Head // Mark as nullable to match the field
         {
-            get { throw new NotImplementedException(); }
+            get { return _head; }
+            set { _head = value; }
         }
 
         public int Count { get; set; }
@@ -33,12 +34,47 @@ namespace DataStructuresLibrary
 
         public void AddLast(T item)
         {
-            throw new NotImplementedException();
+            Node<T>? next = _head;
+            Node<T> newNode = new Node<T>(item);
+            if (_head == null)
+            {
+                _head = newNode;
+                return;
+            }
+            while (next.Next != null)
+            {
+                next = next.Next;
+            }
+            next.Next = newNode;
+
+           
         }
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            Node<T> current = _head;
+            if (_head == null)
+            {
+                return false;
+            }
+            if (_head != null && _head.Data.Equals(item))
+            {
+                _head = _head.Next;
+                Count--;
+                return true;
+            }
+            while (current.Next != null)
+            {
+                if (current.Next.Data.Equals(item))
+                {
+                    current.Next = current.Next.Next;
+                    return true;
+                }
+                current = current.Next;
+            }
+            return false;
+            
+            
         }
     }
 }
