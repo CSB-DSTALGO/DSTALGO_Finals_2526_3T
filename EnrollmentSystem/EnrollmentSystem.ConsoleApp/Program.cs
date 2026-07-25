@@ -78,7 +78,7 @@ namespace EnrollmentSystem.ConsoleApp
                     case "2":
                         Console.Write("Enter Student ID to remove: ");
                         string targetId = Console.ReadLine() ?? "";
-                        bool removed = _registry.UnregisterStudent(int.Parse(targetId));
+                        bool removed = _registry.RemoveStudent(targetId);
                         Console.WriteLine(removed ? "\nStudent removed successfully." : "\nStudent not found.");
                         if (removed)
                         {
@@ -94,7 +94,7 @@ namespace EnrollmentSystem.ConsoleApp
                         for (int i = 0; i < count; i++)
                         {
                             var s = _registry.GetStudentAt(i);
-                            Console.WriteLine($"[{i}] ID: {s.Id} | Name: {s.Name} | Course: {s.CourseCode}");
+                            Console.WriteLine($"[{i + 1}] ID: {s.Id} | Name: {s.Name} | Course: {s.CourseCode}");
                         }
                         break;
                 }

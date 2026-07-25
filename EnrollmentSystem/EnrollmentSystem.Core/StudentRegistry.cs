@@ -14,24 +14,21 @@ public class StudentRegistry
     }
     public bool UnregisterStudent(int index)
     {
-
-        for(int i = 0; i < _students.Count; i++)
+        // Add a safety check to prevent IndexOutOfRangeException
+        if (index < 0 || index >= _students.Count)
         {
-            Student students = _students.Get(i);
-            if (students.Id == index)
-            {
-                _students.RemoveAt(i);
-                return true;
-            }
+            return false;
         }
-        return false;
+
+        _students.RemoveAt(index);
+        return true;
     }
     public bool RemoveStudent(string id)
     {
         for (int i = 0; i < _students.Count; i++)
         {
             Student students = _students.Get(i);
-            if (Convert.ToString(students.Id) == id)
+            if (students.Id == int.Parse(id))
             {
                 _students.RemoveAt(i);
                 return true;
@@ -39,7 +36,11 @@ public class StudentRegistry
         }
         return false;
     }
-    public Student GetStudentAt(int index) 
+    public Student GetStudentDetails(int index)
+    {
+        return _students.Get(index);
+    }
+    public Student GetStudentAt(int index)
     {
         return _students.Get(index);
     }
@@ -47,7 +48,7 @@ public class StudentRegistry
     // Hint: Calculate average GPA of all registered students
     public double CalculateAverageGpa()
     {
-        if(_students.Count == 0)
+        if (_students.Count == 0)
         {
             return 0;
         }
@@ -90,5 +91,20 @@ public class StudentRegistry
     public int GetStudentCount()
     {
         return _students.Count;
+    }
+    public void ShowAllStudents()
+    {
+        if (_students.Count == 0)
+        {
+            Console.WriteLine("No students registered.");
+            return;
+        }
+
+        for (int i = 0; i < _students.Count; i++)
+        {
+            Student student = _students.Get(i);
+            // Assuming your Student class has a ToString() override or specific properties you want to print
+            Console.WriteLine($"Index {i}: {student.Id} - {student.Name}");
+        }
     }
 }
