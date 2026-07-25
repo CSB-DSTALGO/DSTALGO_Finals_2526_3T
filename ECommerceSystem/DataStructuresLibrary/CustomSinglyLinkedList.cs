@@ -1,93 +1,146 @@
-namespace DataStructuresLibrary;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
-public class CustomSinglyLinkedList<T> where T : IComparable<T>
+namespace DataStructuresLibrary
 {
-    private class Node
+    public class CustomSinglyLinkedList<T> : IEnumerable<T> where T : IComparable<T>
     {
-        public T Data;
-        public Node? Next;
-        public Node(T data) => Data = data;
-    }
-
-    private Node? _head;
-    public int Count { get; private set; }
-
-    public void Add(T item)
-    {
-        var newMode = new Node(item);
-        if (_head == null)
+        private class Node
         {
-            _head = newMode;
-        }
-        else
-        {
-            var current = _head;
-            while (current.Next != null)
+            public T Data;
+            public Node? Next;
+
+            public Node(T data)
             {
-                current = current.Next;
+                Data = data;
+                Next = null;
             }
-            current.Next = newMode;
-        }
-        Count++;
-    }
-    public bool Remove(T item)
-    {
-        if (head == null) return false;
-        if (head.Data.CompareTo(item) == 0)
-        {
-            head = head.Next;
-            Count--;
-            return true;
         }
 
-        var current = _head;
-        while (current.Next != null)
+        private Node? _head;
+
+        public int Count { get; private set; }
+
+        // ✅ Add item
+        public void Add(T item)
         {
-            if (current.Next.Data.CompareTo(item) == 0)
+            var newNode = new Node(item);
+
+            if (_head == null)
             {
-                current.Next = current.Next.Next;
+                _head = newNode;
+            }
+            else
+            {
+                var current = _head;
+                while (current.Next != null)
+                {
+                    current = current.Next;
+                }
+                current.Next = newNode;
+            }
+
+            Count++;
+        }
+
+        // ✅ Remove item
+        public bool Remove(T item)
+        {
+            if (_head == null) return false;
+
+            if (_head.Data.CompareTo(item) == 0)
+            {
+                _head = _head.Next;
                 Count--;
                 return true;
             }
-            current = current.Next;
-        }
-        return false;
-    }
 
-    public bool Search(T item)
-    {
-        var current = _head;
-        while (current != null)
-        {
-            if (current.Data.CompareTo(item) == 0)
+            var current = _head;
+
+            while (current.Next != null)
             {
-                return true;
+                if (current.Next.Data.CompareTo(item) == 0)
+                {
+                    current.Next = current.Next.Next;
+                    Count--;
+                    return true;
+                }
+                current = current.Next;
             }
-            current = current.Next;
-        }
-        return false;
-    }
 
-    
-    public void Sort()
-    {
-        if (head == null || _head.Next == null) return;
-
-        var list = new List<T>();
-        var current = _head;
-        while (current != null)
-        {
-            list.Add(current.Data);
-            current = current.Next;
+            return false;
         }
 
-        list.Sort();
-
-        _head = null;
-        Count = 0;
-        foreach (var item in list)
+        // ✅ Search item
+        public bool Search(T item)
         {
-            Add(item);
+            var current = _head;
+
+            while (current != null)
+            {
+                if (current.Data.CompareTo(item) == 0)
+                    return true;
+
+                current = current.Next;
+            }
+
+            return false;
+        }
+
+        // ✅ Required by your error (Contains)
+        public bool Contains(T item)
+        {
+            return Search(item);
+        }
+
+        // ✅ Required by your error (Clear)
+        public void Clear()
+        {
+            _head = null;
+            Count = 0;
+        }
+
+        // ✅ Sort list
+        public void Sort()
+        {
+            if (_head == null || _head.Next == null) return;
+
+            var list = new List<T>();
+            var current = _head;
+
+            while (current != null)
+            {
+                list.Add(current.Data);
+                current = current.Next;
+            }
+
+            list.Sort();
+
+            _head = null;
+            Count = 0;
+
+            foreach (var item in list)
+            {
+                Add(item);
+            }
+        }
+
+        // ✅ Required for foreach
+        public IEnumerator<T> GetEnumerator()
+        {
+            var current = _head;
+
+            while (current != null)
+            {
+                yield return current.Data;
+                current = current.Next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 
