@@ -1,19 +1,40 @@
+namespace ECommerceSystem.Core; //LIAM 
+
 using DataStructuresLibrary;
 
-namespace ECommerceSystem.Core
+public class OrderProcessingQueue
 {
-    public class OrderProcessingQueue
+    private readonly CustomQueue<Order> _orders = new();
+
+    public int Count => _orders.Count;
+
+    // Adds a new order
+    public void EnqueueOrder(Order order)
     {
-        private readonly CustomQueue<Order> _orders = new();
+        _orders.Enqueue(order);
+    }
 
-        public int Count => _orders.Count;
+    // Processes the next order
+    public Order ProcessNextOrder()
+    {
+        return _orders.Dequeue();
+    }
 
-        public void EnqueueOrder(Order order) => throw new NotImplementedException();
-        public Order ProcessNextOrder() => throw new NotImplementedException();
-        public Order PeekNextOrder() => throw new NotImplementedException();
+    // Returns the next order without removing it
+    public Order PeekNextOrder()
+    {
+        return _orders.Peek();
+    }
 
+    // Searches for an order in queue
+    public bool SearchOrder(Order order)
+    {
+        return _orders.Search(order);
+    }
 
-        public bool SearchOrder(Order order) => throw new NotImplementedException();
-        public void SortOrders() => throw new NotImplementedException();
+    // Sorts the orders by TotalAmount.
+    public void SortOrders()
+    {
+        _orders.Sort();
     }
 }
