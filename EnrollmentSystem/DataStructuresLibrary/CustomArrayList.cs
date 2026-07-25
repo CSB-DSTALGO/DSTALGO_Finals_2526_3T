@@ -1,4 +1,3 @@
-// CustomArrayList.cs
 using System;
 
 namespace DataStructuresLibrary
@@ -7,35 +6,58 @@ namespace DataStructuresLibrary
     {
         private T[] _items;
         private int _count;
+        private const int DefaultCapacity = 4;
 
-        public int Count 
-        { 
-            get { throw new NotImplementedException(); } 
+        public int Count
+        {
+            get { return _count; }
         }
 
         public CustomArrayList()
         {
-            throw new NotImplementedException();
+            _items = new T[DefaultCapacity];
+            _count = 0;
         }
 
         public void Add(T item)
         {
-            throw new NotImplementedException();
+            if (_count == _items.Length)
+            {
+                Resize();
+            }
+            _items[_count++] = item;
         }
 
         public T Get(int index)
         {
-            throw new NotImplementedException();
+            if (index < 0 || index >= _count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+            }
+            return _items[index];
         }
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            if (index < 0 || index >= _count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+            }
+
+            for (int i = index; i < _count - 1; i++)
+            {
+                _items[i] = _items[i + 1];
+            }
+
+            _items[--_count] = default(T)!;
         }
 
         private void Resize()
         {
-            throw new NotImplementedException();
+            int newCapacity = _items.Length * 2;
+            T[] newArray = new T[newCapacity];
+            Array.Copy(_items, newArray, _count);
+            _items = newArray;
         }
     }
 }

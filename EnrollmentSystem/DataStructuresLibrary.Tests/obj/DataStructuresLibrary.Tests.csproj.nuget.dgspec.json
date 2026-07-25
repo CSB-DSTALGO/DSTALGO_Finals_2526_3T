@@ -1,33 +1,39 @@
 {
   "format": 1,
   "restore": {
-    "/Users/koi/Documents/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj": {}
+    "C:\\Users\\winte\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary.Tests\\DataStructuresLibrary.Tests.csproj": {}
   },
   "projects": {
-    "/Users/koi/Documents/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj": {
+    "C:\\Users\\winte\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary.Tests\\DataStructuresLibrary.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/koi/Documents/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\winte\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary.Tests\\DataStructuresLibrary.Tests.csproj",
         "projectName": "DataStructuresLibrary.Tests",
-        "projectPath": "/Users/koi/Documents/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj",
-        "packagesPath": "/Users/koi/.nuget/packages/",
-        "outputPath": "/Users/koi/Documents/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary.Tests/obj/",
+        "projectPath": "C:\\Users\\winte\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary.Tests\\DataStructuresLibrary.Tests.csproj",
+        "packagesPath": "C:\\Users\\winte\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\winte\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary.Tests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/koi/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\winte\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/koi/Documents/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
-                "projectPath": "/Users/koi/Documents/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj"
+              "C:\\Users\\winte\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
+                "projectPath": "C:\\Users\\winte\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj"
               }
             }
           }
@@ -80,26 +86,32 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.413/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.421/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/koi/Documents/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj": {
+    "C:\\Users\\winte\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/koi/Documents/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\winte\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
         "projectName": "DataStructuresLibrary",
-        "projectPath": "/Users/koi/Documents/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/DataStructuresLibrary.csproj",
-        "packagesPath": "/Users/koi/.nuget/packages/",
-        "outputPath": "/Users/koi/Documents/DSTALGO_Finals_2526_3T/EnrollmentSystem/DataStructuresLibrary/obj/",
+        "projectPath": "C:\\Users\\winte\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
+        "packagesPath": "C:\\Users\\winte\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\winte\\source\\repos\\DSTALGO_Finals_2526_3T\\EnrollmentSystem\\DataStructuresLibrary\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/koi/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\winte\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -138,7 +150,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.413/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.421/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
