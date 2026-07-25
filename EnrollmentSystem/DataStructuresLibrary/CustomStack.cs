@@ -1,5 +1,6 @@
 // CustomStack.cs
 using System;
+using System.Collections.Generic;
 
 namespace DataStructuresLibrary
 {
@@ -10,7 +11,7 @@ namespace DataStructuresLibrary
 
         public int Count 
         { 
-            get { get _top; } 
+            get { return _top; } 
         }
 
         public CustomStack()
@@ -23,6 +24,7 @@ namespace DataStructuresLibrary
         {
             if (_top ==_items.Length)
               Resize();
+            
 
            _items[_top] = item;
            _top++;   
@@ -31,7 +33,7 @@ namespace DataStructuresLibrary
         public T Pop()
         {
             if (IsEmpty())
-            throw new InvalidOperationException9("Stack is Empty.");
+            throw new InvalidOperationException("Stack is Empty.");
 
             _top--;
             T item = _items[_top];
@@ -50,6 +52,27 @@ namespace DataStructuresLibrary
         public bool IsEmpty()
         {
             return _top == 0;
+        }
+        public int Search( T item)
+        {
+            var comparer = EqualityComparer<T>.Default;
+            for (int i = _top - 1; i >= 0; i--)
+            {
+                if (comparer.Equals(_items[i], item))
+                return i;
+            }
+            return -1;
+        }
+
+        private void Resize()
+        {
+            {
+                int newCapacity = _items.Length == 0 ? 4 : _items.Length * 2;
+                var newItems = new T[newCapacity];
+                Array.Copy(_items, newItems, _top);
+                _items = newItems;
+            }
+            
         }
     }
 }
