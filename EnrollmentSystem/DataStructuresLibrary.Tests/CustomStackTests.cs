@@ -4,7 +4,7 @@ using DataStructuresLibrary;
 
 namespace DataStructuresLibrary.Tests
 {
-    public class CustomQueueTests
+    public class CustomStackTests
     {
         //ADD ALL YOUR TESTS HERE
         [Fact]
