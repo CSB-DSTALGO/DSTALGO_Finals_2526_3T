@@ -6,20 +6,24 @@ namespace DataStructuresLibrary
 {
     public class CustomArrayList<T>
     {
-        private T[] _items;
-        private int _count;
+        private T[] _items;   // backing array that stores the elements
+        private int _count;   // number of elements currently stored
 
+        // Returns how many elements are currently in the list
         public int Count
         {
             get { return _count; }
         }
 
+        // Constructor: starts with a small array of size 4
         public CustomArrayList()
         {
             _items = new T[4];
             _count = 0;
         }
 
+        // Adds an item to the end of the list
+        // If the array is full, it grows first (Resize)
         public void Add(T item)
         {
             if (_count == _items.Length)
@@ -31,6 +35,8 @@ namespace DataStructuresLibrary
             _count++;
         }
 
+        // Returns the item at the given index
+        // Throws an exception if the index is invalid
         public T Get(int index)
         {
             if (index < 0 || index >= _count)
@@ -41,6 +47,8 @@ namespace DataStructuresLibrary
             return _items[index];
         }
 
+        // Removes the item at the given index
+        // Shifts every item after it one spot to the left to fill the gap
         public void RemoveAt(int index)
         {
             if (index < 0 || index >= _count)
@@ -53,10 +61,12 @@ namespace DataStructuresLibrary
                 _items[i] = _items[i + 1];
             }
 
-            _items[_count - 1] = default(T)!;
+            _items[_count - 1] = default(T)!; // clear the now-empty last slot
             _count--;
         }
 
+        // Doubles the size of the backing array when it's full
+        // Copies all existing items into the new, bigger array
         private void Resize()
         {
             int newCapacity = _items.Length * 2;
@@ -70,6 +80,9 @@ namespace DataStructuresLibrary
             _items = newArray;
         }
 
+        // Linear search: checks each item one by one
+        // Returns the index of the first match, or -1 if not found
+        // Time complexity: O(n)
         public int IndexOf(T item)
         {
             for (int i = 0; i < _count; i++)
@@ -82,7 +95,10 @@ namespace DataStructuresLibrary
             return -1;
         }
 
-        // Insertion sort using Comparer<T>.Default (works for any T that implements IComparable)
+        // Insertion sort: builds a sorted section one item at a time
+        // Takes each item and moves it left until it's in the correct order
+        // Uses Comparer<T>.Default so it works with any type that supports comparison
+        // Time complexity: O(n^2) worst case, O(n) best case (already sorted)
         public void Sort()
         {
             for (int i = 1; i < _count; i++)
