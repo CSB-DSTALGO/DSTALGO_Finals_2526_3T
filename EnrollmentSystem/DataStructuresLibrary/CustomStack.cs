@@ -3,6 +3,8 @@ using System;
 
 namespace DataStructuresLibrary
 {
+    // REVIEW: open this up and count how much of it is actually finished. the admin logs
+    // module upstairs is built right on top of this one
     public class CustomStack<T>
     {
         private T[] _items;

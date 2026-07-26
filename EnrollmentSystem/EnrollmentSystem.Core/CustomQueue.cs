@@ -1,3 +1,5 @@
+// REVIEW: same as the array list, this ones living in two projects at the same time. pick one
+// home for it
 namespace DataStructuresLibrary;
 
 public class CustomQueue<T>

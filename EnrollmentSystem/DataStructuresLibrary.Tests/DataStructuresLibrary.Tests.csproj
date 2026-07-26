@@ -18,4 +18,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <!-- REVIEW: this test project cant actually see the library right now, thats a big part of why
+       nothing in here builds. think about what makes one project able to use another projects code.
+       also check what framework version this one is set to next to the rest of enrollment -->
+
 </Project>

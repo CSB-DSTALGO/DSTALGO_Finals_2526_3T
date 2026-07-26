@@ -43,6 +43,8 @@ public class AdministrativeLogs
         return Count;
     }
 
+    // REVIEW: these next two methods hand work off to your stack. go open the actual stack
+    // class you're using and check whether it can even do the things you're asking it here
     // Hint: Delegate search and sort to CustomStack<T>
     public int SearchLog(Log log)
     {

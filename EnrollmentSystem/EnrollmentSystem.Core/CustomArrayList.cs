@@ -1,3 +1,5 @@
+// REVIEW: this exact structure now exists in two different projects at once. having the same
+// thing living in two spots is gonna bite someone later, work out which project should really own it
 namespace DataStructuresLibrary;
 
 public class CustomArrayList<T>

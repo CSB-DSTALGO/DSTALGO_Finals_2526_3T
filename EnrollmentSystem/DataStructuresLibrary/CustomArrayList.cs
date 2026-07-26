@@ -1,4 +1,7 @@
 // CustomArrayList.cs
+// REVIEW: look at what this file is named, then look at whats actually inside it. theres a
+// whole program with a Main living in here, and the name declared right below doesnt match
+// where this stuff is supposed to sit. give this one a proper read top to bottom
 using System;
 
 namespace StudentRegistryApp

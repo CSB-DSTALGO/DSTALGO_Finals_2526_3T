@@ -19,6 +19,9 @@ public class CourseCurriculum
     }
 
 
+    // REVIEW: a few spots in this class (this delete, plus the search and the sort further
+    // down) all lean on your linked list to do the heavy lifting. open that linked list file
+    // and see how much of it is actually built out
     public bool DeleteCourse(string code)
     {
         return _courses.RemoveMatch(c => c.Code == code);

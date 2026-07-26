@@ -15,6 +15,8 @@ public class AdmissionsDesk
         if (ticket is null)
             throw new ArgumentNullException(nameof(ticket), "Cannot issue a null ticket.");
 
+        // REVIEW: you set and read a property on the application a couple lines down that i
+        // dont think lives on that class anymore. go check what AdmissionApplication actually has
         ticket.TicketId = $"T-{100 + Count + 1}";
 
         var application = new AdmissionApplication(ticket.LogId, ticket.StudentId, priorityScore: 0)
@@ -53,6 +55,8 @@ public class AdmissionsDesk
     public bool SearchApplication(AdmissionApplication app)
     {
         if (app is null) return false;
+        // REVIEW: look real close at what this search hands back versus what this method
+        // promises to return up top. those two dont agree
         return _applications.Search(a => a.ApplicationId == app.ApplicationId);
     }
 

@@ -81,6 +81,9 @@ public class StudentRegistry
         }
     }
 }
+// REVIEW: ok read this whole file slow from the top. theres something in here thats
+// declared twice and that alone is enough to stop the entire core project from building.
+// compare the top half of the file with everything from here down
 namespace EnrollmentSystem.Core;
 
 using DataStructuresLibrary;

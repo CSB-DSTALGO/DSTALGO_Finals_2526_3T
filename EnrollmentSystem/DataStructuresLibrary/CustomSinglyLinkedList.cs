@@ -15,6 +15,8 @@ namespace DataStructuresLibrary
         }
     }
 
+    // REVIEW: same question as the stack, how much of this is actually done? the course
+    // curriculum module needs this one working before any of it runs
     public class CustomSinglyLinkedList<T>
     {
         private Node<T>? _head; // Mark as nullable with '?'
