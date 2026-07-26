@@ -75,4 +75,24 @@ public class StudentRegistry
     {
         return _students.Count; // return count
     }
+
+    public void ShowAllStudents()
+    {
+        if (_students.Count == 0) // check if there are no registered students
+        {
+            Console.WriteLine("No students registered.");
+            return; // stop the method
+        }
+
+        for (int i = 0; i < _students.Count; i++) // loop through all registered students
+        {
+            Student student = _students.Get(i); // get the student at the current index
+
+            Console.WriteLine( // display 
+                $"ID: {student.Id}, " +
+                $"Name: {student.Name}, " +
+                $"GPA: {student.Gpa}"
+            );
+        }
+    }
 }
