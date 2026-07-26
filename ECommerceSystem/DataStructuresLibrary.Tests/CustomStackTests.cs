@@ -3,8 +3,10 @@ namespace DataStructuresLibrary.Tests;
 using Xunit;
 using DataStructuresLibrary;
 
+// Contains unit tests for the CustomStack class.
 public class CustomStackTests
 {
+    // Verifies that the stack follows the Last-In, First-Out (LIFO) principle.
     [Fact]
     public void PushAndPop_ShouldMaintainStrictLIFOOrder()
     {
@@ -20,6 +22,7 @@ public class CustomStackTests
         Assert.Equal(0, stack.Count);
     }
 
+    // Verifies that Peek returns the top element without removing it.
     [Fact]
     public void Peek_ShouldReturnTopElement_WithoutRemovingIt()
     {
@@ -32,6 +35,7 @@ public class CustomStackTests
         Assert.Equal(2, stack.Count);
     }
 
+    // Verifies that Search returns the correct position from the top of the stack.
     [Fact]
     public void Search_ShouldReturnOneBasedDepthFromTop_WhenItemExists()
     {
@@ -47,6 +51,7 @@ public class CustomStackTests
         Assert.Equal(-1, stack.Search(100));
     }
 
+    // Verifies that Sort rearranges the stack correctly.
     [Fact]
     public void Sort_ShouldReorderStack_WithSmallestItemAtTop()
     {
