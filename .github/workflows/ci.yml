@@ -1,0 +1,73 @@
+name: DSTALGO CI
+
+# Automated check. For each system it runs the DataStructuresLibrary tests and
+# the Core tests, once against the branch's own tests and once against the
+# canonical tests from main, and rejects built-in collections in the custom
+# data structures. It does not run or grade Program.cs.
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: ${{ matrix.system }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        system: [ECommerceSystem, EnrollmentSystem]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      - name: Reject built-in collections
+        run: |
+          if grep -rn "System.Collections" --include=*.cs --exclude-dir=obj --exclude-dir=bin ${{ matrix.system }}/DataStructuresLibrary; then
+            echo "::error::System.Collections is prohibited in the custom data structures."
+            exit 1
+          fi
+          echo "No built-in collections found."
+
+      - name: Library tests
+        run: |
+          set -o pipefail
+          dotnet test ${{ matrix.system }}/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj --nologo -v minimal 2>&1 | tee library.log
+
+      - name: Core tests (${{ github.ref_name }})
+        run: |
+          set -o pipefail
+          dotnet test ${{ matrix.system }}/${{ matrix.system }}.Tests/${{ matrix.system }}.Tests.csproj --nologo -v minimal 2>&1 | tee core-branch.log
+
+      - name: Core tests (main)
+        run: |
+          set -o pipefail
+          git fetch --no-tags --depth=1 origin main
+          # Bring in main's canonical test sources, but keep this branch's own
+          # project file so the tests build against the branch's Core and target
+          # framework rather than main's.
+          git checkout FETCH_HEAD -- ${{ matrix.system }}/${{ matrix.system }}.Tests/
+          git checkout HEAD -- ${{ matrix.system }}/${{ matrix.system }}.Tests/${{ matrix.system }}.Tests.csproj
+          dotnet test ${{ matrix.system }}/${{ matrix.system }}.Tests/${{ matrix.system }}.Tests.csproj --nologo -v minimal 2>&1 | tee core-main.log
+
+      - name: Results summary
+        if: always()
+        run: |
+          line() { grep -hoE "Failed: +[0-9]+, Passed: +[0-9]+" "$1" 2>/dev/null | head -1 || echo "did not run"; }
+          {
+            echo "## ${{ matrix.system }}"
+            echo ""
+            echo "_Automated check. Runs the unit tests against your data structures and core modules. It does not run or grade Program.cs._"
+            echo ""
+            echo "| Check | Result |"
+            echo "| --- | --- |"
+            echo "| Built-in collections | none |"
+            echo "| Library tests | $(line library.log) |"
+            echo "| Core tests (${{ github.ref_name }}) | $(line core-branch.log) |"
+            echo "| Core tests (main) | $(line core-main.log) |"
+          } >> "$GITHUB_STEP_SUMMARY"
