@@ -1,0 +1,57 @@
+name: DSTALGO CI
+
+# Runs on every push and pull request to this branch. For each system it runs
+# the DataStructuresLibrary tests and the Core tests, rejects any use of built-in
+# collections in the custom data structures, and writes a results table to the
+# run summary.
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: ${{ matrix.system }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        system: [ECommerceSystem, EnrollmentSystem]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Reject built-in collections
+        run: |
+          if grep -rn "System.Collections" --include=*.cs --exclude-dir=obj --exclude-dir=bin ${{ matrix.system }}/DataStructuresLibrary; then
+            echo "::error::System.Collections is prohibited in the custom data structures."
+            exit 1
+          fi
+          echo "No built-in collections found."
+
+      - name: Library tests
+        run: |
+          set -o pipefail
+          dotnet test ${{ matrix.system }}/DataStructuresLibrary.Tests/DataStructuresLibrary.Tests.csproj --nologo -v minimal 2>&1 | tee library.log
+
+      - name: Core tests
+        run: |
+          set -o pipefail
+          dotnet test ${{ matrix.system }}/${{ matrix.system }}.Tests/${{ matrix.system }}.Tests.csproj --nologo -v minimal 2>&1 | tee core.log
+
+      - name: Results summary
+        if: always()
+        run: |
+          line() { grep -hoE "Failed: +[0-9]+, Passed: +[0-9]+" "$1" 2>/dev/null | head -1 || echo "did not run"; }
+          {
+            echo "## ${{ matrix.system }}"
+            echo ""
+            echo "| Check | Result |"
+            echo "| --- | --- |"
+            echo "| Built-in collections | none |"
+            echo "| Library tests | $(line library.log) |"
+            echo "| Core tests | $(line core.log) |"
+          } >> "$GITHUB_STEP_SUMMARY"
