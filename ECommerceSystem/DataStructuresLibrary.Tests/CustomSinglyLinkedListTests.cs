@@ -97,7 +97,7 @@ public class CustomSinglyLinkedListTests
         var headField = typeof(CustomSinglyLinkedList<int>)
             .GetField("_head", BindingFlags.NonPublic | BindingFlags.Instance);
 
-        var head = headField!.GetValue(list);
+        var head = headField!.GetValue(list); //_head is private, used headField for testing
 
         Assert.NotNull(head);
 

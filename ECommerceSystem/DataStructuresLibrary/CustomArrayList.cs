@@ -24,6 +24,7 @@ public class CustomArrayList<T> where T : IComparable<T>
         _items[Count] = item;
         Count++;
     }
+
     public bool Remove(T item)
     {   
         int index = Count;
@@ -38,7 +39,7 @@ public class CustomArrayList<T> where T : IComparable<T>
         }
 
         //if the item is not within the array
-        if (Count == 0)
+        if (index == Count)
         {
             throw new ArgumentOutOfRangeException("Item not found");
         }
@@ -48,6 +49,7 @@ public class CustomArrayList<T> where T : IComparable<T>
             _items[i] = _items[i + 1];
         }
 
+        _items[Count - 1] = default;
         Count--;
 
         return true;
