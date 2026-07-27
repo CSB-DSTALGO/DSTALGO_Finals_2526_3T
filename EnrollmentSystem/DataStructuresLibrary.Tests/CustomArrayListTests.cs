@@ -6,22 +6,16 @@ namespace DataStructuresLibrary.Tests
 {
     public class CustomArrayListTests
     {
-<<<<<<< HEAD
+        // Tests that every new arraylist should start empty with a count of zero
+        [Fact]
         public void Constructor_ShouldInitializeEmptyList_WithZeroCount()
         {
             var list = new CustomArrayList<int>();
-=======
-        [Fact]
-        public void NewArrayList_ShouldHaveCountZero()
-        {
-            var list = new CustomArrayList<int>();
-
->>>>>>> ab1e14fd33f168ef7c4ed4add912c3b9abb086d0
             Assert.Equal(0, list.Count);
         }
 
+        // Tests that adding items increases the count and allows correct retrieval by index
         [Fact]
-<<<<<<< HEAD
         public void Add_ShouldIncreaseCountAndAllowRetrieval()
         {
             var list = new CustomArrayList<int>();
@@ -33,9 +27,25 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(20, list.Get(1));
         }
 
+        // Tests that adding more than the initial capacity triggers a resize
         [Fact]
         public void Add_ShouldTriggerResize_WhenCapacityExceeded()
-=======
+        {
+            var list = new CustomArrayList<int>();
+
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+            list.Add(5); // Exceeds default capacity of 4 here
+
+            Assert.Equal(5, list.Count);
+            Assert.Equal(1, list.Get(0));
+            Assert.Equal(5, list.Get(4));
+        }
+
+        // Tests that adding a single item increments the count to one
+        [Fact]
         public void Add_OneItem_IncreasesCount()
         {
             var list = new CustomArrayList<int>();
@@ -45,6 +55,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(1, list.Count);
         }
 
+        // Tests that adding multiple sequential items preserves their order and values
         [Fact]
         public void Add_MultipleItems_StoresCorrectValues()
         {
@@ -60,6 +71,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(30, list.Get(2));
         }
 
+        // Tests that getting an item from an empty or out-of-bounds index throws an exception
         [Fact]
         public void Get_InvalidIndex_ShouldThrowException()
         {
@@ -68,22 +80,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Throws<IndexOutOfRangeException>(() => list.Get(0));
         }
 
-        [Fact]
-        public void RemoveAt_RemovesCorrectItem()
-        {
-            var list = new CustomArrayList<int>();
-
-            list.Add(10);
-            list.Add(20);
-            list.Add(30);
-
-            list.RemoveAt(1);
-
-            Assert.Equal(2, list.Count);
-            Assert.Equal(10, list.Get(0));
-            Assert.Equal(30, list.Get(1));
-        }
-
+        // Tests that removing the first element shifts all subsequent elements to the left
         [Fact]
         public void RemoveAt_FirstItem_ShiftsElementsLeft()
         {
@@ -100,6 +97,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal("C", list.Get(1));
         }
 
+        // Tests that removing the last item decreases the count properly without shifting
         [Fact]
         public void RemoveAt_LastItem_DecreasesCount()
         {
@@ -114,42 +112,7 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(1, list.Get(0));
         }
 
-        [Fact]
-        public void RemoveAt_InvalidIndex_ShouldThrowException()
-        {
-            var list = new CustomArrayList<int>();
-
-            Assert.Throws<IndexOutOfRangeException>(() => list.RemoveAt(0));
-        }
-
-        [Fact]
-        public void Add_MoreThanInitialCapacity_ShouldResize()
->>>>>>> ab1e14fd33f168ef7c4ed4add912c3b9abb086d0
-        {
-            var list = new CustomArrayList<int>();
-
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
-            list.Add(4);
-            list.Add(5);
-
-            Assert.Equal(5, list.Count);
-            Assert.Equal(1, list.Get(0));
-<<<<<<< HEAD
-            Assert.Equal(5, list.Get(4));
-        }
-
-        [Fact]
-        public void Get_ShouldThrowExceptionForInvalidIndex()
-        {
-            var list = new CustomArrayList<int>();
-            list.Add(10);
-
-            Assert.Throws<ArgumentOutOfRangeException>(() => list.Get(-1));
-            Assert.Throws<ArgumentOutOfRangeException>(() => list.Get(1));
-        }
-
+        // Tests that removing an item shifts the rest, with string datatypes
         [Fact]
         public void RemoveAt_ShouldShiftElementsAndDecreaseCount()
         {
@@ -165,20 +128,36 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal("Gamma", list.Get(1));
         }
 
+        // Tests that removing from an invalid index throws an exception
+        [Fact]
+        public void RemoveAt_InvalidIndex_ShouldThrowException()
+        {
+            var list = new CustomArrayList<int>();
+
+            Assert.Throws<IndexOutOfRangeException>(() => list.RemoveAt(0));
+        }
+
+        // Tests that adding at an invalid index throws an exception
+        [Fact]
+        public void Get_ShouldThrowExceptionForInvalidIndex()
+        {
+            var list = new CustomArrayList<int>();
+            list.Add(10);
+
+            Assert.Throws<IndexOutOfRangeException>(() => list.Get(-1));
+            Assert.Throws<IndexOutOfRangeException>(() => list.Get(1));
+        }
+
+
+        // Tests that removing an invalid index correctly throw exceptions.
         [Fact]
         public void RemoveAt_ShouldThrowExceptionForInvalidIndex()
         {
             var list = new CustomArrayList<int>();
             list.Add(100);
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => list.RemoveAt(-1));
-            Assert.Throws<ArgumentOutOfRangeException>(() => list.RemoveAt(5));
-=======
-            Assert.Equal(2, list.Get(1));
-            Assert.Equal(3, list.Get(2));
-            Assert.Equal(4, list.Get(3));
-            Assert.Equal(5, list.Get(4));
->>>>>>> ab1e14fd33f168ef7c4ed4add912c3b9abb086d0
+            Assert.Throws<IndexOutOfRangeException>(() => list.RemoveAt(-1));
+            Assert.Throws<IndexOutOfRangeException>(() => list.RemoveAt(5));
         }
     }
 }
