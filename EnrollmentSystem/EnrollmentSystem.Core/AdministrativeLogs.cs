@@ -1,7 +1,6 @@
 namespace EnrollmentSystem.Core;
 
 using System;
-using System.Collections.Generic;
 using DataStructuresLibrary;
 
 public class AdministrativeLogs
@@ -70,20 +69,22 @@ public class AdministrativeLogs
 
     public void SortLogsById() // sorts logs by log id using domain logic
     {
-        if (_logs.IsEmpty()) return; // skip if empty
+        if (_logs.IsEmpty()) return; // nothing to sort
 
-        var logList = new List<Log>(); // temporary list to collect stack items
-        while (!_logs.IsEmpty())
+        Log[] logArray = new Log[_logs.Count]; // temporary array to hold logs
+
+        int index = 0;
+        while (!_logs.IsEmpty()) // pop all logs into array
         {
-            logList.Add(_logs.Pop()); // pop all items into list
+            logArray[index] = _logs.Pop(); // store log in array
+            index++; // increment index
         }
 
-        // sort by log id descending so smallest id ends up at top when pushed back
-        logList.Sort((a, b) => string.Compare(b.LogId, a.LogId, StringComparison.Ordinal));
+        Array.Sort(logArray, (a, b) => string.Compare(b.LogId, a.LogId, StringComparison.Ordinal)); // sort descending by log id
 
-        foreach (var log in logList) // push sorted items back to stack
+        foreach (var log in logArray) // push sorted logs back onto stack
         {
-            _logs.Push(log);
+            _logs.Push(log); // restore sorted logs to stack
         }
     }
 }
