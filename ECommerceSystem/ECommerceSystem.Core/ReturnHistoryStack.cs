@@ -23,6 +23,11 @@ public class ReturnHistoryStack
         return _returns.Peek();
     }
 
+    public bool CheckHistoryEmpty()
+    {
+        return Count == 0;
+    }
+
     public int SearchReturn(ReturnRequest request)
     {
         return _returns.Search(request);
