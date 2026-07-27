@@ -93,14 +93,10 @@ namespace EnrollmentSystem.ConsoleApp
                         Console.Write("|COURSE CODE|: ");
                         string course = Console.ReadLine() ?? "";
 
-                        _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0) {CourseCode = course}); 
+                        _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0) { CourseCode = course });
                         Console.WriteLine();
                         Console.WriteLine("Student registered successfully!");
                         Console.WriteLine("=====================================================");
-
-
-                        _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0));
-                        Console.WriteLine("\nStudent registered successfully.");
 
                         _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Registered student {id}" });
                         break;
@@ -113,7 +109,8 @@ namespace EnrollmentSystem.ConsoleApp
                         Console.WriteLine();
                         Console.Write("|ENTER STUDENT ID TO REMOVE|: ");
                         string targetId = Console.ReadLine() ?? "";
-                        bool removed = _registry.RemoveStudent(targetId); 
+                        bool removed = _registry.RemoveStudent(targetId); // i changed this to REMOVE STUDENT by "ID"
+                        //bool removed = _registry.UnregisterStudent(int.Parse(targetId)); // commented this out because the logic doesn't add up by removing the student by "index"
 
                         Console.WriteLine();
                         Console.WriteLine(removed ? "Student removed successfully." : "Student not found.");
