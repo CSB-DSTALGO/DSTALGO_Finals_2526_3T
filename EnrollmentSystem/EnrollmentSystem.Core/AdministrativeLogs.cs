@@ -43,7 +43,7 @@ public class AdministrativeLogs
     {
         if (log == null || _logs.IsEmpty()) return -1; // return -1 if null or empty
 
-        var tempStack = new CustomStack<Log>(); // temporary stack to preserve order
+        CustomStack<Log> tempStack = new CustomStack<Log>(); // temporary stack to preserve order
         int foundIndex = -1;
         int distance = 0;
 
@@ -74,17 +74,30 @@ public class AdministrativeLogs
         Log[] logArray = new Log[_logs.Count]; // temporary array to hold logs
 
         int index = 0;
+
         while (!_logs.IsEmpty()) // pop all logs into array
         {
             logArray[index] = _logs.Pop(); // store log in array
             index++; // increment index
         }
 
-        Array.Sort(logArray, (a, b) => string.Compare(b.LogId, a.LogId, StringComparison.Ordinal)); // sort descending by log id
-
-        foreach (var log in logArray) // push sorted logs back onto stack
+        //bubble sort
+        for (int i = 0; i < index - 1; i++)
         {
-            _logs.Push(log); // restore sorted logs to stack
+            for (int j = 0; j < index - i - 1; j++)
+            {
+                if (string.Compare(logArray[j].LogId, logArray[j + 1].LogId, StringComparison.Ordinal) < 0)
+                {
+                    Log temp = logArray[j];
+                    logArray[j] = logArray[j + 1];
+                    logArray[j + 1] = temp;
+                }
+            }
+        }
+
+        for (int i = 0; i < index; i++) // push sorted logs back onto stack
+        {
+            _logs.Push(logArray[i]);  // restore sorted logs to stack
         }
     }
 }
