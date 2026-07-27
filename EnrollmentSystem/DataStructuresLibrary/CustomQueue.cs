@@ -1,6 +1,5 @@
 // CustomQueue.cs
 using System;
-using System.Collections.Generic;
 
 namespace DataStructuresLibrary
 {
