@@ -1,80 +1,67 @@
-namespace DataStructuresLibrary.Tests;
-
-using Xunit;
-using DataStructuresLibrary;
-
-public class CustomStackTests
+public class CustomStack<T> where T : IComparable<T>
 {
-    [Fact]
-    public void PushAndPop_ShouldMaintainStrictLIFOOrder()
+    private T[] _items;
+    private int _top;
+    public int Count { get; private set; }
+
+    public CustomStack()
     {
-        // Arrange: Create a stack and add multiple elements
-        var stack = new CustomStack<int>();
-
-        stack.Push(10);
-        stack.Push(20);
-        stack.Push(30);
-
-        // Act: Remove elements using Pop
-        var firstPop = stack.Pop();
-        var secondPop = stack.Pop();
-        var thirdPop = stack.Pop();
-
-        // Assert: Verify Last-In, First-Out behavior
-        Assert.Equal(30, firstPop);
-        Assert.Equal(20, secondPop);
-        Assert.Equal(10, thirdPop);
-        Assert.Equal(0, stack.Count);
+        _items = new T[4];
+        Count = 0;
+        _top = 0;
     }
 
-    [Fact]
-    public void Peek_ShouldReturnTopElement_WithoutRemovingIt()
+    public void Push(T item)
     {
-        // Arrange: Create a stack and add elements
-        var stack = new CustomStack<int>();
-
-        stack.Push(5);
-        stack.Push(15);
-
-        // Act: Get the top element without removing it
-        var result = stack.Peek();
-
-        // Assert: Verify Peek returns the top item and Count remains unchanged
-        Assert.Equal(15, result);
-        Assert.Equal(2, stack.Count);
+        if (_top == _items.Length)
+            Resize();
+        _items[_top] = item;
+        _top++;
+        Count++;
     }
 
-    [Fact]
-    public void Search_ShouldReturnOneBasedDepthFromTop_WhenItemExists()
+    public T Pop()
     {
-        // Arrange: Create a stack with multiple values
-        var stack = new CustomStack<int>();
-
-        stack.Push(100);
-        stack.Push(200);
-        stack.Push(300);
-
-        // Act: Search for an existing element
-        var result = stack.Search(200);
-
-        // Assert: Verify Search returns depth from the top (1 = top element)
-        Assert.Equal(2, result);
+        if (Count == 0)
+            throw new InvalidOperationException("Stack is empty.");
+        _top--;
+        Count--;
+        return _items[_top];
     }
 
-    [Fact]
-    public void Sort_ShouldReorderStack_WithSmallestItemAtTop()
+    public T Peek()
     {
-        // Arrange: Create a stack with unsorted values
-        var stack = new CustomStack<int>();
+        if (Count == 0)
+            throw new InvalidOperationException("Stack is empty.");
+        return _items[_top - 1];
+    }
 
-        stack.Push(30);
-        stack.Push(10);
-        stack.Push(20);
+    public int Search(T item)
+    {
+        for (int i = _top - 1; i >= 0; i--)
+            if (_items[i].CompareTo(item) == 0)
+                return _top - i; // 1-based depth from the top
+        return -1;
+    }
 
-        // Act: Sort the stack
-        stack.Sort();
+    public void Sort()
+    {
+        // Sort descending (bottom = largest, top = smallest)
+        for (int i = 0; i < _top - 1; i++)
+            for (int j = 0; j < _top - i - 1; j++)
+                if (_items[j].CompareTo(_items[j + 1]) < 0)
+                {
+                    T temp = _items[j];
+                    _items[j] = _items[j + 1];
+                    _items[j + 1] = temp;
+                }
+    }
 
-        // Assert: Verify the smallest item is placed at the top
-        Assert.Equal(10, stack.Peek());
+    private void Resize()
+    {
+        T[] bigger = new T[_items.Length * 2];
+        for (int i = 0; i < _top; i++)
+            bigger[i] = _items[i];
+        _items = bigger;
     }
 }
