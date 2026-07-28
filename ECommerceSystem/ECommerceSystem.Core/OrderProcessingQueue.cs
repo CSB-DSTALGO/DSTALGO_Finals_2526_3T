@@ -10,7 +10,9 @@ public class OrderProcessingQueue
     public void EnqueueOrder(Order order)
     {
         if (order is null)
-            throw new ArgumentNullException(nameof(order));
+        {
+            throw new ArgumentNullException(nameof(order), "Cannot enqueue a null order.");
+        }
 
         _orderQueue.Enqueue(order);
     }
