@@ -5,7 +5,6 @@ namespace DataStructuresLibrary
     public class CustomQueue<T>
     {
         // ALL CODE BELOW IS AI-GENERATED FOR TESTING PURPOSES.
-        // Final program fails to run without this, please modify.
 
         private T[] _items;
         private int _front;

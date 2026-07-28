@@ -36,8 +36,7 @@ namespace DataStructuresLibrary
         {
             if (index < 0 || index >= _count)  // Is index invalid and outside the bounds of the current list?
             {
-                throw new ArgumentOutOfRangeException(nameof(index), 
-                    "Index is out of range."); // YES, throw exception
+                throw new IndexOutOfRangeException("Index is out of range."); // YES, throw exception
             }
             return _items[index];
         }
@@ -47,7 +46,7 @@ namespace DataStructuresLibrary
         {
             if (index < 0 || index >= _count)
             {
-                throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+                throw new IndexOutOfRangeException("Index is out of range.");
             }
 
             for (int i = index; i < _count - 1; i++) // Shifts elements down to overwrite removed element
