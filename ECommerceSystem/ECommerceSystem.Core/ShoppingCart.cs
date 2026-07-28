@@ -1,20 +1,35 @@
 namespace ECommerceSystem.Core;
 
+using System;
 using DataStructuresLibrary;
 
 public class ShoppingCart
 {
     private readonly CustomArrayList<Product> _items = new();
 
-    public int Count => _items.Count;
+    public void AddItem(Product product)
+    {
+        if (product is null)
+            throw new ArgumentNullException(nameof(product));
 
-    public void AddItem(Product product) => throw new NotImplementedException();
-    public bool RemoveItem(Product product) => throw new NotImplementedException();
-    public Product GetItemAt(int index) => throw new NotImplementedException();
+        _items.Add(product);
+    }
 
-    public decimal CalculateTotal() => throw new NotImplementedException();
+    public void RemoveItem(int index)
+    {
+        _items.RemoveAt(index);
+    }
 
-    
-    public int SearchItem(Product product) => throw new NotImplementedException();
-    public void SortCartByPrice() => throw new NotImplementedException();
+    public Product GetItemAt(int index)
+    {
+        return _items.Get(index);
+    }
+
+    public void ShowAllItems()
+    {
+        for (int i = 0; i < _items.Count; i++)
+        {
+            Console.WriteLine(_items.Get(i));
+        }
+    }
 }

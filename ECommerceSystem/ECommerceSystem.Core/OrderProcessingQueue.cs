@@ -1,18 +1,32 @@
 namespace ECommerceSystem.Core;
 
+using System;
 using DataStructuresLibrary;
 
 public class OrderProcessingQueue
 {
-    private readonly CustomQueue<Order> _orders = new();
+    private readonly CustomQueue<Order> _orderQueue = new();
 
-    public int Count => _orders.Count;
+    public void EnqueueOrder(Order order)
+    {
+        if (order is null)
+            throw new ArgumentNullException(nameof(order));
 
-    public void EnqueueOrder(Order order) => throw new NotImplementedException();
-    public Order ProcessNextOrder() => throw new NotImplementedException();
-    public Order PeekNextOrder() => throw new NotImplementedException();
+        _orderQueue.Enqueue(order);
+    }
 
-    
-    public bool SearchOrder(Order order) => throw new NotImplementedException();
-    public void SortOrders() => throw new NotImplementedException();
+    public Order ProcessNextOrder()
+    {
+        return _orderQueue.Dequeue();
+    }
+
+    public Order ViewNextOrder()
+    {
+        return _orderQueue.Peek();
+    }
+
+    public bool CheckOrderQueueEmpty()
+    {
+        return _orderQueue.Count == 0;
+    }
 }
