@@ -1,42 +1,141 @@
-namespace DataStructuresLibrary.Tests;
+namespace DataStructuresLibrary;
 
-using Xunit;
-using DataStructuresLibrary;
-
-public class CustomSinglyLinkedListTests
+public class CustomSinglyLinkedList<T> where T : IComparable<T>
 {
-    [Fact]
-    public void Add_ShouldAppendNodeAndIncrementCount()
+    private class Node
     {
-        // TODO: Test appending items to the linked list
-        throw new NotImplementedException();
+        public T Data;
+        public Node? Next;
+
+        public Node(T data)
+        {
+            Data = data;
+            Next = null;
+        }
     }
 
-    [Fact]
-    public void Remove_ShouldUpdateNodePointersCorrectly()
+    private Node? _head;
+
+    public int Count { get; private set; }
+
+    public CustomSinglyLinkedList()
     {
-        // TODO: Test removing head, middle, and tail nodes
-        throw new NotImplementedException();
+        _head = null;
+        Count = 0;
     }
 
-    [Fact]
-    public void Search_ShouldReturnTrue_WhenItemExistsInNodes()
+    public void Add(T item)
     {
-        // TODO: Test linear node traversal finding existing data
-        throw new NotImplementedException();
+        if (item == null)
+            throw new ArgumentNullException(nameof(item));
+
+        Node newNode = new(item);
+
+        if (_head == null)
+        {
+            _head = newNode;
+        }
+        else
+        {
+            Node current = _head;
+
+            while (current.Next != null)
+            {
+                current = current.Next;
+            }
+
+            current.Next = newNode;
+        }
+
+        Count++;
     }
 
-    [Fact]
-    public void Search_ShouldReturnFalse_WhenItemIsAbsent()
+    public bool Remove(T item)
     {
-        // TODO: Test linear search returning false for missing data
-        throw new NotImplementedException();
+        if (_head == null)
+            return false;
+
+        if (_head.Data.CompareTo(item) == 0)
+        {
+            _head = _head.Next;
+            Count--;
+            return true;
+        }
+
+        Node current = _head;
+
+        while (current.Next != null)
+        {
+            if (current.Next.Data.CompareTo(item) == 0)
+            {
+                current.Next = current.Next.Next;
+                Count--;
+                return true;
+            }
+
+            current = current.Next;
+        }
+
+        return false;
     }
 
-    [Fact]
-    public void Sort_ShouldRearrangeNodePointersInAscendingOrder()
+    public T Get(int index)
     {
-        // TODO: Test node re-linking to verify ascending list order
-        throw new NotImplementedException();
+        if (index < 0 || index >= Count)
+            throw new IndexOutOfRangeException();
+
+        Node current = _head!;
+
+        for (int i = 0; i < index; i++)
+        {
+            current = current.Next!;
+        }
+
+        return current.Data;
+    }
+
+    public bool Search(T item)
+    {
+        Node? current = _head;
+
+        while (current != null)
+        {
+            if (current.Data.CompareTo(item) == 0)
+                return true;
+
+            current = current.Next;
+        }
+
+        return false;
+    }
+
+    public void Sort()
+    {
+        if (Count <= 1)
+            return;
+
+        bool swapped;
+
+        do
+        {
+            swapped = false;
+
+            Node? current = _head;
+
+            while (current != null && current.Next != null)
+            {
+                if (current.Data.CompareTo(current.Next.Data) > 0)
+                {
+                    T temp = current.Data;
+                    current.Data = current.Next.Data;
+                    current.Next.Data = temp;
+
+                    swapped = true;
+                }
+
+                current = current.Next;
+            }
+
+        } while (swapped);
     }
 }
