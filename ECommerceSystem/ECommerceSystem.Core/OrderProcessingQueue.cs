@@ -5,30 +5,42 @@ using DataStructuresLibrary;
 
 public class OrderProcessingQueue
 {
-    private readonly CustomQueue<Order> _orderQueue = new();
+    private readonly CustomQueue<Order> _orders = new();
+
+    public int Count => _orders.Count;
 
     public void EnqueueOrder(Order order)
     {
-        if (order is null)
+        if (order == null)
         {
-            throw new ArgumentNullException(nameof(order), "Cannot enqueue a null order.");
+            throw new ArgumentNullException(nameof(order));
         }
 
-        _orderQueue.Enqueue(order);
+        _orders.Enqueue(order);
     }
 
     public Order ProcessNextOrder()
     {
-        return _orderQueue.Dequeue();
+        return _orders.Dequeue();
     }
 
-    public Order ViewNextOrder()
+    public Order PeekNextOrder()
     {
-        return _orderQueue.Peek();
+        return _orders.Peek();
     }
 
-    public bool CheckOrderQueueEmpty()
+    public bool SearchOrder(Order order)
     {
-        return _orderQueue.Count == 0;
+        if (order == null)
+        {
+            throw new ArgumentNullException(nameof(order));
+        }
+
+        return _orders.Search(order);
+    }
+
+    public void SortOrders()
+    {
+        _orders.Sort();
     }
 }

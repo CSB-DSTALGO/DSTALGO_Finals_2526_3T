@@ -5,9 +5,9 @@ using DataStructuresLibrary;
 
 public class ProductCatalog
 {
-    private readonly CustomSinglyLinkedList<Product> _catalog = new();
+    private readonly CustomSinglyLinkedList<Product> _products = new();
 
-    public int Count => _catalog.Count;
+    public int Count => _products.Count;
 
     public void AddProduct(Product product)
     {
@@ -16,7 +16,7 @@ public class ProductCatalog
             throw new ArgumentNullException(nameof(product));
         }
 
-        _catalog.Add(product);
+        _products.Add(product);
     }
 
     public bool RemoveProduct(Product product)
@@ -26,12 +26,7 @@ public class ProductCatalog
             throw new ArgumentNullException(nameof(product));
         }
 
-        return _catalog.Remove(product);
-    }
-
-    public Product GetProductDetails(int index)
-    {
-        return _catalog.Get(index);
+        return _products.Remove(product);
     }
 
     public bool SearchProduct(Product product)
@@ -41,19 +36,11 @@ public class ProductCatalog
             throw new ArgumentNullException(nameof(product));
         }
 
-        return _catalog.Search(product);
+        return _products.Search(product);
     }
 
     public void SortCatalog()
     {
-        _catalog.Sort();
-    }
-
-    public void ShowAllProfiles()
-    {
-        for (int i = 0; i < _catalog.Count; i++)
-        {
-            Console.WriteLine(_catalog.Get(i));
-        }
+        _products.Sort();
     }
 }
