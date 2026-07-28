@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using EnrollmentSystem.Core;
 
 namespace EnrollmentSystem.ConsoleApp
@@ -16,7 +16,7 @@ namespace EnrollmentSystem.ConsoleApp
             {
                 Console.Clear();
                 Console.WriteLine("=================================================");
-                Console.WriteLine("    ENROLLMENT MANAGEMENT SYSTEM CORE NAVIGATOR  ");
+                Console.WriteLine(" ENROLLMENT MANAGEMENT SYSTEM CORE NAVIGATOR ");
                 Console.WriteLine("=================================================");
                 Console.WriteLine("1. Student Registry (ArrayList Interface)");
                 Console.WriteLine("2. Course Curriculum (Singly Linked List Interface)");
@@ -69,10 +69,9 @@ namespace EnrollmentSystem.ConsoleApp
                         string name = Console.ReadLine() ?? "";
                         Console.Write("Enter Course Code: ");
                         string course = Console.ReadLine() ?? "";
-                        
+
                         _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0));
                         Console.WriteLine("\nStudent registered successfully.");
-                        //_logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Registered student {id}" });
                         break;
 
                     case "2":
@@ -82,13 +81,12 @@ namespace EnrollmentSystem.ConsoleApp
                         Console.WriteLine(removed ? "\nStudent removed successfully." : "\nStudent not found.");
                         if (removed)
                         {
-                            _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Removed student {targetId}" });
+                            _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0, 4)}", ActionSummary = $"Removed student {targetId}" });
                         }
                         break;
 
                     case "3":
                         Console.WriteLine("\n--- Current Student List ---");
-                        // If students haven't implemented a printing function, this handles it via the tracking metrics
                         int count = _registry.GetStudentCount();
                         Console.WriteLine($"Total Students: {count}");
                         for (int i = 0; i < count; i++)
@@ -106,9 +104,8 @@ namespace EnrollmentSystem.ConsoleApp
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                //Console.WriteLine($"\nError: {ex.Message}");
             }
-            
+
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
         }
@@ -143,12 +140,14 @@ namespace EnrollmentSystem.ConsoleApp
                     case "2":
                         Console.Write("Enter Course Code to remove: ");
                         string targetCode = Console.ReadLine() ?? "";
+                        // ✅ DeleteCourse now exists in CourseCurriculum
                         bool removed = _curriculum.DeleteCourse(targetCode);
                         Console.WriteLine(removed ? "\nCourse removed successfully." : "\nCourse not found.");
                         break;
 
                     case "3":
                         Console.WriteLine("\n--- Curriculum Matrix ---");
+                        // ✅ CalculateTotalUnits now exists in CourseCurriculum
                         Console.WriteLine($"Total Curriculum Units: {_curriculum.CalculateTotalUnits()}");
                         break;
                 }
