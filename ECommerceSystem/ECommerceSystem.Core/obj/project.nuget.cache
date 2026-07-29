@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "WdaD/8Y/uW8=",
+  "dgSpecHash": "wjpRz/9gfcQ=",
   "success": true,
   "projectFilePath": "C:\\Users\\garri\\Documents\\DSTALGO_Finals_2526_3T\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Core\\ECommerceSystem.Core.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\garri\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.18\\microsoft.windowsdesktop.app.ref.9.0.18.nupkg.sha512",
+    "C:\\Users\\garri\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.18\\microsoft.netcore.app.ref.9.0.18.nupkg.sha512",
+    "C:\\Users\\garri\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.18\\microsoft.aspnetcore.app.ref.9.0.18.nupkg.sha512"
+  ],
   "logs": []
 }

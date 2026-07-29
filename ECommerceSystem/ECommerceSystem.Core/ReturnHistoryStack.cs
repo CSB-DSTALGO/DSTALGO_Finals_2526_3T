@@ -1,4 +1,5 @@
 using DataStructuresLibrary;
+using static ECommerceSystem.Core.Product;
 
 namespace ECommerceSystem.Core
 {
