@@ -56,7 +56,19 @@ namespace DataStructuresLibrary
 
         public void Sort()
         {
-            Array.Sort(_items, 0, Count);
+            for (int i = 0; i < Count - 1; i++)
+            {
+                for (int j = 0; j < Count - i - 1; j++)
+                {
+                    if (_items[j].CompareTo(_items[j + 1]) > 0)
+                    {
+                        // Swap elements
+                        T temp = _items[j];
+                        _items[j] = _items[j + 1];
+                        _items[j + 1] = temp;
+                    }
+                }
+            }
         }
 
         public void ShowAllItems()
