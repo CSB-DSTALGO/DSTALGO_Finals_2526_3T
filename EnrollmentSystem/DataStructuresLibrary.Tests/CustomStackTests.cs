@@ -6,11 +6,246 @@ namespace DataStructuresLibrary.Tests
 {
     public class CustomStackTests
     {
-        //ADD ALL YOUR TESTS HERE
+       
+        //count tests
         [Fact]
-        public void ThisIsYourTest()
+        public void TestNewCustomStack() //new stack should be zero
         {
+            var stack = new CustomStack<int>();
 
+            Assert.Equal(0, stack.Count);
         }
-    }   
-} 
+
+        [Fact]
+        public void TestPushOneItem() //count now should be 1
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(10);
+
+            Assert.Equal(1, stack.Count);
+        }
+
+        [Fact]
+        public void TestCountAfterPushAndPop() //count should return to 0
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(10);
+            stack.Pop();
+
+            Assert.Equal(0, stack.Count);
+        }
+
+
+        //push tests
+
+        [Fact]
+        public void TestPushItem() //count for new stack should be 1 when pushed 1
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(10);
+
+            Assert.Equal(1, stack.Count);
+        }
+
+        [Fact]
+        public void TestPushMultipleItems() //count should become 3
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(10);
+            stack.Push(20);
+            stack.Push(30);
+
+            Assert.Equal(3, stack.Count);
+        }
+
+        [Fact]
+        public void TestPushLastItemOnTop() //peek should return last pushed item
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(10);
+            stack.Push(20);
+            stack.Push(30);
+
+            Assert.Equal(30, stack.Peek());
+        }
+
+        
+        //pop Tests       
+        [Fact]
+        public void TestPopReturnsLastItem() //pop should return last pushed item
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(10);
+            stack.Push(20);
+
+            Assert.Equal(20, stack.Pop());
+        }
+
+        [Fact]
+        public void TestPopDecreasesCount() //count should decrease after pop
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(10);
+            stack.Push(20);
+
+            stack.Pop();
+
+            Assert.Equal(1, stack.Count);
+        }
+
+        [Fact]
+        public void TestPopEmptyStack() // Should throw exception
+        {
+            var stack = new CustomStack<int>();
+
+            Assert.Throws<InvalidOperationException>(() => stack.Pop());
+        }
+
+        
+        // Peek Tests       
+
+        [Fact]
+        public void TestPeekReturnsTopItem() //peek should return top item
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(10);
+            stack.Push(20);
+
+            Assert.Equal(20, stack.Peek());
+        }
+
+        [Fact]
+        public void TestPeekDoesNotRemoveItem() //count should remain the same
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(10);
+
+            stack.Peek();
+
+            Assert.Equal(1, stack.Count);
+        }
+
+        [Fact]
+        public void TestPeekEmptyStack() // Should throw exception
+        {
+            var stack = new CustomStack<int>();
+
+            Assert.Throws<InvalidOperationException>(() => stack.Peek());
+        }
+
+        
+        //IsEmpty Tests        
+        [Fact]
+        public void TestNewStackIsEmpty() //new stack should be empty
+        {
+            var stack = new CustomStack<int>();
+
+            Assert.True(stack.IsEmpty());
+        }
+
+        [Fact]
+        public void TestStackNotEmptyAfterPush() //stack should not be empty
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(10);
+
+            Assert.False(stack.IsEmpty());
+        }
+
+        [Fact]
+        public void TestStackEmptyAfterPop() //stack should be empty again
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(10);
+            stack.Pop();
+
+            Assert.True(stack.IsEmpty());
+        }
+
+
+        //Search tests
+        [Fact]
+        public void TestSearchFindsItem() //search should return index of item
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(10);
+            stack.Push(20);
+            stack.Push(30);
+
+            Assert.Equal(1, stack.Search(20, (a, b) => a.CompareTo(b)));
+        }
+
+        [Fact]
+        public void TestSearchItemNotFound() //search should return -1 when item is missing
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(10);
+            stack.Push(20);
+
+            Assert.Equal(-1, stack.Search(99, (a, b) => a.CompareTo(b)));
+        }
+
+        [Fact]
+        public void TestSearchEmptyStack() //search should return -1 on empty stack
+        {
+            var stack = new CustomStack<int>();
+
+            Assert.Equal(-1, stack.Search(5, (a, b) => a.CompareTo(b)));
+        }
+
+        [Fact]
+        public void TestSortOrdersAscending() //sort should arrange items so top pops largest first
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(30);
+            stack.Push(10);
+            stack.Push(20);
+
+            stack.Sort((a, b) => a.CompareTo(b));
+
+            Assert.Equal(30, stack.Pop());
+            Assert.Equal(20, stack.Pop());
+            Assert.Equal(10, stack.Pop());
+        }
+
+
+        //Sort tests
+        [Fact]
+        public void TestSortKeepsSameCount() //sort should not add or remove items
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Push(5);
+            stack.Push(1);
+            stack.Push(3);
+
+            stack.Sort((a, b) => a.CompareTo(b));
+
+            Assert.Equal(3, stack.Count);
+        }
+
+        [Fact]
+        public void TestSortEmptyStack() //sort should not throw on empty stack
+        {
+            var stack = new CustomStack<int>();
+
+            stack.Sort((a, b) => a.CompareTo(b));
+
+            Assert.True(stack.IsEmpty());
+        }
+    }
+}

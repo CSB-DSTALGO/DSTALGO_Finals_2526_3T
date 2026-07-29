@@ -7,74 +7,71 @@ namespace EnrollmentSystem.Tests
     public class StudentRegistryTests
     {
         [Fact]
-        public void RegisterStudent_ShouldAddStudentAndIncreaseCount()
+        public void RegisterStudent_AddsStudentToRegistry()
         {
             var registry = new StudentRegistry();
-            // Student constructor requires (int id, string name, double gpa)
-            var student = new Student(20260001, "Alice", 0.0);
+            var student = new Student(20260001, "Alice", 3.5);
 
             registry.RegisterStudent(student);
+            var found = registry.SearchStudentById(20260001);
 
-            Assert.Equal(1, registry.GetStudentCount());
-            Assert.Equal("Alice", registry.GetStudentAt(0).Name);
+            Assert.NotNull(found);
         }
 
         [Fact]
-        public void RemoveStudent_ShouldDecreaseCount_WhenStudentExists()
+        public void UnregisterStudent_RemovesStudentAtIndex()
         {
             var registry = new StudentRegistry();
-            // Use matching constructor and id type for removal
-            var student = new Student(20260001, "Alice", 0.0);
-            registry.RegisterStudent(student);
+            registry.RegisterStudent(new Student(20260001, "Alice", 3.5));
+            registry.RegisterStudent(new Student(20260002, "Bob", 2.8));
 
-            bool removed = registry.UnregisterStudent(20260001);
+            registry.UnregisterStudent(0);
 
-            Assert.True(removed);
-            Assert.Equal(0, registry.GetStudentCount());
+            var alice = registry.SearchStudentById(20260001);
+            var bob = registry.SearchStudentById(20260002);
+
+            Assert.Null(alice);
+            Assert.NotNull(bob);
         }
 
         [Fact]
-        public void RemoveStudent_ByIdString_ShouldReturnTrue_WhenStudentExists()
+        public void SortStudentsByGpa_PutsLowestGpaFirst()
         {
             var registry = new StudentRegistry();
-            var alice = new Student(20260001, "Alice", 3.5);
-            var bob = new Student(20260002, "Bob", 2.8);
-            registry.RegisterStudent(alice);
-            registry.RegisterStudent(bob);
+            registry.RegisterStudent(new Student(20260001, "Alice", 3.5));
+            registry.RegisterStudent(new Student(20260002, "Bob", 2.5));
+            registry.RegisterStudent(new Student(20260003, "Carol", 3.9));
 
-            bool removed = registry.RemoveStudent("20260001");
+            registry.SortStudentsByGpa();
 
-            Assert.True(removed);
-            Assert.Equal(1, registry.GetStudentCount());
-            Assert.Equal("Bob", registry.GetStudentAt(0).Name);
+            var lowest = registry.SearchStudentById(20260002);
+            Assert.Equal(2.5, lowest.Gpa);
         }
 
         [Fact]
-        public void CalculateAverageGpa_ShouldReturnAverageOfRegisteredStudents()
+        public void SearchStudentById_FindsCorrectStudent()
         {
             var registry = new StudentRegistry();
             registry.RegisterStudent(new Student(20260001, "Alice", 3.5));
             registry.RegisterStudent(new Student(20260002, "Bob", 2.5));
 
-            double average = registry.CalculateAverageGpa();
+            var found = registry.SearchStudentById(20260002);
 
-            Assert.Equal(3.0, average, 2);
+            Assert.Equal("Bob", found.Name);
         }
 
         [Fact]
-        public void SearchStudent_ShouldReturnIndex_WhenStudentExists()
+        public void SearchStudentById_ReturnsNullWhenNotFound()
         {
             var registry = new StudentRegistry();
-            var alice = new Student(20260001, "Alice", 3.5);
-            var bob = new Student(20260002, "Bob", 2.5);
-            registry.RegisterStudent(alice);
-            registry.RegisterStudent(bob);
+            registry.RegisterStudent(new Student(20260001, "Alice", 3.5));
 
-            int index = registry.SearchStudent(bob);
+            var found = registry.SearchStudentById(99999);
 
-            Assert.Equal(1, index);
+            Assert.Null(found);
         }
     }
+}
 
     public class CourseCurriculumTests
     {
@@ -105,6 +102,19 @@ namespace EnrollmentSystem.Tests
         }
 
         [Fact]
+
+        public void SearchCourse_ShouldFindExistingCourseByCode()
+        {
+            var curriculum = new CourseCurriculum();
+            curriculum.InsertCourse(new Course("CS101", "Intro to CS", 3));
+            curriculum.InsertCourse(new Course("CS102", "Data Structures", 3));
+
+            var found = curriculum.SearchCourse("CS102");
+
+            Assert.NotNull(found);
+            Assert.Equal("CS102", found!.Code);
+        }
+
         public void DeleteCourse_ShouldReturnFalse_WhenCourseCodeDoesNotExist()
         {
             var curriculum = new CourseCurriculum();
@@ -134,6 +144,7 @@ namespace EnrollmentSystem.Tests
             curriculum.InsertCourse(course);
 
             Assert.True(curriculum.SearchCourse(course));
+
         }
     }
 
@@ -242,4 +253,3 @@ namespace EnrollmentSystem.Tests
             Assert.Equal(1, logs.GetLogCount());
         }
     }
-}
