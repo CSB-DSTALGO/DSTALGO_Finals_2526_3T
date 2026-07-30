@@ -88,11 +88,16 @@ public class StudentRegistry
         {
             Student student = _students.Get(i); // get the student at the current index
 
-            Console.WriteLine( // display 
-                $"ID: {student.Id}, " +
-                $"Name: {student.Name}, " +
-                $"GPA: {student.Gpa}"
-            );
+            Console.WriteLine(
+            $"[{i}] ID: {student.Id} | " +
+            $"NAME: {student.Name} | " +
+            $"COURSE: {student.CourseCode} | " +
+            $"GPA: {student.Gpa}"
+        );
+
+            Console.WriteLine();
+            Console.WriteLine("=====================================================");
+            Console.WriteLine();
         }
     }
 }

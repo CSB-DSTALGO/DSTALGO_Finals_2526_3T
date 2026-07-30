@@ -132,14 +132,15 @@ namespace EnrollmentSystem.ConsoleApp
                         Console.WriteLine($"|TOTAL STUDENTS|: {count}");
                         Console.WriteLine();
 
-                        for (int i = 0; i < count; i++)
-                        {
-                            var s = _registry.GetStudentAt(i);
-                            Console.WriteLine($"[{i}] ID: {s.Id} | NAME: {s.Name} | COURSE: {s.CourseCode}");
-                            Console.WriteLine();
-                            Console.WriteLine("=====================================================");
-                            Console.WriteLine();
-                        }
+                        _registry.ShowAllStudents();
+                        // for (int i = 0; i < count; i++)
+                        // {
+                        //   var s = _registry.GetStudentAt(i);
+                        //    Console.WriteLine($"[{i}] ID: {s.Id} | NAME: {s.Name} | COURSE: {s.CourseCode}");
+                        //    Console.WriteLine();
+                        //     Console.WriteLine("=====================================================");
+                        //     Console.WriteLine();
+                        //  }
                         break;
                 }
             }
