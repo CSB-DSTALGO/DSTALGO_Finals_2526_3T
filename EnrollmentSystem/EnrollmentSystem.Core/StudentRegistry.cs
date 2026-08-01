@@ -32,6 +32,41 @@ namespace EnrollmentSystem.Core
             return false;
         }
 
+        public Student GetStudentAt(int index)
+        {
+            if (index < 0 || index >= _registry.Count)
+            return null;
+
+            return _registry.Get(index);
+        }
+
+        public bool RemoveStudent(string id)
+        {
+        for (int i = 0; i < _registry.Count; i++)
+        {
+        if (_registry.Get(i).Id.ToString() == id)
+        {
+            _registry.RemoveAt(i);
+            return true;
+        }
+        }
+        return false;
+        }
+
+        public double CalculateAverageGpa()
+    {
+        if (_registry.Count == 0)
+        return 0;
+
+        double total = 0;
+        for (int i = 0; i < _registry.Count; i++)
+        {
+        total += _registry.Get(i).Gpa;
+        }
+
+        return total / _registry.Count;
+    }
+
         public Student GetStudentDetails(int index) => _registry.Get(index);
 
         public int GetStudentCount()
@@ -39,44 +74,9 @@ namespace EnrollmentSystem.Core
             int count = 0;
             for (int i = 0; i < _registry.Count; i++)
             {
-                count++;
+            count++;
             }
             return count;
-        }
-
-        public Student GetStudentAt(int index)
-        {
-            if (index < 0 || index >= _registry.Count)
-                return null;
-
-            return _registry.Get(index);
-        }
-
-        public bool RemoveStudent(string id)
-        {
-            for (int i = 0; i < _registry.Count; i++)
-            {
-                if (_registry.Get(i).Id.ToString() == id)
-                {
-                    _registry.RemoveAt(i);
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public double CalculateAverageGpa()
-        {
-            if (_registry.Count == 0)
-                return 0;
-
-            double total = 0;
-            for (int i = 0; i < _registry.Count; i++)
-            {
-                total += _registry.Get(i).Gpa;
-            }
-
-            return total / _registry.Count;
         }
 
         public void SortStudents()

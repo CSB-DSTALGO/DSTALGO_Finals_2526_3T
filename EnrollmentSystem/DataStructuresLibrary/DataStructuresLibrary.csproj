@@ -3,9 +3,6 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RollForward>Major</RollForward>  <!-- Add this line -->
+    <RollForward>Major</RollForward>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="C:\Users\James\Downloads\CustomStack.cs" Link="CustomStack.cs" />
-  </ItemGroup>
 </Project>
