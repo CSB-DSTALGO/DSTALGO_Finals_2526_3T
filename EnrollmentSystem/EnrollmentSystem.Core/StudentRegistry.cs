@@ -18,12 +18,61 @@ namespace EnrollmentSystem.Core
             _registry.Add(student);
         }
 
-        public void UnregisterStudent(int index)
+        public bool UnregisterStudent(int index)
         {
+            if (index < 0 || index >= _registry.Count)
+            return false;
+
             _registry.RemoveAt(index);
+            return true;
         }
 
+        public Student GetStudentAt(int index)
+        {
+            if (index < 0 || index >= _registry.Count)
+            return null;
+
+            return _registry.Get(index);
+        }
+
+        public bool RemoveStudent(string id)
+        {
+        for (int i = 0; i < _registry.Count; i++)
+        {
+        if (_registry.Get(i).Id.ToString() == id)
+        {
+            _registry.RemoveAt(i);
+            return true;
+        }
+        }
+        return false;
+        }
+
+        public double CalculateAverageGpa()
+    {
+        if (_registry.Count == 0)
+        return 0;
+
+        double total = 0;
+        for (int i = 0; i < _registry.Count; i++)
+        {
+        total += _registry.Get(i).Gpa;
+        }
+
+        return total / _registry.Count;
+    }
+
         public Student GetStudentDetails(int index) => _registry.Get(index);
+
+        public int GetStudentCount()
+        {
+            int count = 0;
+            for (int i = 0; i < _registry.Count; i++)
+            {
+            count++;
+            }
+            return count;
+        }
 
         public void ShowAllStudents()
         {
@@ -41,16 +90,9 @@ namespace EnrollmentSystem.Core
             _registry.BubbleSort();
         }
 
-        public string SearchStudent(Student student)
+        public int SearchStudent(Student student)
         {
-           int index = _registry.LinearSearch(student);
-
-            if (index == -1)
-            {
-                return "Student not found.";
-            }
-
-            return $"{student.Name} found at index {index}";
+           return _registry.LinearSearch(student);
         }
     }
 }

@@ -32,7 +32,7 @@ public class AdmissionsDesk
     {
         return _applications.IsEmpty();
     }
-    public int GetQueueCount() => Count;
+    public int GetQueueCount() => _tickets.Count;
 
     // Hint: Delegate search and sort to CustomQueue<T>
     public bool SearchApplication(AdmissionApplication app)
