@@ -16,7 +16,7 @@ public class CustomArrayListTests
 
         Assert.Equal(3, list.Count);
         Assert.Equal(23, list.Get(0));
-        Assert.Equal(42, list.Get(0));
+        Assert.Equal(42, list.Get(1));
         Assert.Equal(66, list.Get(2));
         
     }
@@ -50,7 +50,7 @@ public class CustomArrayListTests
         list.Add(19);
         list.Add(24);
 
-        int index = list.LinearSearch(10);
+        int index = list.LinearSearch(19);
 
         Assert.Equal(1, index);
     }
