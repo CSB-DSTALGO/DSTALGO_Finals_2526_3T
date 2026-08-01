@@ -1,14 +1,12 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "ChksLGeAG0s=",
+  "dgSpecHash": "QI/wlkcP388=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ylonah\\Downloads\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
-=======
-  "dgSpecHash": "l27SChmLGnc=",
-  "success": true,
-  "projectFilePath": "C:\\Users\\Enzo\\Desktop\\DLS-CSB\\3rd Term\\DSTALGO\\DSTALGO Visual Studio Project\\DSTALGO_FFTIS2_GROUP7\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
->>>>>>> 675a17cbf7d62de54c6c5f1e3b2fb92b4aa79f21
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Peeui\\Downloads\\ECommerceSystem\\ECommerceSystem\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Peeui\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.18\\microsoft.windowsdesktop.app.ref.9.0.18.nupkg.sha512",
+    "C:\\Users\\Peeui\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.18\\microsoft.netcore.app.ref.9.0.18.nupkg.sha512",
+    "C:\\Users\\Peeui\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.18\\microsoft.aspnetcore.app.ref.9.0.18.nupkg.sha512"
+  ],
   "logs": []
 }

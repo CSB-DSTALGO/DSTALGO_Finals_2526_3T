@@ -1,14 +1,13 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "s3V906jidkU=",
+  "dgSpecHash": "KgFW/g7sxB0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ylonah\\Downloads\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.ConsoleApp\\ECommerceSystem.ConsoleApp.csproj",
-=======
-  "dgSpecHash": "Sq46FWtj3fM=",
-  "success": true,
-  "projectFilePath": "C:\\Users\\Enzo\\Desktop\\DLS-CSB\\3rd Term\\DSTALGO\\DSTALGO Visual Studio Project\\DSTALGO_FFTIS2_GROUP7\\ECommerceSystem\\ECommerceSystem.ConsoleApp\\ECommerceSystem.ConsoleApp.csproj",
->>>>>>> 675a17cbf7d62de54c6c5f1e3b2fb92b4aa79f21
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Peeui\\Downloads\\ECommerceSystem\\ECommerceSystem\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.ConsoleApp\\ECommerceSystem.ConsoleApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Peeui\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.18\\microsoft.windowsdesktop.app.ref.9.0.18.nupkg.sha512",
+    "C:\\Users\\Peeui\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.18\\microsoft.netcore.app.ref.9.0.18.nupkg.sha512",
+    "C:\\Users\\Peeui\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.18\\microsoft.aspnetcore.app.ref.9.0.18.nupkg.sha512",
+    "C:\\Users\\Peeui\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.18\\microsoft.netcore.app.host.win-x64.9.0.18.nupkg.sha512"
+  ],
   "logs": []
 }

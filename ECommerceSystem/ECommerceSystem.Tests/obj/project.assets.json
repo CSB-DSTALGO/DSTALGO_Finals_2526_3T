@@ -1,11 +1,7 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
-<<<<<<< HEAD
     "net9.0": {
-=======
-    "net10.0": {
->>>>>>> 675a17cbf7d62de54c6c5f1e3b2fb92b4aa79f21
       "coverlet.collector/6.0.4": {
         "type": "package",
         "build": {
@@ -1051,39 +1047,23 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\Ylonah\\.nuget\\packages\\": {},
-=======
-    "C:\\Users\\Enzo\\.nuget\\packages\\": {},
->>>>>>> 675a17cbf7d62de54c6c5f1e3b2fb92b4aa79f21
+    "C:\\Users\\Peeui\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\Ylonah\\Downloads\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Tests\\ECommerceSystem.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Peeui\\Downloads\\ECommerceSystem\\ECommerceSystem\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Tests\\ECommerceSystem.Tests.csproj",
       "projectName": "ECommerceSystem.Tests",
-      "projectPath": "C:\\Users\\Ylonah\\Downloads\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Tests\\ECommerceSystem.Tests.csproj",
-      "packagesPath": "C:\\Users\\Ylonah\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ylonah\\Downloads\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Tests\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\Enzo\\Desktop\\DLS-CSB\\3rd Term\\DSTALGO\\DSTALGO Visual Studio Project\\DSTALGO_FFTIS2_GROUP7\\ECommerceSystem\\ECommerceSystem.Tests\\ECommerceSystem.Tests.csproj",
-      "projectName": "ECommerceSystem.Tests",
-      "projectPath": "C:\\Users\\Enzo\\Desktop\\DLS-CSB\\3rd Term\\DSTALGO\\DSTALGO Visual Studio Project\\DSTALGO_FFTIS2_GROUP7\\ECommerceSystem\\ECommerceSystem.Tests\\ECommerceSystem.Tests.csproj",
-      "packagesPath": "C:\\Users\\Enzo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Enzo\\Desktop\\DLS-CSB\\3rd Term\\DSTALGO\\DSTALGO Visual Studio Project\\DSTALGO_FFTIS2_GROUP7\\ECommerceSystem\\ECommerceSystem.Tests\\obj\\",
->>>>>>> 675a17cbf7d62de54c6c5f1e3b2fb92b4aa79f21
+      "projectPath": "C:\\Users\\Peeui\\Downloads\\ECommerceSystem\\ECommerceSystem\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Tests\\ECommerceSystem.Tests.csproj",
+      "packagesPath": "C:\\Users\\Peeui\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Peeui\\Downloads\\ECommerceSystem\\ECommerceSystem\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-<<<<<<< HEAD
-        "C:\\Users\\Ylonah\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-        "C:\\Users\\Enzo\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 675a17cbf7d62de54c6c5f1e3b2fb92b4aa79f21
+        "C:\\Users\\Peeui\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1092,25 +1072,19 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
+          "framework": "net9.0",
           "targetAlias": "net9.0",
           "projectReferences": {
-<<<<<<< HEAD
-            "C:\\Users\\Ylonah\\Downloads\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
-              "projectPath": "C:\\Users\\Ylonah\\Downloads\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj"
+            "C:\\Users\\Peeui\\Downloads\\ECommerceSystem\\ECommerceSystem\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
+              "projectPath": "C:\\Users\\Peeui\\Downloads\\ECommerceSystem\\ECommerceSystem\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj"
             },
-            "C:\\Users\\Ylonah\\Downloads\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Core\\ECommerceSystem.Core.csproj": {
-              "projectPath": "C:\\Users\\Ylonah\\Downloads\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Core\\ECommerceSystem.Core.csproj"
-=======
-            "C:\\Users\\Enzo\\Desktop\\DLS-CSB\\3rd Term\\DSTALGO\\DSTALGO Visual Studio Project\\DSTALGO_FFTIS2_GROUP7\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj": {
-              "projectPath": "C:\\Users\\Enzo\\Desktop\\DLS-CSB\\3rd Term\\DSTALGO\\DSTALGO Visual Studio Project\\DSTALGO_FFTIS2_GROUP7\\ECommerceSystem\\DataStructuresLibrary\\DataStructuresLibrary.csproj"
-            },
-            "C:\\Users\\Enzo\\Desktop\\DLS-CSB\\3rd Term\\DSTALGO\\DSTALGO Visual Studio Project\\DSTALGO_FFTIS2_GROUP7\\ECommerceSystem\\ECommerceSystem.Core\\ECommerceSystem.Core.csproj": {
-              "projectPath": "C:\\Users\\Enzo\\Desktop\\DLS-CSB\\3rd Term\\DSTALGO\\DSTALGO Visual Studio Project\\DSTALGO_FFTIS2_GROUP7\\ECommerceSystem\\ECommerceSystem.Core\\ECommerceSystem.Core.csproj"
->>>>>>> 675a17cbf7d62de54c6c5f1e3b2fb92b4aa79f21
+            "C:\\Users\\Peeui\\Downloads\\ECommerceSystem\\ECommerceSystem\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Core\\ECommerceSystem.Core.csproj": {
+              "projectPath": "C:\\Users\\Peeui\\Downloads\\ECommerceSystem\\ECommerceSystem\\DSTALGO_Finals_2526_3T\\ECommerceSystem\\ECommerceSystem.Core\\ECommerceSystem.Core.csproj"
             }
           }
         }
@@ -1125,16 +1099,12 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
-<<<<<<< HEAD
       "net9.0": {
+        "framework": "net9.0",
         "targetAlias": "net9.0",
-=======
-      "net10.0": {
-        "targetAlias": "net10.0",
->>>>>>> 675a17cbf7d62de54c6c5f1e3b2fb92b4aa79f21
         "dependencies": {
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
@@ -1169,11 +1139,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.313/PortableRuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.110/PortableRuntimeIdentifierGraph.json"
->>>>>>> 675a17cbf7d62de54c6c5f1e3b2fb92b4aa79f21
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
