@@ -12,6 +12,19 @@ public class AdmissionsDesk
 public int Count => _applications.Count;
 // Adds a student directly using an AdmissionApplication and gives them a ticket ID.
    public void IssueAdmissionsTicket(AdmissionApplication app)
+{
+    if (app is null)
+    {
+        throw new ArgumentNullException(nameof(app));
+    }
+
+    app.TicketId = $"T-10{_nextTicketNumber}";
+    _nextTicketNumber++;
+
+    _applications.Enqueue(app);
+}
+   
+   
    {
       if (app is null)
       {
