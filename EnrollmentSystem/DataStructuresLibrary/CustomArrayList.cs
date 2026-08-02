@@ -1,10 +1,9 @@
 using System;
-using System.Collections.Generic;
 
 namespace DataStructuresLibrary
 {
     // Custom implementation of a dynamic array.
-    public class CustomArrayList<T>
+    public class CustomArrayList<T> where T : IComparable<T>
     {
         private T[] _items;
         private int _count;
@@ -54,7 +53,6 @@ namespace DataStructuresLibrary
 
                 return _items[index];
             }
-
             set
             {
                 if (index < 0 || index >= _count)
@@ -124,7 +122,7 @@ namespace DataStructuresLibrary
                 T key = _items[i];
                 int j = i - 1;
 
-                while (j >= 0 && Comparer<T>.Default.Compare(_items[j], key) > 0)
+                while (j >= 0 && _items[j].CompareTo(key) > 0)
                 {
                     _items[j + 1] = _items[j];
                     j--;
