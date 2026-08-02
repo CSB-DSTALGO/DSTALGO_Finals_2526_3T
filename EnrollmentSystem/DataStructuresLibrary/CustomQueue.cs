@@ -1,7 +1,9 @@
 // CustomQueue.cs
 using System;
 
+
 namespace DataStructuresLibrary
+
 {
     public class CustomQueue<T>
     {
@@ -10,34 +12,71 @@ namespace DataStructuresLibrary
         private int _rear;
         private int _count;
 
+// Returns how many items are currently in the queue.
         public int Count 
         { 
-            get { throw new NotImplementedException(); } 
+            get{return _count;}
         }
-
+// Sets up an empty queue with room for 4 items to start.
         public CustomQueue()
         {
-            throw new NotImplementedException();
+            _items = new T[4];
+            _front = 0;
+            _rear = 0;
+            _count = 0;
         }
-
+ // Adds a new item to the back of the line.
         public void Enqueue(T item)
         {
-            throw new NotImplementedException();
-        }
+           if (_count == _items.Length)
+            {
+                Grow();
+            }
 
-        public T Dequeue()
+            _items[_rear] = item;
+            _rear = (_rear + 1) % _items.Length;
+            _count++;   
+        }
+ // Removes and returns the item at the front of the line.
+       public T Dequeue()
+       {
+        if (IsEmpty())
         {
-            throw new NotImplementedException();
-        }
+            throw new InvalidOperationException("Cannot dequeue: the queue is empty.");
 
-        public T Peek()
+        }
+        T item = _items[_front];
+        _items[_front] = default!;
+        _front = (_front + 1) %_items.Length;
+        _count--;
+        return item;
+       }
+     // Looks at the front item without removing it.  
+public T Peek()
         {
-            throw new NotImplementedException();
-        }
+        if (IsEmpty())
+            {
+                throw new InvalidOperationException("Cannot peek: the queue is empty.");
+            }
 
+            return _items[_front];
+        }
+// Returns true if the queue has no items.
         public bool IsEmpty()
         {
-            throw new NotImplementedException();
+            return _count == 0;
+        }
+      // Doubles the array's size when it's full, keeping item order intact.  
+        private void Grow()
+        {
+            T[]biggerArray = new T[_items.Length * 2];
+            for (int i = 0; i < _count; i++)
+            {
+                biggerArray[i] = _items[(_front + i) % _items.Length];
+            }
+            _items = biggerArray;
+            _front = 0;
+            _rear = _count;
         }
     }
 }
