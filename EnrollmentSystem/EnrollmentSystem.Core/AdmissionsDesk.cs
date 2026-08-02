@@ -147,7 +147,7 @@ public void SortApplicationsByPriority()
 
     }
 
-    foreach (var app in list)
+    
     for (int i = 0; i < list.Count; i++)
 {
     _applications.Enqueue(list.Get(i));
