@@ -3,8 +3,11 @@ using DataStructuresLibrary;
 
 namespace DataStructuresLibrary.Tests
 {
+    // Unit tests for the CustomQueue class.
     public class CustomQueueTests
     {
+        // Verifies that enqueuing an item increases
+        // the number of elements in the queue.
         [Fact]
         public void Enqueue_ShouldIncreaseCount()
         {
@@ -15,6 +18,8 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(1, queue.Count);
         }
 
+        // Verifies that Dequeue removes and returns
+        // the first item inserted (FIFO order).
         [Fact]
         public void Dequeue_ShouldReturnFirstItem()
         {
@@ -29,6 +34,8 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(1, queue.Count);
         }
 
+        // Verifies that Peek returns the first item
+        // without removing it from the queue.
         [Fact]
         public void Peek_ShouldReturnFirstItemWithoutRemoving()
         {
@@ -40,6 +47,8 @@ namespace DataStructuresLibrary.Tests
             Assert.Equal(1, queue.Count);
         }
 
+        // Verifies that IsEmpty returns true
+        // when the queue contains no elements.
         [Fact]
         public void IsEmpty_ShouldReturnTrue_WhenQueueIsEmpty()
         {
