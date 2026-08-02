@@ -33,10 +33,15 @@ public class CustomSinglyLinkedListTests
         Assert.Equal(2, list.Count);
         
         // Remove tail/middle
+                
+        Assert.True(list.Search(200));
+        Assert.False(list.Search(200));
+        Assert.Equal(1, list.Count);
+        
         Assert.True(list.Remove(300));
         Assert.False(list.Search(300));
-        Assert.True(list.Search(200));
-        Assert.Equal(1, list.Count);
+        Assert.Equal(0, list.Count);
+
     }
 
     [Fact]
