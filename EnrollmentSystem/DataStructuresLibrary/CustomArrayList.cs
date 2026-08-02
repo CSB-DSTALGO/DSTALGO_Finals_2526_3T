@@ -1,4 +1,3 @@
-// CustomArrayList.cs
 using System;
 using System.Collections.Generic;
 
@@ -7,28 +6,20 @@ namespace DataStructuresLibrary
     // Custom implementation of a dynamic array.
     public class CustomArrayList<T>
     {
-        // Backing array that stores the elements.
         private T[] _items;
-
-        // Tracks the number of elements currently stored.
         private int _count;
 
-        // Returns the number of elements in the list.
-        public int Count
-        {
-            get { return _count; }
-        }
+        // Returns the number of items.
+        public int Count => _count;
 
-        // Initializes the list with a default capacity of 4.
+        // Creates an empty list.
         public CustomArrayList()
         {
             _items = new T[4];
             _count = 0;
         }
 
-        // Adds an item to the end of the list.
-        // Automatically resizes the array when it becomes full.
-        // Time Complexity: O(1) average, O(n) when resizing.
+        // Adds an item.
         public void Add(T item)
         {
             if (_count == _items.Length)
@@ -40,52 +31,47 @@ namespace DataStructuresLibrary
             _count++;
         }
 
-        // Returns the item at the specified index.
-        // Throws an exception if the index is invalid.
-        // Time Complexity: O(1)
+        // Returns an item by index.
         public T Get(int index)
         {
             if (index < 0 || index >= _count)
             {
-                throw new IndexOutOfRangeException("Index was outside the bounds of the list.");
+                throw new IndexOutOfRangeException();
             }
 
             return _items[index];
         }
 
-        // Allows elements to be accessed using list[index].
-        // Supports both reading and updating values.
-        // Time Complexity: O(1)
+        // Allows list[index].
         public T this[int index]
         {
             get
             {
                 if (index < 0 || index >= _count)
                 {
-                    throw new IndexOutOfRangeException("Index was outside the bounds of the list.");
+                    throw new IndexOutOfRangeException();
                 }
 
                 return _items[index];
             }
+
             set
             {
                 if (index < 0 || index >= _count)
                 {
-                    throw new IndexOutOfRangeException("Index was outside the bounds of the list.");
+                    throw new IndexOutOfRangeException();
                 }
 
                 _items[index] = value;
             }
         }
 
-        // Removes the element at the specified index.
-        // Shifts all succeeding elements one position to the left.
-        // Time Complexity: O(n)
+        // Removes an item.
         public void RemoveAt(int index)
         {
             if (index < 0 || index >= _count)
             {
-                throw new IndexOutOfRangeException("Index was outside the bounds of the list.");
+                throw new IndexOutOfRangeException();
             }
 
             for (int i = index; i < _count - 1; i++)
@@ -93,18 +79,14 @@ namespace DataStructuresLibrary
                 _items[i] = _items[i + 1];
             }
 
-            // Clear the unused last slot.
             _items[_count - 1] = default!;
             _count--;
         }
 
-        // Doubles the capacity of the backing array.
-        // Copies all existing elements into the new array.
-        // Time Complexity: O(n)
+        // Doubles the array size.
         private void Resize()
         {
-            int newCapacity = _items.Length * 2;
-            T[] newArray = new T[newCapacity];
+            T[] newArray = new T[_items.Length * 2];
 
             for (int i = 0; i < _count; i++)
             {
@@ -114,9 +96,7 @@ namespace DataStructuresLibrary
             _items = newArray;
         }
 
-        // Performs a linear search for the specified item.
-        // Returns the index if found; otherwise returns -1.
-        // Time Complexity: O(n)
+        // Linear search.
         public int IndexOf(T item)
         {
             for (int i = 0; i < _count; i++)
@@ -130,15 +110,13 @@ namespace DataStructuresLibrary
             return -1;
         }
 
-        // Wrapper method required by the unit tests.
-        // Calls IndexOf() to locate the specified item.
+        // Wrapper for IndexOf().
         public int Search(T item)
         {
             return IndexOf(item);
         }
 
-        // Sorts the elements in ascending order using insertion sort.
-        // Time Complexity: O(n²) worst case, O(n) best case.
+        // Insertion Sort.
         public void Sort()
         {
             for (int i = 1; i < _count; i++)
