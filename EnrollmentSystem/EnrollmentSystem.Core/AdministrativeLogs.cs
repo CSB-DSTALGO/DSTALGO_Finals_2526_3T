@@ -58,13 +58,46 @@ public class AdministrativeLogs
     // Reserved for future implementation.
     public int SearchLog(Log log)
     {
-        throw new NotImplementedException();
+        return _logs.Search(log);
     }
 
     // Sorts logs by Log ID.
     // Reserved for future implementation.
     public void SortLogsById()
     {
-        throw new NotImplementedException();
+        int logCount = _logs.Count;
+
+        Log[] logs = new Log[logCount];
+
+        for (int i = 0; i < logCount; i++)
+        {
+            logs[i] = _logs.Pop();
+        }
+
+        for (int i = 1; i < logs.Length; i++)
+        {
+            Log CurrentLog = logs[i];
+
+            int previousIndex = i -1;
+
+            while (
+                previousIndex >= 0 &&
+                string.Compare(
+                    logs[previousIndex].LogId,
+                    CurrentLog.LogId,
+                    StringComparison.Ordinal
+                ) >0
+            )
+            {
+               logs[previousIndex + 1] = logs[previousIndex];
+                previousIndex--;
+            }
+            logs[previousIndex + 1] = CurrentLog;
+        }
+        for(int i = logs.Length - 1; i>= 0; i--)
+        {
+            _logs.Push(logs[i]);
+        }
+    
     }
 }
