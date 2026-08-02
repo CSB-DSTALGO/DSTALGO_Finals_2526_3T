@@ -75,6 +75,8 @@ public class CustomSinglyLinkedListTests
         
         Assert.Equal(4, list.Count);
         Assert.True(list.Search(10));
+        Assert.True(list.Search(20));
+        Assert.True(list.Search(30));
         Assert.True(list.Search(40));
     }
 }
