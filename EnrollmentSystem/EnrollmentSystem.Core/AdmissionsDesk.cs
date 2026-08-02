@@ -110,6 +110,15 @@ applicationId: ticket.LogId,
     // Serves (removes) the student who has waited the longest, returning their original ticket.
 public Ticket ServeNextTicket()
 {
+    if (_applications.IsEmpty() || _tickets.IsEmpty())
+    {
+        throw new InvalidOperationException("Queues are out of sync.");
+    }
+
+    _applications.Dequeue();
+    return _tickets.Dequeue();
+}
+{
 
    if(_tickets.IsEmpty())
    {
