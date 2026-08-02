@@ -51,27 +51,31 @@ namespace DataStructuresLibrary
             }
 
             return _items[index];
-            public T this[int index]
-{
-    get
-    {
-        if (index < 0 || index >= _count)
-        {
-            throw new IndexOutOfRangeException("Index was outside the bounds of the list.");
         }
 
-        return _items[index];
-    }
-    set
-    {
-        if (index < 0 || index >= _count)
+        // Allows elements to be accessed using list[index].
+        // Supports both reading and updating values.
+        // Time Complexity: O(1)
+        public T this[int index]
         {
-            throw new IndexOutOfRangeException("Index was outside the bounds of the list.");
-        }
+            get
+            {
+                if (index < 0 || index >= _count)
+                {
+                    throw new IndexOutOfRangeException("Index was outside the bounds of the list.");
+                }
 
-        _items[index] = value;
-    }
-}
+                return _items[index];
+            }
+            set
+            {
+                if (index < 0 || index >= _count)
+                {
+                    throw new IndexOutOfRangeException("Index was outside the bounds of the list.");
+                }
+
+                _items[index] = value;
+            }
         }
 
         // Removes the element at the specified index.
@@ -90,7 +94,7 @@ namespace DataStructuresLibrary
             }
 
             // Clear the unused last slot.
-            _items[_count - 1] = default(T)!;
+            _items[_count - 1] = default!;
             _count--;
         }
 
@@ -134,7 +138,7 @@ namespace DataStructuresLibrary
         }
 
         // Sorts the elements in ascending order using insertion sort.
-        // Time Complexity: O(n�) worst case, O(n) best case.
+        // Time Complexity: O(n²) worst case, O(n) best case.
         public void Sort()
         {
             for (int i = 1; i < _count; i++)
