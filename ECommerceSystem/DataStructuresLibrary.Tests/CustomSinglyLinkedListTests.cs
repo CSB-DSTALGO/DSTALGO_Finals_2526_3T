@@ -34,7 +34,7 @@ public class CustomSinglyLinkedListTests
         
         // Remove tail/middle
                 
-        Assert.True(list.Search(200));
+        Assert.True(list.Remove(200));
         Assert.False(list.Search(200));
         Assert.Equal(1, list.Count);
         
