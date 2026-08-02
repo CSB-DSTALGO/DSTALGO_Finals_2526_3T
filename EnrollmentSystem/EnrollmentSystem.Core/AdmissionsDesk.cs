@@ -20,8 +20,18 @@ public int Count => _applications.Count;
 
     app.TicketId = $"T-10{_nextTicketNumber}";
     _nextTicketNumber++;
+_applications.Enqueue(app);
 
-    _applications.Enqueue(app);
+Ticket ticket = new Ticket
+{
+    LogId = app.ApplicationId,
+    StudentId = app.StudentName,
+    TicketId = app.TicketId,
+    Timestamp = DateTime.Now,
+    Action = "Admission Application"
+};
+
+_tickets.Enqueue(ticket);
 }
    
    
