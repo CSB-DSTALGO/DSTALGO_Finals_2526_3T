@@ -129,7 +129,7 @@ public bool SearchApplication(AdmissionApplication app)
 public void SortApplicationsByPriority()
 {
     int totalItems = _applications.Count;
-    var list = new List<AdmissionApplication>();
+    var list = new CustomArrayList<AdmissionApplication>();
     for (int i = 0; i < totalItems; i++)
     {
         list.Add(_applications.Dequeue());
