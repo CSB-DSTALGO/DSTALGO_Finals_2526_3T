@@ -26,7 +26,7 @@ public class AdmissionsDesk
 
         _applications.Enqueue(app);
 
-        // Create a matching ticket so both queues stay synchronized.
+        // Creates a matching ticket to keep both queues synchronized.
         Ticket ticket = new Ticket
         {
             LogId = app.ApplicationId,
@@ -39,7 +39,7 @@ public class AdmissionsDesk
         _tickets.Enqueue(ticket);
     }
 
-    // Adds a student using a Ticket, converting it into a matching AdmissionApplication.
+    // Adds a student using a Ticket and creates a matching AdmissionApplication.
     public void IssueAdmissionsTicket(Ticket ticket)
     {
         if (ticket is null)
@@ -50,7 +50,7 @@ public class AdmissionsDesk
         ticket.TicketId = $"T-10{_nextTicketNumber}";
         _nextTicketNumber++;
 
-        var application = new AdmissionApplication(
+        AdmissionApplication application = new AdmissionApplication(
             applicationId: ticket.LogId,
             studentName: ticket.StudentId,
             priorityScore: 0)
@@ -62,62 +62,65 @@ public class AdmissionsDesk
         _tickets.Enqueue(ticket);
     }
 
-    // Serves (removes) the student who has waited the longest.
+    // Removes and returns the next student.
     public AdmissionApplication ServeNextStudent()
     {
         if (_applications.IsEmpty() || _tickets.IsEmpty())
         {
-            throw new InvalidOperationException("No students are waiting to be served.");
+            throw new InvalidOperationException("No students are waiting.");
         }
 
         _tickets.Dequeue();
         return _applications.Dequeue();
     }
 
-    // Serves (removes) the next ticket.
+    // Removes and returns the next ticket.
     public Ticket ServeNextTicket()
     {
         if (_applications.IsEmpty() || _tickets.IsEmpty())
         {
-            throw new InvalidOperationException("No tickets are waiting to be served.");
+            throw new InvalidOperationException("No tickets are waiting.");
         }
 
         _applications.Dequeue();
         return _tickets.Dequeue();
     }
 
-    // Looks at the next ticket without removing it.
+    // Returns the next ticket without removing it.
     public Ticket ViewNextTicket()
     {
         if (_tickets.IsEmpty())
         {
-            throw new InvalidOperationException("No tickets are waiting to be served.");
+            throw new InvalidOperationException("No tickets are waiting.");
         }
 
         return _tickets.Peek();
     }
 
-    // Returns true if no students are currently waiting.
+    // Returns true if the queue is empty.
     public bool CheckQueueEmpty()
     {
         return _applications.IsEmpty();
     }
 
-    // Returns how many students are currently waiting.
-    public int GetQueueCount() => Count;
+    // Returns the number of students waiting.
+    public int GetQueueCount()
+    {
+        return Count;
+    }
 
-    // Linear search (O(n)).
+    // Linear Search O(n)
     public bool SearchApplication(AdmissionApplication app)
     {
-        if (app is null)
+        if (app == null)
         {
             return false;
         }
 
-        int totalItems = _applications.Count;
+        int count = _applications.Count;
         bool found = false;
 
-        for (int i = 0; i < totalItems; i++)
+        for (int i = 0; i < count; i++)
         {
             AdmissionApplication current = _applications.Dequeue();
 
@@ -132,13 +135,14 @@ public class AdmissionsDesk
         return found;
     }
 
-    // Bubble sort (O(n²)): Higher PriorityScore goes first.
+    // Bubble Sort O(n²)
     public void SortApplicationsByPriority()
     {
-        int totalItems = _applications.Count;
-        var list = new CustomArrayList<AdmissionApplication>();
+        int count = _applications.Count;
 
-        for (int i = 0; i < totalItems; i++)
+        CustomArrayList<AdmissionApplication> list = new();
+
+        for (int i = 0; i < count; i++)
         {
             list.Add(_applications.Dequeue());
         }
@@ -149,7 +153,9 @@ public class AdmissionsDesk
             {
                 if (list[j].PriorityScore < list[j + 1].PriorityScore)
                 {
-                    (list[j], list[j + 1]) = (list[j + 1], list[j]);
+                    AdmissionApplication temp = list[j];
+                    list[j] = list[j + 1];
+                    list[j + 1] = temp;
                 }
             }
         }
