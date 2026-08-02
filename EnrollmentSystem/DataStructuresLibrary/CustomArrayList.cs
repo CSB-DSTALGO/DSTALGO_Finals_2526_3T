@@ -51,6 +51,27 @@ namespace DataStructuresLibrary
             }
 
             return _items[index];
+            public T this[int index]
+{
+    get
+    {
+        if (index < 0 || index >= _count)
+        {
+            throw new IndexOutOfRangeException("Index was outside the bounds of the list.");
+        }
+
+        return _items[index];
+    }
+    set
+    {
+        if (index < 0 || index >= _count)
+        {
+            throw new IndexOutOfRangeException("Index was outside the bounds of the list.");
+        }
+
+        _items[index] = value;
+    }
+}
         }
 
         // Removes the element at the specified index.
@@ -113,7 +134,7 @@ namespace DataStructuresLibrary
         }
 
         // Sorts the elements in ascending order using insertion sort.
-        // Time Complexity: O(n²) worst case, O(n) best case.
+        // Time Complexity: O(nï¿½) worst case, O(n) best case.
         public void Sort()
         {
             for (int i = 1; i < _count; i++)
