@@ -1,26 +1,30 @@
-using System;
+namespace ECommerceSystem.Core;
 
-namespace ECommerceSystem.Core
+using DataStructuresLibrary;
+
+public class ProductCatalog
 {
-    public class ECommerceSystem
+    private readonly CustomSinglyLinkedList<Product> _products = new();
+
+    public int Count => _products.Count;
+
+    public void AddProduct(Product product)
     {
-        public int ProductID { get; set; }
-        public string ProductName { get; set; } = string.Empty;
-        public double Price { get; set; }
+        _products.Add(product);
+    }
 
-        public Product Next { get; set; }
+    public bool RemoveProduct(Product product)
+    {
+        return _products.Remove(product);
+    }
 
-        public void Product(int id, string name, double price)
-        {
-            ProductID = id;
-            ProductName = name;
-            Price = price;
-            Next = null;
-        }
+    public bool SearchProduct(Product product)
+    {
+        return _products.Search(product);
+    }
 
-        public override string ToString()
-        {
-            return $"ID: {ProductID}, Name: {ProductName}, Price: {Price:C}";
-        }
+    public void SortCatalog()
+    {
+        _products.Sort();
     }
 }

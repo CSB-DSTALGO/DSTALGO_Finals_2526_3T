@@ -45,3 +45,19 @@ C:\Users\Reigna\OneDrive\Desktop\BENILDE\DSTALGO FINALS\ECommerceSystem\ECommerc
 C:\Users\Reigna\OneDrive\Desktop\BENILDE\DSTALGO FINALS\ECommerceSystem\ECommerceSystem.Core\obj\Debug\net10.0\refint\ECommerceSystem.Core.dll
 C:\Users\Reigna\OneDrive\Desktop\BENILDE\DSTALGO FINALS\ECommerceSystem\ECommerceSystem.Core\obj\Debug\net10.0\ECommerceSystem.Core.pdb
 C:\Users\Reigna\OneDrive\Desktop\BENILDE\DSTALGO FINALS\ECommerceSystem\ECommerceSystem.Core\obj\Debug\net10.0\ref\ECommerceSystem.Core.dll
+C:\Users\adria\source\repos\DSTALGO_Finals_2526_3TT\ECommerceSystem\ECommerceSystem.Core\bin\Debug\net10.0\ECommerceSystem.Core.deps.json
+C:\Users\adria\source\repos\DSTALGO_Finals_2526_3TT\ECommerceSystem\ECommerceSystem.Core\bin\Debug\net10.0\ECommerceSystem.Core.dll
+C:\Users\adria\source\repos\DSTALGO_Finals_2526_3TT\ECommerceSystem\ECommerceSystem.Core\bin\Debug\net10.0\ECommerceSystem.Core.pdb
+C:\Users\adria\source\repos\DSTALGO_Finals_2526_3TT\ECommerceSystem\ECommerceSystem.Core\bin\Debug\net10.0\DataStructuresLibrary.dll
+C:\Users\adria\source\repos\DSTALGO_Finals_2526_3TT\ECommerceSystem\ECommerceSystem.Core\bin\Debug\net10.0\DataStructuresLibrary.pdb
+C:\Users\adria\source\repos\DSTALGO_Finals_2526_3TT\ECommerceSystem\ECommerceSystem.Core\obj\Debug\net10.0\ECommerceSystem.Core.csproj.AssemblyReference.cache
+C:\Users\adria\source\repos\DSTALGO_Finals_2526_3TT\ECommerceSystem\ECommerceSystem.Core\obj\Debug\net10.0\ECommerceSystem.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\adria\source\repos\DSTALGO_Finals_2526_3TT\ECommerceSystem\ECommerceSystem.Core\obj\Debug\net10.0\ECommerceSystem.Core.AssemblyInfoInputs.cache
+C:\Users\adria\source\repos\DSTALGO_Finals_2526_3TT\ECommerceSystem\ECommerceSystem.Core\obj\Debug\net10.0\ECommerceSystem.Core.AssemblyInfo.cs
+C:\Users\adria\source\repos\DSTALGO_Finals_2526_3TT\ECommerceSystem\ECommerceSystem.Core\obj\Debug\net10.0\ECommerceSystem.Core.csproj.CoreCompileInputs.cache
+C:\Users\adria\source\repos\DSTALGO_Finals_2526_3TT\ECommerceSystem\ECommerceSystem.Core\obj\Debug\net10.0\ECommerceSystem.Core.sourcelink.json
+C:\Users\adria\source\repos\DSTALGO_Finals_2526_3TT\ECommerceSystem\ECommerceSystem.Core\obj\Debug\net10.0\ECommerc.5244FE8E.Up2Date
+C:\Users\adria\source\repos\DSTALGO_Finals_2526_3TT\ECommerceSystem\ECommerceSystem.Core\obj\Debug\net10.0\ECommerceSystem.Core.dll
+C:\Users\adria\source\repos\DSTALGO_Finals_2526_3TT\ECommerceSystem\ECommerceSystem.Core\obj\Debug\net10.0\refint\ECommerceSystem.Core.dll
+C:\Users\adria\source\repos\DSTALGO_Finals_2526_3TT\ECommerceSystem\ECommerceSystem.Core\obj\Debug\net10.0\ECommerceSystem.Core.pdb
+C:\Users\adria\source\repos\DSTALGO_Finals_2526_3TT\ECommerceSystem\ECommerceSystem.Core\obj\Debug\net10.0\ref\ECommerceSystem.Core.dll
