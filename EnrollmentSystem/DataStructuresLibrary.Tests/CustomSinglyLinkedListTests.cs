@@ -6,20 +6,20 @@ namespace DataStructuresLibrary.Tests
     public class CustomSinglyLinkedListTests
     {
         [Fact]
-        public void AddLast_ShouldIncreaseCount()
+        public void AddLast_ShouldIncreaseCount() // Test to check if AddLast method increases the count of the list
         {
             // Arrange
             var list = new CustomSinglyLinkedList<int>();
 
             // Act
-            list.AddLast(10);
+            list.AddLast(10); // 
 
             // Assert
             Assert.Equal(1, list.Count);
         }
 
         [Fact]
-        public void AddLast_ShouldSetHead_WhenListIsEmpty()
+        public void AddLast_ShouldSetHead_WhenListIsEmpty() // Test to check if AddLast method sets the head of the list when the list is empty
         {
             // Arrange
             var list = new CustomSinglyLinkedList<int>();
