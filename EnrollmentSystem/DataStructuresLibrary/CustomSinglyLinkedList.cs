@@ -157,5 +157,29 @@ namespace DataStructuresLibrary
 
             return result;
         }
+
+    public void ReverseList()
+        {
+            // Empty or single-node list is already reversed
+            if (_head == null || _head.Next == null) return;
+
+            Node<T> previous = null;
+            Node<T> current = _head;
+            Node<T> next = null;
+
+            // Update Tail pointer BEFORE loop (old head becomes new tail)
+            _tail = _head;
+
+            while (current != null)
+            {
+                next = current.Next;     // 1. Save next node pointer
+                current.Next = previous; // 2. Reverse current node link direction
+                previous = current;      // 3. Move previous forward
+                current = next;          // 4. Move current forward
+            }
+
+            // Update Head pointer (last non-null node becomes new head)
+            _head = previous;
+        }
     }
 }

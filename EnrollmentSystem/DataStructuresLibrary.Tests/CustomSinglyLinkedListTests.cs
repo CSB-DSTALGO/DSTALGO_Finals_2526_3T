@@ -225,5 +225,26 @@ namespace DataStructuresLibrary.Tests
 
             Assert.Equal(new[] { 1, 3 }, list.ToArray());
         }
+
+        [Fact]
+        public void Reverse_ShouldInvertNodeOrder()
+        {
+            // INSTANTIATE
+            var list = new CustomSinglyLinkedList<int>();
+
+            // ARRANGE
+            list.AddLast(1);
+            list.AddLast(2);
+            list.AddLast(3);
+
+            // ACT
+            list.ReverseList();
+
+            // ASSERT
+            Assert.Equal(3, list.Head!.Data);
+            Assert.Equal(2, list.Head!.Next!.Data);
+            Assert.Equal(1, list.Head!.Next!.Next!.Data);
+            Assert.Null(list.Head!.Next!.Next!.Next);
+        }
     }
 }
