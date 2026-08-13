@@ -70,7 +70,7 @@ namespace EnrollmentSystem.ConsoleApp
                         Console.Write("Enter Course Code: ");
                         string course = Console.ReadLine() ?? "";
                         
-                        _registry.RegisterStudent(new Student(int.Parse(id), name, 0.0));
+                        _registry.RegisterStudent(new Student { Id = id, Name = name, CourseCode = course });
                         Console.WriteLine("\nStudent registered successfully.");
                         _logs.PushSystemLog(new Log { LogId = $"L-{Guid.NewGuid().ToString().Substring(0,4)}", ActionSummary = $"Registered student {id}" });
                         break;
@@ -78,7 +78,7 @@ namespace EnrollmentSystem.ConsoleApp
                     case "2":
                         Console.Write("Enter Student ID to remove: ");
                         string targetId = Console.ReadLine() ?? "";
-                        bool removed = _registry.UnregisterStudent(int.Parse(targetId));
+                        bool removed = _registry.RemoveStudent(targetId);
                         Console.WriteLine(removed ? "\nStudent removed successfully." : "\nStudent not found.");
                         if (removed)
                         {
@@ -135,20 +135,20 @@ namespace EnrollmentSystem.ConsoleApp
                         Console.Write("Enter Credit Units: ");
                         int.TryParse(Console.ReadLine(), out int units);
 
-                        _curriculum.InsertCourse(new Course(code, title, units));
+                        _curriculum.InsertCourse(new Course { Code = code, Title = title, Units = units });
                         Console.WriteLine("\nCourse inserted into curriculum.");
                         break;
 
                     case "2":
                         Console.Write("Enter Course Code to remove: ");
                         string targetCode = Console.ReadLine() ?? "";
-                        bool removed = _curriculum.DeleteCourse(targetCode);
+                        bool removed = _curriculum.RemoveCourse(targetCode);
                         Console.WriteLine(removed ? "\nCourse removed successfully." : "\nCourse not found.");
                         break;
 
                     case "3":
                         Console.WriteLine("\n--- Curriculum Matrix ---");
-                        Console.WriteLine($"Total Curriculum Units: {_curriculum.CalculateTotalUnits()}");
+                        Console.WriteLine($"Total Curriculum Units: {_curriculum.GetTotalUnits()}");
                         break;
                 }
             }
